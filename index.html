@@ -211,7 +211,7 @@ button,input,select,textarea{font-family:inherit}
         </sc-for>
       </div>
       <div style="display:flex;align-items:center;justify-content:space-between;gap:clamp(1rem,3vw,2rem);flex-wrap:wrap;margin-top:36px;padding-top:24px;border-top:1px solid rgba(33,28,22,0.14)">
-        <p style="margin:0;color:#4B443A;font-size:14.5px;max-width:52ch">היקף העבודה, החומרים והתמחור נקבעים לפי אופי הפרויקט ומורכבותו, לאחר פגישת שטח.</p>
+        <p style="margin:0;color:#4B443A;font-size:14.5px;max-width:52ch">היקף העבודה, החומרים והתמחור נקבעים לפי אופי הפרויקט ומורכבותו, לאחר שיחת ייעוץ.</p>
         <div style="display:flex;flex-direction:column;gap:8px;align-items:flex-start">
           <a href="#quick" style="display:inline-flex;align-items:center;gap:10px;background:#211C16;color:#F5F0E4;padding:16px 34px;font-size:16.5px;font-weight:600;border-radius:100px;white-space:nowrap;transition:background 0.2s ease,transform 0.18s ease" style-hover="background:#B4813C;color:#1B1712" style-active="transform:scale(0.97)">בואו נתכנן את המרחב שלכם <span aria-hidden="true">←</span></a>
           <span style="font-size:13px;color:#4B443A">נחזור אליכם לתיאום שיחת ייעוץ · המספר לא עובר לאף גורם אחר</span>
@@ -444,7 +444,7 @@ button,input,select,textarea{font-family:inherit}
           <span style="font-size:24px;font-weight:300;color:#C99752;line-height:1;flex:none">04</span>
           <div>
             <h3 style="color:#F5F0E4;font-size:18px">מסירה</h3>
-            <p style="margin-top:6px;color:rgba(245,240,228,0.74);font-size:15px">עם אחריות מוגדרת בכתב.</p>
+            <p style="margin-top:6px;color:rgba(245,240,228,0.74);font-size:15px">בהתאם לתנאי ההתקשרות שנקבעו בכתב.</p>
           </div>
         </div>
       </div>
@@ -694,6 +694,7 @@ button,input,select,textarea{font-family:inherit}
     <span style="position: relative; color: #0a0f16">סופר צל · IL Projects — מעטפת מקצועית לבית ולמרחב החוץ</span>
     <a href="tel:0547752697" style="color: #0a0f16" style-hover="color:#C99752">054-775-2697</a>
     <a href="mailto:ilprojects.israel@gmail.com" style="color: #0a0f16" style-hover="color:#C99752">ilprojects.israel@gmail.com</a>
+    <a href="/legal#privacy" style="color: #0a0f16" style-hover="color:#C99752">תקנון ומדיניות פרטיות</a>
     <button onClick="{{ a11yOpen }}" style="background: transparent; border: 0; padding: 0; font: inherit; color: #0a0f16; text-decoration: underline; text-underline-offset: 3px; cursor: pointer" style-hover="color:#C99752">הצהרת נגישות</button>
   </div>
 </footer>
@@ -1368,13 +1369,13 @@ class Component extends DCLogic {
         { idx: '02', title: 'מסגרת עבודה מסודרת', body: 'התיאום בין השלבים קורה אצלנו, לא אצלכם.' },
         { idx: '03', title: 'שפה חומרית אחידה', body: 'כל רכיב נבחן מול הקו הכולל — תוצאה שלמה.' }
       ],
-      trackA: ['פתרון אחד מוגדר היטב', 'תכנון יישומי קצר', 'לוח זמנים ברור', 'אחריות מוגדרת בכתב'],
+      trackA: ['פתרון אחד מוגדר היטב', 'תכנון יישומי קצר', 'לוח זמנים ברור', 'תנאי התקשרות מוגדרים בכתב'],
       trackC: ['מתחילים משכבה אחת', 'תכנון שמביא בחשבון את ההמשך', 'התרחבות בלי לפרק ולבנות מחדש', 'שפה חומרית שנשמרת בין השלבים'],
       trackB: ['תכנון יישומי לכל המעטפת', 'מסגרת עבודה מסודרת', 'נקודת קשר אחת ושקט ניהולי', 'שפה חומרית אחידה'],
       tileGap: n ? '16px' : '24px',
       ...(() => {
         const T = [
-          { label: 'שירות ממוקד', title: 'שירות ממוקד', body: 'פתרון אחד מוגדר היטב — פרגולה, דק או חיפוי.', items: ['פתרון אחד מוגדר היטב', 'תכנון יישומי קצר', 'לוח זמנים ברור', 'אחריות מוגדרת בכתב'] },
+          { label: 'שירות ממוקד', title: 'שירות ממוקד', body: 'פתרון אחד מוגדר היטב — פרגולה, דק או חיפוי.', items: ['פתרון אחד מוגדר היטב', 'תכנון יישומי קצר', 'לוח זמנים ברור', 'תנאי התקשרות מוגדרים בכתב'] },
           { label: 'הרחבה מדורגת', title: 'הרחבה מדורגת', body: 'מתחילים משכבה אחת ומתרחבים בקצב שלכם.', items: ['מתחילים משכבה אחת', 'תכנון שמביא בחשבון את ההמשך', 'התרחבות בלי לפרק ולבנות מחדש', 'שפה חומרית שנשמרת בין השלבים'] },
           { label: 'מעטפת מלאה', title: 'מעטפת מלאה (TURNKEY)', body: 'פרויקט שלם תחת מסגרת עבודה אחת ותיאום מלא.', items: ['תכנון יישומי לכל המעטפת', 'מסגרת עבודה מסודרת', 'נקודת קשר אחת ושקט ניהולי', 'שפה חומרית אחידה'], full: true }
         ];
@@ -1437,10 +1438,10 @@ class Component extends DCLogic {
       steps: [
         { num: '01', icon: this.stepIcon('measure'), tag: 'שלב ראשון', title: 'פגישה בשטח ומדידה', body: 'לומדים את המרחב, כיווני השמש והרוח ואופן השימוש בפועל.' },
         { num: '02', icon: this.stepIcon('plan'), tag: 'שלב שני', title: 'תכנון יישומי והתאמה', body: 'גיבוש פתרון מותאם אישית בחומרי הגמר ובגוונים הנכונים.' },
-        { num: '03', icon: this.stepIcon('handover'), tag: 'שלב שלישי', title: 'ביצוע, התקנה ומסירה', body: 'ייצור, תיאום קפדני בשטח ומסירה מסודרת, עם אחריות מוגדרת בכתב.' }
+        { num: '03', icon: this.stepIcon('handover'), tag: 'שלב שלישי', title: 'ביצוע, התקנה ומסירה', body: 'ייצור, תיאום קפדני בשטח ומסירה מסודרת, בהתאם לתנאי ההתקשרות שנקבעו בכתב.' }
       ],
       audience: ['בעלי בתים פרטיים', 'דירות גן ופנטהאוזים', 'מרפסות גדולות', 'עסקים ובתי קפה', 'אדריכלים ומעצבים', 'ועדים ומוסדות'],
-      /* n: '04', title: 'מסירה ', body: 'מסירה מסודרת של הפרויקט, \nעם אחריות מוגדרת בכתב.' }
+      /* n: '04', title: 'מסירה ', body: 'מסירה מסודרת של הפרויקט, \nבהתאם לתנאי ההתקשרות שנקבעו בכתב.' }
       */
       threeCols: n && !t ? '1fr' : 'repeat(3,minmax(0,1fr))',
       projCols: n ? 'none' : 'repeat(3,minmax(0,1fr))',
