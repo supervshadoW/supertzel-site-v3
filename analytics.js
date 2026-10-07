@@ -26,7 +26,20 @@
       ad_storage: 'denied', ad_user_data: 'denied', ad_personalization: 'denied',
       personalization_storage: 'denied'
     });
-    if (state.analytics) gtag('config', GA_ID, { anonymize_ip: true });
+    if (state.analytics) { gtag('config', GA_ID, { anonymize_ip: true }); clarity(); }
+  }
+
+  // Microsoft Clarity (heatmaps / recordings): loaded only after analytics consent.
+  var CLARITY_ID = 'yty9r0kcag', clarityOn = false;
+  function clarity() {
+    if (clarityOn) return;
+    clarityOn = true;
+    (function (c, l, a, r, i, t, y) {
+      c[a] = c[a] || function () { (c[a].q = c[a].q || []).push(arguments); };
+      t = l.createElement(r); t.async = 1; t.src = 'https://www.clarity.ms/tag/' + i;
+      y = l.getElementsByTagName(r)[0]; y.parentNode.insertBefore(t, y);
+    })(window, document, 'clarity', 'script', CLARITY_ID);
+    try { window.clarity('consentv2', { ad_Storage: 'denied', analytics_Storage: 'granted' }); } catch (e) {}
   }
 
   function load() {
