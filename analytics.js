@@ -1,8 +1,8 @@
-﻿/* Google Analytics 4 (G-XY24L1G232) with Consent Mode v2 + cookie banner.
+﻿/* Google Analytics 4 (G-573EPTRPVM) with Consent Mode v2 + cookie banner.
    Same behaviour as the previous site: everything is denied by default and
    GA is configured only after the visitor actively accepts analytics. */
 (function () {
-  var GA_ID = 'G-XY24L1G232';
+  var GA_ID = 'G-573EPTRPVM';
   var STORAGE_KEY = 'supertzel_cookie_consent_v2';
 
   window.dataLayer = window.dataLayer || [];
