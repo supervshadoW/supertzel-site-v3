@@ -72,6 +72,7 @@
     var img = document.querySelector('img[src*="envelope-render-pins"]');
     if (!img) return;
     var box = img.parentElement;
+    box.style.setProperty('border-radius', '28px 28px 0 0', 'important');
     if (box.__stzLegend) return;
     var pins = [].slice.call(box.querySelectorAll('button[aria-label]'));
     if (!pins.length) return;

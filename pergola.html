@@ -16,7 +16,7 @@ html, body { overflow-x: clip; max-width: 100%; }
   .stz-steps > div { flex-direction: column; gap: 8px !important; background: rgba(245,240,228,0.07); border: 1px solid rgba(245,240,228,0.2) !important; border-radius: 22px; padding: 20px !important; }
   /* mobile: the numbered photo gets its legend attached right under it (built by mobile-ux.js); the separate list is hidden */
   .stz-envlist { display: none !important; }
-  .stz-envimg { border-radius: 28px 28px 0 0 !important; }
+  .stz-envimg, div:has(> img[src*="envelope-render-pins"]) { border-radius: 28px 28px 0 0 !important; }
   /* mobile: the "ראיתם את הפתרונות" line and its tags: tidy 2-column grid */
   .stz-why-line { max-width: none !important; text-wrap: balance; }
   .stz-chips { display: grid !important; grid-template-columns: 1fr 1fr; gap: 10px !important; width: 100%; }
@@ -72,7 +72,7 @@ html, body { overflow-x: clip; max-width: 100%; }
 <script src="/lead.js?v=3"></script>
 <script src="/lead-modal.js?v=5"></script>
 <script src="/phone-cc.js?v=3" defer></script>
-<script src="/mobile-ux.js?v=5" defer></script>
+<script src="/mobile-ux.js?v=6" defer></script>
 <script src="/analytics.js?v=7"></script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
