@@ -51,7 +51,8 @@
     function tick() {
       if (stopped || !visible) return;
       var i = paint();
-      var next = cards[(i + 1) % cards.length];
+      if (i >= cards.length - 1) { stop(); return; } // one gentle pass, then leave it to the visitor (no fast rewind)
+      var next = cards[i + 1];
       var cr = car.getBoundingClientRect(), nr = next.getBoundingClientRect();
       // scroll the container only (never the page)
       car.scrollBy({ left: nr.right - (cr.right - 14), behavior: 'smooth' });
