@@ -7,6 +7,10 @@
 /* decorative big numerals stick out of the page edge: clip them instead of letting the whole page scroll sideways */
 html, body { overflow-x: clip; max-width: 100%; }
 @media (max-width: 760px) {
+  /* mobile: long stacks of cards become swipeable carousels (dots + auto-advance come from mobile-ux.js) */
+  .stz-carousel { display: flex !important; overflow-x: auto; overflow-y: hidden; scroll-snap-type: x mandatory; gap: 14px !important; margin-inline: -4vw; padding: 4px 4vw 14px; scroll-padding-inline: 4vw; scrollbar-width: none; -webkit-overflow-scrolling: touch; overscroll-behavior-x: contain; }
+  .stz-carousel::-webkit-scrollbar { display: none; }
+  .stz-carousel > div { flex: 0 0 82% !important; max-width: 82%; scroll-snap-align: start; grid-column: auto !important; }
   /* mobile: the "ראיתם את הפתרונות" line and its tags: tidy 2-column grid */
   .stz-why-line { max-width: none !important; text-wrap: balance; }
   .stz-chips { display: grid !important; grid-template-columns: 1fr 1fr; gap: 10px !important; width: 100%; }
@@ -54,6 +58,7 @@ html, body { overflow-x: clip; max-width: 100%; }
 <script src="/lead.js?v=3"></script>
 <script src="/lead-modal.js?v=5"></script>
 <script src="/phone-cc.js?v=3" defer></script>
+<script src="/mobile-ux.js?v=1" defer></script>
 <script src="/analytics.js?v=7"></script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
@@ -261,7 +266,7 @@ button,input,select,textarea{font-family:inherit}
         </div>
         <p style="color:#4B443A;font-size:17px;max-width:38ch">ההצללה היא שכבת חוץ המגדירה את אופי המרחב כולו — כמות האור והקו העיצובי שמתאים לשאר האלמנטים במרחב.<br><span style="display: inline-block; margin-top: 14px; font-size: 15px; color: rgb(180, 129, 60); font-weight: 600;"></span></p>
       </div>
-      <div style="display:grid;grid-template-columns:{{ catCols }};gap:24px;align-items:stretch">
+      <div class="stz-carousel" style="display:grid;grid-template-columns:{{ catCols }};gap:24px;align-items:stretch">
         <sc-for list="{{ types }}" as="c" hint-placeholder-count="7">
           <div style="grid-column:{{ c.span }};border-radius:28px;overflow:hidden;background:#ECE4D2;border:1px solid rgba(33,28,22,0.14);display:grid;grid-template-columns:{{ c.inner }};transition:transform 0.35s ease,box-shadow 0.35s ease" style-hover="transform:translateY(-5px);box-shadow:0 24px 44px -20px rgba(33,28,22,0.28)">
             <div style="position:relative;min-height:{{ c.minH }};overflow:hidden">
@@ -290,7 +295,7 @@ button,input,select,textarea{font-family:inherit}
         </div>
         <p style="color:#4B443A;font-size:17px;max-width:38ch">מעבר לקירוי ולהצללה — סגירות, מחיצות ומערכות הזזה שמיוצרות בהתאמה מדויקת למידות, לגוון ולשפה החומרית של הפרויקט.</p>
       </div>
-      <div style="display:grid;grid-template-columns:{{ magCols }};gap:24px">
+      <div class="stz-carousel" style="display:grid;grid-template-columns:{{ magCols }};gap:24px">
         <sc-for list="{{ glass }}" as="g" hint-placeholder-count="5">
           <div style="grid-column:{{ g.span }};border-radius:28px;overflow:hidden;background:#ECE4D2;border:1px solid rgba(33,28,22,0.14);display:flex;flex-direction:column;transition:transform 0.35s ease,box-shadow 0.35s ease" style-hover="transform:translateY(-5px);box-shadow:0 24px 44px -20px rgba(33,28,22,0.28)">
             <div style="position:relative;height:{{ g.minH }};overflow:hidden;flex:0 0 auto">
