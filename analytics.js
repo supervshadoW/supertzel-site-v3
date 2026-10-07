@@ -106,6 +106,16 @@
   }
   window.openCookieSettings = banner;
 
+  // Safety net: if the page ever shows raw template text ({{ ... }}) because the page script failed to run, reload once.
+  setTimeout(function () {
+    try {
+      if (document.body && /\{\{\s*[\w.]+\s*\}\}/.test(document.body.innerText) && !sessionStorage.getItem('stz_reloaded')) {
+        sessionStorage.setItem('stz_reloaded', '1');
+        location.reload();
+      }
+    } catch (e) {}
+  }, 5000);
+
   var saved = load();
   if (saved) apply(saved);
   else if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', function () { setTimeout(banner, 400); });
