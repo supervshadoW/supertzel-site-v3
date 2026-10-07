@@ -9,8 +9,10 @@
   img[src*="envelope-render-pins"] ~ button { display: none !important; }
   /* mobile hero: taller, lighter photo, compact text anchored at the bottom */
   .stz-hero { min-height: 88vh !important; min-height: min(88svh, 760px) !important; }
-  .stz-hero-shade { background: linear-gradient(180deg, rgba(27,23,18,0.18) 0%, rgba(27,23,18,0.04) 32%, rgba(27,23,18,0.5) 56%, rgba(27,23,18,0.9) 100%) !important; }
-  .stz-hero h1 { font-size: 38px !important; text-shadow: 0 2px 16px rgba(0,0,0,0.55); }
+  .stz-hero { min-height: 92vh !important; min-height: min(92svh, 800px) !important; }
+  .stz-hero-shade { background: linear-gradient(180deg, rgba(27,23,18,0.15) 0%, rgba(27,23,18,0.02) 28%, rgba(27,23,18,0.62) 50%, rgba(27,23,18,0.93) 74%, rgba(27,23,18,0.96) 100%) !important; }
+  .stz-hero-body { padding-top: 0 !important; }
+  .stz-hero h1 { font-size: 34px !important; text-shadow: 0 2px 16px rgba(0,0,0,0.55); }
   .stz-hero p { font-size: 16.5px !important; text-shadow: 0 2px 12px rgba(0,0,0,0.6); }
 }
 </style>
@@ -166,7 +168,7 @@ button,input,select,textarea{font-family:inherit}
         </sc-if>
       </div>
     </sc-if>
-    <div style="position:relative;z-index:2;width:min(92%,1180px);margin-inline:auto;padding-block:clamp(5rem,11vh,7rem) {{ heroPadBottom }};opacity:{{ heroTextOp }};pointer-events:{{ heroTextPe }}">
+    <div class="stz-hero-body" style="position:relative;z-index:2;width:min(92%,1180px);margin-inline:auto;padding-block:clamp(5rem,11vh,7rem) {{ heroPadBottom }};opacity:{{ heroTextOp }};pointer-events:{{ heroTextPe }}">
       <div style="display:flex;align-items:center;gap:12px;color:#F5F0E4;font-size:15px;margin-bottom:14px;animation:stz-up 1s 0.3s both">
         <span style="display:block;width:34px;height:1px;background:#C99752"></span>
         <span>{{ heroCaption }}</span>
