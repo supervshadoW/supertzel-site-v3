@@ -14,22 +14,30 @@ html, body { overflow-x: clip; max-width: 100%; }
   /* mobile: shorter page. Repeated blocks are hidden (they say the same thing as other sections / the floating form) */
   .stz-why-row, #lead, .stz-proc-cta, .stz-env-p, .stz-contact-info { display: none !important; }
   .stz-steps > div { flex-direction: column; gap: 8px !important; background: rgba(245,240,228,0.07); border: 1px solid rgba(245,240,228,0.2) !important; border-radius: 22px; padding: 20px !important; }
-  .stz-envlist > div { grid-template-columns: 34px 1fr !important; align-items: start !important; border: 1px solid rgba(33,28,22,0.16) !important; border-radius: 22px; padding: 18px !important; background: rgba(245,240,228,0.55); }
-  .stz-envlist > div > p { grid-column: 1 / -1 !important; }
-  .stz-envlist > div:last-child:empty { display: none; }
+  /* mobile: the numbered photo gets its legend attached right under it (built by mobile-ux.js); the separate list is hidden */
+  .stz-envlist { display: none !important; }
+  .stz-envimg { border-radius: 28px 28px 0 0 !important; }
   /* mobile: the "ראיתם את הפתרונות" line and its tags: tidy 2-column grid */
   .stz-why-line { max-width: none !important; text-wrap: balance; }
   .stz-chips { display: grid !important; grid-template-columns: 1fr 1fr; gap: 10px !important; width: 100%; }
   .stz-chips > span { white-space: normal !important; text-align: center; padding: 10px 8px !important; border-radius: 16px !important; line-height: 1.35; }
-  /* mobile: no numbered hotspot circles over the photo (they crowded the text) */
-  img[src*="envelope-render-pins"] ~ button { display: none !important; }
+  /* mobile: numbered circles on the photo stay, a bit smaller */
+  img[src*="envelope-render-pins"] ~ button { width: 28px !important; height: 28px !important; font-size: 13px !important; }
   /* mobile hero: taller, lighter photo, compact text anchored at the bottom */
   .stz-hero { min-height: 88vh !important; min-height: min(88svh, 760px) !important; }
   .stz-hero { min-height: 600px !important; min-height: min(max(calc(100vh - 138px), 600px), 760px) !important; min-height: min(max(calc(100svh - 138px), 600px), 760px) !important; }
   .stz-hero-shade { background: linear-gradient(180deg, rgba(27,23,18,0.15) 0%, rgba(27,23,18,0.02) 28%, rgba(27,23,18,0.62) 50%, rgba(27,23,18,0.93) 74%, rgba(27,23,18,0.96) 100%) !important; }
   .stz-hero-body { padding-top: 0 !important; }
-  .stz-hero h1 { font-size: 34px !important; text-shadow: 0 2px 16px rgba(0,0,0,0.55); }
-  .stz-hero p { font-size: 16.5px !important; text-shadow: 0 2px 12px rgba(0,0,0,0.6); }
+  /* every slide gets the same text frame, so nothing jumps when the photo changes */
+  .stz-hero h1 { font-size: 32px !important; line-height: 1.12 !important; text-shadow: 0 2px 16px rgba(0,0,0,0.55); }
+  .stz-hero h1 > span { display: block; font-size: 25px !important; line-height: 1.2 !important; min-height: 2.45em !important; margin-top: 6px; }
+  .stz-hero-cap { min-height: 2.7em; align-items: flex-start !important; font-size: 14px !important; line-height: 1.35; margin-bottom: 8px !important; }
+  .stz-hero p { font-size: 16px !important; line-height: 1.5; text-shadow: 0 2px 12px rgba(0,0,0,0.6); }
+  /* one type scale for the rest of the page */
+  section:not(#hero) h2 { font-size: 27px !important; line-height: 1.2 !important; }
+  section:not(#hero) h3 { font-size: 19px !important; line-height: 1.3 !important; }
+  section:not(#hero) p { font-size: 15.5px !important; line-height: 1.6 !important; }
+  section:not(#hero) blockquote { font-size: 20px !important; line-height: 1.5 !important; }
 }
 </style>
 <script src="/support.js"></script>
@@ -64,7 +72,7 @@ html, body { overflow-x: clip; max-width: 100%; }
 <script src="/lead.js?v=3"></script>
 <script src="/lead-modal.js?v=5"></script>
 <script src="/phone-cc.js?v=3" defer></script>
-<script src="/mobile-ux.js?v=4" defer></script>
+<script src="/mobile-ux.js?v=5" defer></script>
 <script src="/analytics.js?v=7"></script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
@@ -186,7 +194,7 @@ button,input,select,textarea{font-family:inherit}
       </div>
     </sc-if>
     <div class="stz-hero-body" style="position:relative;z-index:2;width:min(92%,1180px);margin-inline:auto;padding-block:clamp(5rem,11vh,7rem) {{ heroPadBottom }};opacity:{{ heroTextOp }};pointer-events:{{ heroTextPe }}">
-      <div style="display:flex;align-items:center;gap:12px;color:#F5F0E4;font-size:15px;margin-bottom:14px;animation:stz-up 1s 0.3s both">
+      <div class="stz-hero-cap" style="display:flex;align-items:center;gap:12px;color:#F5F0E4;font-size:15px;margin-bottom:14px;animation:stz-up 1s 0.3s both">
         <span style="display:block;width:34px;height:1px;background:#C99752"></span>
         <span>{{ heroCaption }}</span>
       </div>
@@ -358,7 +366,7 @@ button,input,select,textarea{font-family:inherit}
         <div style="display:inline-flex;align-items:center;gap:10px;color:#C99752;font-size:14.5px;font-weight:600;margin-bottom:24px;white-space:nowrap"><span style="display:block;width:24px;height:1px;background:#C99752"></span>איך זה עובד</div>
         <h2 style="font-size:clamp(28px,3.4vw,42px);color:#F5F0E4;margin-bottom:clamp(1.75rem,4vh,2.5rem)">תהליך מסודר, <span style="font-weight:normal">פתרון מדויק</span></h2>
         
-        <div class="stz-carousel stz-noauto stz-steps" style="display:grid;grid-template-columns:{{ stepCols }};gap:{{ stepGap }}">
+        <div class="stz-carousel stz-loop stz-steps" style="display:grid;grid-template-columns:{{ stepCols }};gap:{{ stepGap }}">
           <sc-for list="{{ steps }}" as="s" hint-placeholder-count="4">
             <div style="display:flex;gap:14px;align-items:baseline;border-top:1px solid rgba(245,240,228,0.18);padding-top:16px">
               <span style="font-size:24px;font-weight:300;color:#C99752;line-height:1;flex:none">{{ s.num }}</span>
@@ -759,11 +767,11 @@ const LIGHT_SUNROOM = {
 
 class Component extends DCLogic {
   revsFallback = [
+    { text: '…הבית שלנו משמש כמרכז תרבות ואנשים רבים מגיעים כך שהיה חשוב לי שיהיה חזק, יפה ומרחף…', meta: 'Tamar Melzer Krymolowski' },
     { text: '…הפרגולה יצאה מושלמת… ממליץ על סופר צל בחום.', meta: 'ירון שלומי' },
     { text: '…עבודה מקצועית והתוצאה הייתה בדיוק כמו שתיכננו. מומלץ בחום.', meta: 'Jack Mayer' },
     { text: '…הגעתי ל-סופר צל והופתעתי לטובה! … עבודה מקצועית ושירות אדיב. הגגון הותקן במרפסת השירות בצורה מדויקת ואסתטית, תוך שימוש בחומרים איכותיים…', meta: 'leon vaisman' },
-    { text: 'ביקשתי גגון שיתאים למרפסת וגם יגן על חתולים שלי..לא האמנתי כמה יפה ומדוייק הגגון יצא לצרכים שלנו...תודה רבה על העבודה המדהימה ועל ההקשבה לצריכים שלנו אנחנו מאוהבים בגגון החדש😊😍🙏', meta: 'topaz askar' },
-    { text: '…הבית שלנו משמש כמרכז תרבות ואנשים רבים מגיעים כך שהיה חשוב לי שיהיה חזק, יפה ומרחף…', meta: 'Tamar Melzer Krymolowski' }
+    { text: 'ביקשתי גגון שיתאים למרפסת וגם יגן על חתולים שלי..לא האמנתי כמה יפה ומדוייק הגגון יצא לצרכים שלנו...תודה רבה על העבודה המדהימה ועל ההקשבה לצריכים שלנו אנחנו מאוהבים בגגון החדש😊😍🙏', meta: 'topaz askar' }
   ];
 
   get revs() {
@@ -793,7 +801,9 @@ class Component extends DCLogic {
             ];
             const hit = CUT.find(c => r.text.indexOf(c[0]) > -1);
             return { text: hit ? hit[1] : r.text.trim(), meta: [r.author, r.relativeTime].filter(Boolean).join(' · ') || 'ביקורת גוגל' };
-          });
+          })
+          // the "hosts" review (a home that hosts many people) goes first
+          .sort((a, b) => (b.text.indexOf('מרכז תרבות') > -1 ? 1 : 0) - (a.text.indexOf('מרכז תרבות') > -1 ? 1 : 0));
         if (top.length) this.setState({ liveReviews: top, revIdx: 0 });
         if (typeof d.googleMapsUri === 'string' && d.googleMapsUri) this.setState({ reviewsUrl: d.googleMapsUri });
       })
@@ -858,10 +868,19 @@ class Component extends DCLogic {
     this.setState({ navWide: this.mqNav.matches });
     this.mqNav.addEventListener('change', this.onMqNav);
     this.loadReviews();
+    let revHold = 0;
     this.revTimer = window.setInterval(() => {
       const len = this.revs.length;
-      if (len > 1) this.setState(s => ({ revIdx: (s.revIdx + 1) % len }));
-    }, 7500);
+      if (len < 2) return;
+      revHold++;
+      // the first review (hosts) stays ~15s, the others ~10s
+      this.setState(s => {
+        const need = s.revIdx === 0 ? 3 : 2;
+        if (revHold < need) return null;
+        revHold = 0;
+        return { revIdx: (s.revIdx + 1) % len };
+      });
+    }, 5000);
     const hero = document.getElementById('hero');
     if (hero && window.IntersectionObserver) {
       this.io = new IntersectionObserver(

@@ -51,8 +51,9 @@
     function tick() {
       if (stopped || !visible) return;
       var i = paint();
-      if (i >= cards.length - 1) { stop(); return; } // one gentle pass, then leave it to the visitor (no fast rewind)
-      var next = cards[i + 1];
+      var loop = car.classList.contains('stz-loop');
+      if (i >= cards.length - 1 && !loop) { stop(); return; } // one gentle pass, then leave it to the visitor
+      var next = cards[loop ? (i + 1) % cards.length : i + 1];
       var cr = car.getBoundingClientRect(), nr = next.getBoundingClientRect();
       // scroll the container only (never the page)
       car.scrollBy({ left: nr.right - (cr.right - 14), behavior: 'smooth' });
@@ -66,7 +67,27 @@
     }
   }
 
-  function scan() { document.querySelectorAll('.stz-carousel').forEach(setup); }
+  // Numbered photo: attach a legend (מקרא) right under it, built from the circles' labels.
+  function legend() {
+    var img = document.querySelector('img[src*="envelope-render-pins"]');
+    if (!img) return;
+    var box = img.parentElement;
+    if (box.__stzLegend) return;
+    var pins = [].slice.call(box.querySelectorAll('button[aria-label]'));
+    if (!pins.length) return;
+    box.__stzLegend = true;
+    box.classList.add('stz-envimg');
+    var lg = document.createElement('div');
+    lg.setAttribute('aria-label', 'מקרא');
+    lg.style.cssText = 'display:grid;grid-template-columns:1fr 1fr;gap:10px 12px;padding:16px 16px 18px;background:#211C16;color:#F5F0E4;border-radius:0 0 28px 28px;font-size:14px;line-height:1.3;margin-bottom:6px';
+    lg.innerHTML = pins.map(function (p) {
+      var m = (p.getAttribute('aria-label') || '').match(/^(\d+)\.\s*(.+)$/);
+      return m ? '<div style="display:flex;align-items:center;gap:9px"><span style="flex:none;display:grid;place-items:center;width:24px;height:24px;border-radius:50%;background:#B4813C;border:1.5px solid #fff;font-size:12px;font-weight:600">' + m[1] + '</span><span>' + m[2] + '</span></div>' : '';
+    }).join('');
+    box.parentNode.insertBefore(lg, box.nextSibling);
+  }
+
+  function scan() { document.querySelectorAll('.stz-carousel').forEach(setup); legend(); }
   scan();
   var t;
   new MutationObserver(function () { clearTimeout(t); t = setTimeout(scan, 120); }).observe(document.body, { childList: true, subtree: true });
