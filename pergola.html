@@ -43,6 +43,9 @@ html, body { overflow-x: clip; max-width: 100%; }
   section:not(#hero) blockquote { font-size: 20px !important; line-height: 1.5 !important; }
 }
 </style>
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
 <script src="/support.js"></script>
 <meta name="ext-resource-dependency" content="img/logo-light-bg.png" data-resource-id="r0">
 <meta name="ext-resource-dependency" content="img/fast/w/hero-pergola.webp" data-resource-id="r1">
@@ -73,7 +76,7 @@ html, body { overflow-x: clip; max-width: 100%; }
 <template id="__bundler_thumbnail"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200"><rect width="200" height="200" fill="#1B1712"></rect><rect x="40" y="76" width="120" height="12" rx="4" fill="#B4813C"></rect><rect x="52" y="96" width="8" height="52" fill="#B4813C"></rect><rect x="140" y="96" width="8" height="52" fill="#B4813C"></rect><rect x="40" y="52" width="120" height="8" rx="4" fill="#E8C48C"></rect></svg></template>
 <link rel="preload" as="image" href="/img/fast/lp/pg-hero.webp" fetchpriority="high">
 <script src="/lead.js?v=3"></script>
-<script src="/lead-modal.js?v=5"></script>
+<script src="/lead-modal.js?v=6"></script>
 <script src="/phone-cc.js?v=3" defer></script>
 <script src="/mobile-ux.js?v=8" defer></script>
 <script src="/analytics.js?v=7"></script>
@@ -553,11 +556,11 @@ button,input,select,textarea{font-family:inherit}
         <div class="stz-contact-info" style="display:flex;flex-direction:column;gap:18px;margin-bottom:36px">
           <div style="display:flex;flex-direction:column;gap:3px;border-top:1px solid rgba(245,240,228,0.16);padding-top:14px">
             <span style="font-size:12.5px;color:#C99752">טלפון</span>
-            <a href="tel:0547752697" style="font-size:17px;color:#F5F0E4" style-hover="color:#C99752">054-775-2697</a>
+            <a href="tel:0553100154" style="font-size:17px;color:#F5F0E4" style-hover="color:#C99752">055-310-0154</a>
           </div>
           <div style="display:flex;flex-direction:column;gap:3px;border-top:1px solid rgba(245,240,228,0.16);padding-top:14px">
             <span style="font-size:12.5px;color:#C99752">וואטסאפ</span>
-            <a href="{{ waHref }}" style="font-size:17px;color:#F5F0E4" style-hover="color:#C99752">054-775-2697</a>
+            <a href="{{ waHref }}" style="font-size:17px;color:#F5F0E4" style-hover="color:#C99752">055-995-8231</a>
           </div>
           <div style="display:flex;flex-direction:column;gap:3px;border-top:1px solid rgba(245,240,228,0.16);padding-top:14px">
             <span style="font-size:12.5px;color:#C99752">דוא"ל</span>
@@ -708,7 +711,7 @@ button,input,select,textarea{font-family:inherit}
   <span>תיאום פגישת ייעוץ</span>
 </button>
 <div style="display:flex;gap:{{ fabGap }};align-items:center">
-<a href="tel:0547752697" aria-label="התקשרו אלינו" style="width:{{ fabDot }};height:{{ fabDot }};border-radius:50%;background:#211C16;display:flex;align-items:center;justify-content:center;box-shadow:0 12px 28px -8px rgba(33,28,22,0.55)" style-hover="background:#4B443A">
+<a href="tel:0553100154" aria-label="התקשרו אלינו" style="width:{{ fabDot }};height:{{ fabDot }};border-radius:50%;background:#211C16;display:flex;align-items:center;justify-content:center;box-shadow:0 12px 28px -8px rgba(33,28,22,0.55)" style-hover="background:#4B443A">
   <svg viewBox="0 0 24 24" width="27" height="27" fill="#F5F0E4" aria-hidden="true"><path d="M6.62 10.79a15.05 15.05 0 0 0 6.59 6.59l2.2-2.2a1 1 0 0 1 1.02-.24c1.12.37 2.33.57 3.57.57a1 1 0 0 1 1 1V20a1 1 0 0 1-1 1C10.4 21 3 13.6 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.24.2 2.45.57 3.57a1 1 0 0 1-.25 1.02l-2.2 2.2Z"></path></svg>
 </a>
 <a href="{{ waHref }}" target="_blank" rel="noopener" aria-label="שליחת הודעה בוואטסאפ" style="z-index:300;width:{{ fabDot }};height:{{ fabDot }};border-radius:50%;background:#25D366;display:flex;align-items:center;justify-content:center;box-shadow:0 12px 28px -8px rgba(15,60,30,0.55)" style-hover="background:#1EBE5A">
@@ -723,7 +726,7 @@ button,input,select,textarea{font-family:inherit}
   <div style="width:min(92%,1180px);margin-inline:auto;display:flex;justify-content:center;gap:1.25rem;flex-wrap:wrap">
     <span>סופר צל · IL Projects — מעטפת מקצועית לחלל הבית והחוץ</span>
     <a href="/projects">פרויקטים שביצענו</a>
-    <a href="tel:0547752697">054-775-2697</a>
+    <a href="tel:0553100154">055-310-0154</a>
     <a href="mailto:ilprojects.israel@gmail.com">ilprojects.israel@gmail.com</a>
     <a href="/legal#privacy">תקנון ומדיניות פרטיות</a>
   </div>
@@ -1334,9 +1337,9 @@ class Component extends DCLogic {
         ].filter(Boolean).join('\n');
         this.setState({ quickSent: true });
         window.stzSendLead({ name: fo.name, phone: fo.phone, solution: fo.scope || 'פרגולות והצללה', message: lines.replace(/\n/g, ' | '), source: 'pergola_quick' })
-          .catch(() => { window.location.href = 'https://wa.me/972547752697?text=' + encodeURIComponent(lines); });
+          .catch(() => { window.location.href = 'https://wa.me/972559958231?text=' + encodeURIComponent(lines); });
       },
-      waHref: 'https://wa.me/972547752697?text=' + encodeURIComponent('היי, הגעתי מהאתר ואשמח לייעוץ קצר לגבי פרגולה והצללה למרחב החוץ שלנו.'),
+      waHref: 'https://wa.me/972559958231?text=' + encodeURIComponent('היי, הגעתי מהאתר ואשמח לייעוץ קצר לגבי פרגולה והצללה למרחב החוץ שלנו.'),
       sent: this.state.sent,
       notSent: !this.state.sent,
       fName: f.name,
@@ -1363,7 +1366,7 @@ class Component extends DCLogic {
         ].filter(Boolean).join('\n');
         this.setState({ sent: true });
         window.stzSendLead({ name: fo.name, phone: fo.phone, solution: fo.scope || 'פרגולות והצללה', message: lines.replace(/\n/g, ' | '), source: 'pergola_long' })
-          .catch(() => { window.location.href = 'https://wa.me/972547752697?text=' + encodeURIComponent(lines); });
+          .catch(() => { window.location.href = 'https://wa.me/972559958231?text=' + encodeURIComponent(lines); });
       }
     };
   }

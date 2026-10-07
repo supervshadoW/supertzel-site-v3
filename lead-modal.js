@@ -96,7 +96,7 @@
     form.style.display = 'none'; done.style.display = 'grid';
     var send = window.stzSendLead ? window.stzSendLead({ name: nm, phone: phone, solution: source, message: msg, source: 'modal_' + source }) : Promise.reject();
     send.catch(function () {
-      location.href = 'https://wa.me/972547752697?text=' + encodeURIComponent('היי, אשמח לתאם שיחת ייעוץ.\nשם: ' + nm + '\nטלפון: ' + phone);
+      location.href = 'https://wa.me/972559958231?text=' + encodeURIComponent('היי, אשמח לתאם שיחת ייעוץ.\nשם: ' + nm + '\nטלפון: ' + phone);
     });
   }
   function open(src) {
