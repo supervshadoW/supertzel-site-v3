@@ -10,6 +10,8 @@
     var cards = [].slice.call(car.children).filter(function (c) { return c.offsetWidth > 0; });
     if (cards.length < 2) return;
     car.__stzCar = true;
+    // horizontally hidden cards must not wait for lazy-loading: load their photos right away
+    car.querySelectorAll('img').forEach(function (im) { im.loading = 'eager'; im.decoding = 'async'; });
 
     var dots = document.createElement('div');
     dots.setAttribute('aria-hidden', 'true');
