@@ -45,7 +45,7 @@
     car.addEventListener('scroll', function () { paint(); }, { passive: true });
     paint();
 
-    var stopped = reduce, timer = null, visible = false;
+    var stopped = reduce || car.classList.contains('stz-noauto'), timer = null, visible = false;
     function stop() { stopped = true; if (timer) { clearInterval(timer); timer = null; } }
     ['pointerdown', 'touchstart', 'wheel', 'keydown'].forEach(function (ev) { car.addEventListener(ev, stop, { passive: true }); });
     function tick() {

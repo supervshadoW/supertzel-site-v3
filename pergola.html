@@ -11,6 +11,12 @@ html, body { overflow-x: clip; max-width: 100%; }
   .stz-carousel { display: flex !important; overflow-x: auto; overflow-y: hidden; scroll-snap-type: x mandatory; gap: 14px !important; margin-inline: -4vw; padding: 4px 4vw 14px; scroll-padding-inline: 4vw; scrollbar-width: none; -webkit-overflow-scrolling: touch; overscroll-behavior-x: contain; }
   .stz-carousel::-webkit-scrollbar { display: none; }
   .stz-carousel > div { flex: 0 0 82% !important; max-width: 82%; scroll-snap-align: start; grid-column: auto !important; }
+  /* mobile: shorter page. Repeated blocks are hidden (they say the same thing as other sections / the floating form) */
+  .stz-why-row, #lead, .stz-proc-cta, .stz-env-p, .stz-contact-info { display: none !important; }
+  .stz-steps > div { flex-direction: column; gap: 8px !important; background: rgba(245,240,228,0.07); border: 1px solid rgba(245,240,228,0.2) !important; border-radius: 22px; padding: 20px !important; }
+  .stz-envlist > div { grid-template-columns: 34px 1fr !important; align-items: start !important; border: 1px solid rgba(33,28,22,0.16) !important; border-radius: 22px; padding: 18px !important; background: rgba(245,240,228,0.55); }
+  .stz-envlist > div > p { grid-column: 1 / -1 !important; }
+  .stz-envlist > div:last-child:empty { display: none; }
   /* mobile: the "ראיתם את הפתרונות" line and its tags: tidy 2-column grid */
   .stz-why-line { max-width: none !important; text-wrap: balance; }
   .stz-chips { display: grid !important; grid-template-columns: 1fr 1fr; gap: 10px !important; width: 100%; }
@@ -58,7 +64,7 @@ html, body { overflow-x: clip; max-width: 100%; }
 <script src="/lead.js?v=3"></script>
 <script src="/lead-modal.js?v=5"></script>
 <script src="/phone-cc.js?v=3" defer></script>
-<script src="/mobile-ux.js?v=3" defer></script>
+<script src="/mobile-ux.js?v=4" defer></script>
 <script src="/analytics.js?v=7"></script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
@@ -319,7 +325,7 @@ button,input,select,textarea{font-family:inherit}
 
   <section id="why" style="padding-block:clamp(1.5rem,4vh,2.5rem) clamp(4rem,10vh,6.9rem)">
     <div style="width:min(92%,1180px);margin-inline:auto">
-      <div style="display:flex;align-items:center;justify-content:space-between;gap:16px 28px;flex-wrap:wrap;border-top:1px solid rgba(33,28,22,0.14);padding-top:22px;margin-bottom:clamp(3rem,8vh,4.5rem)">
+      <div class="stz-why-row" style="display:flex;align-items:center;justify-content:space-between;gap:16px 28px;flex-wrap:wrap;border-top:1px solid rgba(33,28,22,0.14);padding-top:22px;margin-bottom:clamp(3rem,8vh,4.5rem)">
         <p class="stz-why-line" style="font-size:clamp(17px,1.8vw,20px);color:#211C16;max-width:40ch">ראיתם את הפתרונות. <span style="color:#8F6326">ומאחורי כל אחד מהם — אותה דרך עבודה:</span></p>
         <div class="stz-chips" style="display:flex;align-items:center;gap:10px 14px;flex-wrap:wrap">
           <span style="font-size:14.5px;color:#4B443A;border:1px solid rgba(33,28,22,0.18);border-radius:100px;padding:6px 14px;white-space:nowrap">תכנון יישומי לפני ביצוע</span>
@@ -330,7 +336,7 @@ button,input,select,textarea{font-family:inherit}
       </div>
       <div style="display:inline-flex;align-items:center;gap:10px;color:#B4813C;font-size:14.5px;font-weight:600;margin-bottom:24px;white-space:nowrap"><span style="display:block;width:24px;height:1px;background:#B4813C"></span>למה סופר צל</div>
       <h2 style="font-size:clamp(32px,4.4vw,56px);max-width:18ch">נקודת קשר אחת לתכנון יישומי, לייצור ולהתקנה</h2>
-      <div style="display:grid;grid-template-columns:{{ threeCols }};gap:clamp(1.25rem,3vw,1.5rem);margin-top:clamp(2.25rem,6vh,3.4rem)">
+      <div class="stz-carousel stz-noauto" style="display:grid;grid-template-columns:{{ threeCols }};gap:clamp(1.25rem,3vw,1.5rem);margin-top:clamp(2.25rem,6vh,3.4rem)">
         <sc-for list="{{ reasons }}" as="r" hint-placeholder-count="3">
           <div style="background:#ECE4D2;border:1px solid rgba(33,28,22,0.14);border-radius:28px;padding:clamp(1.6rem,3vw,2.3rem)">
             <h3 style="font-size:clamp(20px,2.1vw,25px)">{{ r.title }}</h3>
@@ -352,7 +358,7 @@ button,input,select,textarea{font-family:inherit}
         <div style="display:inline-flex;align-items:center;gap:10px;color:#C99752;font-size:14.5px;font-weight:600;margin-bottom:24px;white-space:nowrap"><span style="display:block;width:24px;height:1px;background:#C99752"></span>איך זה עובד</div>
         <h2 style="font-size:clamp(28px,3.4vw,42px);color:#F5F0E4;margin-bottom:clamp(1.75rem,4vh,2.5rem)">תהליך מסודר, <span style="font-weight:normal">פתרון מדויק</span></h2>
         
-        <div style="display:grid;grid-template-columns:{{ stepCols }};gap:{{ stepGap }}">
+        <div class="stz-carousel stz-noauto stz-steps" style="display:grid;grid-template-columns:{{ stepCols }};gap:{{ stepGap }}">
           <sc-for list="{{ steps }}" as="s" hint-placeholder-count="4">
             <div style="display:flex;gap:14px;align-items:baseline;border-top:1px solid rgba(245,240,228,0.18);padding-top:16px">
               <span style="font-size:24px;font-weight:300;color:#C99752;line-height:1;flex:none">{{ s.num }}</span>
@@ -363,7 +369,7 @@ button,input,select,textarea{font-family:inherit}
             </div>
           </sc-for>
         </div>
-        <div style="display:flex;gap:12px;flex-wrap:wrap;margin-top:clamp(1.75rem,4vh,2.5rem)">
+        <div class="stz-proc-cta" style="display:flex;gap:12px;flex-wrap:wrap;margin-top:clamp(1.75rem,4vh,2.5rem)">
           <a href="#lead" style="flex:{{ procBtnFlex }};text-align:center;background:#B4813C;color:#1B1712;padding:15px 32px;font-size:16px;font-weight:600;border-radius:100px" style-hover="background:#C99752;color:#1B1712">לתיאום פגישת ייעוץ</a>
           <a href="{{ waHref }}" style="flex:{{ procBtnFlex }};text-align:center;color:#F5F0E4;padding:15px 28px;font-size:16px;border:1px solid rgba(245,240,228,0.4);border-radius:100px" style-hover="background:rgba(245,240,228,0.08);border-color:#F5F0E4;color:#F5F0E4">שליחת הודעה בוואטסאפ</a>
         </div>
@@ -411,7 +417,7 @@ button,input,select,textarea{font-family:inherit}
         <div>
           <div style="display:inline-flex;align-items:center;gap:10px;color:#B4813C;font-size:14.5px;font-weight:600;margin-bottom:24px"><span style="display: block; width: 24px; height: 1px; background: rgb(180, 129, 60);"></span>הרבה יותר מפתרונות הצללה</div>
           <h2 style="font-size:clamp(30px,4.2vw,52px);max-width:18ch">ההצללה היא לרוב רק<br>חלק ממערך רחב יותר</h2>
-          <p style="margin-top:22px;color:#4B443A;font-size:18px;max-width:44ch">כשפרויקט חוץ מתפצל בין כמה בעלי מקצוע, כל אחד רואה רק את החלק שלו. אנחנו עובדים כמסגרת עבודה אחת שמארגנת את הפרויקט כולו — מתכנון יישומי ועד מסירה.</p>
+          <p class="stz-env-p" style="margin-top:22px;color:#4B443A;font-size:18px;max-width:44ch">כשפרויקט חוץ מתפצל בין כמה בעלי מקצוע, כל אחד רואה רק את החלק שלו. אנחנו עובדים כמסגרת עבודה אחת שמארגנת את הפרויקט כולו — מתכנון יישומי ועד מסירה.</p>
         </div>
         <div style="position:relative;border-radius:28px;overflow:hidden;aspect-ratio:1014/553;background:#D9CFBC">
           <img src="/img/fast/w/envelope-render-pins.webp" alt="הדמיה של מרחב חוץ עם פרגולה, מטבח חוץ, בר ופינת ישיבה" style="display:block;width:100%;height:100%;object-fit:cover">
@@ -423,7 +429,7 @@ button,input,select,textarea{font-family:inherit}
           <span style="position:absolute;bottom:12px;right:16px;color:#F2C230;font-size:15px;font-weight:500;letter-spacing:0.02em;text-shadow:0 1px 3px rgba(0,0,0,0.55)">המחשה</span>
         </div>
       </div>
-      <div style="display:flex;flex-direction:column">
+      <div class="stz-carousel stz-noauto stz-envlist" style="display:flex;flex-direction:column">
         <sc-for list="{{ envelope }}" as="r" hint-placeholder-count="5">
           <div onMouseEnter="{{ r.onEnter }}" onMouseLeave="{{ pinLeave }}" style="display:grid;grid-template-columns:{{ whyRowCols }};gap:clamp(1rem,2.5vw,1.75rem);align-items:center;padding-block:12px;padding-inline:12px;border-top:1px solid rgba(33,28,22,0.14);background:{{ r.bg }};transition:background 0.2s">
             <span style="display:grid;place-items:center;width:34px;height:34px;border-radius:50%;background:{{ r.numBg }};color:{{ r.numColor }};border:1px solid {{ r.numBorder }};font-size:14px;font-weight:600;transition:background 0.2s">{{ r.idx }}</span>
@@ -533,7 +539,7 @@ button,input,select,textarea{font-family:inherit}
         <div style="display:inline-flex;align-items:center;gap:10px;color:#C99752;font-size:14.5px;font-weight:600;margin-bottom:24px;white-space:nowrap"><span style="display:block;width:24px;height:1px;background:#C99752"></span>בואו נתכנן יחד</div>
         <h2 style="font-size:clamp(30px,4vw,52px);color:#F5F0E4;margin-bottom:22px">נדבר על ההצללה שלכם</h2>
         <p style="color:rgba(245,240,228,0.72);font-size:17.5px;max-width:40ch;margin-bottom:40px">חושבים על פתרון הצללה לגינה או למרפסת? בואו נשב יחד על כוס קפה (או בטלפון), נבין את הצרכים והסגנון שלכם, ונתכנן את הפתרון המדויק ביותר עבורכם.</p>
-        <div style="display:flex;flex-direction:column;gap:18px;margin-bottom:36px">
+        <div class="stz-contact-info" style="display:flex;flex-direction:column;gap:18px;margin-bottom:36px">
           <div style="display:flex;flex-direction:column;gap:3px;border-top:1px solid rgba(245,240,228,0.16);padding-top:14px">
             <span style="font-size:12.5px;color:#C99752">טלפון</span>
             <a href="tel:0547752697" style="font-size:17px;color:#F5F0E4" style-hover="color:#C99752">054-775-2697</a>
