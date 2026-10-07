@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="/support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>פרויקטים שביצענו | סופר צל</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet">
+<script src="/projects-data.js"></script>
+<script src="/image-slot.js"></script>
+<style>
+html{direction:rtl;scroll-behavior:smooth;scroll-padding-top:140px}
+body{margin:0;font-family:'Rubik',system-ui,sans-serif;font-size:17px;line-height:1.6;background:#F5F0E4;color:#211C16;text-wrap:pretty;-webkit-font-smoothing:antialiased;overflow-x:clip}
+h1,h2,h3{margin:0;font-weight:600;letter-spacing:-0.4px;line-height:1.1}
+p{margin:0}
+ul{margin:0}
+a{color:inherit;text-decoration:none}
+a:hover{color:#B4813C}
+button,input,select{font-family:inherit}
+@media (max-width:640px){body{font-size:16px}}
+</style>
+</helmet>
+
+<div dir="rtl" style="background:#F5F0E4;padding-bottom:{{ pageBottomPad }}">
+
+<header style="position:sticky;top:0;z-index:100;background:rgba(245,240,228,0.92);backdrop-filter:blur(14px);border-bottom:1px solid rgba(33,28,22,0.14)">
+  <div style="width:min(92%,1180px);margin-inline:auto;display:flex;align-items:center;justify-content:space-between;gap:20px;min-height:70px">
+    <a href="/" aria-label="לעמוד הבית"><img src="/img/logo-light-bg.png" alt="סופר צל" style="display:block;height:44px;width:auto"></a>
+    <div style="display:flex;align-items:center;gap:clamp(0.9rem,2.2vw,2rem)">
+      <sc-if value="{{ wide }}" hint-placeholder-val="{{ true }}">
+        <nav style="display:flex;align-items:center;gap:clamp(0.9rem,1.8vw,1.75rem)">
+          <a href="/" style="font-size:15px;white-space:nowrap">דף הבית</a>
+          <a href="/#services" style="font-size:15px;white-space:nowrap">מה אנחנו עושים</a>
+          <a href="#gallery" style="font-size:15px;white-space:nowrap;color:#B4813C;font-weight:500">פרויקטים</a>
+          <a href="/#process" style="font-size:15px;white-space:nowrap">איך זה עובד</a>
+        </nav>
+        <a href="#contact" style="background:#B4813C;color:#1B1712;padding:12px 26px;font-size:15px;font-weight:600;border-radius:100px;white-space:nowrap" style-hover="background:#C99752;color:#1B1712">תאמו שיחת ייעוץ</a>
+      </sc-if>
+      <sc-if value="{{ narrow }}" hint-placeholder-val="{{ false }}">
+        <a href="tel:0553100154" style="display:inline-flex;align-items:center;min-height:44px;padding:0 18px;border:1px solid rgba(33,28,22,0.28);border-radius:100px;font-size:15px;font-weight:500;white-space:nowrap">055-310-0154</a>
+      </sc-if>
+    </div>
+  </div>
+</header>
+
+<main>
+  <section style="padding-block:clamp(2.75rem,8vh,5rem) clamp(1.5rem,4vh,2.5rem)">
+    <div style="width:min(92%,1180px);margin-inline:auto;display:flex;justify-content:space-between;align-items:flex-end;gap:clamp(1rem,4vw,2.5rem);flex-wrap:wrap">
+      <div style="flex:0 0 auto;min-width:0">
+        <a href="/" style="display:inline-flex;align-items:center;gap:8px;font-size:14px;color:#4B443A;margin-bottom:22px;white-space:nowrap" style-hover="color:#B4813C"><span aria-hidden="true">→</span>חזרה לדף הבית</a>
+        <div style="display:flex;align-items:center;gap:10px;color:#8F6326;font-size:14.5px;font-weight:600;margin-bottom:18px;white-space:nowrap"><span style="display:block;width:24px;height:1px;background:#B4813C"></span>{{ countLabel }}</div>
+        <h1 style="font-size:clamp(34px,4.6vw,60px);letter-spacing:-0.03em">פרויקטים שביצענו</h1>
+      </div>
+      <p style="flex:1 1 320px;max-width:42ch;color:#4B443A;font-size:17px">עבודות אמיתיות מהשטח — מפרגולה אחת ועד מעטפת חוץ שלמה. בחרו תחום, ולחצו על פרויקט לפרטים ולתמונות נוספות.</p>
+    </div>
+  </section>
+
+  <div style="position:sticky;top:70px;z-index:90;background:rgba(245,240,228,0.94);backdrop-filter:blur(10px);border-block:1px solid rgba(33,28,22,0.1)">
+    <div role="tablist" aria-label="סינון לפי תחום" style="width:min(92%,1180px);margin-inline:auto;display:flex;gap:8px;padding-block:12px;overflow-x:auto;scrollbar-width:none">
+      <sc-for list="{{ chips }}" as="c" hint-placeholder-count="6">
+        <button type="button" role="tab" aria-selected="{{ c.sel }}" onClick="{{ c.pick }}" style="flex:0 0 auto;display:inline-flex;align-items:center;gap:8px;min-height:44px;padding:0 18px;border-radius:100px;border:1px solid {{ c.bc }};background:{{ c.bg }};color:{{ c.fg }};font-size:15px;font-weight:500;cursor:pointer;white-space:nowrap;transition:background 0.2s,color 0.2s">{{ c.label }}<span style="font-size:12.5px;opacity:0.7">{{ c.n }}</span></button>
+      </sc-for>
+    </div>
+  </div>
+
+  <section id="gallery" style="padding-block:clamp(1.75rem,4vh,2.75rem) clamp(3rem,8vh,5rem)">
+    <div style="width:min(92%,1180px);margin-inline:auto;display:grid;grid-template-columns:{{ gridCols }};gap:{{ gridGap }}">
+      <sc-if value="{{ editGallery }}" hint-placeholder-val="{{ false }}">
+        <div style="grid-column:1/-1;display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;padding:12px 18px;border:1px dashed rgba(180,129,60,0.7);border-radius:16px;background:rgba(180,129,60,0.08);font-size:14px;color:#6E4D1E">
+          <span style="font-weight:600">מצב עריכת תמונות · {{ editCount }}</span>
+          <button type="button" onClick="{{ resetEdits }}" style="min-height:40px;padding:0 18px;border-radius:100px;border:1px solid rgba(33,28,22,0.28);background:transparent;font:inherit;font-size:13.5px;color:#211C16;cursor:pointer" style-hover="background:rgba(33,28,22,0.06)">ביטול כל השינויים</button>
+        </div>
+      </sc-if>
+      <sc-for list="{{ cards }}" as="p" hint-placeholder-count="9">
+        <div style="position:relative;min-width:0">
+        <button type="button" onClick="{{ p.open }}" aria-label="{{ p.aria }}" style="position:relative;display:block;padding:0;border:0;border-radius:22px;overflow:hidden;aspect-ratio:4/3;background:#1B1712;cursor:pointer;text-align:start;font:inherit;color:#F5F0E4" style-hover="box-shadow:0 18px 40px rgba(27,23,18,0.22)">
+          <img src="{{ p.cover }}" alt="{{ p.title }}" loading="lazy" decoding="async" style="display:block;width:100%;height:100%;object-fit:cover;transition:transform 0.7s cubic-bezier(0.2,0.7,0.2,1)">
+          <span style="position:absolute;top:14px;inset-inline-start:14px;display:inline-flex;align-items:center;padding:5px 12px;border-radius:100px;background:rgba(245,240,228,0.94);color:#1B1712;font-size:12.5px;font-weight:600">{{ p.catLabel }}</span>
+          <sc-if value="{{ p.multi }}" hint-placeholder-val="{{ false }}">
+            <span style="position:absolute;top:14px;inset-inline-end:14px;padding:5px 11px;border-radius:100px;background:rgba(27,23,18,0.7);color:#F5F0E4;font-size:12.5px">{{ p.nPhotos }}</span>
+          </sc-if>
+          <span style="position:absolute;inset:auto 0 0 0;padding:44px 20px 18px;background:linear-gradient(180deg,transparent 0%,rgba(17,14,11,0.88) 100%);display:flex;flex-direction:column;gap:4px">
+            <span style="font-size:17px;font-weight:600;line-height:1.3;color:#F5F0E4">{{ p.title }}</span>
+            <span style="display:flex;align-items:center;justify-content:space-between;gap:10px;font-size:13.5px;color:rgba(245,240,228,0.78)"><span>{{ p.meta }}</span><span style="color:#E8C48C;font-weight:500;white-space:nowrap">פרטי הפרויקט ←</span></span>
+          </span>
+        </button>
+        <sc-if value="{{ editGallery }}" hint-placeholder-val="{{ false }}">
+          <div style="position:absolute;top:52px;inset-inline-start:14px;display:flex;flex-direction:column;gap:6px;z-index:2">
+            <button type="button" onClick="{{ p.rmCover }}" style="min-height:36px;padding:0 14px;border-radius:100px;border:0;background:#9B2C1F;color:#FFF;font:inherit;font-size:13px;font-weight:600;cursor:pointer" style-hover="background:#7E2318">מחיקת התמונה בקטלוג</button>
+            <button type="button" onClick="{{ p.hide }}" style="min-height:36px;padding:0 14px;border-radius:100px;border:0;background:rgba(27,23,18,0.85);color:#F5F0E4;font:inherit;font-size:13px;cursor:pointer" style-hover="background:#1B1712">הסתרת הפרויקט</button>
+          </div>
+        </sc-if>
+        </div>
+      </sc-for>
+    </div>
+  </section>
+
+  <section style="padding-bottom:clamp(3rem,8vh,5rem)">
+    <div style="width:min(92%,1180px);margin-inline:auto;display:flex;align-items:center;justify-content:space-between;gap:clamp(1rem,3vw,2rem);flex-wrap:wrap;padding-top:28px;border-top:1px solid rgba(33,28,22,0.14)">
+      <div style="max-width:52ch">
+        <h2 style="font-size:clamp(26px,3vw,36px);margin-bottom:10px">רוצים משהו בכיוון הזה?</h2>
+        <p style="color:#4B443A;font-size:15.5px">היקף העבודה, החומרים והתמחור נקבעים לפי אופי הפרויקט ומורכבותו, לאחר שיחת ייעוץ ומדידה.</p>
+      </div>
+      <a href="#contact" style="display:inline-flex;align-items:center;gap:10px;background:#211C16;color:#F5F0E4;padding:16px 34px;font-size:16.5px;font-weight:600;border-radius:100px;white-space:nowrap" style-hover="background:#B4813C;color:#1B1712">בואו נתכנן את המרחב שלכם <span aria-hidden="true">←</span></a>
+    </div>
+  </section>
+
+  <section id="contact" style="background:#1B1712;color:#F5F0E4;padding-block:clamp(3rem,9vh,6rem)">
+    <div style="width:min(92%,1180px);margin-inline:auto;display:grid;grid-template-columns:{{ contactCols }};gap:clamp(2rem,5vw,4.5rem);align-items:start">
+      <div>
+        <div style="display:flex;align-items:center;gap:10px;color:#C99752;font-size:14.5px;font-weight:600;margin-bottom:20px"><span style="display:block;width:24px;height:1px;background:#C99752"></span>יש לכם שאלה? דברו איתנו</div>
+        <h2 style="font-size:clamp(28px,3.6vw,44px);color:#F5F0E4;margin-bottom:18px">בואו נדבר על הפרויקט שלכם</h2>
+        <p style="color:rgba(245,240,228,0.75);font-size:16.5px;max-width:40ch;margin-bottom:28px">השאירו פרטים ונחזור אליכם לשיחת ייעוץ ולהבנת הצורך, לפני כל הצעה.</p>
+        <div style="display:flex;gap:10px;flex-wrap:wrap">
+          <a href="tel:0553100154" style="display:inline-flex;align-items:center;min-height:48px;padding:0 22px;border:1px solid rgba(245,240,228,0.4);border-radius:100px;color:#F5F0E4;font-size:15.5px" style-hover="background:rgba(245,240,228,0.1);color:#F5F0E4">055-310-0154</a>
+          <a href="{{ waHref }}" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;min-height:48px;padding:0 22px;border:1px solid rgba(245,240,228,0.4);border-radius:100px;color:#F5F0E4;font-size:15.5px" style-hover="background:rgba(245,240,228,0.1);color:#F5F0E4">וואטסאפ</a>
+        </div>
+        <p style="margin-top:28px;font-size:13px;color:rgba(245,240,228,0.6);line-height:1.75;max-width:46ch">אישורים, תשתיות וליווי הנדסי — ככל שנדרשים — מתואמים מול בעלי מקצוע מוסמכים, בהתאם להיקף העבודה ולתנאי ההתקשרות שנקבעו מראש ובכתב.</p>
+      </div>
+      <div style="background:rgba(245,240,228,0.05);border:1px solid rgba(245,240,228,0.18);border-radius:26px;padding:clamp(1.5rem,3vw,2.25rem)">
+        <sc-if value="{{ sent }}" hint-placeholder-val="{{ false }}">
+          <div style="display:flex;flex-direction:column;gap:14px;min-height:260px;justify-content:center">
+            <h3 style="font-size:26px;color:#F5F0E4">תודה, קיבלנו</h3>
+            <p style="color:rgba(245,240,228,0.75);font-size:16px">נחזור אליכם לתיאום שיחת ייעוץ.</p>
+          </div>
+        </sc-if>
+        <sc-if value="{{ notSent }}" hint-placeholder-val="{{ true }}">
+          <form onSubmit="{{ submit }}" style="display:grid;gap:14px">
+            <label style="display:grid;gap:6px;font-size:14px;color:rgba(245,240,228,0.8)">שם<input value="{{ fName }}" onChange="{{ setName }}" required="" style="min-height:48px;padding:0 16px;border-radius:14px;border:1px solid rgba(245,240,228,0.25);background:rgba(245,240,228,0.06);color:#F5F0E4;font-size:16px"></label>
+            <label style="display:grid;gap:6px;font-size:14px;color:rgba(245,240,228,0.8)">טלפון<input type="tel" value="{{ fPhone }}" onChange="{{ setPhone }}" required="" style="min-height:48px;padding:0 16px;border-radius:14px;border:1px solid rgba(245,240,228,0.25);background:rgba(245,240,228,0.06);color:#F5F0E4;font-size:16px;direction:ltr;text-align:right"></label>
+            <label style="display:grid;gap:6px;font-size:14px;color:rgba(245,240,228,0.8)">במה מדובר?<input value="{{ fTopic }}" onChange="{{ setTopic }}" placeholder="למשל: פרגולת עץ לחצר הכניסה" style="min-height:48px;padding:0 16px;border-radius:14px;border:1px solid rgba(245,240,228,0.25);background:rgba(245,240,228,0.06);color:#F5F0E4;font-size:16px"></label>
+            <button type="submit" style="margin-top:6px;min-height:52px;border:0;border-radius:100px;background:#B4813C;color:#1B1712;font-size:16.5px;font-weight:600;cursor:pointer" style-hover="background:#C99752">תאמו שיחת ייעוץ</button>
+            <span style="font-size:12.5px;color:rgba(245,240,228,0.55);text-align:center">נחזור אליכם תוך 24 שעות · המספר לא עובר לאף גורם אחר</span>
+          </form>
+        </sc-if>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer style="background:#1B1712;padding:28px 0;border-top:1px solid rgba(245,240,228,0.14);color:rgba(245,240,228,0.7);font-size:14px">
+  <div style="width:min(92%,1180px);margin-inline:auto;display:flex;align-items:center;justify-content:space-between;gap:1.25rem;flex-wrap:wrap">
+    <img src="/img/logo-dark-bg.png" alt="סופר צל" style="display:block;height:34px;width:auto">
+    <span>סופר צל · IL Projects — מעטפת מקצועית לבית ולמרחב החוץ</span>
+    <a href="mailto:ilprojects.israel@gmail.com" style="color:rgba(245,240,228,0.7)" style-hover="color:#C99752">ilprojects.israel@gmail.com</a>
+  </div>
+</footer>
+
+<sc-if value="{{ modalOpen }}" hint-placeholder-val="{{ false }}">
+  <div onClick="{{ close }}" style="position:fixed;inset:0;z-index:200;background:rgba(17,14,11,0.72);display:flex;align-items:center;justify-content:center;padding:{{ modalPad }}">
+    <div role="dialog" aria-modal="true" aria-label="{{ mTitle }}" onClick="{{ stop }}" style="width:min(100%,1120px);max-height:100%;overflow:auto;background:#F5F0E4;border-radius:26px;padding:clamp(1.1rem,2.6vw,2rem);box-shadow:0 30px 80px rgba(0,0,0,0.4)">
+      <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:16px;margin-bottom:18px">
+        <div style="min-width:0">
+          <h2 style="font-size:clamp(22px,2.6vw,30px);line-height:1.2">{{ mTitle }}</h2>
+          <div style="margin-top:6px;font-size:14px;color:#8F6326;font-weight:500">{{ mMeta }}</div>
+        </div>
+        <button type="button" onClick="{{ close }}" aria-label="סגירה" style="flex:0 0 auto;width:44px;height:44px;border-radius:50%;border:1px solid rgba(33,28,22,0.25);background:transparent;color:#211C16;font-size:20px;line-height:1;cursor:pointer" style-hover="background:#211C16;color:#F5F0E4">×</button>
+      </div>
+      <div style="display:grid;grid-template-columns:{{ modalCols }};gap:clamp(1.25rem,3vw,2.25rem);align-items:start">
+        <div style="min-width:0">
+          <div style="position:relative;border-radius:18px;overflow:hidden;aspect-ratio:16/10;background:#1B1712">
+            <img src="{{ mSrc }}" alt="{{ mTitle }}" style="display:block;width:100%;height:100%;object-fit:cover">
+            <sc-if value="{{ mMulti }}" hint-placeholder-val="{{ false }}">
+              <button type="button" onClick="{{ prev }}" aria-label="התמונה הקודמת" style="position:absolute;top:50%;inset-inline-start:12px;transform:translateY(-50%);width:44px;height:44px;border-radius:50%;border:0;background:rgba(245,240,228,0.92);color:#1B1712;font-size:18px;cursor:pointer">›</button>
+              <button type="button" onClick="{{ next }}" aria-label="התמונה הבאה" style="position:absolute;top:50%;inset-inline-end:12px;transform:translateY(-50%);width:44px;height:44px;border-radius:50%;border:0;background:rgba(245,240,228,0.92);color:#1B1712;font-size:18px;cursor:pointer">‹</button>
+            </sc-if>
+          </div>
+          <sc-if value="{{ mMulti }}" hint-placeholder-val="{{ false }}">
+            <div style="display:flex;gap:8px;margin-top:10px;overflow-x:auto">
+              <sc-for list="{{ thumbs }}" as="t" hint-placeholder-count="3">
+                <button type="button" onClick="{{ t.pick }}" aria-label="{{ t.aria }}" style="flex:0 0 auto;width:84px;aspect-ratio:4/3;padding:0;border-radius:10px;overflow:hidden;border:2px solid {{ t.bc }};background:#1B1712;cursor:pointer;opacity:{{ t.op }}"><img src="{{ t.src }}" alt="" style="display:block;width:100%;height:100%;object-fit:cover"></button>
+              </sc-for>
+            </div>
+          </sc-if>
+          <p style="margin-top:10px;font-size:13.5px;color:#4B443A">{{ mCaption }}</p>
+          <sc-if value="{{ editGallery }}" hint-placeholder-val="{{ false }}">
+            <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:12px">
+              <button type="button" onClick="{{ rmCurrent }}" style="min-height:40px;padding:0 16px;border-radius:100px;border:0;background:#9B2C1F;color:#FFF;font:inherit;font-size:13.5px;font-weight:600;cursor:pointer" style-hover="background:#7E2318">מחיקת התמונה הזו</button>
+              <button type="button" onClick="{{ makeCover }}" style="min-height:40px;padding:0 16px;border-radius:100px;border:1px solid rgba(33,28,22,0.28);background:transparent;color:#211C16;font:inherit;font-size:13.5px;cursor:pointer" style-hover="background:rgba(33,28,22,0.06)">הגדרה כתמונה ראשית בקטלוג</button>
+              <button type="button" onClick="{{ hideOpen }}" style="min-height:40px;padding:0 16px;border-radius:100px;border:1px solid rgba(33,28,22,0.28);background:transparent;color:#211C16;font:inherit;font-size:13.5px;cursor:pointer" style-hover="background:rgba(33,28,22,0.06)">הסתרת הפרויקט</button>
+            </div>
+          </sc-if>
+          <sc-if value="{{ editGallery }}" hint-placeholder-val="{{ false }}">
+            <div style="margin-top:16px;padding:14px;border:1px dashed rgba(180,129,60,0.6);border-radius:16px;background:rgba(180,129,60,0.06)">
+              <div style="font-size:13.5px;font-weight:600;color:#8F6326;margin-bottom:10px">הוספת תמונות לגלריה — גררו תמונה לריבוע או לחצו לבחירה</div>
+              <div style="display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px">
+                <sc-for list="{{ slots }}" as="s" hint-placeholder-count="4">
+                  <div style="aspect-ratio:4/3;min-width:0"><image-slot id="{{ s.id }}" shape="rounded" radius="10" placeholder="{{ s.ph }}"></image-slot></div>
+                </sc-for>
+              </div>
+            </div>
+          </sc-if>
+        </div>
+        <div style="min-width:0;display:flex;flex-direction:column;gap:18px">
+          <p style="font-size:16px;line-height:1.7;color:#211C16">{{ mDesc }}</p>
+          <ul style="list-style:none;padding:0;border-top:1px solid rgba(33,28,22,0.14)">
+            <sc-for list="{{ mSpecs }}" as="s" hint-placeholder-count="3">
+              <li style="display:flex;gap:12px;align-items:baseline;padding:11px 0;border-bottom:1px solid rgba(33,28,22,0.14);font-size:15px;color:#211C16"><span style="flex:0 0 auto;width:7px;height:7px;border-radius:50%;background:#B4813C;transform:translateY(-2px)"></span><span>{{ s }}</span></li>
+            </sc-for>
+          </ul>
+          <a href="#contact" onClick="{{ toLead }}" style="align-self:flex-start;display:inline-flex;align-items:center;gap:10px;background:#B4813C;color:#1B1712;padding:15px 30px;font-size:16px;font-weight:600;border-radius:100px;white-space:nowrap" style-hover="background:#C99752;color:#1B1712">תאמו שיחת ייעוץ <span aria-hidden="true">←</span></a>
+        </div>
+      </div>
+    </div>
+  </div>
+</sc-if>
+
+<sc-if value="{{ narrow }}" hint-placeholder-val="{{ false }}">
+  <div style="position:fixed;z-index:95;inset-inline:0;bottom:0;display:flex;gap:8px;padding:10px 12px calc(10px + env(safe-area-inset-bottom));background:rgba(27,23,18,0.96);border-top:1px solid rgba(245,240,228,0.12)">
+    <a href="tel:0553100154" aria-label="התקשרו" style="display:flex;align-items:center;justify-content:center;min-width:48px;min-height:48px;border-radius:100px;border:1px solid rgba(245,240,228,0.3);color:#F5F0E4;font-size:14px;padding:0 14px">חייגו</a>
+    <a href="{{ waHref }}" target="_blank" rel="noopener" style="display:flex;align-items:center;justify-content:center;min-height:48px;border-radius:100px;border:1px solid rgba(245,240,228,0.3);color:#F5F0E4;font-size:14px;padding:0 14px">וואטסאפ</a>
+    <a href="#contact" style="flex:1;display:flex;align-items:center;justify-content:center;min-height:48px;border-radius:100px;background:#B4813C;color:#1B1712;font-weight:600;font-size:15.5px">תאמו שיחת ייעוץ</a>
+  </div>
+</sc-if>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1180},&quot;editGallery&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;label&quot;:&quot;ריבועי עריכה לגלריה&quot;}}">
+class Component extends DCLogic {
+  state = { narrow: false, mid: false, cat: 'all', open: -1, idx: 0, ready: !!(typeof window !== 'undefined' && window.STZ_PROJECTS), sent: false, form: { name: '', phone: '', topic: '' } };
+
+  componentDidMount() {
+    if (!window.STZ_PROJECTS) this.poll = setInterval(() => { if (window.STZ_PROJECTS) { clearInterval(this.poll); this.setState({ ready: true }); } }, 60);
+    this.mqN = window.matchMedia('(max-width: 700px)');
+    this.mqM = window.matchMedia('(max-width: 1060px)');
+    this.onMq = () => this.setState({ narrow: this.mqN.matches, mid: this.mqM.matches });
+    this.onMq();
+    this.mqN.addEventListener('change', this.onMq);
+    this.mqM.addEventListener('change', this.onMq);
+    this.onKey = e => {
+      if (this.state.open < 0) return;
+      if (e.key === 'Escape') this.close();
+      if (e.key === 'ArrowLeft') this.step(1);
+      if (e.key === 'ArrowRight') this.step(-1);
+    };
+    window.addEventListener('keydown', this.onKey);
+  }
+
+  componentWillUnmount() {
+    clearInterval(this.poll);
+    this.mqN.removeEventListener('change', this.onMq);
+    this.mqM.removeEventListener('change', this.onMq);
+    window.removeEventListener('keydown', this.onKey);
+    document.body.style.overflow = '';
+  }
+
+  editKey = 'stz-proj-edits-v1';
+  getEdits() { if (!this._ed) { try { this._ed = JSON.parse(localStorage.getItem(this.editKey) || 'null'); } catch (e) {} this._ed = this._ed || { rm: {}, hide: {}, cover: {} }; } return this._ed; }
+  saveEdits(fn) { const ed = this.getEdits(); fn(ed); try { localStorage.setItem(this.editKey, JSON.stringify(ed)); } catch (e) {} this.forceUpdate(); }
+  list() {
+    const ed = this.getEdits();
+    return (window.STZ_PROJECTS || []).filter(p => !ed.hide[p.title]).map(p => {
+      let ph = p.photos.filter(x => !ed.rm[x]);
+      const c = ed.cover[p.title];
+      if (c && ph.includes(c)) ph = [c].concat(ph.filter(x => x !== c));
+      return Object.assign({}, p, { photos: ph });
+    }).filter(p => p.photos.length);
+  }
+  cats() { return window.STZ_CATS || [{ id: 'all', label: 'הכול' }]; }
+  catLabel(id) { const c = this.cats().find(x => x.id === id); return c ? c.label : ''; }
+
+  openP(i) { document.body.style.overflow = 'hidden'; this.setState({ open: i, idx: 0 }); }
+  close() { document.body.style.overflow = ''; this.setState({ open: -1 }); }
+  step(d) {
+    const p = this.list()[this.state.open]; if (!p) return;
+    const n = p.photos.length;
+    this.setState(s => ({ idx: (s.idx + d + n) % n }));
+  }
+  setF(k, v) { this.setState(s => ({ form: Object.assign({}, s.form, { [k]: v }) })); }
+
+  renderVals() {
+    const n = this.state.narrow, m = this.state.mid;
+    const all = this.list();
+    const cat = this.state.cat;
+    const cards = [];
+    all.forEach((p, i) => {
+      if (cat !== 'all' && p.cat !== cat) return;
+      const meta = ['לקוח ' + p.client, p.place].filter(Boolean).join(' · ');
+      cards.push({ rmCover: () => this.saveEdits(ed => { ed.rm[p.photos[0]] = 1; }), hide: () => this.saveEdits(ed => { ed.hide[p.title] = 1; }), title: p.title, cover: p.photos[0], catLabel: this.catLabel(p.cat), meta: meta, multi: p.photos.length > 1, nPhotos: p.photos.length + ' תמונות', aria: 'פרטי הפרויקט: ' + p.title, open: () => this.openP(i) });
+    });
+    const chips = this.cats().map(c => {
+      const sel = c.id === cat;
+      const cnt = c.id === 'all' ? all.length : all.filter(p => p.cat === c.id).length;
+      return { label: c.label, n: String(cnt), sel: sel ? 'true' : 'false', bg: sel ? '#211C16' : 'transparent', fg: sel ? '#F5F0E4' : '#211C16', bc: sel ? '#211C16' : 'rgba(33,28,22,0.22)', pick: () => this.setState({ cat: c.id }) };
+    });
+    const op = all[this.state.open];
+    const idx = op ? Math.min(this.state.idx, op.photos.length - 1) : 0;
+    const f = this.state.form;
+    const waBase = 'https://wa.me/972547752697?text=';
+    return {
+      wide: !m, narrow: n,
+      pageBottomPad: n ? '72px' : '0',
+      countLabel: all.length + ' פרויקטים מהשטח',
+      chips: chips,
+      cards: cards,
+      gridCols: n ? '1fr' : (m ? 'repeat(2,minmax(0,1fr))' : 'repeat(3,minmax(0,1fr))'),
+      gridGap: n ? '16px' : '24px',
+      contactCols: m ? '1fr' : 'minmax(0,1fr) minmax(0,1fr)',
+      modalOpen: !!op,
+      modalPad: n ? '10px' : '24px',
+      modalCols: m ? '1fr' : 'minmax(0,1.35fr) minmax(0,1fr)',
+      mTitle: op ? op.title : '',
+      mMeta: op ? ['לקוח ' + op.client, this.catLabel(op.cat), op.place].filter(Boolean).join(' · ') : '',
+      mSrc: op ? op.photos[idx] : '',
+      mMulti: !!(op && op.photos.length > 1),
+      mCaption: op ? ((op.captions && op.captions[idx]) || (op.photos.length > 1 ? 'תמונה ' + (idx + 1) + ' מתוך ' + op.photos.length : op.title)) : '',
+      mDesc: op ? (op.desc || (op.title + ' — מתוכנן ומבוצע בהתאמה אישית למידות ולאופי המרחב.')) : '',
+      mSpecs: op ? (op.specs || [this.catLabel(op.cat), 'לקוח ' + op.client + (op.place ? ' · ' + op.place : ''), 'תכנון יישומי וייצור בהתאמה למידות']) : [],
+      editGallery: this.props.editGallery ?? false,
+      editCount: (() => { const ed = this.getEdits(); const k = Object.keys(ed.rm).length + Object.keys(ed.hide).length + Object.keys(ed.cover).length; return k ? k + ' שינויים נשמרו' : 'אין שינויים עדיין'; })(),
+      resetEdits: () => this.saveEdits(ed => { ed.rm = {}; ed.hide = {}; ed.cover = {}; }),
+      rmCurrent: () => { if (!op) return; const src = op.photos[idx]; const last = op.photos.length === 1; this.saveEdits(ed => { ed.rm[src] = 1; }); this.setState(last ? { open: -1, idx: 0 } : { idx: Math.max(0, idx - 1) }); },
+      makeCover: () => { if (!op) return; const src = op.photos[idx]; this.saveEdits(ed => { ed.cover[op.title] = src; }); this.setState({ idx: 0 }); },
+      hideOpen: () => { if (!op) return; this.saveEdits(ed => { ed.hide[op.title] = 1; }); this.setState({ open: -1, idx: 0 }); },
+      slots: op ? [1, 2, 3, 4].map(k => ({ id: 'gal-' + op.photos[0].split('/').pop().replace(/\.\w+$/, '') + '-' + k, ph: 'תמונה ' + (op.photos.length + k) })) : [],
+      thumbs: op ? op.photos.map((src, i) => ({ src: src, aria: 'תמונה ' + (i + 1), bc: i === idx ? '#B4813C' : 'transparent', op: i === idx ? '1' : '0.65', pick: () => this.setState({ idx: i }) })) : [],
+      prev: (e) => { e.stopPropagation(); this.step(-1); },
+      next: (e) => { e.stopPropagation(); this.step(1); },
+      close: () => this.close(),
+      stop: (e) => e.stopPropagation(),
+      toLead: () => { const t = op ? op.title : ''; this.close(); this.setF('topic', 'בהשראת: ' + t); },
+      waHref: waBase + encodeURIComponent('היי, ראיתי את הפרויקטים באתר ואשמח לתאם שיחת ייעוץ'),
+      sent: this.state.sent, notSent: !this.state.sent,
+      fName: f.name, fPhone: f.phone, fTopic: f.topic,
+      setName: e => this.setF('name', e.target.value),
+      setPhone: e => this.setF('phone', e.target.value),
+      setTopic: e => this.setF('topic', e.target.value),
+      submit: e => {
+        e.preventDefault();
+        const msg = ['היי, הגעתי מעמוד הפרויקטים ואשמח לתאם שיחת ייעוץ.', 'שם: ' + f.name, 'טלפון: ' + f.phone, f.topic ? 'נושא: ' + f.topic : ''].filter(Boolean).join('\n');
+        window.open(waBase + encodeURIComponent(msg), '_blank', 'noopener');
+        this.setState({ sent: true });
+      }
+    };
+  }
+}
+</script>
+</body>
+</html>

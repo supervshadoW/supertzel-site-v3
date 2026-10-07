@@ -1,0 +1,61 @@
+(function () {
+  var A = '/img/fast/gallery/';
+  var P = '/img/fast/projects/';
+  // cat: shade | glass | envelope | deck | fence ; client: פרטי | עסקי | ציבורי
+  window.STZ_PROJECTS = [
+    { title: 'סוויטת אירוח כשרה במרפסת — פרגולה כשרה, דק עץ ומסכי מסילה', cat: 'envelope', client: 'פרטי', desc: 'הפיכת מרפסת לחדר חוץ לכל עונות השנה: דק עץ עם ספסלים מובנים, תקרת עץ עם תאורה ומאוורר, ומסכי מסילה היקפיים שנפתחים בקיץ ונסגרים בחורף. גג הפרגולה תוכנן כפרגולה כשרה — מותאם להנחת סכך לקראת חג הסוכות, להפיכת המרפסת לסוכה.', specs: ['דק עץ לתנאי חוץ, מפולס, עם ספסלי ישיבה היקפיים מובנים', 'חיפוי עץ בתקרה בשפה אחידה עם הדק', 'פרגולה כשרה — גג שמותאם להנחת סכך, למעבר נוח למצב סוכה ובחזרה', 'מסכי מסילה מבד PVC, לפתיחה וסגירה לפי מזג האוויר', 'דלת כניסה צדדית מובנית — מעבר נוח גם כשהמסכים סגורים', 'פסי תאורת LED מוטמעים בתקרה ומאוורר תקרה לחוץ', 'הכנה לשילוב אדניות וצמחייה'], photos: [A + 'project-sukkah-suite-pvc.webp'] },
+    { title: 'פרגולה, מטבח חוץ, שולחן בר וכסאות', cat: 'envelope', client: 'פרטי', desc: 'פרגולת אלומיניום שחורה — קורות שחורות ורפרפות בגימור דמוי עץ, ומעליהן קירוי סנטף BH של פלרם. מתחתיה מטבח חוץ, שולחן בר וכסאות — פינת אירוח שלמה סביב הפרגולה.', specs: ['קורות אלומיניום בגוון שחור', 'רפרפות בגימור דמוי עץ', 'קירוי עליון — סנטף BH של פלרם', 'מאוורר תקרה משולב', 'מטבח חוץ עם כיור וגריל', 'שולחן בר וכסאות'], photos: [P + 'pergola-kitchen-bar-side.webp', P + 'pergola-kitchen-bar-close.webp', P + 'pergola-kitchen-bar-front.webp'], captions: ['מבט מהצד — פרגולה, מטבח חוץ ושולחן בר', 'רפרפות דמוי עץ ושולחן הבר מקרוב', 'מבט חזיתי אל המטבח ושולחן הבר'] },
+    { title: 'פרגולת עץ טבעי גושני באווירה כפרית מודרנית', cat: 'shade', client: 'פרטי', desc: 'פרגולת עץ טבעי בקורות גושניות ושלבים צפופים מעל חצר הכניסה לבית. העץ בגוונו הטבעי משתלב עם קיר הלבנים, הריצוף המצויר והצמחייה — מרחב כניסה מוצל וחם באווירה כפרית מודרנית.', specs: ['קורות עץ טבעי בחתך גושני', 'שלבי עץ צפופים להצללה אחידה', 'גוון עץ טבעי, ללא צביעה', 'שילוב עם קיר לבנים וריצוף קיים'], photos: [P + 'wood-pergola-rustic.webp'] },
+    { title: 'פרגולת אלומיניום L על מרפסת פנטהאוז', cat: 'shade', client: 'פרטי', photos: [A + 'pergola-1.webp', A + 'pergola-2.webp'] },
+    { title: 'תוספת בנייה קלה וחדר שמש בגינה', cat: 'envelope', client: 'פרטי', desc: 'תוספת בנייה קלה בפאנל מבודד שנפתחת לגינה, עם רצף ריצוף אחד לבית.', specs: ['מבנה בנייה קלה מפאנל מבודד — קירות ותקרה, בגוון לבן', 'מערכת חלונות הזזה היקפית ודלתות הזזה בחזית הגינה', 'הרחבת שטח החוץ על תשתית יציקה שהוכנה לצורך התוספת', 'ריצוף קרמיקה בהתאמה לקרמיקה שהייתה במקום, לרצף אחד עם הבית', 'אישורים, תשתיות וליווי הנדסי — מתואמים מול בעלי מקצוע מוסמכים'], photos: [P + 'light-sunroom-out.webp'], captions: ['מבט מהגינה — סגירת אלומיניום וזכוכית בחזית'] },
+    { title: 'חיפוי עץ ואדניות בלובי בניין מגורים', cat: 'fence', client: 'פרטי', photos: [A + 'cladding-1.webp', A + 'cladding-2.webp'] },
+    { title: 'סגירת חורף לפינת ישיבה בגינה', cat: 'glass', client: 'פרטי', photos: [A + 'winter-1.webp', A + 'winter-2.webp'] },
+    { title: 'חדר שמש בסגירת זכוכית וקירוי סנטף BH', cat: 'glass', client: 'פרטי', photos: [A + 'glass-1.webp', A + 'project-black-glass-balcony.webp'] },
+    { title: 'מטבח חוץ ובר אירוח תחת פרגולה מקורה בצמחייה', cat: 'envelope', client: 'פרטי', photos: [A + 'kitchen-1.webp'] },
+    { title: 'מרפסת נוף עם דק ומעקה זכוכית', cat: 'deck', client: 'פרטי', photos: [A + 'project-lake-terrace.webp'] },
+    { title: 'סגירת רצועות בטון בהצללת אלומיניום', cat: 'shade', client: 'פרטי', photos: [A + 'concrete-aluminum-closure.webp'] },
+    { title: 'מחיצות זכוכית ואלומיניום למשרדים', cat: 'glass', client: 'עסקי', desc: 'מערכת מחיצות זכוכית בפרופיל אלומיניום למסדרון משרדים, עם דלתות הזזה. חלוקה שקטה ששומרת על אור טבעי.', photos: [A + 'project-office-glass-partitions.webp'] },
+    { title: 'סגירת מרפסת עם גגון שלבים מתכוונן', cat: 'glass', client: 'פרטי', desc: 'סגירת מרפסת בזכוכית עם גגון שלבים מתכוונן, שמאפשר לשלוט בכמות הצל והאוורור.', photos: [A + 'project-balcony-glass-louver.webp'] },
+    { title: 'סגירת מרפסת בפרגולת תריס חשמלי וחלון הזזה', cat: 'glass', client: 'פרטי', photos: [A + 'balcony-electric-pergola-window.webp', A + 'balcony-electric-pergola-window-2.webp'] },
+    { title: 'מרפסת נוף עם פרגולת עץ, תאורה מובנית ודק', cat: 'deck', client: 'פרטי', photos: [A + 'project-deck-view.webp', A + 'project-wood-slats-ceiling.webp'] },
+    { title: 'דק עץ וקירוי שלבים למרחב חוץ אחורי', cat: 'deck', client: 'פרטי', photos: [A + 'project-deck-wood-pergola.webp'] },
+    { title: 'פרגולת עץ ומרפסת דק בשילוב מסגרת שחורה', cat: 'deck', client: 'פרטי', desc: 'פרגולת עץ עם רשת הצללה מעל מרפסת דק, בשילוב מסגרת אלומיניום שחורה ורשת נגד יתושים.', photos: [A + 'project-deck-black-frame.webp'] },
+    { title: 'פרגולת אלומיניום שחורה עם תאורה מובנית', cat: 'shade', client: 'פרטי', desc: 'פרגולת אלומיניום בגוון שחור עם שלבים צפופים ותאורת LED משולבת, בין צמחייה בוגרת.', photos: [A + 'project-black-louvered-pergola.webp'] },
+    { title: 'פרגולת עץ עם סגירת לאטה למרפסת', cat: 'shade', client: 'פרטי', desc: 'קירוי עץ וסורגי לאטה בשני צדדים, שמייצרים פרטיות וצל בלי לחסום את האוויר.', photos: [A + 'project-balcony-lattice.webp'] },
+    { title: 'פרגולת עץ למרחב חוץ פרטי', cat: 'shade', client: 'פרטי', desc: 'פרגולת עץ עם שלבים צפופים ורשת הצללה עליונה.', photos: [A + 'project-wood-pergola-garden.webp'] },
+    { title: 'פרגולת חניה לבניין מגורים', cat: 'shade', client: 'ציבורי', desc: 'מבנה פלדה עם הצללת רשת לחניית דיירים.', photos: [A + 'project-carport-shade.webp'] },
+    { title: 'פרגולת אלומיניום סטטית עם תאורת LED', cat: 'shade', client: 'פרטי', place: 'ראשון לציון', photos: [A + 'pergola-lighting-rishon.webp'] },
+    { title: 'פרגולה בתריס חשמלי מתכוונן לחנייה', cat: 'shade', client: 'פרטי', place: 'רחובות', desc: 'פרגולת אלומיניום שחורה להצללת חנייה פרטית, בעיצוב נקי.', photos: [A + 'pergola-parking-rehovot.webp', A + 'pergola-parking-rehovot-2.webp'] },
+    { title: 'פרגולת אלומיניום לבנה בשילוב עץ טבעי', cat: 'shade', client: 'פרטי', photos: [A + 'pergola-white-wood.webp'] },
+    { title: 'פרגולת אלומיניום בגוון שמנת עם רפרפות', cat: 'shade', client: 'פרטי', photos: [A + 'pergola-cream-louvers.webp'] },
+    { title: 'פרגולת אלומיניום באווירה טרופית עם במבוק', cat: 'shade', client: 'פרטי', photos: [A + 'pergola-tropical-bamboo.webp'] },
+    { title: 'פרגולת אלומיניום בגוון דמוי עץ', cat: 'shade', client: 'פרטי', photos: [A + 'pergola-wood-finish.webp'] },
+    { title: 'פרגולת אלומיניום מודרנית עם תאורה וסנטף BH', cat: 'shade', client: 'פרטי', photos: [A + 'pergola-modern-lighting-1.webp', A + 'pergola-modern-lighting-2.webp', A + 'pergola-modern-lighting-3.webp'] },
+    { title: 'פרגולת אלומיניום עירונית בשילוב עץ', cat: 'shade', client: 'ציבורי', photos: [A + 'pergola-public-wood-1.webp', A + 'pergola-public-wood-2.webp', A + 'pergola-public-wood-3.webp', A + 'pergola-public-wood-4.webp'] },
+    { title: 'סוכך זרועות חשמלי — נקניקייה', cat: 'shade', client: 'עסקי', place: 'יפו', photos: [A + 'awning-jaffa-1.webp', A + 'awning-jaffa-2.webp', A + 'awning-jaffa-3.webp'] },
+    { title: 'סוכך זרועות חשמלי — בנק לאומי', cat: 'shade', client: 'עסקי', photos: [A + 'awning-leumi.webp'] },
+    { title: 'סוכך מעוצב בגימור גלי', cat: 'shade', client: 'פרטי', photos: [A + 'designer-wave-awning.webp'] },
+    { title: 'רשת צל ואווירה ירוקה במרפסת', cat: 'shade', client: 'פרטי', place: 'ירושלים', photos: [A + 'shade-net-jerusalem.webp'] },
+    { title: 'פרגולה שחורה, מטבח חוץ ושולחן בר', cat: 'envelope', client: 'פרטי', desc: 'פרגולת אלומיניום שחורה בשילוב אלומיניום דמוי עץ, תאורה, מטבח חוץ ושולחן בר.', photos: [A + 'outdoor-kitchen-black-pergola.webp'] },
+    { title: 'מעטפת חוץ לבית Z14', cat: 'envelope', client: 'פרטי', desc: 'מגרש ספורט בריצוף מודולרי וגידור רשת בהיקף, במסגרת מעטפת החוץ של בית Z14 — בהינדוס ובתכנון האדריכל שימי קקון.', photos: [A + 'z14-sport-court.webp'] },
+    { title: 'משרד ממחיצות זכוכית במפעל ייצור', cat: 'glass', client: 'עסקי', desc: 'משרד בנוי ממחיצות זכוכית ופרופיל שחור בתוך מפעל ייצור — חלל מופרד ושקט שנשאר פתוח לאור.', photos: [A + 'factory-office-glass.webp'] },
+    { title: 'סגירת חורף במרפסת גג', cat: 'glass', client: 'פרטי', photos: [A + 'winter-closure-roof.webp'] },
+    { title: 'מסך גלילה עם חלון שקוף לחניה מקורה', cat: 'glass', client: 'פרטי', photos: [A + 'roll-screen-carport.webp'] },
+    { title: 'מסך גלילה עם חלון שקוף לפינת ישיבה', cat: 'glass', client: 'פרטי', photos: [A + 'roll-screen-patio.webp'] },
+    { title: 'גדר אלומיניום לבנה', cat: 'fence', client: 'פרטי', place: 'ראשון לציון', photos: [A + 'fence-white-rishon.webp'] },
+    { title: 'גדר אלומיניום בגוון אפור כהה', cat: 'fence', client: 'פרטי', photos: [A + 'fence-grey-aluminum.webp'] },
+    { title: 'פרגולת רפרפות שחורה עם חיפוי עץ ותאורה', cat: 'shade', client: 'פרטי', photos: [A + 'black-louvered-wood-cladding.webp'] },
+    { title: 'מסכי גלילה למרפסת סגורה בזכוכית', cat: 'shade', client: 'פרטי', photos: [A + 'roller-screens-balcony.webp'] },
+    { title: 'קירוי פוליקרבונט על קונסטרוקציית עץ', cat: 'shade', client: 'פרטי', photos: [A + 'polycarbonate-wood-roof.webp'] },
+    { title: 'החלפת קירוי סנטף מעל פרגולת רפרפות', cat: 'shade', client: 'פרטי', photos: [A + 'santaf-louvered-city.webp'] },
+    { title: 'החלפת קירוי סנטף שקוף על פרגולת עץ', cat: 'shade', client: 'פרטי', photos: [A + 'santaf-clear-replacement.webp'] }
+  ];
+  window.STZ_CATS = [
+    { id: 'all', label: 'הכול' },
+    { id: 'shade', label: 'הצללה וקירוי' },
+    { id: 'glass', label: 'סגירות' },
+    { id: 'envelope', label: 'בנייה קלה ומעטפת חוץ' },
+    { id: 'deck', label: 'דקים ופיתוח' },
+    { id: 'fence', label: 'גידור וחיפויים' }
+  ];
+})();
