@@ -5,9 +5,13 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <style>
 @media (max-width: 760px) {
-  /* mobile: no numbered hotspot circles over the photo, no side scroll rail (they crowded the text) */
+  /* mobile: no numbered hotspot circles over the photo (they crowded the text) */
   img[src*="envelope-render-pins"] ~ button { display: none !important; }
-  nav[aria-label="גלילה מהירה בין פרקים"] { display: none !important; }
+  /* mobile hero: taller, lighter photo, compact text anchored at the bottom */
+  .stz-hero { min-height: 88vh !important; min-height: min(88svh, 760px) !important; }
+  .stz-hero-shade { background: linear-gradient(180deg, rgba(27,23,18,0.18) 0%, rgba(27,23,18,0.04) 32%, rgba(27,23,18,0.5) 56%, rgba(27,23,18,0.9) 100%) !important; }
+  .stz-hero h1 { font-size: 38px !important; text-shadow: 0 2px 16px rgba(0,0,0,0.55); }
+  .stz-hero p { font-size: 16.5px !important; text-shadow: 0 2px 12px rgba(0,0,0,0.6); }
 }
 </style>
 <script src="/support.js"></script>
@@ -118,7 +122,7 @@ button,input,select,textarea{font-family:inherit}
 </nav>
 
 <main>
-  <section id="hero" style="position:relative;min-height:{{ heroH }};display:flex;align-items:flex-end;overflow:hidden;background:#1B1712">
+  <section id="hero" class="stz-hero" style="position:relative;min-height:{{ heroH }};display:flex;align-items:flex-end;overflow:hidden;background:#1B1712">
     <div ref="{{ heroRef }}" onPointerDown="{{ heroAdd }}" onMouseLeave="{{ heroPinLeave }}" style="position:absolute;inset:0;overflow:hidden;cursor:{{ heroCursor }}">
       <sc-for list="{{ heroSlides }}" as="sl" hint-placeholder-count="0">
         <div aria-hidden="{{ sl.hidden }}" style="position:absolute;inset:0;opacity:{{ sl.op }};transition:opacity 0.9s ease;pointer-events:{{ sl.pe }}">
@@ -137,7 +141,7 @@ button,input,select,textarea{font-family:inherit}
         </div>
       </sc-for>
     </div>
-    <div style="position:absolute;inset:0;pointer-events:none;background:linear-gradient(270deg,rgba(27,23,18,0.6) 0%,rgba(27,23,18,0.35) 45%,rgba(27,23,18,0) 70%),linear-gradient(180deg,rgba(27,23,18,0.55) 0%,rgba(27,23,18,0.5) 30%,rgba(27,23,18,0.58) 60%,rgba(27,23,18,0.9) 100%)"></div>
+    <div class="stz-hero-shade" style="position:absolute;inset:0;pointer-events:none;background:linear-gradient(270deg,rgba(27,23,18,0.6) 0%,rgba(27,23,18,0.35) 45%,rgba(27,23,18,0) 70%),linear-gradient(180deg,rgba(27,23,18,0.55) 0%,rgba(27,23,18,0.5) 30%,rgba(27,23,18,0.58) 60%,rgba(27,23,18,0.9) 100%)"></div>
     <div style="position:absolute;top:{{ dotsTop }};bottom:{{ dotsBottom }};inset-inline-end:clamp(16px,4vw,48px);z-index:4;display:flex;align-items:center;gap:10px">
       <sc-for list="{{ heroDots }}" as="d" hint-placeholder-count="5">
         <button type="button" aria-label="{{ d.label }}" onClick="{{ d.onClick }}" style="width:{{ d.w }};height:6px;border-radius:100px;border:0;padding:0;cursor:pointer;background:{{ d.bg }};transition:width 0.3s,background 0.3s"></button>
