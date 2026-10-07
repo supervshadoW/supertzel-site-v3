@@ -42,5 +42,17 @@
                           "permanent":  false,
                           "source":  "/accessibility"
                       }
-                  ]
+                  ],
+    "rewrites":  [
+                     {
+                         "destination":  "/pergola",
+                         "source":  "/",
+                         "has":  [
+                                     {
+                                         "value":  "pergola.supertzel.co.il",
+                                         "type":  "host"
+                                     }
+                                 ]
+                     }
+                 ]
 }
