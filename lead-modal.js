@@ -19,6 +19,12 @@
     ['אתיופיה', '251', '91 123 4567'], ['הודו', '91', '81234 56789'], ['סין', '86', '131 2345 6789'], ['יפן', '81', '90-1234-5678']
   ];
   window.stzCountries = C;
+  // Phone length check to prevent typos. national = digits after the country code (leading 0 allowed).
+  window.stzPhoneValid = function (code, national) {
+    var n = String(national || '').replace(/\D/g, '').replace(/^0+/, '');
+    if (code === '972') return n.length === 9 || n.length === 8; // mobile 5X-XXXXXXX / landline X-XXXXXXX
+    return n.length >= 6 && (code.length + n.length) <= 15;
+  };
   var codes = C.map(function (c) { return c[1]; }).sort(function (a, b) { return b.length - a.length; });
   var root, form, done, nameI, telI, sel, err, btn, last, source = 'site';
   var S = {
@@ -83,7 +89,7 @@
   function submit(e) {
     e.preventDefault();
     var nm = nameI.value.trim(), digits = telI.value.replace(/\D/g, '');
-    if (nm.length < 2 || digits.length < 7) { err.style.display = 'block'; return; }
+    if (nm.length < 2 || !window.stzPhoneValid(cur()[1], digits)) { err.textContent = nm.length < 2 ? 'נא למלא שם מלא' : 'מספר הטלפון לא נראה תקין, נא לבדוק את מספר הספרות'; err.style.display = 'block'; return; }
     err.style.display = 'none';
     var phone = e164();
     var msg = 'פנייה מהטופס הצף · ' + document.title + ' · ' + source;

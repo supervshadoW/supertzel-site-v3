@@ -53,12 +53,40 @@
     input.style.direction = 'ltr';
     input.style.textAlign = 'left';
     input.placeholder = input.placeholder || '54-123-4567';
-    sel.addEventListener('change', function () { normalize(input, sel, true); });
-    input.addEventListener('blur', function () { normalize(input, sel); });
+    var msg = document.createElement('div');
+    msg.setAttribute('role', 'alert');
+    msg.style.cssText = 'display:none;margin-top:2px;font-size:13px;color:#E8A08C;direction:rtl';
+    msg.textContent = 'מספר הטלפון לא נראה תקין, נא לבדוק את מספר הספרות';
+    input.parentNode.insertBefore(msg, input.nextSibling);
+    input.__stzCheck = function (show) {
+      var p = parse(input.value);
+      var code = p.code || C[sel.selectedIndex][1];
+      var ok = !!(p.local && window.stzPhoneValid && window.stzPhoneValid(code, p.local));
+      msg.style.display = !ok && show ? 'block' : 'none';
+      input.setAttribute('aria-invalid', ok ? 'false' : 'true');
+      return ok;
+    };
+    sel.addEventListener('change', function () { normalize(input, sel, true); input.__stzCheck(!!input.value); });
+    input.addEventListener('blur', function () { normalize(input, sel); input.__stzCheck(!!input.value); });
     input.addEventListener('input', function () { var p = parse(input.value); if (p.code) sel.selectedIndex = indexOfCode(p.code); });
     // Enter / programmatic submit paths: normalise just before any click on a button in the same form area.
     document.addEventListener('pointerdown', function () { if (document.activeElement === input) normalize(input, sel); }, true);
   }
+
+  // Block the form's send button while the phone number is empty or the wrong length.
+  var SEND = /ייעוץ|שליחה|שלח|פנייה|פניה|תאמו|השאר|תיאום|קבלת/;
+  document.addEventListener('click', function (e) {
+    var b = e.target.closest && e.target.closest('button');
+    if (!b || b.closest('#stz-lead-root') || !SEND.test(b.innerText || '')) return;
+    var box = b.closest('form'), i, p = b;
+    for (i = 0; !box && i < 5 && p; i++, p = p.parentElement) if (p.querySelector && p.querySelector('input[type="tel"]')) box = p;
+    if (!box) return;
+    var tel = box.querySelector('input[type="tel"]');
+    if (!tel || !tel.__stzCheck || tel.offsetWidth === 0) return;
+    var sel = tel.previousElementSibling;
+    if (sel && sel.dataset && sel.dataset.stzCc) normalize(tel, sel);
+    if (!tel.__stzCheck(true)) { e.preventDefault(); e.stopImmediatePropagation(); try { tel.focus(); } catch (x) {} }
+  }, true);
 
   function scan() {
     document.querySelectorAll('input[type="tel"]').forEach(function (i) {
