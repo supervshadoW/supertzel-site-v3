@@ -4,6 +4,8 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <style>
+/* decorative big numerals stick out of the page edge: clip them instead of letting the whole page scroll sideways */
+html, body { overflow-x: clip; max-width: 100%; }
 @media (max-width: 760px) {
   /* mobile: no numbered hotspot circles over the photo (they crowded the text) */
   img[src*="envelope-render-pins"] ~ button { display: none !important; }
