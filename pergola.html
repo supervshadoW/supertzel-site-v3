@@ -3,6 +3,13 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+@media (max-width: 760px) {
+  /* mobile: no numbered hotspot circles over the photo, no side scroll rail (they crowded the text) */
+  #envelope div[style*="aspect-ratio:1014/553"] > button { display: none !important; }
+  nav[aria-label="גלילה מהירה בין פרקים"] { display: none !important; }
+}
+</style>
 <script src="/support.js"></script>
 <meta name="ext-resource-dependency" content="img/logo-light-bg.png" data-resource-id="r0">
 <meta name="ext-resource-dependency" content="img/fast/w/hero-pergola.webp" data-resource-id="r1">
