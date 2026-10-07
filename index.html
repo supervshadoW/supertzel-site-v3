@@ -21,9 +21,9 @@
 <meta name="theme-color" content="#1B1712">
 <link rel="preload" as="image" href="/img/fast/hero/hero-pergola-kitchen-bar.webp" fetchpriority="high">
 <script src="/lead.js?v=3"></script>
-<script src="/lead-modal.js?v=3"></script>
+<script src="/lead-modal.js?v=4"></script>
 <script src="/phone-cc.js?v=3" defer></script>
-<script src="/analytics.js?v=3"></script>
+<script src="/analytics.js?v=4"></script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet">
 <style>
@@ -73,7 +73,6 @@ button,input,select,textarea{font-family:inherit}
         <a href="#services" style="font-size:15px;white-space:nowrap">מה אנחנו עושים</a>
         <a href="#projects" style="font-size:15px;white-space:nowrap">פרויקטים</a>
         <a href="#process" style="font-size:15px;white-space:nowrap">איך זה עובד</a>
-        <a href="#reviews" style="font-size:15px;white-space:nowrap">ביקורות</a>
         <a href="#faq" style="font-size:15px;white-space:nowrap">שאלות</a>
       </nav>
       </sc-if>
@@ -460,9 +459,6 @@ button,input,select,textarea{font-family:inherit}
         <a href="#quick" style="flex:{{ procBtnFlex }};text-align:center;background:#B4813C;color:#1B1712;padding:15px 32px;font-size:16px;font-weight:600;border-radius:100px;white-space:nowrap" style-hover="background:#C99752;color:#1B1712">תאמו פגישת ייעוץ</a>
         <a href="{{ waHref }}" target="_blank" rel="noopener" style="flex:{{ procBtnFlex }};text-align:center;color:#F5F0E4;padding:15px 28px;font-size:16px;border:1px solid rgba(245,240,228,0.4);border-radius:100px;white-space:nowrap" style-hover="background:rgba(245,240,228,0.08);border-color:#F5F0E4;color:#F5F0E4">שליחת הודעה בוואטסאפ</a>
       </div>
-    </div>
-      <div style="width:min(92%,1180px);margin:clamp(2rem,5vh,3rem) auto 0;display:flex;justify-content:flex-end">
-      <a href="#reviews" style="display:inline-flex;align-items:center;gap:10px;font-size:15.5px;font-weight:500;color:#E8C48C;border-bottom:1px solid rgba(232,196,140,0.45);padding-bottom:3px" style-hover="color:#F5F0E4;border-color:currentColor"><span style="opacity:0.7">08</span> מה מספרים מי שכבר עברו את הדרך <span aria-hidden="true">←</span></a>
     </div>
   </section>
   </div>
@@ -1312,7 +1308,7 @@ class Component extends DCLogic {
       hasCount: !!this.state.ratingCount,
       countText: this.state.ratingCount ? 'מתוך ' + this.state.ratingCount + ' ביקורות בגוגל' : 'דירוג ממוצע בגוגל',
       reviewsUrl: this.state.reviewsUrl || 'https://share.google/h9gkVk0fzgS3ILbQ6',
-      hasReviews: (this.state.reviews || []).length > 0,
+      hasReviews: false, // reviews section hidden on the home page by request (was: (this.state.reviews || []).length > 0)
       audienceCols: n ? '1fr' : 'minmax(0,1fr) minmax(0,0.85fr)',
       audFont: n ? '15px' : '17px',
       fabBottom: n ? '16px' : '24px', a11yBottom: n ? '84px' : '24px',

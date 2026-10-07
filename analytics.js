@@ -73,7 +73,7 @@
     d.style.cssText = 'position:fixed;inset-inline:12px;bottom:12px;z-index:2147483000;max-width:560px;margin-inline:auto;background:#1B1712;color:#F5F0E4;border:1px solid rgba(201,151,82,.45);border-radius:18px;padding:18px 20px;box-shadow:0 18px 50px rgba(0,0,0,.45);font:14px/1.6 inherit;font-family:inherit';
     d.innerHTML =
       '<div id="stz-consent-t" style="font-weight:700;font-size:16px;margin-bottom:6px">אנחנו מכבדים את הפרטיות שלך</div>' +
-      '<p style="margin:0 0 14px;opacity:.9">האתר משתמש בעוגיות (Cookies) כדי לתפעל שירותים בסיסיים, וכן — אם תסכים/י — כדי לנתח ביקורים באמצעות Google Analytics. חלק מהמידע מעובד בשרתי ספקים בחו״ל. באפשרותך לקבל או לדחות.</p>' +
+      '<p style="margin:0 0 14px;opacity:.9">האתר משתמש בעוגיות (Cookies) כדי לתפעל שירותים בסיסיים, וכן — אם תסכים/י — כדי לנתח ביקורים באמצעות Google Analytics. חלק מהמידע מעובד בשרתי ספקים בחו״ל. באפשרותך לקבל או לדחות. <a href="/privacy-policy" style="color:#C99752;white-space:nowrap">למידע מלא — מדיניות הפרטיות</a></p>' +
       '<div style="display:flex;gap:8px;flex-wrap:wrap">' +
       '<button type="button" data-a="1" style="flex:1;min-height:44px;border:0;border-radius:100px;background:#B4813C;color:#1B1712;font:inherit;font-weight:700;cursor:pointer">קבל הכל</button>' +
       '<button type="button" data-a="0" style="flex:1;min-height:44px;border:1px solid rgba(245,240,228,.4);border-radius:100px;background:transparent;color:#F5F0E4;font:inherit;cursor:pointer">דחה הכל</button>' +
