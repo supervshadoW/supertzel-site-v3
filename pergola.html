@@ -33,9 +33,9 @@
 <template id="__bundler_thumbnail"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200"><rect width="200" height="200" fill="#1B1712"></rect><rect x="40" y="76" width="120" height="12" rx="4" fill="#B4813C"></rect><rect x="52" y="96" width="8" height="52" fill="#B4813C"></rect><rect x="140" y="96" width="8" height="52" fill="#B4813C"></rect><rect x="40" y="52" width="120" height="8" rx="4" fill="#E8C48C"></rect></svg></template>
 <link rel="preload" as="image" href="/img/fast/lp/pg-hero.webp" fetchpriority="high">
 <script src="/lead.js?v=3"></script>
-<script src="/lead-modal.js?v=4"></script>
+<script src="/lead-modal.js?v=5"></script>
 <script src="/phone-cc.js?v=3" defer></script>
-<script src="/analytics.js?v=4"></script>
+<script src="/analytics.js?v=5"></script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
 <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet">
@@ -748,7 +748,17 @@ class Component extends DCLogic {
         const top = d.reviews
           .filter(r => r && r.text && r.text.trim() && (typeof r.rating !== 'number' || r.rating >= 4))
           .sort((a, b) => score(b) - score(a)).slice(0, 3)
-          .map(r => ({ text: r.text.trim(), meta: [r.author, r.relativeTime].filter(Boolean).join(' · ') || 'ביקורת גוגל' }));
+          .map(r => {
+            // Excerpts only (words are never changed): drop sentences about an individual or about prices. The full review stays on Google.
+            const CUT = [
+              ['הפרגולה יצאה מושלמת', '…הפרגולה יצאה מושלמת… ממליץ על סופר צל בחום.'],
+              ['הבית שלנו משמש כמרכז תרבות', '…הבית שלנו משמש כמרכז תרבות ואנשים רבים מגיעים כך שהיה חשוב לי שיהיה חזק, יפה ומרחף…'],
+              ['והופתעתי לטובה', '…הגעתי ל-סופר צל והופתעתי לטובה! … עבודה מקצועית ושירות אדיב. הגגון הותקן במרפסת השירות בצורה מדויקת ואסתטית, תוך שימוש בחומרים איכותיים. הכל בוצע במהירות וביעילות, והתוצאה פשוט מעולה. ממליץ בחום לכל מי שמחפש פתרון הצללה איכותי…'],
+              ['2 פרגולות', '…עבודה מקצועית והתוצאה הייתה בדיוק כמו שתיכננו. מומלץ בחום.']
+            ];
+            const hit = CUT.find(c => r.text.indexOf(c[0]) > -1);
+            return { text: hit ? hit[1] : r.text.trim(), meta: [r.author, r.relativeTime].filter(Boolean).join(' · ') || 'ביקורת גוגל' };
+          });
         if (top.length) this.setState({ liveReviews: top, revIdx: 0 });
         if (typeof d.googleMapsUri === 'string' && d.googleMapsUri) this.setState({ reviewsUrl: d.googleMapsUri });
       })

@@ -1,24 +1,46 @@
 {
-  "cleanUrls": true,
-  "trailingSlash": false,
-  "headers": [
-    {
-      "source": "/img/(.*)",
-      "headers": [
-        {
-          "key": "Cache-Control",
-          "value": "public, max-age=31536000, immutable"
-        }
-      ]
-    },
-    {
-      "source": "/(.*)\\.js",
-      "headers": [
-        {
-          "key": "Cache-Control",
-          "value": "public, max-age=300, must-revalidate"
-        }
-      ]
-    }
-  ]
+    "cleanUrls":  true,
+    "trailingSlash":  false,
+    "headers":  [
+                    {
+                        "source":  "/img/(.*)",
+                        "headers":  [
+                                        {
+                                            "key":  "Cache-Control",
+                                            "value":  "public, max-age=31536000, immutable"
+                                        }
+                                    ]
+                    },
+                    {
+                        "source":  "/(.*)\\.js",
+                        "headers":  [
+                                        {
+                                            "key":  "Cache-Control",
+                                            "value":  "public, max-age=300, must-revalidate"
+                                        }
+                                    ]
+                    }
+                ],
+    "redirects":  [
+                      {
+                          "destination":  "/legal#privacy",
+                          "permanent":  false,
+                          "source":  "/privacy-policy"
+                      },
+                      {
+                          "destination":  "/legal#privacy",
+                          "permanent":  false,
+                          "source":  "/privacy"
+                      },
+                      {
+                          "destination":  "/legal#terms",
+                          "permanent":  false,
+                          "source":  "/terms"
+                      },
+                      {
+                          "destination":  "/legal#accessibility",
+                          "permanent":  false,
+                          "source":  "/accessibility"
+                      }
+                  ]
 }

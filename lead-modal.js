@@ -77,7 +77,7 @@
     err = el('p', 'margin:0;font-size:13.5px;color:#E8C48C;text-align:center;display:none', 'נא למלא שם ומספר טלפון תקין'); err.setAttribute('role', 'alert');
     btn = el('button', S.btn, 'תאמו שיחת ייעוץ'); btn.type = 'submit';
     form.appendChild(l1); form.appendChild(l2); form.appendChild(err); form.appendChild(btn);
-    form.appendChild(el('p', 'margin:0;font-size:12.5px;color:rgba(245,240,228,0.6);text-align:center;line-height:1.5', 'השארת פרטים מהווה הסכמה ליצירת קשר לצורך טיפול בפנייה זו בלבד. <a href="/privacy-policy" target="_blank" rel="noopener" style="color:#C99752">מדיניות הפרטיות</a>'));
+    form.appendChild(el('p', 'margin:0;font-size:12.5px;color:rgba(245,240,228,0.6);text-align:center;line-height:1.5', 'השארת פרטים מהווה הסכמה ליצירת קשר לצורך טיפול בפנייה זו בלבד. <a href="/legal#privacy" target="_blank" rel="noopener" style="color:#C99752">מדיניות הפרטיות</a>'));
     form.onsubmit = submit;
     done = el('div', 'display:none;gap:10px;text-align:center;padding:12px 0',
       '<h3 style="margin:0;font-size:22px;color:#F5F0E4">תודה, קיבלנו</h3><p style="margin:0;font-size:15.5px;color:rgba(245,240,228,0.78)">נחזור אליכם בהקדם לתיאום שיחת ייעוץ.</p>');
