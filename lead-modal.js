@@ -18,6 +18,7 @@
     ['ירדן', '962', '7 9012 3456'], ['מצרים', '20', '100 123 4567'], ['מרוקו', '212', '650-123456'],
     ['אתיופיה', '251', '91 123 4567'], ['הודו', '91', '81234 56789'], ['סין', '86', '131 2345 6789'], ['יפן', '81', '90-1234-5678']
   ];
+  window.stzCountries = C;
   var codes = C.map(function (c) { return c[1]; }).sort(function (a, b) { return b.length - a.length; });
   var root, form, done, nameI, telI, sel, err, btn, last, source = 'site';
   var S = {
@@ -51,7 +52,7 @@
     return '+' + cur()[1] + n;
   }
   function build() {
-    root = el('div', S.back); root.setAttribute('role', 'dialog'); root.setAttribute('aria-modal', 'true'); root.setAttribute('aria-label', 'תיאום שיחת ייעוץ');
+    root = el('div', S.back); root.id = 'stz-lead-root'; root.setAttribute('role', 'dialog'); root.setAttribute('aria-modal', 'true'); root.setAttribute('aria-label', 'תיאום שיחת ייעוץ');
     var card = el('div', S.card);
     var x = el('button', S.x, '&times;'); x.type = 'button'; x.setAttribute('aria-label', 'סגירה'); x.onclick = close;
     form = el('form', 'display:grid;gap:14px'); form.noValidate = true;
@@ -111,6 +112,21 @@
     var href = a.getAttribute('href') || '';
     if (href.charAt(0) !== '#' && href.indexOf(location.pathname) === -1 && !a.hasAttribute('data-lead-open')) return;
     e.preventDefault();
+    open((location.pathname.replace(/\//g, '') || 'home'));
+  }, true);
+
+  // Plain <button> CTAs (including the floating bottom bar) open the same window.
+  // Form submit buttons are left alone: they have an input/textarea within a few levels above them.
+  var CTA = /ייעוץ|השארת פרטים|מילוי פרטים|השאירו פרטים|תיאום|צרו קשר|צור קשר/;
+  document.addEventListener('click', function (e) {
+    var b = e.target.closest && e.target.closest('button');
+    if (!b || (root && root.contains(b)) || b.type === 'submit' && b.form) return;
+    if (!CTA.test(b.innerText || '')) return;
+    var p = b, i;
+    for (i = 0; i < 4 && p; i++, p = p.parentElement) {
+      if (p.querySelector && p.querySelector('input,textarea,select')) return;
+    }
+    e.preventDefault(); e.stopPropagation();
     open((location.pathname.replace(/\//g, '') || 'home'));
   }, true);
 })();
