@@ -41,18 +41,17 @@
                           "destination":  "/legal#accessibility",
                           "permanent":  false,
                           "source":  "/accessibility"
+                      },
+                      {
+                          "destination":  "/pergola",
+                          "permanent":  false,
+                          "source":  "/",
+                          "has":  [
+                                      {
+                                          "value":  "pergola.supertzel.co.il",
+                                          "type":  "host"
+                                      }
+                                  ]
                       }
-                  ],
-    "rewrites":  [
-                     {
-                         "destination":  "/pergola",
-                         "source":  "/",
-                         "has":  [
-                                     {
-                                         "value":  "pergola.supertzel.co.il",
-                                         "type":  "host"
-                                     }
-                                 ]
-                     }
-                 ]
+                  ]
 }
