@@ -28,7 +28,16 @@ html, body { overflow-x: clip; max-width: 100%; }
   img[src*="envelope-render-pins"] ~ button { width: 28px !important; height: 28px !important; font-size: 13px !important; }
   /* mobile hero: taller, lighter photo, compact text anchored at the bottom */
   .stz-hero { min-height: 88vh !important; min-height: min(88svh, 760px) !important; }
-  .stz-hero { min-height: 600px !important; min-height: min(max(calc(100vh - 138px), 600px), 760px) !important; min-height: min(max(calc(100svh - 138px), 600px), 760px) !important; }
+  .stz-hero { min-height: 620px !important; min-height: min(max(calc(100vh - 70px), 620px), 780px) !important; min-height: min(max(calc(100svh - 70px), 620px), 780px) !important; }
+  /* mobile header: no thick band. Logo and the call-to-action float over the photo; section chips are gone (the side rail stays) */
+  header { position: fixed !important; inset-inline: 0; top: 0; background: transparent !important; backdrop-filter: none !important; -webkit-backdrop-filter: none !important; border: 0 !important; box-shadow: none !important; pointer-events: none; }
+  header > div[aria-hidden="true"], header nav[aria-label="ניווט מהיר"] { display: none !important; }
+  header a, header button { pointer-events: auto; }
+  header a[href="/"] { background: rgba(245,240,228,0.92); border-radius: 14px; padding: 5px 10px; box-shadow: 0 4px 16px rgba(0,0,0,0.18); }
+  header a[href="/"] img { height: 30px !important; }
+  header a[href="#lead"] { box-shadow: 0 4px 16px rgba(0,0,0,0.25); }
+  header > div { min-height: 0 !important; padding-block: 10px !important; }
+  .stz-combined-on #process { display: none !important; }
   .stz-hero-shade { background: linear-gradient(180deg, rgba(27,23,18,0.15) 0%, rgba(27,23,18,0.02) 28%, rgba(27,23,18,0.62) 50%, rgba(27,23,18,0.93) 74%, rgba(27,23,18,0.96) 100%) !important; }
   .stz-hero-body { padding-top: 0 !important; }
   /* every slide gets the same text frame, so nothing jumps when the photo changes */
@@ -78,7 +87,7 @@ html, body { overflow-x: clip; max-width: 100%; }
 <script src="/lead.js?v=3"></script>
 <script src="/lead-modal.js?v=6"></script>
 <script src="/phone-cc.js?v=3" defer></script>
-<script src="/mobile-ux.js?v=8" defer></script>
+<script src="/mobile-ux.js?v=9" defer></script>
 <script src="/landing-mode.js?v=1" defer></script>
 <script src="/analytics.js?v=7"></script>
 <link rel="preconnect" href="https://fonts.googleapis.com">

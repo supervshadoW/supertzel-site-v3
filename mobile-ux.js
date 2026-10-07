@@ -99,7 +99,39 @@
     box.parentNode.insertBefore(lg, box.nextSibling);
   }
 
-  function scan() { document.querySelectorAll('.stz-carousel').forEach(setup); legend(); }
+  // "Why Super Tzel" and "How it works" become ONE slideshow: 3 reasons followed by the 4 steps.
+  function combine() {
+    var why = document.querySelector('#why .stz-carousel:not(.stz-combined)');
+    var steps = document.querySelector('#process .stz-steps');
+    if (!why || !steps) return;
+    var orig = why;
+    if (orig.__stzCombined) { if (orig.nextElementSibling && !orig.nextElementSibling.classList.contains('stz-combined')) orig.nextElementSibling.style.display = 'none'; return; }
+    var reasons = [].slice.call(orig.children).filter(function (c) { return c.querySelector('h3'); });
+    var st = [].slice.call(steps.children).filter(function (c) { return c.querySelector('h3'); });
+    if (reasons.length < 2 || st.length < 2) return;
+    orig.__stzCombined = true;
+    document.documentElement.classList.add('stz-combined-on');
+    var cardStyle = reasons[0].getAttribute('style') || '';
+    var car = document.createElement('div');
+    car.className = 'stz-carousel stz-combined';
+    reasons.forEach(function (r) { var c = r.cloneNode(true); c.removeAttribute('data-dc-tpl'); car.appendChild(c); });
+    st.forEach(function (s, i) {
+      var num = (s.querySelector('span') || {}).innerText || String(i + 1);
+      var d = document.createElement('div');
+      d.setAttribute('style', cardStyle);
+      d.innerHTML = '<div style="color:#8F6326;font-weight:600;font-size:13.5px;margin-bottom:6px">איך זה עובד · שלב ' + num.replace(/^0/, '') + '</div>' +
+        '<h3 style="margin:0">' + s.querySelector('h3').innerText + '</h3>' +
+        '<p style="margin-top:12px;color:#4B443A">' + ((s.querySelector('p') || {}).innerText || '') + '</p>';
+      car.appendChild(d);
+    });
+    orig.parentNode.insertBefore(car, orig.nextSibling);
+    orig.style.display = 'none';
+    if (orig.nextElementSibling && orig.nextElementSibling !== car) orig.nextElementSibling.style.display = 'none';
+    var dr = orig.parentNode.querySelectorAll('.stz-carousel + div');
+    [].forEach.call(dr, function (x) { if (x.previousElementSibling === orig) x.style.display = 'none'; });
+  }
+
+  function scan() { combine(); document.querySelectorAll('.stz-carousel').forEach(setup); legend(); }
   scan();
   var t;
   new MutationObserver(function () { clearTimeout(t); t = setTimeout(scan, 120); }).observe(document.body, { childList: true, subtree: true });
