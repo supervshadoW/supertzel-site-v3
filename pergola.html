@@ -4,6 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <script src="/support.js"></script>
+<script src="/lead.js"></script>
 <meta name="ext-resource-dependency" content="img/logo-light-bg.png" data-resource-id="r0">
 <meta name="ext-resource-dependency" content="img/fast/w/hero-pergola.webp" data-resource-id="r1">
 <meta name="ext-resource-dependency" content="img/fast/w/pg2-black-louver.webp" data-resource-id="r2">
@@ -1261,6 +1262,7 @@ class Component extends DCLogic {
         ].filter(Boolean).join('\n');
         this.setState({ quickSent: true });
         if (typeof window !== 'undefined') {
+          if (window.stzSendLead) window.stzSendLead({ page: 'פרגולות - טופס מהיר', name: fo.name, phone: fo.phone, solution: fo.scope });
           window.open('https://wa.me/972547752697?text=' + encodeURIComponent(lines), '_blank');
         }
       },
@@ -1289,6 +1291,7 @@ class Component extends DCLogic {
         ].filter(Boolean).join('\n');
         this.setState({ sent: true });
         if (typeof window !== 'undefined') {
+          if (window.stzSendLead) window.stzSendLead({ page: 'פרגולות', name: fo.name, phone: fo.phone, city: fo.city, solution: fo.scope, message: fo.notes ? 'פרטים: ' + fo.notes : '' });
           window.open('https://wa.me/972547752697?text=' + encodeURIComponent(lines), '_blank');
         }
       }

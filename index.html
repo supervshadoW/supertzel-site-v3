@@ -4,6 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <script src="/support.js"></script>
+<script src="/lead.js"></script>
 </head>
 <body>
 <x-dc>
@@ -1546,6 +1547,7 @@ class Component extends DCLogic {
         ].filter(Boolean).join('\n');
         this.setState({ sent: true });
         if (typeof window !== 'undefined') {
+          if (window.stzSendLead) window.stzSendLead({ page: 'דף הבית', name: v.name, phone: v.phone, city: v.city, solution: v.category, message: [v.stage ? 'שלב: ' + v.stage : '', v.notes ? 'פרטים: ' + v.notes : ''].filter(Boolean).join(' | ') });
           window.open(this.waNumberHref(lines), '_blank');
         }
       }

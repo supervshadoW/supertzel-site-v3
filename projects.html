@@ -4,6 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <script src="/support.js"></script>
+<script src="/lead.js"></script>
 </head>
 <body>
 <x-dc>
@@ -334,6 +335,7 @@ class Component extends DCLogic {
       submit: e => {
         e.preventDefault();
         const msg = ['היי, הגעתי מעמוד הפרויקטים ואשמח לתאם שיחת ייעוץ.', 'שם: ' + f.name, 'טלפון: ' + f.phone, f.topic ? 'נושא: ' + f.topic : ''].filter(Boolean).join('\n');
+        if (window.stzSendLead) window.stzSendLead({ page: 'פרויקטים', name: f.name, phone: f.phone, solution: f.topic });
         window.open(waBase + encodeURIComponent(msg), '_blank', 'noopener');
         this.setState({ sent: true });
       }
