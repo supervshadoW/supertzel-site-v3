@@ -11,6 +11,9 @@ html, body { overflow-x: clip; max-width: 100%; }
   .stz-carousel { display: flex !important; flex-direction: row !important; overflow-x: auto; overflow-y: hidden; scroll-snap-type: x mandatory; gap: 14px !important; margin-inline: -4vw; padding: 4px 4vw 14px; scroll-padding-inline: 4vw; scrollbar-width: none; -webkit-overflow-scrolling: touch; overscroll-behavior-x: contain; }
   .stz-carousel::-webkit-scrollbar { display: none; }
   .stz-carousel > div { flex: 0 0 82% !important; max-width: 82%; scroll-snap-align: start; grid-column: auto !important; }
+  /* mobile: the "4 questions" intro box comes before the questions; grid children may shrink so carousels never widen the page */
+  .stz-faq-intro { order: -1; }
+  #process > div, #process > div > div { min-width: 0 !important; max-width: 100%; }
   /* mobile: shorter page. Repeated blocks are hidden (they say the same thing as other sections / the floating form) */
   .stz-why-row, #lead, .stz-proc-cta, .stz-env-p, .stz-contact-info { display: none !important; }
   .stz-steps > div { flex-direction: column; gap: 8px !important; background: rgba(245,240,228,0.07); border: 1px solid rgba(245,240,228,0.2) !important; border-radius: 22px; padding: 20px !important; }
@@ -72,7 +75,7 @@ html, body { overflow-x: clip; max-width: 100%; }
 <script src="/lead.js?v=3"></script>
 <script src="/lead-modal.js?v=5"></script>
 <script src="/phone-cc.js?v=3" defer></script>
-<script src="/mobile-ux.js?v=6" defer></script>
+<script src="/mobile-ux.js?v=7" defer></script>
 <script src="/analytics.js?v=7"></script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
@@ -344,7 +347,7 @@ button,input,select,textarea{font-family:inherit}
       </div>
       <div style="display:inline-flex;align-items:center;gap:10px;color:#B4813C;font-size:14.5px;font-weight:600;margin-bottom:24px;white-space:nowrap"><span style="display:block;width:24px;height:1px;background:#B4813C"></span>למה סופר צל</div>
       <h2 style="font-size:clamp(32px,4.4vw,56px);max-width:18ch">נקודת קשר אחת לתכנון יישומי, לייצור ולהתקנה</h2>
-      <div class="stz-carousel stz-noauto" style="display:grid;grid-template-columns:{{ threeCols }};gap:clamp(1.25rem,3vw,1.5rem);margin-top:clamp(2.25rem,6vh,3.4rem)">
+      <div class="stz-carousel" style="display:grid;grid-template-columns:{{ threeCols }};gap:clamp(1.25rem,3vw,1.5rem);margin-top:clamp(2.25rem,6vh,3.4rem)">
         <sc-for list="{{ reasons }}" as="r" hint-placeholder-count="3">
           <div style="background:#ECE4D2;border:1px solid rgba(33,28,22,0.14);border-radius:28px;padding:clamp(1.6rem,3vw,2.3rem)">
             <h3 style="font-size:clamp(20px,2.1vw,25px)">{{ r.title }}</h3>
@@ -531,7 +534,7 @@ button,input,select,textarea{font-family:inherit}
             </sc-if>
           </div>
         </div>
-      <div style="position:{{ eleSticky }};top:110px;background:#1B1712;color:#F5F0E4;border-radius:26px;padding:clamp(1.5rem,3vw,2.25rem);display:flex;flex-direction:column;gap:18px">
+      <div class="stz-faq-intro" style="position:{{ eleSticky }};top:110px;background:#1B1712;color:#F5F0E4;border-radius:26px;padding:clamp(1.5rem,3vw,2.25rem);display:flex;flex-direction:column;gap:18px">
         <div style="display:inline-flex;align-items:center;gap:10px;color:#C99752;font-size:14px;font-weight:600;white-space:nowrap"><span style="display:block;width:24px;height:1px;background:#C99752"></span>לפני שבוחרים</div>
         <h2 style="font-size:clamp(26px,2.8vw,34px);line-height:1.15;color:#F5F0E4">4 שאלות שחובה לשאול לפני שבוחרים פתרון הצללה</h2>
         <p style="color:rgba(245,240,228,0.74);font-size:15.5px;line-height:1.6">פרויקט מוצלח מתחיל במידע אמין ובשקיפות. ריכזנו עבורכם את הנקודות שחשוב לבדוק בכל הצעת מחיר, כדי שתבחרו את הפתרון הנכון לחלל שלכם.</p>

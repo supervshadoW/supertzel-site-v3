@@ -51,9 +51,7 @@
     function tick() {
       if (stopped || !visible) return;
       var i = paint();
-      var loop = car.classList.contains('stz-loop');
-      if (i >= cards.length - 1 && !loop) { stop(); return; } // one gentle pass, then leave it to the visitor
-      var next = cards[loop ? (i + 1) % cards.length : i + 1];
+      var next = cards[(i + 1) % cards.length]; // loops; a touch stops it for good
       var cr = car.getBoundingClientRect(), nr = next.getBoundingClientRect();
       // scroll the container only (never the page)
       car.scrollBy({ left: nr.right - (cr.right - 14), behavior: 'smooth' });
