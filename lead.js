@@ -32,7 +32,10 @@
         headers: { 'Content-Type': 'application/json', Authorization: 'Bearer ' + KEY, apikey: KEY },
         body: JSON.stringify(body)
       }).catch(function () {});
-      if (typeof window.gtag === 'function') window.gtag('event', 'generate_lead', { page: lead.page || '' });
+      if (typeof window.gtag === 'function') {
+        window.gtag('event', 'form_submit', { event_category: 'contact', form_location: lead.page || '' });
+        window.gtag('event', 'generate_lead', { form_location: lead.page || '', solution: lead.solution || '' });
+      }
     } catch (e) {}
   };
 })();
