@@ -9,7 +9,7 @@
   img[src*="envelope-render-pins"] ~ button { display: none !important; }
   /* mobile hero: taller, lighter photo, compact text anchored at the bottom */
   .stz-hero { min-height: 88vh !important; min-height: min(88svh, 760px) !important; }
-  .stz-hero { min-height: 92vh !important; min-height: min(92svh, 800px) !important; }
+  .stz-hero { min-height: 600px !important; min-height: min(max(calc(100vh - 138px), 600px), 760px) !important; min-height: min(max(calc(100svh - 138px), 600px), 760px) !important; }
   .stz-hero-shade { background: linear-gradient(180deg, rgba(27,23,18,0.15) 0%, rgba(27,23,18,0.02) 28%, rgba(27,23,18,0.62) 50%, rgba(27,23,18,0.93) 74%, rgba(27,23,18,0.96) 100%) !important; }
   .stz-hero-body { padding-top: 0 !important; }
   .stz-hero h1 { font-size: 34px !important; text-shadow: 0 2px 16px rgba(0,0,0,0.55); }
