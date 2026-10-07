@@ -8,7 +8,7 @@
 html, body { overflow-x: clip; max-width: 100%; }
 @media (max-width: 760px) {
   /* mobile: long stacks of cards become swipeable carousels (dots + auto-advance come from mobile-ux.js) */
-  .stz-carousel { display: flex !important; overflow-x: auto; overflow-y: hidden; scroll-snap-type: x mandatory; gap: 14px !important; margin-inline: -4vw; padding: 4px 4vw 14px; scroll-padding-inline: 4vw; scrollbar-width: none; -webkit-overflow-scrolling: touch; overscroll-behavior-x: contain; }
+  .stz-carousel { display: flex !important; flex-direction: row !important; overflow-x: auto; overflow-y: hidden; scroll-snap-type: x mandatory; gap: 14px !important; margin-inline: -4vw; padding: 4px 4vw 14px; scroll-padding-inline: 4vw; scrollbar-width: none; -webkit-overflow-scrolling: touch; overscroll-behavior-x: contain; }
   .stz-carousel::-webkit-scrollbar { display: none; }
   .stz-carousel > div { flex: 0 0 82% !important; max-width: 82%; scroll-snap-align: start; grid-column: auto !important; }
   /* mobile: shorter page. Repeated blocks are hidden (they say the same thing as other sections / the floating form) */
