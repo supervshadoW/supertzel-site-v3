@@ -19,6 +19,21 @@
                                             "value":  "public, max-age=300, must-revalidate"
                                         }
                                     ]
+                    },
+                    {
+                        "headers":  [
+                                        {
+                                            "key":  "X-Robots-Tag",
+                                            "value":  "noindex, nofollow"
+                                        }
+                                    ],
+                        "source":  "/(.*)",
+                        "has":  [
+                                    {
+                                        "value":  "pergola.supertzel.co.il",
+                                        "type":  "host"
+                                    }
+                                ]
                     }
                 ],
     "redirects":  [
