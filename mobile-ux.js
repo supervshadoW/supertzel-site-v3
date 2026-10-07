@@ -5,6 +5,19 @@
   if (!mq.matches) return;
   var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
+  function glide(el, to) {
+    var from = el.scrollLeft, t0 = null, dur = 650;
+    var snap = el.style.scrollSnapType;
+    el.style.scrollSnapType = 'none'; // snapping would fight the animation
+    function step(ts) {
+      if (t0 === null) t0 = ts;
+      var p = Math.min(1, (ts - t0) / dur), e = p < .5 ? 2 * p * p : 1 - Math.pow(-2 * p + 2, 2) / 2;
+      el.scrollLeft = from + (to - from) * e;
+      if (p < 1) requestAnimationFrame(step); else el.style.scrollSnapType = snap;
+    }
+    requestAnimationFrame(step);
+  }
+
   function setup(car) {
     if (car.__stzCar) return;
     var cards = [].slice.call(car.children).filter(function (c) { return c.offsetWidth > 0; });
@@ -53,8 +66,8 @@
       var i = paint();
       var next = cards[(i + 1) % cards.length]; // loops; a touch stops it for good
       var cr = car.getBoundingClientRect(), nr = next.getBoundingClientRect();
-      // scroll the container only (never the page)
-      car.scrollBy({ left: nr.right - (cr.right - 14), behavior: 'smooth' });
+      // scroll the container only (never the page); own easing so it also works where native smooth scroll is off
+      glide(car, car.scrollLeft + (nr.right - (cr.right - 14)));
     }
     if ('IntersectionObserver' in window) {
       new IntersectionObserver(function (es) {
