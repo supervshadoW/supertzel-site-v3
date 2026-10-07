@@ -4,8 +4,6 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <script src="/support.js"></script>
-<script src="/lead.js"></script>
-<script src="/analytics.js"></script>
 </head>
 <body>
 <x-dc>
@@ -22,6 +20,9 @@
 <meta name="twitter:card" content="summary_large_image">
 <meta name="theme-color" content="#1B1712">
 <link rel="preload" as="image" href="/img/fast/hero/hero-pergola-kitchen-bar.webp" fetchpriority="high">
+<script src="/lead.js"></script>
+<script src="/lead-modal.js"></script>
+<script src="/analytics.js"></script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet">
 <style>
@@ -76,25 +77,25 @@ button,input,select,textarea{font-family:inherit}
       </nav>
       </sc-if>
       <sc-if value="{{ wide }}" hint-placeholder-val="{{ true }}">
-      <a href="#contact" style="background:#B4813C;color:#1B1712;padding:12px 26px;font-size:15px;font-weight:600;border-radius:100px;white-space:nowrap;transition:background 0.2s ease,transform 0.18s ease" style-hover="background:#C99752;color:#1B1712" style-active="transform:scale(0.96)">תאמו שיחת ייעוץ</a>
+      <a href="#quick" style="background:#B4813C;color:#1B1712;padding:12px 26px;font-size:15px;font-weight:600;border-radius:100px;white-space:nowrap;transition:background 0.2s ease,transform 0.18s ease" style-hover="background:#C99752;color:#1B1712" style-active="transform:scale(0.96)">תאמו שיחת ייעוץ</a>
       </sc-if>
       <sc-if value="{{ narrow }}" hint-placeholder-val="{{ false }}">
-      <a href="tel:0553100154" style="display:inline-flex;align-items:center;min-height:44px;padding:0 18px;border:1px solid rgba(33,28,22,0.28);border-radius:100px;font-size:15px;font-weight:500;white-space:nowrap;color:#211C16" style-hover="background:rgba(33,28,22,0.05);color:#211C16">055-310-0154</a>
+      <a href="tel:0547752697" style="display:inline-flex;align-items:center;min-height:44px;padding:0 18px;border:1px solid rgba(33,28,22,0.28);border-radius:100px;font-size:15px;font-weight:500;white-space:nowrap;color:#211C16" style-hover="background:rgba(33,28,22,0.05);color:#211C16">054-775-2697</a>
       </sc-if>
     </div>
   </div>
   <div aria-hidden="true" style="position:absolute;bottom:-1px;inset-inline-start:0;height:2px;width:{{ readPct }};background:#B4813C;transition:width 0.15s linear"></div>
 </header>
-<nav aria-label="גלילה מהירה בין פרקים" onMouseEnter="{{ sbEnter }}" onMouseLeave="{{ sbLeave }}" style="position:fixed;left:{{ sbLeft }};top:{{ sbTop }};bottom:{{ sbBottom }};width:34px;z-index:85;direction:ltr;opacity:{{ sbOp }};pointer-events:{{ sbPe }};transition:opacity 0.35s ease">
-  <div ref="{{ sbRef }}" onPointerDown="{{ sbDown }}" style="position:absolute;inset:0;cursor:pointer;touch-action:none">
-    <span aria-hidden="true" style="position:absolute;left:15px;top:0;bottom:0;width:3px;border-radius:100px;background:rgba(27,23,18,0.2);box-shadow:0 0 0 1px rgba(245,240,228,0.55)"></span>
-    <span aria-hidden="true" style="position:absolute;left:12px;top:{{ sbThumbTop }};height:{{ sbThumbH }};min-height:28px;width:9px;border-radius:100px;background:#B4813C;box-shadow:0 0 0 2px rgba(245,240,228,0.9),0 4px 12px rgba(27,23,18,0.3);transition:{{ sbThumbTr }}"></span>
+<nav aria-label="גלילה מהירה בין פרקים" onMouseEnter="{{ sbEnter }}" onMouseLeave="{{ sbLeave }}" style="position:fixed;left:{{ sbLeft }};top:{{ sbTop }};bottom:{{ sbBottom }};width:34px;z-index:85;direction:ltr;opacity:{{ sbOp }};pointer-events:none;transition:opacity 0.35s ease">
+  <div ref="{{ sbRef }}" onPointerDown="{{ sbDown }}" style="position:absolute;top:0;bottom:0;left:9px;width:16px;cursor:pointer;touch-action:none;pointer-events:{{ sbPe }}">
+    <span aria-hidden="true" style="position:absolute;left:6px;top:0;bottom:0;width:3px;border-radius:100px;background:rgba(27,23,18,0.2);box-shadow:0 0 0 1px rgba(245,240,228,0.55)"></span>
+    <span aria-hidden="true" style="position:absolute;left:3px;top:{{ sbThumbTop }};height:{{ sbThumbH }};min-height:28px;width:9px;border-radius:100px;background:#B4813C;box-shadow:0 0 0 2px rgba(245,240,228,0.9),0 4px 12px rgba(27,23,18,0.3);transition:{{ sbThumbTr }}"></span>
     <sc-if value="{{ sbBubble }}" hint-placeholder-val="{{ false }}">
-      <span dir="rtl" style="position:absolute;left:34px;top:{{ sbThumbTop }};font-size:13px;font-weight:600;color:#F5F0E4;background:#1B1712;border-radius:100px;padding:5px 12px;white-space:nowrap;box-shadow:0 6px 18px rgba(27,23,18,0.35);pointer-events:none">{{ sbBubbleText }}</span>
+      <span dir="rtl" style="position:absolute;left:25px;top:{{ sbThumbTop }};font-size:13px;font-weight:600;color:#F5F0E4;background:#1B1712;border-radius:100px;padding:5px 12px;white-space:nowrap;box-shadow:0 6px 18px rgba(27,23,18,0.35);pointer-events:none">{{ sbBubbleText }}</span>
     </sc-if>
   </div>
   <sc-for list="{{ chapTicks }}" as="t" hint-placeholder-count="0">
-    <a href="{{ t.href }}" aria-label="{{ t.aria }}" hidden="{{ t.hide }}" style="position:absolute;left:6px;top:{{ t.top }};display:flex;align-items:center;gap:8px;transform:translateY(-50%);min-height:22px">
+    <a href="{{ t.href }}" aria-label="{{ t.aria }}" hidden="{{ t.hide }}" style="position:absolute;left:6px;top:{{ t.top }};display:flex;align-items:center;gap:8px;transform:translateY(-50%);min-height:22px;pointer-events:{{ t.pe }}">
       <span style="display:block;width:{{ t.w }};height:3px;border-radius:100px;background:{{ t.c }};margin-left:{{ t.ml }};transition:width 0.25s,background 0.25s"></span>
       <span dir="rtl" style="font-size:12.5px;font-weight:600;color:#1B1712;background:rgba(245,240,228,0.96);border-radius:100px;padding:3px 10px;white-space:nowrap;box-shadow:0 4px 14px rgba(27,23,18,0.18);opacity:{{ t.lblOp }};transform:translateX({{ t.lblX }});transition:opacity 0.25s,transform 0.25s;pointer-events:{{ t.lblPe }}">{{ t.n }} · {{ t.label }}</span>
     </a>
@@ -161,7 +162,7 @@ button,input,select,textarea{font-family:inherit}
         <div style="min-width:0;animation:stz-up 1.1s 0.5s both">
           <p style="display:{{ heroPDisplay }};color:rgba(245,240,228,0.86);font-size:clamp(16px,1.5vw,18px);max-width:40ch;margin-bottom:22px">פתרונות חוץ מלאים לבית ולעסק — מהמדידה ועד המסירה, עם נקודת קשר אחת לאורך כל הדרך.</p>
           <div style="display:flex;gap:10px;flex-wrap:wrap;width:{{ heroBtnWrapW }}">
-            <a href="#contact" style="display:inline-flex;align-items:center;justify-content:center;flex:{{ heroBtnFlex }};background:#B4813C;color:#1B1712;padding:17px 38px;font-size:16.5px;font-weight:600;border-radius:100px;white-space:nowrap;box-shadow:0 10px 30px rgba(180,129,60,0.28);transition:background 0.2s ease,transform 0.18s ease,box-shadow 0.25s ease;animation:stz-cta-pulse 2.6s ease-in-out infinite" style-hover="background:#C99752;color:#1B1712;box-shadow:0 14px 40px rgba(201,151,82,0.42);animation:none" style-active="transform:scale(0.97)">תאמו שיחת ייעוץ</a>
+            <a href="#quick" style="display:inline-flex;align-items:center;justify-content:center;flex:{{ heroBtnFlex }};background:#B4813C;color:#1B1712;padding:17px 38px;font-size:16.5px;font-weight:600;border-radius:100px;white-space:nowrap;box-shadow:0 10px 30px rgba(180,129,60,0.28);transition:background 0.2s ease,transform 0.18s ease,box-shadow 0.25s ease;animation:stz-cta-pulse 2.6s ease-in-out infinite" style-hover="background:#C99752;color:#1B1712;box-shadow:0 14px 40px rgba(201,151,82,0.42);animation:none" style-active="transform:scale(0.97)">תאמו שיחת ייעוץ</a>
             <a href="{{ waHref }}" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;justify-content:center;gap:10px;flex:{{ heroBtnFlex }};color:#F5F0E4;padding:17px 30px;font-size:16.5px;border:1px solid rgba(245,240,228,0.45);border-radius:100px;white-space:nowrap;backdrop-filter:blur(6px);transition:background 0.2s ease,transform 0.18s ease" style-hover="background:rgba(245,240,228,0.12);border-color:#F5F0E4;color:#F5F0E4" style-active="transform:scale(0.97)"><svg viewBox="0 0 24 24" width="20" height="20" fill="#25D366" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.46 1.32 4.96L2 22l5.25-1.38a9.9 9.9 0 0 0 4.79 1.22h.01c5.46 0 9.91-4.45 9.91-9.91C21.96 6.45 17.5 2 12.04 2zm5.8 14.02c-.24.68-1.42 1.3-1.96 1.35-.5.05-1.13.07-1.83-.12-.42-.13-.96-.31-1.65-.61-2.9-1.25-4.8-4.17-4.94-4.37-.15-.19-1.18-1.57-1.18-2.99s.74-2.12 1.01-2.41c.26-.29.58-.36.77-.36h.56c.18 0 .42-.07.65.5.24.58.82 2 .89 2.15.07.15.12.32.02.51-.1.19-.15.32-.29.49-.15.17-.31.38-.44.51-.15.15-.3.31-.13.6.17.29.76 1.25 1.62 2.03 1.12 1 2.07 1.31 2.36 1.46.29.15.46.12.63-.07.17-.19.73-.85.93-1.15.19-.29.39-.24.65-.15.26.1 1.69.8 1.98.94.29.15.48.22.56.34.07.12.07.7-.17 1.38z"></path></svg>שיחת וואטסאפ מהירה</a>
           </div>
           <p style="display:{{ heroPDisplay }};margin-top:16px;font-size:13px;color:rgba(245,240,228,0.65);animation:stz-up 1.1s 0.75s both">✓ שיחת ייעוץ ומדידה ללא התחייבות · מרכז, שפלה ודרום</p>
@@ -212,8 +213,8 @@ button,input,select,textarea{font-family:inherit}
       <div style="display:flex;align-items:center;justify-content:space-between;gap:clamp(1rem,3vw,2rem);flex-wrap:wrap;margin-top:36px;padding-top:24px;border-top:1px solid rgba(33,28,22,0.14)">
         <p style="margin:0;color:#4B443A;font-size:14.5px;max-width:52ch">היקף העבודה, החומרים והתמחור נקבעים לפי אופי הפרויקט ומורכבותו, לאחר פגישת שטח.</p>
         <div style="display:flex;flex-direction:column;gap:8px;align-items:flex-start">
-          <a href="#contact" style="display:inline-flex;align-items:center;gap:10px;background:#211C16;color:#F5F0E4;padding:16px 34px;font-size:16.5px;font-weight:600;border-radius:100px;white-space:nowrap;transition:background 0.2s ease,transform 0.18s ease" style-hover="background:#B4813C;color:#1B1712" style-active="transform:scale(0.97)">בואו נתכנן את המרחב שלכם <span aria-hidden="true">←</span></a>
-          <span style="font-size:13px;color:#4B443A">נחזור אליכם תוך 24 שעות · המספר לא עובר לאף גורם אחר</span>
+          <a href="#quick" style="display:inline-flex;align-items:center;gap:10px;background:#211C16;color:#F5F0E4;padding:16px 34px;font-size:16.5px;font-weight:600;border-radius:100px;white-space:nowrap;transition:background 0.2s ease,transform 0.18s ease" style-hover="background:#B4813C;color:#1B1712" style-active="transform:scale(0.97)">בואו נתכנן את המרחב שלכם <span aria-hidden="true">←</span></a>
+          <span style="font-size:13px;color:#4B443A">נחזור אליכם לתיאום שיחת ייעוץ · המספר לא עובר לאף גורם אחר</span>
         </div>
       </div>
     </div>
@@ -336,7 +337,29 @@ button,input,select,textarea{font-family:inherit}
     </div>
   </section>
 
-
+  <section id="quick" aria-label="השארת פרטים מהירה" style="background:#1B1712;color:#F5F0E4;padding-block:clamp(2.75rem,7vh,4.5rem);scroll-margin-top:90px">
+    <div style="width:min(92%,1180px);margin-inline:auto;display:grid;grid-template-columns:{{ quickCols }};gap:clamp(1.25rem,4vw,3.5rem);align-items:center">
+      <div style="display:flex;flex-direction:column;gap:10px;min-width:0">
+        <span style="font-size:13.5px;font-weight:600;color:#C99752">30 שניות, בלי טפסים ארוכים</span>
+        <h2 style="font-size:clamp(28px,3.4vw,44px);line-height:1.1;letter-spacing:-0.025em;color:#F5F0E4;text-wrap:balance">רק שם וטלפון — ואנחנו חוזרים אליכם</h2>
+        <p style="color:rgba(245,240,228,0.74);font-size:16px;line-height:1.6;max-width:44ch;text-wrap:pretty">את הפרטים נשלים יחד בשיחת הייעוץ. אין צורך לדעת מראש מה בדיוק אתם צריכים.</p>
+      </div>
+      <sc-if value="{{ qSent }}" hint-placeholder-val="{{ false }}">
+        <div style="display:grid;gap:8px;background:rgba(245,240,228,0.05);border:1px solid rgba(245,240,228,0.18);border-radius:22px;padding:clamp(1.25rem,2.5vw,1.75rem)">
+          <h3 style="font-size:20px;color:#F5F0E4">תודה, קיבלנו</h3>
+          <p style="font-size:15px;color:rgba(245,240,228,0.75)">נחזור אליכם בהקדם לתיאום שיחת ייעוץ.</p>
+        </div>
+      </sc-if>
+      <sc-if value="{{ qOpen }}" hint-placeholder-val="{{ true }}">
+        <form onSubmit="{{ onQuickHome }}" style="display:grid;grid-template-columns:{{ quickFormCols }};gap:10px;background:rgba(245,240,228,0.05);border:1px solid rgba(245,240,228,0.18);border-radius:22px;padding:clamp(1rem,2vw,1.4rem)">
+          <input type="text" required="" placeholder="שם" aria-label="שם" value="{{ fName }}" onChange="{{ onName }}" style="min-width:0;min-height:52px;padding:0 18px;border:1px solid rgba(245,240,228,0.26);background:rgba(245,240,228,0.06);border-radius:100px;color:#F5F0E4;font:inherit;font-size:16px">
+          <input type="tel" inputMode="tel" required="" placeholder="טלפון" aria-label="טלפון" value="{{ fPhone }}" onChange="{{ onPhone }}" style="min-width:0;min-height:52px;padding:0 18px;border:1px solid rgba(245,240,228,0.26);background:rgba(245,240,228,0.06);border-radius:100px;color:#F5F0E4;font:inherit;font-size:16px">
+          <button type="submit" style="min-height:52px;padding:0 28px;border:0;border-radius:100px;background:#B4813C;color:#1B1712;font:inherit;font-size:16.5px;font-weight:600;cursor:pointer;white-space:nowrap" style-hover="background:#C99752">חזרו אליי</button>
+          <span style="grid-column:1/-1;font-size:12.5px;color:rgba(245,240,228,0.6);text-align:center">ייעוץ ראשוני ללא עלות וללא התחייבות · המספר לא עובר לאף גורם אחר</span>
+        </form>
+      </sc-if>
+    </div>
+  </section>
 
   <section id="about" style="padding-block:clamp(3rem,8vh,5.5rem)">
     <div style="width:min(92%,1180px);margin-inline:auto">
@@ -373,7 +396,7 @@ button,input,select,textarea{font-family:inherit}
         <div style="display:inline-flex;align-items:center;gap:10px;color:#C99752;font-size:14.5px;font-weight:600;margin-bottom:24px"><span style="display:block;width:24px;height:1px;background:#C99752"></span>06 · למי זה מתאים</div>
         <h2 style="font-size:clamp(36px,5.2vw,68px);letter-spacing:-0.03em;color:#F5F0E4;max-width:18ch">מעטפת אחת,<br><span style="display:block;min-height:1.1em;color:#C99752;font-weight:300">{{ rotEl }}</span></h2>
         <p style="margin-top:22px;color:rgba(245,240,228,0.75);font-size:17px;max-width:38ch">מבית פרטי ועד שטח חוץ של עסק — מתאימים את הפתרון בהיקף שמתאים לפרויקט.</p>
-        <a href="#contact" style="display:inline-flex;align-items:center;gap:10px;margin-top:26px;background:#B4813C;color:#1B1712;padding:16px 34px;font-size:16.5px;font-weight:600;border-radius:100px;white-space:nowrap" style-hover="background:#C99752;color:#1B1712">כן, אני רוצה להתייעץ בחינם <span aria-hidden="true">←</span></a>
+        <a href="#quick" style="display:inline-flex;align-items:center;gap:10px;margin-top:26px;background:#B4813C;color:#1B1712;padding:16px 34px;font-size:16.5px;font-weight:600;border-radius:100px;white-space:nowrap" style-hover="background:#C99752;color:#1B1712">כן, אני רוצה להתייעץ בחינם <span aria-hidden="true">←</span></a>
         <p style="margin-top:10px;font-size:13px;color:rgba(245,240,228,0.62)">ייעוץ ראשוני ללא עלות וללא התחייבות.</p>
       </div>
       <div style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px">
@@ -433,7 +456,7 @@ button,input,select,textarea{font-family:inherit}
         <p style="color:rgba(245,240,228,0.8);font-size:16.5px;line-height:1.8;max-width:78ch">אנחנו כאן כדי לבצע, להקים ולנהל את מרחב החוץ שלכם בפועל. בפרויקטים הדורשים זאת, אנו עובדים בשיתוף פעולה מלא ומתואם מול אדריכלים, מעצבים ובעלי מקצוע נוספים — בהתאם לאופי הפרויקט, למורכבותו ובכפוף לחוזה ולתנאי ההתקשרות שנקבעו מראש.</p>
       </div>
       <div style="display:flex;gap:12px;flex-wrap:wrap;margin-top:clamp(1.75rem,4vh,2.5rem)">
-        <a href="#contact" style="flex:{{ procBtnFlex }};text-align:center;background:#B4813C;color:#1B1712;padding:15px 32px;font-size:16px;font-weight:600;border-radius:100px;white-space:nowrap" style-hover="background:#C99752;color:#1B1712">תאמו פגישת ייעוץ</a>
+        <a href="#quick" style="flex:{{ procBtnFlex }};text-align:center;background:#B4813C;color:#1B1712;padding:15px 32px;font-size:16px;font-weight:600;border-radius:100px;white-space:nowrap" style-hover="background:#C99752;color:#1B1712">תאמו פגישת ייעוץ</a>
         <a href="{{ waHref }}" target="_blank" rel="noopener" style="flex:{{ procBtnFlex }};text-align:center;color:#F5F0E4;padding:15px 28px;font-size:16px;border:1px solid rgba(245,240,228,0.4);border-radius:100px;white-space:nowrap" style-hover="background:rgba(245,240,228,0.08);border-color:#F5F0E4;color:#F5F0E4">שליחת הודעה בוואטסאפ</a>
       </div>
     </div>
@@ -457,7 +480,7 @@ button,input,select,textarea{font-family:inherit}
             <div style="display:flex;gap:10px"><a href="{{ reviewsUrl }}" target="_blank" rel="noopener" aria-label="ביקורות בגוגל" title="ביקורות בגוגל" style="display:flex;align-items:center;justify-content:center;width:44px;height:44px;border-radius:50%;background:#211C16;color:#F5F0E4;transition:background 0.2s ease,color 0.2s ease" style-hover="background:#B4813C;color:#1B1712"><svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" aria-hidden="true"><path d="M12.48 10.92v3.28h7.84c-.24 1.84-.85 3.18-1.79 4.13-1.15 1.15-2.94 2.4-6.05 2.4-4.83 0-8.6-3.89-8.6-8.72s3.77-8.72 8.6-8.72c2.6 0 4.51 1.03 5.910 2.35l2.31-2.31C18.75 1.44 16.13 0 12.48 0 5.87 0 .31 5.39.31 12s5.56 12 12.17 12c3.57 0 6.27-1.17 8.37-3.36 2.160-2.16 2.84-5.21 2.84-7.67 0-.76-.06-1.47-.17-2.05H12.48z"></path></svg></a><a href="{{ fbUrl }}" target="_blank" rel="noopener" aria-label="פייסבוק" title="פייסבוק" style="display:flex;align-items:center;justify-content:center;width:44px;height:44px;border-radius:50%;background:#211C16;color:#F5F0E4;transition:background 0.2s ease,color 0.2s ease" style-hover="background:#B4813C;color:#1B1712"><svg viewBox="0 0 24 24" width="19" height="19" fill="currentColor" aria-hidden="true"><path d="M13.5 22v-8.2h2.8l.4-3.3h-3.2V8.4c0-.9.3-1.6 1.6-1.6h1.7V3.9c-.3 0-1.3-.1-2.5-.1-2.5 0-4.2 1.5-4.2 4.3v2.4H7.3v3.3h2.8V22z"></path></svg></a><a href="{{ igUrl }}" target="_blank" rel="noopener" aria-label="אינסטגרם" title="אינסטגרם" style="display:flex;align-items:center;justify-content:center;width:44px;height:44px;border-radius:50%;background:#211C16;color:#F5F0E4;transition:background 0.2s ease,color 0.2s ease" style-hover="background:#B4813C;color:#1B1712"><svg viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="3.5" y="3.5" width="17" height="17" rx="5"></rect><circle cx="12" cy="12" r="4"></circle><circle cx="17.2" cy="6.8" r="0.9" fill="currentColor" stroke="none"></circle></svg></a></div>
           </div>
           <div style="display:flex;gap:12px;flex-wrap:wrap">
-            <a href="#contact" style="display:inline-flex;align-items:center;gap:10px;background:#B4813C;color:#1B1712;padding:14px 28px;font-size:16px;font-weight:600;border-radius:100px;white-space:nowrap" style-hover="background:#8F6326;color:#1B1712">דברו איתנו על הפרויקט שלכם <span aria-hidden="true">←</span></a>
+            <a href="#quick" style="display:inline-flex;align-items:center;gap:10px;background:#B4813C;color:#1B1712;padding:14px 28px;font-size:16px;font-weight:600;border-radius:100px;white-space:nowrap" style-hover="background:#8F6326;color:#1B1712">דברו איתנו על הפרויקט שלכם <span aria-hidden="true">←</span></a>
             <a href="{{ reviewsUrl }}" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:10px;color:#211C16;font-size:16px;border:1px solid rgba(33,28,22,0.35);border-radius:100px;padding:14px 26px;white-space:nowrap" style-hover="background:rgba(33,28,22,0.08);border-color:#211C16;color:#211C16">לכל הביקורות בגוגל ›</a>
           </div>
         </div>
@@ -541,7 +564,7 @@ button,input,select,textarea{font-family:inherit}
         <div style="display:inline-flex;align-items:center;gap:10px;color:#C99752;font-size:14px;font-weight:600;white-space:nowrap"><span style="display:block;width:24px;height:1px;background:#C99752"></span>09 · לפני שבוחרים</div>
         <h2 style="font-size:clamp(26px,2.8vw,34px);line-height:1.15;color:#F5F0E4">4 שאלות שחובה לשאול לפני פרויקט חוץ</h2>
         <p style="color:rgba(245,240,228,0.74);font-size:15.5px;line-height:1.6">פרויקט מוצלח מתחיל במידע אמין ובשקיפות. ריכזנו את הנקודות שחשוב לבדוק בכל הצעת מחיר, כדי שתבחרו נכון.</p>
-        <a href="#contact" style="align-self:flex-start;margin-top:4px;background:#B4813C;color:#1B1712;padding:13px 26px;font-size:15.5px;font-weight:600;border-radius:100px;white-space:nowrap" style-hover="background:#C99752;color:#1B1712">יש לכם שאלה? דברו איתנו</a>
+        <a href="#quick" style="align-self:flex-start;margin-top:4px;background:#B4813C;color:#1B1712;padding:13px 26px;font-size:15.5px;font-weight:600;border-radius:100px;white-space:nowrap" style-hover="background:#C99752;color:#1B1712">יש לכם שאלה? דברו איתנו</a>
       </div>
     </div>
   </section>
@@ -557,11 +580,11 @@ button,input,select,textarea{font-family:inherit}
         <div style="display:flex;flex-direction:column;gap:18px;margin-bottom:36px">
           <div style="display:flex;flex-direction:column;gap:3px;border-top:1px solid rgba(245,240,228,0.16);padding-top:14px">
             <span style="font-size:12.5px;color:#C99752">טלפון</span>
-            <a href="tel:0553100154" style="font-size:17px;color:#F5F0E4" style-hover="color:#C99752">055-310-0154</a>
+            <a href="tel:0547752697" style="font-size:17px;color:#F5F0E4" style-hover="color:#C99752">054-775-2697</a>
           </div>
           <div style="display:flex;flex-direction:column;gap:3px;border-top:1px solid rgba(245,240,228,0.16);padding-top:14px">
             <span style="font-size:12.5px;color:#C99752">וואטסאפ</span>
-            <a href="{{ waHref }}" style="font-size:17px;color:#F5F0E4" style-hover="color:#C99752">055-995-8231</a>
+            <a href="{{ waHref }}" style="font-size:17px;color:#F5F0E4" style-hover="color:#C99752">054-775-2697</a>
           </div>
           <div style="display:flex;flex-direction:column;gap:3px;border-top:1px solid rgba(245,240,228,0.16);padding-top:14px">
             <span style="font-size:12.5px;color:#C99752">דוא"ל</span>
@@ -672,7 +695,7 @@ button,input,select,textarea{font-family:inherit}
   <div style="width:min(92%,1180px);margin-inline:auto;display:flex;align-items:center;justify-content:center;gap:1.25rem;flex-wrap:wrap">
     <img src="/img/logo-dark-bg.png" alt="סופר צל" style="display:block;height:36px;width:auto;flex:0 0 auto">
     <span style="position: relative; color: #0a0f16">סופר צל · IL Projects — מעטפת מקצועית לבית ולמרחב החוץ</span>
-    <a href="tel:0553100154" style="color: #0a0f16" style-hover="color:#C99752">055-310-0154</a>
+    <a href="tel:0547752697" style="color: #0a0f16" style-hover="color:#C99752">054-775-2697</a>
     <a href="mailto:ilprojects.israel@gmail.com" style="color: #0a0f16" style-hover="color:#C99752">ilprojects.israel@gmail.com</a>
     <button onClick="{{ a11yOpen }}" style="background: transparent; border: 0; padding: 0; font: inherit; color: #0a0f16; text-decoration: underline; text-underline-offset: 3px; cursor: pointer" style-hover="color:#C99752">הצהרת נגישות</button>
   </div>
@@ -680,13 +703,13 @@ button,input,select,textarea{font-family:inherit}
 
 <div style="position:fixed;z-index:95;inset-inline-end:16px;bottom:{{ fabBottom }};opacity:{{ fabOp }};pointer-events:{{ fabPe }};transform:translateY({{ fabY }});transition:opacity 0.3s,transform 0.3s;display:flex;align-items:center;gap:6px;padding:6px;border-radius:100px;background:rgba(27,23,18,0.94);border:1px solid rgba(245,240,228,0.16);box-shadow:0 14px 38px rgba(27,23,18,0.42),0 2px 6px rgba(27,23,18,0.3)">
   <sc-if value="{{ showLeadFab }}" hint-placeholder-val="{{ false }}">
-  <a href="#contact" style="display:inline-flex;align-items:center;gap:8px;height:48px;padding:0 22px;border-radius:100px;background:#B4813C;color:#1B1712;font-size:15.5px;font-weight:600;letter-spacing:-0.01em;white-space:nowrap;transition:background 0.2s ease,opacity 0.35s ease,transform 0.35s ease;opacity:{{ fabOp }};transform:{{ fabShift }};pointer-events:{{ fabPtr }}" style-hover="background:#C99752;color:#1B1712">שיחת ייעוץ<span aria-hidden="true" style="font-size:17px;line-height:1">←</span></a>
+  <a href="#quick" style="display:inline-flex;align-items:center;gap:8px;height:48px;padding:0 22px;border-radius:100px;background:#B4813C;color:#1B1712;font-size:15.5px;font-weight:600;letter-spacing:-0.01em;white-space:nowrap;transition:background 0.2s ease,opacity 0.35s ease,transform 0.35s ease;opacity:{{ fabOp }};transform:{{ fabShift }};pointer-events:{{ fabPtr }}" style-hover="background:#C99752;color:#1B1712">שיחת ייעוץ<span aria-hidden="true" style="font-size:17px;line-height:1">←</span></a>
   <span aria-hidden="true" style="width:1px;height:26px;background:rgba(245,240,228,0.18)"></span>
   </sc-if>
   <a href="{{ waHref }}" target="_blank" rel="noopener" aria-label="שליחת הודעה בוואטסאפ" title="וואטסאפ" style="display:flex;align-items:center;justify-content:center;width:48px;height:48px;border-radius:100px;background:rgba(37,211,102,0.16);color:#3CE07A;transition:background 0.2s ease,color 0.2s ease" style-hover="background:#25D366;color:#0F2A18">
     <svg viewBox="0 0 24 24" width="23" height="23" fill="currentColor" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.46 1.32 4.96L2 22l5.25-1.38a9.9 9.9 0 0 0 4.79 1.22h.01c5.46 0 9.91-4.45 9.91-9.91C21.96 6.45 17.5 2 12.04 2Zm0 18.13h-.01a8.2 8.2 0 0 1-4.19-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.22 8.22 0 0 1-1.26-4.36c0-4.54 3.7-8.23 8.25-8.23 2.2 0 4.27.86 5.83 2.41a8.19 8.19 0 0 1 2.41 5.83c0 4.54-3.7 8.21-8.24 8.21Zm4.52-6.16c-.25-.12-1.47-.72-1.69-.81-.23-.08-.39-.12-.56.13-.16.24-.64.8-.79.97-.14.16-.29.18-.54.06-.25-.12-1.05-.39-1.99-1.23-.74-.66-1.23-1.47-1.38-1.72-.14-.25-.01-.38.11-.5.11-.11.25-.29.37-.43.13-.15.17-.25.25-.41.08-.17.04-.31-.02-.43-.06-.12-.56-1.34-.76-1.84-.2-.48-.41-.42-.56-.43h-.48c-.17 0-.43.06-.66.31-.23.25-.86.85-.86 2.07 0 1.22.89 2.4 1.01 2.56.12.17 1.75 2.67 4.23 3.74.59.26 1.05.41 1.41.52.59.19 1.13.16 1.56.1.48-.07 1.47-.6 1.68-1.18.21-.58.21-1.08.14-1.18-.06-.11-.22-.17-.47-.29Z"></path></svg>
   </a>
-  <a href="tel:0553100154" aria-label="התקשרו אלינו" title="055-310-0154" style="position:relative;display:flex;align-items:center;justify-content:center;width:48px;height:48px;border-radius:100px;background:rgba(180,129,60,0.18);color:#D9AE6C;transition:background 0.2s ease,color 0.2s ease" style-hover="background:#B4813C;color:#1B1712">
+  <a href="tel:0547752697" aria-label="התקשרו אלינו" title="054-775-2697" style="position:relative;display:flex;align-items:center;justify-content:center;width:48px;height:48px;border-radius:100px;background:rgba(180,129,60,0.18);color:#D9AE6C;transition:background 0.2s ease,color 0.2s ease" style-hover="background:#B4813C;color:#1B1712">
     <span data-stz-ring="true" aria-hidden="true" style="position:absolute;inset:0;border-radius:100px;border:1.5px solid #C99752;animation:stz-ring 2.6s cubic-bezier(0.22,0.61,0.36,1) infinite"></span>
     <span data-stz-shake="true" style="display:flex;animation:stz-shake 2.6s ease-in-out infinite;transform-origin:50% 60%">
     <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.79 19.79 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92Z"></path></svg>
@@ -722,7 +745,7 @@ button,input,select,textarea{font-family:inherit}
       <button onClick="{{ a11yResetAll }}" style="min-height:46px;border:1px solid #B4813C;background:transparent;color:#6E4D1E;border-radius:16px;font:inherit;font-size:15px;font-weight:600;cursor:pointer" style-hover="background:rgba(180,129,60,0.12);color:#6E4D1E">איפוס כל ההגדרות</button>
     </div>
     <div style="margin-top:18px;padding-top:14px;border-top:1px solid rgba(33,28,22,0.14);font-size:13px;color:#4B443A;line-height:1.7">
-      <p style="margin:0">האתר פועל לעמידה בתקן הישראלי ת"י 5568 ברמה AA ובתקנות שוויון זכויות לאנשים עם מוגבלות. נתקלתם בבעיית נגישות? נשמח לשמוע: <a href="mailto:ilprojects.israel@gmail.com" style="color:#6E4D1E">ilprojects.israel@gmail.com</a> · <a href="tel:0553100154" style="color:#6E4D1E">055-310-0154</a></p>
+      <p style="margin:0">האתר פועל לעמידה בתקן הישראלי ת"י 5568 ברמה AA ובתקנות שוויון זכויות לאנשים עם מוגבלות. נתקלתם בבעיית נגישות? נשמח לשמוע: <a href="mailto:ilprojects.israel@gmail.com" style="color:#6E4D1E">ilprojects.israel@gmail.com</a> · <a href="tel:0547752697" style="color:#6E4D1E">054-775-2697</a></p>
     </div>
   </div>
 </div>
@@ -1164,7 +1187,7 @@ class Component extends DCLogic {
     const chapters = [
       { num: '01', span: n ? 'span 1' : 'span 6', titleSize: n ? '23px' : '30px', tone: 'big', slotId: 'lp-cat-1', src: '/img/fast/projects/pergola-louver-detail.webp', title: 'פתרונות קירוי והצללה בהתאמה אישית', body: 'כמות האור, תחושת המחסה והקו שממנו יוצא כל השאר.', items: ['פרגולה חשמלית או ביוקלימטית', 'פרגולות אלומיניום ועץ', 'סוככי זרועות, רשתות וגגונים'] },
       { num: '02', span: n ? 'span 1' : 'span 6', titleSize: n ? '23px' : '30px', tone: 'big', slotId: 'lp-cat-2', src: '/img/fast/projects/glass-sunroom-interior.webp', title: 'סגירות זכוכית וחללים סגורים', body: 'מרחיבים את השימוש גם בחורף, בלי לאבד את הנוף.', items: ['סגירת מרפסת וסגירת חורף', 'מערכות הזזה וחדרי שמש', 'מחיצות זכוכית'] },
-      { num: '03', span: n ? 'span 1' : 'span 6', titleSize: n ? '23px' : '30px', tone: 'big', slotId: 'lp-cat-8', src: '/img/fast/lp/home-lp-cat-8.webp', title: 'מטבחי חוץ ואלמנטים משלימים', body: 'אירוח רציף בין בישול לישיבה, באותה שפה חומרית.', items: ['מטבח חוץ ובר אירוח', 'פינות ישיבה בנויות', 'תאורה ואלמנטים משלימים'] },
+      { num: '03', span: n ? 'span 1' : 'span 6', titleSize: n ? '23px' : '30px', tone: 'big', slotId: 'lp-cat-8', src: '/img/fast/projects/pergola-kitchen-bar-close.webp', title: 'מטבחי חוץ ואלמנטים משלימים', body: 'אירוח רציף בין בישול לישיבה, באותה שפה חומרית.', items: ['מטבח חוץ ובר אירוח', 'פינות ישיבה בנויות', 'תאורה ואלמנטים משלימים'] },
       { num: '04', span: n ? 'span 1' : 'span 6', titleSize: n ? '23px' : '30px', tone: 'big', slotId: 'lp-cat-6', src: '/img/fast/lp/home-lp-cat-6.webp', title: 'בנייה קלה ותוספות חוץ', body: 'שטח נוסף לצורך חדש, בלוח זמנים קצר.', items: ['תוספת חדר, משרד או חדר שמש', 'מרפסת בבנייה קלה', 'פאנל מבודד בגמר אלומיניום'] },
       { num: '05', span: n ? 'span 1' : 'span 2', titleSize: n ? '21px' : '23px', tone: 'reg', slotId: 'lp-cat-3', src: '/img/fast/lp/home-lp-cat-3.webp', title: 'גידור, שערים ותיחום מגרש', body: 'פרטיות, כניסה ונוכחות חזותית לבית.', items: ['גדרות אלומיניום ועץ', 'שערים חשמליים', 'מעקות ותיחום'] },
       { num: '06', span: n ? 'span 1' : 'span 2', titleSize: n ? '21px' : '23px', tone: 'reg', slotId: 'lp-cat-7', src: '/img/fast/lp/home-lp-cat-7.webp', title: 'דקים, ריצוף וחיפויי חוץ', body: 'הרצף בין הבית למרחב החוץ.', items: ['דק עץ או קומפוזיט', 'ריצוף אבן ופורצלן חוץ', 'חיפויי קירות חוץ'] },
@@ -1381,7 +1404,7 @@ class Component extends DCLogic {
               sbBubbleText: curC.n + ' · ' + curC.label,
               sbRef: this.sbRef, sbDown: this.sbDown,
               sbEnter: () => this.setState({ sbHover: true }), sbLeave: () => this.setState({ sbHover: false }),
-              chapTicks: C.map((c, i) => { const on = c.id === ac; return { href: '#' + c.id, aria: c.n + ' ' + c.label, n: c.n, label: c.label, top: (pos[i] > 0 || i === 0 ? pos[i] || 0 : 0) + '%', hide: !(pos[i] >= 0) || (i > 0 && !pos[i]), w: on ? '14px' : '9px', ml: on ? '5px' : '7px', c: on ? '#1B1712' : 'rgba(27,23,18,0.55)', lblOp: hov ? '1' : '0', lblX: hov ? '0' : '-6px', lblPe: hov ? 'auto' : 'none' }; })
+              chapTicks: C.map((c, i) => { const on = c.id === ac; return { href: '#' + c.id, aria: c.n + ' ' + c.label, n: c.n, label: c.label, top: (pos[i] > 0 || i === 0 ? pos[i] || 0 : 0) + '%', hide: !(pos[i] >= 0) || (i > 0 && !pos[i]), w: on ? '14px' : '9px', ml: on ? '5px' : '7px', c: on ? '#1B1712' : 'rgba(27,23,18,0.55)', lblOp: hov ? '1' : '0', lblX: hov ? '0' : '-6px', lblPe: hov ? 'auto' : 'none', pe: hov ? 'auto' : 'none' }; })
             };
           })()
         };
@@ -1502,6 +1525,18 @@ class Component extends DCLogic {
       waHref: 'https://wa.me/972547752697?text=' + encodeURIComponent('היי, הגעתי מהאתר ואשמח לתאם שיחת ייעוץ'),
       sent: this.state.sent,
       notSent: !this.state.sent,
+      qSent: !!this.state.qSent,
+      qOpen: !this.state.qSent,
+      quickCols: n ? '1fr' : 'minmax(0,1fr) minmax(0,1.15fr)',
+      quickFormCols: n ? '1fr' : 'minmax(0,1fr) minmax(0,1fr) auto',
+      onQuickHome: (e) => {
+        e.preventDefault();
+        if (!(f.name || '').trim() || (f.phone || '').replace(/\D/g, '').length < 9) return;
+        const lines = ['היי, הגעתי מהאתר ואשמח שתחזרו אליי לשיחת ייעוץ.', 'שם: ' + (f.name || ''), 'טלפון: ' + (f.phone || '')].join('\n');
+        this.setState({ qSent: true });
+        window.stzSendLead({ name: f.name, phone: f.phone, solution: 'טופס מהיר', message: lines.replace(/\n/g, ' | '), source: 'home_quick' })
+          .catch(() => { window.location.href = this.waNumberHref(lines); });
+      },
       fName: f.name,
       fPhone: f.phone,
       fCity: f.city,
@@ -1547,10 +1582,8 @@ class Component extends DCLogic {
           v.notes ? 'פרטים: ' + v.notes : ''
         ].filter(Boolean).join('\n');
         this.setState({ sent: true });
-        if (typeof window !== 'undefined') {
-          if (window.stzSendLead) window.stzSendLead({ page: 'דף הבית', name: v.name, phone: v.phone, city: v.city, solution: v.category, message: [v.stage ? 'שלב: ' + v.stage : '', v.notes ? 'פרטים: ' + v.notes : ''].filter(Boolean).join(' | ') });
-          window.open(this.waNumberHref(lines), '_blank');
-        }
+        window.stzSendLead({ name: v.name, phone: v.phone, solution: v.category || '', message: lines.replace(/\n/g, ' | '), source: 'home_long' })
+          .catch(() => { window.location.href = this.waNumberHref(lines); });
       }
     };
   }

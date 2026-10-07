@@ -4,8 +4,6 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <script src="/support.js"></script>
-<script src="/lead.js"></script>
-<script src="/analytics.js"></script>
 <meta name="ext-resource-dependency" content="img/logo-light-bg.png" data-resource-id="r0">
 <meta name="ext-resource-dependency" content="img/fast/w/hero-pergola.webp" data-resource-id="r1">
 <meta name="ext-resource-dependency" content="img/fast/w/pg2-black-louver.webp" data-resource-id="r2">
@@ -34,6 +32,9 @@
 <title>פתרונות הצללה מתקדמים בהתאמה אישית | סופר צל</title>
 <template id="__bundler_thumbnail"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200"><rect width="200" height="200" fill="#1B1712"></rect><rect x="40" y="76" width="120" height="12" rx="4" fill="#B4813C"></rect><rect x="52" y="96" width="8" height="52" fill="#B4813C"></rect><rect x="140" y="96" width="8" height="52" fill="#B4813C"></rect><rect x="40" y="52" width="120" height="8" rx="4" fill="#E8C48C"></rect></svg></template>
 <link rel="preload" as="image" href="/img/fast/lp/pg-hero.webp" fetchpriority="high">
+<script src="/lead.js"></script>
+<script src="/lead-modal.js"></script>
+<script src="/analytics.js"></script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
 <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet">
@@ -80,7 +81,7 @@ button,input,select,textarea{font-family:inherit}
         <a href="#elephant" style="font-size:15px;white-space:nowrap">שאלות</a>
       </nav>
       </sc-if>
-      <a href="#contact" style="background:#B4813C;color:#1B1712;padding:12px 26px;font-size:15px;font-weight:600;border-radius:100px;white-space:nowrap" style-hover="background:#C99752;color:#1B1712">תאמו שיחת ייעוץ</a>
+      <a href="#lead" style="background:#B4813C;color:#1B1712;padding:12px 26px;font-size:15px;font-weight:600;border-radius:100px;white-space:nowrap" style-hover="background:#C99752;color:#1B1712">תאמו שיחת ייעוץ</a>
     </div>
   </div>
   <div aria-hidden="true" style="position:absolute;bottom:-1px;inset-inline-start:0;height:2px;width:{{ readPct }};background:#B4813C;transition:width 0.15s linear"></div>
@@ -92,16 +93,16 @@ button,input,select,textarea{font-family:inherit}
   </nav>
   </sc-if>
 </header>
-<nav aria-label="גלילה מהירה בין פרקים" onMouseEnter="{{ sbEnter }}" onMouseLeave="{{ sbLeave }}" style="position:fixed;left:{{ sbLeft }};top:{{ sbTop }};bottom:{{ sbBottom }};width:34px;z-index:85;direction:ltr;opacity:{{ sbOp }};pointer-events:{{ sbPe }};transition:opacity 0.35s ease">
-  <div ref="{{ sbRef }}" onPointerDown="{{ sbDown }}" style="position:absolute;inset:0;cursor:pointer;touch-action:none">
-    <span aria-hidden="true" style="position:absolute;left:15px;top:0;bottom:0;width:3px;border-radius:100px;background:rgba(27,23,18,0.2);box-shadow:0 0 0 1px rgba(245,240,228,0.55)"></span>
-    <span aria-hidden="true" style="position:absolute;left:12px;top:{{ sbThumbTop }};height:{{ sbThumbH }};min-height:28px;width:9px;border-radius:100px;background:#B4813C;box-shadow:0 0 0 2px rgba(245,240,228,0.9),0 4px 12px rgba(27,23,18,0.3);transition:{{ sbThumbTr }}"></span>
+<nav aria-label="גלילה מהירה בין פרקים" onMouseEnter="{{ sbEnter }}" onMouseLeave="{{ sbLeave }}" style="position:fixed;left:{{ sbLeft }};top:{{ sbTop }};bottom:{{ sbBottom }};width:34px;z-index:85;direction:ltr;opacity:{{ sbOp }};pointer-events:none;transition:opacity 0.35s ease">
+  <div ref="{{ sbRef }}" onPointerDown="{{ sbDown }}" style="position:absolute;top:0;bottom:0;left:9px;width:16px;cursor:pointer;touch-action:none;pointer-events:{{ sbPe }}">
+    <span aria-hidden="true" style="position:absolute;left:6px;top:0;bottom:0;width:3px;border-radius:100px;background:rgba(27,23,18,0.2);box-shadow:0 0 0 1px rgba(245,240,228,0.55)"></span>
+    <span aria-hidden="true" style="position:absolute;left:3px;top:{{ sbThumbTop }};height:{{ sbThumbH }};min-height:28px;width:9px;border-radius:100px;background:#B4813C;box-shadow:0 0 0 2px rgba(245,240,228,0.9),0 4px 12px rgba(27,23,18,0.3);transition:{{ sbThumbTr }}"></span>
     <sc-if value="{{ sbBubble }}" hint-placeholder-val="{{ false }}">
-      <span dir="rtl" style="position:absolute;left:34px;top:{{ sbThumbTop }};font-size:13px;font-weight:600;color:#F5F0E4;background:#1B1712;border-radius:100px;padding:5px 12px;white-space:nowrap;box-shadow:0 6px 18px rgba(27,23,18,0.35);pointer-events:none">{{ sbBubbleText }}</span>
+      <span dir="rtl" style="position:absolute;left:25px;top:{{ sbThumbTop }};font-size:13px;font-weight:600;color:#F5F0E4;background:#1B1712;border-radius:100px;padding:5px 12px;white-space:nowrap;box-shadow:0 6px 18px rgba(27,23,18,0.35);pointer-events:none">{{ sbBubbleText }}</span>
     </sc-if>
   </div>
   <sc-for list="{{ chapTicks }}" as="t" hint-placeholder-count="0">
-    <a href="{{ t.href }}" aria-label="{{ t.aria }}" hidden="{{ t.hide }}" style="position:absolute;left:6px;top:{{ t.top }};display:flex;align-items:center;gap:8px;transform:translateY(-50%);min-height:22px">
+    <a href="{{ t.href }}" aria-label="{{ t.aria }}" hidden="{{ t.hide }}" style="position:absolute;left:6px;top:{{ t.top }};display:flex;align-items:center;gap:8px;transform:translateY(-50%);min-height:22px;pointer-events:{{ t.lblPe }}">
       <span style="display:block;width:{{ t.w }};height:3px;border-radius:100px;background:{{ t.c }};margin-left:{{ t.ml }};transition:width 0.25s,background 0.25s"></span>
       <span dir="rtl" style="font-size:12.5px;font-weight:600;color:#1B1712;background:rgba(245,240,228,0.96);border-radius:100px;padding:3px 10px;white-space:nowrap;box-shadow:0 4px 14px rgba(27,23,18,0.18);opacity:{{ t.lblOp }};transform:translateX({{ t.lblX }});transition:opacity 0.25s,transform 0.25s;pointer-events:{{ t.lblPe }}">{{ t.n }} · {{ t.label }}</span>
     </a>
@@ -338,7 +339,7 @@ button,input,select,textarea{font-family:inherit}
           </sc-for>
         </div>
         <div style="display:flex;gap:12px;flex-wrap:wrap;margin-top:clamp(1.75rem,4vh,2.5rem)">
-          <a href="#contact" style="flex:{{ procBtnFlex }};text-align:center;background:#B4813C;color:#1B1712;padding:15px 32px;font-size:16px;font-weight:600;border-radius:100px" style-hover="background:#C99752;color:#1B1712">לתיאום פגישת ייעוץ</a>
+          <a href="#lead" style="flex:{{ procBtnFlex }};text-align:center;background:#B4813C;color:#1B1712;padding:15px 32px;font-size:16px;font-weight:600;border-radius:100px" style-hover="background:#C99752;color:#1B1712">לתיאום פגישת ייעוץ</a>
           <a href="{{ waHref }}" style="flex:{{ procBtnFlex }};text-align:center;color:#F5F0E4;padding:15px 28px;font-size:16px;border:1px solid rgba(245,240,228,0.4);border-radius:100px" style-hover="background:rgba(245,240,228,0.08);border-color:#F5F0E4;color:#F5F0E4">שליחת הודעה בוואטסאפ</a>
         </div>
       </div>
@@ -369,6 +370,7 @@ button,input,select,textarea{font-family:inherit}
           <label style="display:grid;gap:6px"><span style="font-size:13.5px;color:rgba(245,240,228,0.7)">טלפון</span>
             <input type="tel" value="{{ fPhone }}" onChange="{{ onPhone }}" style="width:100%;padding:14px 18px;border:1px solid rgba(245,240,228,0.26);background:rgba(245,240,228,0.06);border-radius:14px;color:#F5F0E4;font-size:16px;box-sizing:border-box" style-focus="outline:none;border-color:#C99752;background:rgba(245,240,228,0.1)">
           </label>
+          <sc-if value="{{ pgErr }}" hint-placeholder-val="{{ false }}"><p role="alert" style="font-size:13.5px;color:#E8C48C;text-align:center">נא למלא שם ומספר טלפון תקין</p></sc-if>
           <button onClick="{{ onQuickSubmit }}" style="width:100%;background:#B4813C;color:#1B1712;border:0;padding:16px;font-size:16.5px;font-weight:600;border-radius:100px;cursor:pointer" style-hover="background:#C99752">לתיאום פגישת ייעוץ בשטח</button>
           <p style="font-size:12.5px;color:rgba(245,240,228,0.62);text-align:center">מענה מהיר בוואטסאפ או טלפונית · ללא ספאם</p>
         </div>
@@ -494,7 +496,7 @@ button,input,select,textarea{font-family:inherit}
         <div style="display:inline-flex;align-items:center;gap:10px;color:#C99752;font-size:14px;font-weight:600;white-space:nowrap"><span style="display:block;width:24px;height:1px;background:#C99752"></span>לפני שבוחרים</div>
         <h2 style="font-size:clamp(26px,2.8vw,34px);line-height:1.15;color:#F5F0E4">4 שאלות שחובה לשאול לפני שבוחרים פתרון הצללה</h2>
         <p style="color:rgba(245,240,228,0.74);font-size:15.5px;line-height:1.6">פרויקט מוצלח מתחיל במידע אמין ובשקיפות. ריכזנו עבורכם את הנקודות שחשוב לבדוק בכל הצעת מחיר, כדי שתבחרו את הפתרון הנכון לחלל שלכם.</p>
-        <a href="#contact" style="align-self:flex-start;margin-top:4px;background:#B4813C;color:#1B1712;padding:13px 26px;font-size:15.5px;font-weight:600;border-radius:100px;white-space:nowrap" style-hover="background:#C99752;color:#1B1712">יש לכם שאלה? דברו איתנו</a>
+        <a href="#lead" style="align-self:flex-start;margin-top:4px;background:#B4813C;color:#1B1712;padding:13px 26px;font-size:15.5px;font-weight:600;border-radius:100px;white-space:nowrap" style-hover="background:#C99752;color:#1B1712">יש לכם שאלה? דברו איתנו</a>
       </div>
     </div>
   </section>
@@ -513,7 +515,7 @@ button,input,select,textarea{font-family:inherit}
           </div>
           <div style="display:flex;flex-direction:column;gap:3px;border-top:1px solid rgba(245,240,228,0.16);padding-top:14px">
             <span style="font-size:12.5px;color:#C99752">וואטסאפ</span>
-            <a href="{{ waHref }}" style="font-size:17px;color:#F5F0E4" style-hover="color:#C99752">055-995-8231</a>
+            <a href="{{ waHref }}" style="font-size:17px;color:#F5F0E4" style-hover="color:#C99752">054-775-2697</a>
           </div>
           <div style="display:flex;flex-direction:column;gap:3px;border-top:1px solid rgba(245,240,228,0.16);padding-top:14px">
             <span style="font-size:12.5px;color:#C99752">דוא"ל</span>
@@ -563,6 +565,7 @@ button,input,select,textarea{font-family:inherit}
             <span style="font-size:14px;color:rgba(245,240,228,0.65)">תיאור קצר</span>
             <textarea rows="3" value="{{ fNotes }}" onChange="{{ onNotes }}" style="width:100%;padding:14px 18px;border:1px solid rgba(245,240,228,0.22);background:rgba(245,240,228,0.03);border-radius:14px;color:#F5F0E4;font-size:16px;resize:vertical;min-height:84px;box-sizing:border-box" style-focus="outline:none;border-color:#C99752;background:rgba(245,240,228,0.06)"></textarea>
           </label>
+          <sc-if value="{{ pgErr }}" hint-placeholder-val="{{ false }}"><p role="alert" style="font-size:13.5px;color:#E8C48C;text-align:center">נא למלא שם ומספר טלפון תקין</p></sc-if>
           <button onClick="{{ onSubmit }}" style="width:100%;background:#B4813C;color:#1B1712;border:0;padding:17px;font-size:17px;font-weight:600;border-radius:100px;cursor:pointer" style-hover="background:#C99752">לשיחת ייעוץ והתאמה מהירה</button>
           <p style="font-size:13px;color:rgba(245,240,228,0.45);text-align:center">השארת פרטים מהווה הסכמה ליצירת קשר לצורך טיפול בפנייה זו בלבד.</p>
         </div>
@@ -648,6 +651,7 @@ button,input,select,textarea{font-family:inherit}
         <option value="מעטפת חוץ משולבת" style="color:#211C16">מעטפת חוץ משולבת</option>
         <option value="עוד לא בטוח/ה" style="color:#211C16">עוד לא בטוח/ה</option>
       </select>
+      <sc-if value="{{ pgErr }}" hint-placeholder-val="{{ false }}"><p role="alert" style="font-size:13.5px;color:#E8C48C;text-align:center">נא למלא שם ומספר טלפון תקין</p></sc-if>
       <button onClick="{{ onQuickSubmit }}" style="width:100%;background:#B4813C;color:#1B1712;border:0;padding:16px;font-size:16.5px;font-weight:600;border-radius:100px;cursor:pointer" style-hover="background:#C99752">לתיאום פגישת ייעוץ בשטח</button>
       <p style="font-size:12.5px;color:rgba(245,240,228,0.62);text-align:center;line-height:1.5">מענה מהיר בוואטסאפ או טלפונית · הפרטים שלכם נשמרים לצורך יצירת קשר בלבד</p>
     </div>
@@ -894,31 +898,27 @@ class Component extends DCLogic {
       { k: 1, word: 'וגם סגירות זכוכית למרפסת.', caption: 'סגירת זכוכית · הפתרון שאנחנו ממליצים עליו', src: '/img/fast/lp/pg-hero.webp', pos: '50% 50%', alt: 'מרפסת בסגירת זכוכית בפרופיל שחור',
         pins: [
           { label: 'קירוי עליון מעל הקורות', x: '27.7%', y: '8.6%' },
-          { label: 'חלונות זכוכית בהזזה בפרופיל שחור', x: '26%', y: '42%' },
-          { label: 'חלונות פנורמיים', x: '57.5%', y: '30.8%' },
-          { label: 'צמחייה', x: '90.7%', y: '51.6%' }
+          { label: 'חלונות זכוכית בהזזה בפרופיל שחור', x: '21.7%', y: '47.4%' },
+          { label: 'חלונות פנורמיים', x: '41.5%', y: '30.5%' }
         ] },
       { k: 5, word: 'פרגולות עץ טבעי.', caption: 'עבודה לדוגמה · פרגולת עץ גושני באווירה כפרית מודרנית', src: '/img/fast/projects/wood-pergola-rustic.webp', pos: '50% 35%', alt: 'פרגולת עץ טבעי בקורות גושניות מעל חצר כניסה עם ריצוף מצויר וצמחייה',
         pins: [
           { label: 'עץ טבעי בחתך גושני', x: '84.2%', y: '2.0%' },
           { label: 'שלבי עץ צפופים להצללה', x: '20%', y: '8%' },
-          { label: 'תאורה', x: '27.6%', y: '34.7%' },
+          { label: 'תאורה', x: '27.3%', y: '31.3%' },
           { label: 'צמחייה מטפסת משתלבת', x: '67.0%', y: '45.3%' }
         ] },
       { k: 0, word: 'עם מטבח חוץ, שולחן בר וכסאות.', caption: 'עבודה לדוגמה · פרגולה, מטבח חוץ ושולחן בר', src: '/img/fast/hero/hero-pergola-kitchen-bar-wide.webp', pos: '50% 40%', alt: 'פרגולת אלומיניום שחורה עם רפרפות דמוי עץ וסנטף BH, מעל מטבח חוץ, שולחן בר וכסאות',
         pins: [
           { label: 'רפרפות דמוי עץ · סנטף BH של פלרם', x: '29.9%', y: '10.8%' },
-          { label: 'קורות אלומיניום שחורות', x: '73.9%', y: '36.2%' },
           { label: 'מאוורר חוץ', x: '48.7%', y: '29.7%' },
-          { label: 'מטבח חוץ', x: '29.7%', y: '66.3%' },
-          { label: 'אחסון', x: '34.1%', y: '84.2%' },
-          { label: 'שולחן בר וכסאות', x: '50.3%', y: '71.2%' },
-          { label: 'גדר עץ', x: '5.2%', y: '57.9%' }
+          { label: 'מטבח חוץ עם אחסון', x: '16.5%', y: '66.3%' },
+          { label: 'שולחן בר וכסאות', x: '51.2%', y: '74.1%' }
         ] },
       { k: 2, word: 'פרגולות תריס חשמליות.', caption: 'רפרפות מתכווננות · שליטה באור ובצל', src: '/img/fast/w/pg2-black-louver.webp', pos: '50% 45%', alt: 'פרגולת רפרפות שחורה מתכווננת',
         pins: [
-          { label: 'קונסטרוקציה בגוון שחור', x: '37.0%', y: '24.8%' },
-          { label: 'רפרפות אלומיניום מתכווננות', x: '28.2%', y: '62.0%' },
+          { label: 'קונסטרוקציה בגוון שחור', x: '89.5%', y: '7.0%' },
+          { label: 'רפרפות אלומיניום מתכווננות', x: '25.5%', y: '29.6%' },
           { label: 'מנוע חשמלי לשליטה בשלט', x: '50.6%', y: '51.4%' }
         ] },
       { k: 3, word: 'עץ וגמר דמוי עץ.', caption: 'מראה חם · תחזוקה נוחה', src: '/img/fast/w/pergola-wood-slats.webp', pos: '50% 45%', alt: 'פרגולת שלבי עץ',
@@ -1231,7 +1231,7 @@ class Component extends DCLogic {
       })) : [],
       closeProject: () => this.setState({ project: null, photo: 0 }),
       modalOpen: this.state.modalOpen,
-      openModal: () => this.setState({ modalOpen: true }),
+      openModal: () => { if (window.stzOpenLead) window.stzOpenLead('pergola'); else this.setState({ modalOpen: true }); },
       closeModal: () => this.setState({ modalOpen: false }),
       stopProp: e => e.stopPropagation(),
       fabCtaDisplay: 'flex',
@@ -1253,8 +1253,11 @@ class Component extends DCLogic {
         label: 'ביקורת ' + (i + 1),
         onPick: () => this.setState({ revIdx: i })
       })),
+      pgErr: !!this.state.pgErr,
       onQuickSubmit: () => {
         const fo = this.state.form;
+        if (!(fo.name || '').trim() || (fo.phone || '').replace(/\D/g, '').length < 9) { this.setState({ pgErr: true }); return; }
+        this.setState({ pgErr: false });
         const lines = [
           'היי, הגעתי מהאתר ואשמח לייעוץ קצר לגבי פרגולה והצללה למרחב החוץ שלנו.',
           fo.name ? 'שם: ' + fo.name : '',
@@ -1262,10 +1265,8 @@ class Component extends DCLogic {
           fo.scope ? 'סוג הפתרון: ' + fo.scope : ''
         ].filter(Boolean).join('\n');
         this.setState({ quickSent: true });
-        if (typeof window !== 'undefined') {
-          if (window.stzSendLead) window.stzSendLead({ page: 'פרגולות - טופס מהיר', name: fo.name, phone: fo.phone, solution: fo.scope });
-          window.open('https://wa.me/972547752697?text=' + encodeURIComponent(lines), '_blank');
-        }
+        window.stzSendLead({ name: fo.name, phone: fo.phone, solution: fo.scope || 'פרגולות והצללה', message: lines.replace(/\n/g, ' | '), source: 'pergola_quick' })
+          .catch(() => { window.location.href = 'https://wa.me/972547752697?text=' + encodeURIComponent(lines); });
       },
       waHref: 'https://wa.me/972547752697?text=' + encodeURIComponent('היי, הגעתי מהאתר ואשמח לייעוץ קצר לגבי פרגולה והצללה למרחב החוץ שלנו.'),
       sent: this.state.sent,
@@ -1282,6 +1283,8 @@ class Component extends DCLogic {
       onNotes: e => this.setField('notes', e.target.value),
       onSubmit: () => {
         const fo = this.state.form;
+        if (!(fo.name || '').trim() || (fo.phone || '').replace(/\D/g, '').length < 9) { this.setState({ pgErr: true }); return; }
+        this.setState({ pgErr: false });
         const lines = [
           'היי, הגעתי מהאתר ואשמח לשיחת ייעוץ והתאמה של פתרון הצללה.',
           fo.name ? 'שם: ' + fo.name : '',
@@ -1291,10 +1294,8 @@ class Component extends DCLogic {
           fo.notes ? 'פרטים: ' + fo.notes : ''
         ].filter(Boolean).join('\n');
         this.setState({ sent: true });
-        if (typeof window !== 'undefined') {
-          if (window.stzSendLead) window.stzSendLead({ page: 'פרגולות', name: fo.name, phone: fo.phone, city: fo.city, solution: fo.scope, message: fo.notes ? 'פרטים: ' + fo.notes : '' });
-          window.open('https://wa.me/972547752697?text=' + encodeURIComponent(lines), '_blank');
-        }
+        window.stzSendLead({ name: fo.name, phone: fo.phone, solution: fo.scope || 'פרגולות והצללה', message: lines.replace(/\n/g, ' | '), source: 'pergola_long' })
+          .catch(() => { window.location.href = 'https://wa.me/972547752697?text=' + encodeURIComponent(lines); });
       }
     };
   }
