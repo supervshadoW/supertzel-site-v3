@@ -7,6 +7,10 @@
 /* decorative big numerals stick out of the page edge: clip them instead of letting the whole page scroll sideways */
 html, body { overflow-x: clip; max-width: 100%; }
 @media (max-width: 760px) {
+  /* mobile: the "ראיתם את הפתרונות" line and its tags: tidy 2-column grid */
+  .stz-why-line { max-width: none !important; text-wrap: balance; }
+  .stz-chips { display: grid !important; grid-template-columns: 1fr 1fr; gap: 10px !important; width: 100%; }
+  .stz-chips > span { white-space: normal !important; text-align: center; padding: 10px 8px !important; border-radius: 16px !important; line-height: 1.35; }
   /* mobile: no numbered hotspot circles over the photo (they crowded the text) */
   img[src*="envelope-render-pins"] ~ button { display: none !important; }
   /* mobile hero: taller, lighter photo, compact text anchored at the bottom */
@@ -311,8 +315,8 @@ button,input,select,textarea{font-family:inherit}
   <section id="why" style="padding-block:clamp(1.5rem,4vh,2.5rem) clamp(4rem,10vh,6.9rem)">
     <div style="width:min(92%,1180px);margin-inline:auto">
       <div style="display:flex;align-items:center;justify-content:space-between;gap:16px 28px;flex-wrap:wrap;border-top:1px solid rgba(33,28,22,0.14);padding-top:22px;margin-bottom:clamp(3rem,8vh,4.5rem)">
-        <p style="font-size:clamp(17px,1.8vw,20px);color:#211C16;max-width:40ch">ראיתם את הפתרונות. <span style="color:#8F6326">ומאחורי כל אחד מהם — אותה דרך עבודה:</span></p>
-        <div style="display:flex;align-items:center;gap:10px 14px;flex-wrap:wrap">
+        <p class="stz-why-line" style="font-size:clamp(17px,1.8vw,20px);color:#211C16;max-width:40ch">ראיתם את הפתרונות. <span style="color:#8F6326">ומאחורי כל אחד מהם — אותה דרך עבודה:</span></p>
+        <div class="stz-chips" style="display:flex;align-items:center;gap:10px 14px;flex-wrap:wrap">
           <span style="font-size:14.5px;color:#4B443A;border:1px solid rgba(33,28,22,0.18);border-radius:100px;padding:6px 14px;white-space:nowrap">תכנון יישומי לפני ביצוע</span>
           <span style="font-size:14.5px;color:#4B443A;border:1px solid rgba(33,28,22,0.18);border-radius:100px;padding:6px 14px;white-space:nowrap">ייצור בהתאמה למידות</span>
           <span style="font-size:14.5px;color:#4B443A;border:1px solid rgba(33,28,22,0.18);border-radius:100px;padding:6px 14px;white-space:nowrap">התקנה מקצועית</span>
