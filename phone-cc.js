@@ -23,9 +23,10 @@
   }
   function indexOfCode(code) { for (var j = 0; j < C.length; j++) if (C[j][1] === code) return j; return 0; }
 
-  function normalize(input, sel) {
+  function normalize(input, sel, fromSelect) {
     var p = parse(input.value);
     if (!p.local) return;
+    if (fromSelect) p.code = null; // the visitor just picked a country: it wins over a previously typed code
     var code = p.code || C[sel.selectedIndex][1];
     var n = p.local;
     if (code === '972' || n.charAt(0) === '0') n = n.replace(/^0+/, '');
@@ -52,7 +53,7 @@
     input.style.direction = 'ltr';
     input.style.textAlign = 'left';
     input.placeholder = input.placeholder || '54-123-4567';
-    sel.addEventListener('change', function () { normalize(input, sel); });
+    sel.addEventListener('change', function () { normalize(input, sel, true); });
     input.addEventListener('blur', function () { normalize(input, sel); });
     input.addEventListener('input', function () { var p = parse(input.value); if (p.code) sel.selectedIndex = indexOfCode(p.code); });
     // Enter / programmatic submit paths: normalise just before any click on a button in the same form area.
