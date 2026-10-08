@@ -222,7 +222,7 @@ button,input,select,textarea{font-family:inherit}
           <button onClick="{{ openModal }}" style="flex:{{ procBtnFlex }};background:#B4813C;color:#1B1712;border:0;padding:17px 40px;font-size:17px;font-weight:600;border-radius:100px;cursor:pointer;white-space:nowrap" style-hover="background:#C99752">לתיאום שיחת ייעוץ</button>
           <a href="{{ waHref }}" target="_blank" rel="noopener" style="flex:{{ procBtnFlex }};display:inline-flex;align-items:center;justify-content:center;gap:10px;color:#F5F0E4;padding:16px 30px;font-size:17px;white-space:nowrap;border:1px solid rgba(245,240,228,0.55);border-radius:100px;background:rgba(27,23,18,0.25)" style-hover="background:rgba(245,240,228,0.1);border-color:#F5F0E4;color:#F5F0E4"><svg viewBox="0 0 32 32" width="20" height="20" fill="#25D366" aria-hidden="true"><path d="M16.04 3.2c-7.06 0-12.8 5.74-12.8 12.8 0 2.26.6 4.47 1.73 6.42L3.2 28.8l6.55-1.72a12.75 12.75 0 0 0 6.29 1.65c7.06 0 12.8-5.74 12.8-12.8S23.1 3.2 16.04 3.2zm7.5 18.1c-.31.88-1.83 1.7-2.53 1.76-.65.07-1.46.1-2.36-.15-.54-.17-1.24-.4-2.13-.79-3.75-1.62-6.2-5.4-6.38-5.65-.19-.25-1.52-2.02-1.52-3.86s.96-2.74 1.3-3.11c.34-.38.75-.47 1-.47h.72c.23 0 .54-.09.84.64.31.75 1.06 2.59 1.15 2.78.09.19.16.41.03.66-.13.25-.19.41-.38.63-.19.22-.4.49-.57.66-.19.19-.39.4-.17.78.22.38.98 1.62 2.1 2.62 1.45 1.29 2.67 1.69 3.05 1.88.38.19.6.16.82-.09.22-.25.94-1.1 1.2-1.48.25-.38.5-.31.84-.19.34.13 2.18 1.03 2.56 1.22.38.19.62.28.72.44.09.16.09.91-.22 1.79z"></path></svg>שיחת וואטסאפ מהירה</a>
         </div>
-        <p style="font-size:13px;color:rgba(245,240,228,0.68)">מענה מהיר בוואטסאפ או טלפונית · ללא ספאם</p>
+        <p style="font-size:13px;color:rgba(245,240,228,0.68)">מענה בוואטסאפ או בטלפון · ללא ספאם</p>
       </div>
     </div>
   </section>
@@ -428,7 +428,7 @@ button,input,select,textarea{font-family:inherit}
           </label>
           <sc-if value="{{ pgErr }}" hint-placeholder-val="{{ false }}"><p role="alert" style="font-size:13.5px;color:#E8C48C;text-align:center">נא למלא שם ומספר טלפון תקין</p></sc-if>
           <button onClick="{{ onQuickSubmit }}" style="width:100%;background:#B4813C;color:#1B1712;border:0;padding:16px;font-size:16.5px;font-weight:600;border-radius:100px;cursor:pointer" style-hover="background:#C99752">לתיאום שיחת ייעוץ</button>
-          <p style="font-size:12.5px;color:rgba(245,240,228,0.62);text-align:center">מענה מהיר בוואטסאפ או טלפונית · ללא ספאם</p>
+          <p style="font-size:12.5px;color:rgba(245,240,228,0.62);text-align:center">מענה בוואטסאפ או בטלפון · ללא ספאם</p>
         </div>
         </sc-if>
       </div>
@@ -442,7 +442,7 @@ button,input,select,textarea{font-family:inherit}
         <div>
           <div style="display:inline-flex;align-items:center;gap:10px;color:#B4813C;font-size:14.5px;font-weight:600;margin-bottom:24px"><span style="display: block; width: 24px; height: 1px; background: rgb(180, 129, 60);"></span>הרבה יותר מפתרונות הצללה</div>
           <h2 style="font-size:clamp(30px,4.2vw,52px);max-width:18ch">ההצללה היא לרוב רק<br>חלק ממערך רחב יותר</h2>
-          <p class="stz-env-p" style="margin-top:22px;color:#4B443A;font-size:18px;max-width:44ch">כשפרויקט חוץ מתפצל בין כמה בעלי מקצוע, כל אחד רואה רק את החלק שלו. אנחנו עובדים כמסגרת עבודה אחת שמארגנת את הפרויקט כולו — מתכנון יישומי ועד מסירה.</p>
+          <p class="stz-env-p" style="margin-top:22px;color:#4B443A;font-size:18px;max-width:44ch">כשפרויקט חוץ מתפצל בין כמה בעלי מקצוע, כל אחד רואה רק את החלק שלו. אנחנו עובדים כמסגרת עבודה אחת שמסייעת בארגון הפרויקט — מתכנון יישומי ועד מסירה.</p>
         </div>
         <div style="position:relative;border-radius:28px;overflow:hidden;aspect-ratio:1014/553;background:#D9CFBC">
           <img src="/img/fast/w/envelope-render-pins.webp" alt="הדמיה של מרחב חוץ עם פרגולה, מטבח חוץ, בר ופינת ישיבה" style="display:block;width:100%;height:100%;object-fit:cover">
@@ -530,7 +530,7 @@ button,input,select,textarea{font-family:inherit}
           <div style="border-top:1px solid rgba(33,28,22,0.14)">
             <button type="button" onClick="{{ q2Toggle }}" aria-expanded="{{ q2Exp }}" style="width:100%;display:grid;grid-template-columns:36px minmax(0,1fr) 28px;gap:14px;align-items:center;background:transparent;border:0;padding:18px 0;text-align:right;cursor:pointer;color:#211C16;font:inherit">
               <span style="font-size:13px;letter-spacing:0.1em;color:#8F6326">03</span>
-              <span style="font-size:clamp(17px,1.8vw,20px);font-weight:600;line-height:1.3">"איך מוודאים שההתקנה בטוחה ותחזיק מעמד לאורך שנים?"</span>
+              <span style="font-size:clamp(17px,1.8vw,20px);font-weight:600;line-height:1.3">"איך מוודאים שההתקנה נעשית נכון ומתאימה למקום?"</span>
               <span aria-hidden="true" style="display:grid;place-items:center;width:28px;height:28px;border-radius:50%;border:1px solid rgba(33,28,22,0.2);font-size:17px;line-height:1;color:#8F6326;transform:rotate({{ q2Rot }});transition:transform 0.25s">+</span>
             </button>
             <sc-if value="{{ q2Open }}" hint-placeholder-val="{{ false }}">
@@ -544,7 +544,7 @@ button,input,select,textarea{font-family:inherit}
               <span aria-hidden="true" style="display:grid;place-items:center;width:28px;height:28px;border-radius:50%;border:1px solid rgba(33,28,22,0.2);font-size:17px;line-height:1;color:#8F6326;transform:rotate({{ q3Rot }});transition:transform 0.25s">+</span>
             </button>
             <sc-if value="{{ q3Open }}" hint-placeholder-val="{{ false }}">
-              <p style="color:#4B443A;font-size:15.5px;line-height:1.6;padding:0 50px 20px 0;max-width:58ch">התשובה משתנה בהתאם לתקנות הרשות המקומית ולסוג המבנה. אנחנו לא מפזרים הבטחות ריקות ש"יהיה בסדר". נבדוק יחד איתכם את הנתונים בשטח, ואת נושא האישורים נתאם מול בעלי מקצוע מוסמכים, כדי שתתקדמו בצורה חוקית ובטוחה.</p>
+              <p style="color:#4B443A;font-size:15.5px;line-height:1.6;padding:0 50px 20px 0;max-width:58ch">התשובה משתנה בהתאם לתקנות הרשות המקומית ולסוג המבנה. אנחנו לא מפזרים הבטחות ריקות ש"יהיה בסדר". נבדוק יחד איתכם את הנתונים בשטח, ואת נושא האישורים נתאם מול בעלי מקצוע מוסמכים, כדי שתתקדמו בצורה מסודרת.</p>
             </sc-if>
           </div>
         </div>
@@ -561,9 +561,9 @@ button,input,select,textarea{font-family:inherit}
     <span style="position:absolute;width:600px;height:600px;bottom:-260px;inset-inline-start:-200px;background:radial-gradient(circle,rgba(180,129,60,0.14) 0%,transparent 70%);pointer-events:none"></span>
     <div style="width:min(92%,1180px);margin-inline:auto;position:relative;z-index:1;display:grid;grid-template-columns:{{ contactCols }};gap:clamp(2.5rem,6vw,5rem);align-items:start">
       <div>
-        <div style="display:inline-flex;align-items:center;gap:10px;color:#C99752;font-size:14.5px;font-weight:600;margin-bottom:24px;white-space:nowrap"><span style="display:block;width:24px;height:1px;background:#C99752"></span>בואו נתכנן יחד</div>
+        <div style="display:inline-flex;align-items:center;gap:10px;color:#C99752;font-size:14.5px;font-weight:600;margin-bottom:24px;white-space:nowrap"><span style="display:block;width:24px;height:1px;background:#C99752"></span>בואו נדבר</div>
         <h2 style="font-size:clamp(30px,4vw,52px);color:#F5F0E4;margin-bottom:22px">נדבר על ההצללה שלכם</h2>
-        <p style="color:rgba(245,240,228,0.72);font-size:17.5px;max-width:40ch;margin-bottom:40px">חושבים על פתרון הצללה לגינה או למרפסת? בואו נשב יחד על כוס קפה (או בטלפון), נבין את הצרכים והסגנון שלכם, ונתכנן את הפתרון המדויק ביותר עבורכם.</p>
+        <p style="color:rgba(245,240,228,0.72);font-size:17.5px;max-width:40ch;margin-bottom:40px">חושבים על פתרון הצללה לגינה או למרפסת? בואו נשב יחד על כוס קפה (או בטלפון), נבין את הצרכים והסגנון שלכם, ונציע פתרון שמתאים לכם.</p>
         <div class="stz-contact-info" style="display:flex;flex-direction:column;gap:18px;margin-bottom:36px">
           <div style="display:flex;flex-direction:column;gap:3px;border-top:1px solid rgba(245,240,228,0.16);padding-top:14px">
             <span style="font-size:12.5px;color:#C99752">טלפון</span>
@@ -623,7 +623,7 @@ button,input,select,textarea{font-family:inherit}
           </label>
           <sc-if value="{{ pgErr }}" hint-placeholder-val="{{ false }}"><p role="alert" style="font-size:13.5px;color:#E8C48C;text-align:center">נא למלא שם ומספר טלפון תקין</p></sc-if>
           <button onClick="{{ onSubmit }}" style="width:100%;background:#B4813C;color:#1B1712;border:0;padding:17px;font-size:17px;font-weight:600;border-radius:100px;cursor:pointer" style-hover="background:#C99752">לשיחת ייעוץ והתאמה מהירה</button>
-          <p style="font-size:13px;color:rgba(245,240,228,0.45);text-align:center">השארת פרטים מהווה הסכמה ליצירת קשר לצורך טיפול בפנייה זו בלבד.</p>
+          <p style="font-size:13px;color:rgba(245,240,228,0.66);text-align:center">השארת פרטים מהווה הסכמה ליצירת קשר לצורך טיפול בפנייה זו בלבד. <a href="/legal#privacy" style="color:#C99752;text-decoration:underline">מדיניות הפרטיות</a></p>
         </div>
         </sc-if>
       </div>
@@ -695,7 +695,7 @@ button,input,select,textarea{font-family:inherit}
         <div style="font-size:22px;font-weight:600;color:#F5F0E4;line-height:1.2">בואו לשדרג את מרחב החוץ שלכם</div>
         <button onClick="{{ closeModal }}" aria-label="סגירה" style="flex:0 0 auto;width:34px;height:34px;border-radius:50%;border:1px solid rgba(245,240,228,0.25);background:transparent;color:#F5F0E4;font-size:19px;line-height:1;cursor:pointer" style-hover="background:rgba(245,240,228,0.1)">×</button>
       </div>
-      <p style="font-size:14.5px;color:rgba(245,240,228,0.78);line-height:1.5;margin-bottom:2px">השאירו פרטים לשיחת ייעוץ קצרה בה נמפה את הצרכים שלכם ונתאים את הפתרון המדויק ביותר לשטח – ללא כל התחייבות.</p>
+      <p style="font-size:14.5px;color:rgba(245,240,228,0.78);line-height:1.5;margin-bottom:2px">השאירו פרטים לשיחת ייעוץ קצרה בה נמפה את הצרכים שלכם ונתאים פתרון שמתאים לשטח – ללא כל התחייבות.</p>
       <input type="text" placeholder="שם מלא" value="{{ fName }}" onChange="{{ onName }}" style="width:100%;padding:14px 18px;border:1px solid rgba(245,240,228,0.26);background:rgba(245,240,228,0.06);border-radius:14px;color:#F5F0E4;font-size:16px;box-sizing:border-box" style-focus="outline:none;border-color:#C99752;background:rgba(245,240,228,0.1)">
       <input type="tel" placeholder="טלפון" value="{{ fPhone }}" onChange="{{ onPhone }}" style="width:100%;padding:14px 18px;border:1px solid rgba(245,240,228,0.26);background:rgba(245,240,228,0.06);border-radius:14px;color:#F5F0E4;font-size:16px;box-sizing:border-box" style-focus="outline:none;border-color:#C99752;background:rgba(245,240,228,0.1)">
       <select value="{{ fScope }}" onChange="{{ onScope }}" style="width:100%;padding:14px 18px;border:1px solid rgba(245,240,228,0.26);background:rgba(27,23,18,0.55);border-radius:14px;color:#F5F0E4;font-size:16px;box-sizing:border-box;appearance:none;cursor:pointer" style-focus="outline:none;border-color:#C99752">
@@ -709,7 +709,7 @@ button,input,select,textarea{font-family:inherit}
       </select>
       <sc-if value="{{ pgErr }}" hint-placeholder-val="{{ false }}"><p role="alert" style="font-size:13.5px;color:#E8C48C;text-align:center">נא למלא שם ומספר טלפון תקין</p></sc-if>
       <button onClick="{{ onQuickSubmit }}" style="width:100%;background:#B4813C;color:#1B1712;border:0;padding:16px;font-size:16.5px;font-weight:600;border-radius:100px;cursor:pointer" style-hover="background:#C99752">לתיאום שיחת ייעוץ</button>
-      <p style="font-size:12.5px;color:rgba(245,240,228,0.62);text-align:center;line-height:1.5">מענה מהיר בוואטסאפ או טלפונית · הפרטים שלכם נשמרים לצורך יצירת קשר בלבד</p>
+      <p style="font-size:12.5px;color:rgba(245,240,228,0.62);text-align:center;line-height:1.5">מענה בוואטסאפ או בטלפון · הפרטים שלכם נשמרים לצורך יצירת קשר בלבד</p>
     </div>
     </sc-if>
   </div>
@@ -759,7 +759,7 @@ const MOSHAV_BAROSH = {
     'פתיחה וסגירה בשלט רחוק.',
     'זווית רפרפות מתכווננת בטווח 0–90 מעלות.',
     'שליטה על כמות האור והצל שנכנסים לחלל.',
-    'הגנה על הרכב מפני חשיפה ישירה לשמש ולגשם.',
+    'הגנה על הרכב מפני חשיפה ישירה לשמש.',
     'שדרוג אסתטי לנכס — מראה מודרני ונקי.'
   ]
 };
@@ -767,7 +767,7 @@ const MOSHAV_BAROSH = {
 const LIGHT_SUNROOM = {
   title: 'בנייה קלה וחדר שמש — הרחבת שטח החוץ',
   meta: 'לקוח פרטי · בנייה קלה, תוספות חוץ וחדרי שמש',
-  lead: 'הרחבת שטח החוץ של הבית לחלל סגור, מואר ושמיש כל השנה — מבנה מפאנל מבודד עם מערכת חלונות הזזה היקפית, שנבנה על תשתית יציקה בהמשך לקו הבית הקיים.',
+  lead: 'הרחבת שטח החוץ של הבית לחלל סגור, מואר ושמיש כל השנה — מבנה מפאנל מבודד עם מערכת חלונות הזזה היקפית, שנבנה על תשתית יציקה בהמשך לקו הבית הקיים. הצורך באישורים נבדק בנפרד לכל פרויקט.',
   photos: [
     { src: '/img/fast/projects/light-sunroom-out.webp', cap: 'מבט מהגינה — סגירת אלומיניום וזכוכית בחזית', detail: 'מערכת חלונות הזזה היקפית ודלתות הזזה בפרופיל אלומיניום, בחזית הפונה לגינה.' },
     { src: '/img/fast/projects/light-sunroom-in-1.webp', cap: 'פנים החלל — חיפוי פאנל לבן ורצועת חלונות', detail: 'חיפוי פנים בפאנל מבודד בגוון לבן, עם רצועת חלונות המכניסה אור טבעי לכל רוחב החלל.' },
@@ -920,8 +920,8 @@ class Component extends DCLogic {
     var $=function(i){return document.getElementById(i)};
     var svg=document.querySelector('.scene'),sun=$('sc-sun'),glow=$('sc-glow'),perg=$('sc-perg'),pSh=$('sc-pergSh'),hSh=$('sc-houseSh'),tSh=$('sc-treeSh'),
         heat=$('sc-heat'),shim=$('sc-shim'),cap=$('sun-cap'),tm=$('sun-time'),withP=false;
-    var caps0=[[8,'קפה ראשון בחוץ. עוד נעים.'],[11,'עוד אפשר לשבת, אבל כבר מחפשים צל.'],[15,'השמש מעל הראש. כולם בפנים.'],[17.5,'השמש נמוכה ונכנסת מהצד.'],[20,'השעה הכי נעימה ביום.']];
-    var caps1=[[8,'קפה ראשון בחוץ. עוד נעים.'],[11,'הצל כבר מחכה מעל השולחן.'],[15,'גם בצהריים יש איפה לשבת בצל.'],[17.5,'השמש נמוכה ונכנסת מהצד. כאן כדאי לחשוב גם על הצללה צדית.'],[20,'השעה הכי נעימה ביום.']];
+    var caps0=[[8,'קפה ראשון בחוץ. עוד נעים.'],[11,'עוד אפשר לשבת, אבל כבר מחפשים צל.'],[15,'השמש מעל הראש. כולם בפנים.'],[17.5,'השמש נמוכה ונכנסת מהצד.'],[20,'שעה נעימה ביום.']];
+    var caps1=[[8,'קפה ראשון בחוץ. עוד נעים.'],[11,'הצל כבר מחכה מעל השולחן.'],[15,'גם בצהריים יש איפה לשבת בצל.'],[17.5,'השמש נמוכה ונכנסת מהצד. כאן כדאי לחשוב גם על הצללה צדית.'],[20,'שעה נעימה ביום.']];
     function pick(c,h){for(var i=0;i<c.length;i++)if(h<c[i][0])return c[i][1];return c[c.length-1][1];}
     var skyK=[[7,'#F1C6A0','#FBE6C8'],[8.5,'#BCD5E6','#F4E6CE'],[10,'#A9CBE0','#E7EEEE'],[13,'#8EC0E3','#DCEBF2'],[16,'#A5C3D9','#F0E2C6'],[18,'#E4A07A','#F6CFA2'],[19,'#A8727A','#EAB08A']];
     function hx(h){return [1,3,5].map(function(i){return parseInt(h.substr(i,2),16)})}
@@ -1164,11 +1164,11 @@ class Component extends DCLogic {
     const f = this.state.form;
     const types = [
       { num: '01', span: n ? 'span 1' : 'span 3', inner: '1fr', minH: n ? '250px' : '340px', titleSize: n ? '22px' : '27px', slotId: 'pg-1', src: '/img/fast/w/pg1-alu-louver.webp', title: 'פרגולות אלומיניום סטטיות עם תוספות', body: 'קונסטרוקציה קבועה ועמידה, עם קירוי סנטף BH, פוליקרבונט או קירוי קשיח — מתאימה למפתחים גדולים ולתחזוקה מינימלית.' },
-      { num: '02', span: n ? 'span 1' : 'span 3', inner: '1fr', minH: n ? '250px' : '340px', titleSize: n ? '22px' : '27px', slotId: 'pg-2', src: '/img/fast/w/pg2-black-louver.webp', title: 'פרגולות חשמליות בהתאמה אישית', body: 'רפרפות מתכווננות בשליטה מלאה וחשמלית — אור, צל ואוורור משתנים לפי שעות היום והעונה.', hasProject: false, onOpen: () => this.setState({ project: MOSHAV_BAROSH, photo: 0 }) },
+      { num: '02', span: n ? 'span 1' : 'span 3', inner: '1fr', minH: n ? '250px' : '340px', titleSize: n ? '22px' : '27px', slotId: 'pg-2', src: '/img/fast/w/pg2-black-louver.webp', title: 'פרגולות חשמליות בהתאמה אישית', body: 'רפרפות מתכווננות בשליטה חשמלית — אור, צל ואוורור משתנים לפי שעות היום והעונה.', hasProject: false, onOpen: () => this.setState({ project: MOSHAV_BAROSH, photo: 0 }) },
       { num: '03', span: n ? 'span 1' : 'span 2', inner: '1fr', minH: n ? '240px' : '280px', titleSize: n ? '21px' : '22px', slotId: 'pg-3', src: '/img/fast/w/pergola-wood-slats.webp', title: 'פרגולות עץ וגמר דמוי עץ', body: 'עץ נבחר לשימור קו תכנוני קיים, או אלומיניום בגמר דמוי עץ — מראה חם עם תחזוקה נוחה.' },
       { num: '04', span: n ? 'span 1' : 'span 2', inner: '1fr', minH: n ? '240px' : '280px', titleSize: n ? '21px' : '22px', slotId: 'pg-4', src: '/img/fast/w/pg4-wood-kitchen.webp', title: 'פרגולות מעוצבות ושילובים', body: 'תכנון יישומי שמשלב סגירת זכוכית, מטבח חוץ, גדר, צמחייה או דק כחלק מהפרויקט.' },
       { num: '05', span: n ? 'span 1' : 'span 2', inner: '1fr', minH: n ? '240px' : '280px', titleSize: n ? '21px' : '22px', slotId: 'pg-5', src: '/img/fast/w/awning-leumi.webp', title: 'סוככי זרועות חשמליים וידניים', body: 'פתיחה וסגירה לפי הצורך — לחזיתות בתים, למרפסות ולויטרינות עסקים, באריגים וגוונים לבחירה.' },
-      { num: '06', span: n ? 'span 1' : 'span 3', inner: '1fr', minH: n ? '250px' : '340px', titleSize: n ? '22px' : '27px', slotId: 'pg-7', src: '/img/fast/w/pg7-wave-awning.webp', title: 'סוככים וגגונים קבועים', body: 'סוככים גליים וגגונים קבועים לפתחים, לחלונות ולכניסות — באריג או בקירוי קשיח, להפחתת חשיפה לשמש ולגשם ישיר.' },
+      { num: '06', span: n ? 'span 1' : 'span 3', inner: '1fr', minH: n ? '250px' : '340px', titleSize: n ? '22px' : '27px', slotId: 'pg-7', src: '/img/fast/w/pg7-wave-awning.webp', title: 'סוככים וגגונים קבועים', body: 'סוככים גליים וגגונים קבועים לפתחים, לחלונות ולכניסות — באריג או בקירוי קשיח, להפחתת חשיפה לשמש.' },
       { num: '07', span: n ? 'span 1' : 'span 3', inner: '1fr', minH: n ? '250px' : '340px', titleSize: n ? '22px' : '27px', slotId: 'pg-6', src: '/img/fast/lp/pg-6.webp', title: 'רשתות צל ומפרשי צל', body: 'הצללה קלה ואוורירית למרחבים פתוחים — תכנון יישומי צורני לגינות, למרחבי חוץ ולשטחים ציבוריים.' }
     ];
     const faqData = [
@@ -1255,8 +1255,8 @@ class Component extends DCLogic {
       contactCols: n ? '1fr' : 'minmax(0,0.9fr) minmax(0,1.1fr)',
       types: types,
       glass: [
-        { num: '01', span: n ? 'span 1' : 'span 6', minH: n ? '280px' : '420px', titleSize: n ? '23px' : '30px', slotId: 'pg-g1', src: '/img/fast/lp/pg-g1.webp', title: 'סגירת זכוכית למרפסת', body: 'מערכות זכוכית בהזזה בפרופיל אלומיניום דק — המרפסת נשארת פתוחה לאור ולנוף, ונעשית שמישה בכל עונה. הפתרון שאנחנו ממליצים עליו כשרוצים חלל סגור ומואר.' },
-        { num: '02', span: n ? 'span 1' : 'span 3', minH: n ? '240px' : '280px', titleSize: n ? '21px' : '22px', slotId: 'pg-g2', src: '/img/fast/projects/light-sunroom-out.webp', title: 'בנייה קלה וחדרי שמש', body: 'קירות אלומיניום וזכוכית ליצירת חלל מואר וסגור למחצה, בהמשך לקו הבית הקיים.', hasProject: true, onOpen: () => this.setState({ project: LIGHT_SUNROOM, photo: 0 }) },
+        { num: '01', span: n ? 'span 1' : 'span 6', minH: n ? '280px' : '420px', titleSize: n ? '23px' : '30px', slotId: 'pg-g1', src: '/img/fast/lp/pg-g1.webp', title: 'סגירת זכוכית למרפסת', body: 'מערכות זכוכית בהזזה בפרופיל אלומיניום דק — המרפסת נשארת פתוחה לאור ולנוף, ומאפשרת שימוש נוח גם בחורף. הפתרון שאנחנו ממליצים עליו כשרוצים חלל סגור ומואר.' },
+        { num: '02', span: n ? 'span 1' : 'span 3', minH: n ? '240px' : '280px', titleSize: n ? '21px' : '22px', slotId: 'pg-g2', src: '/img/fast/projects/light-sunroom-out.webp', title: 'בנייה קלה וחדרי שמש', body: 'קירות אלומיניום וזכוכית ליצירת חלל מואר וסגור למחצה, בהמשך לקו הבית הקיים. הצורך באישורים נבדק בנפרד לכל פרויקט.', hasProject: true, onOpen: () => this.setState({ project: LIGHT_SUNROOM, photo: 0 }) },
         { num: '03', span: n ? 'span 1' : 'span 3', minH: n ? '240px' : '280px', titleSize: n ? '21px' : '22px', slotId: 'pg-g3', src: '/img/fast/w/pg-g3-sliding.webp', title: 'מערכות חלונות הזזה', body: 'חלונות הזזה, ויטרינות ומערכות פנורמיות עם מסגור מינימלי.' },
         { num: '04', span: n ? 'span 1' : 'span 3', minH: n ? '240px' : '280px', titleSize: n ? '21px' : '22px', slotId: 'pg-g5', src: '/img/fast/w/project-balcony-lattice.webp', title: 'סגירות עץ ומסכים', body: 'רשתות עץ, מסכי הצללה ופרגולות צד לתיחום ולפרטיות.' },
         { num: '05', span: n ? 'span 1' : 'span 3', minH: n ? '240px' : '280px', titleSize: n ? '21px' : '22px', slotId: 'pg-g4', src: '/img/fast/w/project-office-glass-partitions.webp', title: 'מחיצות זכוכית', body: 'לחלוקת חללי עבודה, משרדים ומרחבי מגורים, כולל הפרדה אקוסטית.' },
