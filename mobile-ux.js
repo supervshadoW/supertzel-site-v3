@@ -77,7 +77,7 @@
     if ('IntersectionObserver' in window) {
       new IntersectionObserver(function (es) {
         visible = es[0].isIntersecting;
-        if (visible && !stopped && !timer) timer = setInterval(tick, 4200);
+        if (visible && !stopped && !timer) timer = setInterval(tick, 2200);
         if (!visible && timer) { clearInterval(timer); timer = null; }
       }, { threshold: 0.35 }).observe(car);
     }
