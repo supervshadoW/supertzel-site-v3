@@ -82,62 +82,7 @@
     }
   }
 
-  // Numbered photo: attach a legend (מקרא) right under it, built from the circles' labels.
-  function legend() {
-    var img = document.querySelector('img[src*="envelope-render-pins"]');
-    if (!img) return;
-    var box = img.parentElement;
-    box.style.setProperty('border-radius', '28px 28px 0 0', 'important');
-    if (box.__stzLegend) return;
-    var pins = [].slice.call(box.querySelectorAll('button[aria-label]'));
-    if (!pins.length) return;
-    box.__stzLegend = true;
-    box.classList.add('stz-envimg');
-    var lg = document.createElement('div');
-    lg.setAttribute('aria-label', 'מקרא');
-    lg.style.cssText = 'display:grid;grid-template-columns:1fr 1fr;gap:10px 12px;padding:16px 16px 18px;background:#211C16;color:#F5F0E4;border-radius:0 0 28px 28px;font-size:14px;line-height:1.3;margin-bottom:6px';
-    lg.innerHTML = pins.map(function (p) {
-      var m = (p.getAttribute('aria-label') || '').match(/^(\d+)\.\s*(.+)$/);
-      return m ? '<div style="display:flex;align-items:center;gap:9px"><span style="flex:none;display:grid;place-items:center;width:24px;height:24px;border-radius:50%;background:#B4813C;border:1.5px solid #fff;font-size:12px;font-weight:600">' + m[1] + '</span><span>' + m[2] + '</span></div>' : '';
-    }).join('');
-    box.parentNode.insertBefore(lg, box.nextSibling);
-  }
-
-  // "Why Super Tzel" and "How it works" become ONE slideshow: 3 reasons followed by the 4 steps.
-  function combine() {
-    var why = document.querySelector('#why .stz-carousel:not(.stz-combined)');
-    var steps = document.querySelector('#process .stz-steps');
-    if (!why || !steps) return;
-    var orig = why;
-    if (orig.__stzCombined) { var cb = orig.parentNode.querySelector('.stz-combined'); if (cb) hideOrig(orig, cb); return; }
-    var reasons = [].slice.call(orig.children).filter(function (c) { return c.querySelector('h3'); });
-    var st = [].slice.call(steps.children).filter(function (c) { return c.querySelector('h3'); });
-    if (reasons.length < 2 || st.length < 2) return;
-    orig.__stzCombined = true;
-    document.documentElement.classList.add('stz-combined-on');
-    var cardStyle = reasons[0].getAttribute('style') || '';
-    var car = document.createElement('div');
-    car.className = 'stz-carousel stz-combined';
-    reasons.forEach(function (r) { var c = r.cloneNode(true); c.removeAttribute('data-dc-tpl'); car.appendChild(c); });
-    st.forEach(function (s, i) {
-      var num = (s.querySelector('span') || {}).innerText || String(i + 1);
-      var d = document.createElement('div');
-      d.setAttribute('style', cardStyle);
-      d.innerHTML = '<div style="color:#8F6326;font-weight:600;font-size:13.5px;margin-bottom:6px">איך זה עובד · שלב ' + num.replace(/^0/, '') + '</div>' +
-        '<h3 style="margin:0">' + s.querySelector('h3').innerText + '</h3>' +
-        '<p style="margin-top:12px;color:#4B443A">' + ((s.querySelector('p') || {}).innerText || '') + '</p>';
-      car.appendChild(d);
-    });
-    orig.parentNode.insertBefore(car, orig.nextSibling);
-    hideOrig(orig, car);
-  }
-  // .stz-carousel forces display:flex !important, so the original list is hidden with a class that beats it
-  function hideOrig(orig, car) {
-    orig.classList.add('stz-hide');
-    [].forEach.call(orig.parentNode.children, function (c) { if (c.__stzFor === orig) c.classList.add('stz-hide'); });
-  }
-
-  function scan() { combine(); document.querySelectorAll('.stz-carousel').forEach(setup); legend(); }
+  function scan() { document.querySelectorAll('.stz-carousel').forEach(setup); }
   scan();
   var t;
   new MutationObserver(function () { clearTimeout(t); t = setTimeout(scan, 120); }).observe(document.body, { childList: true, subtree: true });
