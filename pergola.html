@@ -13,6 +13,8 @@ html, body { overflow-x: clip; max-width: 100%; }
   .stz-carousel > div { flex: 0 0 82% !important; max-width: 82%; scroll-snap-align: start; grid-column: auto !important; }
   /* mobile: the "4 questions" intro box comes before the questions; grid children may shrink so carousels never widen the page */
   .stz-faq-intro { order: -1; }
+  /* mobile: the side rail keeps its line and handle, but its floating text chips are hidden (they covered the content) */
+  nav[aria-label="גלילה מהירה בין פרקים"] span[dir="rtl"] { display: none !important; }
   #process > div, #process > div > div { min-width: 0 !important; max-width: 100%; }
   /* mobile: shorter page. Repeated blocks are hidden (they say the same thing as other sections / the floating form) */
   .stz-why-row, #lead, .stz-proc-cta, .stz-env-p, .stz-contact-info { display: none !important; }
