@@ -69,6 +69,12 @@
     if (document.getElementById('stz-consent')) return;
     var d = document.createElement('div');
     d.id = 'stz-consent';
+    if (!document.getElementById('stz-consent-css')) {
+      var st = document.createElement('style'); st.id = 'stz-consent-css';
+      // phones: same wording, tighter layout so the banner takes about a quarter of the screen instead of 40%
+      st.textContent = '@media (max-width:760px){#stz-consent{inset-inline:8px!important;bottom:8px!important;padding:12px 14px!important;border-radius:16px!important;font-size:12.5px!important;line-height:1.45!important}#stz-consent #stz-consent-t{font-size:14px!important;margin-bottom:3px!important}#stz-consent p{margin:0 0 10px!important}#stz-consent #stz-cc-main{flex-wrap:nowrap!important;gap:6px!important}#stz-consent #stz-cc-main button{min-height:44px!important;font-size:13px!important;flex:1 1 0!important;padding:0 6px!important}#stz-consent #stz-cc-main button[data-a=custom]{flex:0 0 auto!important;padding:0 8px!important}}';
+      document.head.appendChild(st);
+    }
     d.setAttribute('role', 'dialog');
     d.setAttribute('aria-labelledby', 'stz-consent-t');
     d.dir = 'rtl';

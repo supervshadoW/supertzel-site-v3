@@ -32,6 +32,9 @@ html, body { overflow-x: clip; max-width: 100%; }
   /* mobile hero: taller, lighter photo, compact text anchored at the bottom */
   .stz-hero { min-height: 88vh !important; min-height: min(88svh, 760px) !important; }
   .stz-hero { min-height: 620px !important; min-height: min(max(calc(100vh - 70px), 620px), 780px) !important; min-height: min(max(calc(100svh - 70px), 620px), 780px) !important; }
+  /* mobile hero fills the whole first screen; the text block sits at the bottom of it and the photo gets the space above */
+  .stz-hero { min-height: 560px !important; min-height: min(max(100vh, 560px), 920px) !important; min-height: min(max(100svh, 560px), 920px) !important; }
+  .stz-hero-body { padding-bottom: 36px !important; }
   /* mobile header: no thick band. Logo and the call-to-action float over the photo; section chips are gone (the side rail stays) */
   header { position: fixed !important; inset-inline: 0; top: 0; background: transparent !important; backdrop-filter: none !important; -webkit-backdrop-filter: none !important; border: 0 !important; box-shadow: none !important; pointer-events: none; }
   header > div[aria-hidden="true"], header nav[aria-label="ניווט מהיר"] { display: none !important; }
@@ -40,6 +43,9 @@ html, body { overflow-x: clip; max-width: 100%; }
   header a[href="/"] img { height: 30px !important; }
   header a[href="#lead"] { box-shadow: 0 4px 16px rgba(0,0,0,0.25); }
   header > div { min-height: 0 !important; padding-block: 10px !important; }
+  /* once the page is scrolled, a soft blur strip keeps text from showing through between the logo and the button */
+  header::before { content: ''; position: absolute; inset: 0 0 -10px; z-index: -1; pointer-events: none; opacity: 0; transition: opacity .25s; -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px); background: rgba(27,23,18,0.22); -webkit-mask-image: linear-gradient(#000 70%, transparent); mask-image: linear-gradient(#000 70%, transparent); }
+  html.stz-scrolled header::before { opacity: 1; }
   .stz-combined-on #process { display: none !important; }
   .stz-hero-shade { background: linear-gradient(180deg, rgba(27,23,18,0.35) 0%, rgba(27,23,18,0.05) 18%, rgba(27,23,18,0.25) 30%, rgba(27,23,18,0.72) 44%, rgba(27,23,18,0.94) 66%, rgba(27,23,18,0.97) 100%) !important; }
   .stz-hero-cap { text-shadow: 0 1px 10px rgba(0,0,0,0.8); }
@@ -93,7 +99,7 @@ html, body { overflow-x: clip; max-width: 100%; }
 <script src="/phone-cc.js?v=3" defer></script>
 <script src="/mobile-ux.js?v=10" defer></script>
 <script src="/landing-mode.js?v=1" defer></script>
-<script src="/analytics.js?v=7"></script>
+<script src="/analytics.js?v=8"></script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
 <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet">
