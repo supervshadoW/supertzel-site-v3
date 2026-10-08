@@ -18,11 +18,8 @@ html, body { overflow-x: clip; max-width: 100%; }
   nav[aria-label="גלילה מהירה בין פרקים"] span[dir="rtl"] { display: none !important; }
   #process > div, #process > div > div { min-width: 0 !important; max-width: 100%; }
   /* mobile: shorter page. Repeated blocks are hidden (they say the same thing as other sections / the floating form) */
-  .stz-why-row, #lead, .stz-proc-cta, .stz-env-p, .stz-contact-info { display: none !important; }
+  .stz-why-row, #lead, .stz-proc-cta, .stz-contact-info { display: none !important; }
   .stz-steps > div { flex-direction: column; gap: 8px !important; background: rgba(245,240,228,0.07); border: 1px solid rgba(245,240,228,0.2) !important; border-radius: 22px; padding: 20px !important; }
-  /* mobile: the numbered photo gets its legend attached right under it (built by mobile-ux.js); the separate list is hidden */
-  .stz-envlist { display: none !important; }
-  .stz-envimg, div:has(> img[src*="envelope-render-pins"]) { border-radius: 28px 28px 0 0 !important; }
   /* mobile: the "ראיתם את הפתרונות" line and its tags: tidy 2-column grid */
   .stz-why-line { max-width: none !important; text-wrap: balance; }
   .stz-chips { display: grid !important; grid-template-columns: 1fr 1fr; gap: 10px !important; width: 100%; }
@@ -46,7 +43,6 @@ html, body { overflow-x: clip; max-width: 100%; }
   /* once the page is scrolled, a soft blur strip keeps text from showing through between the logo and the button */
   header::before { content: ''; position: absolute; inset: 0 0 -10px; z-index: -1; pointer-events: none; opacity: 0; transition: opacity .25s; -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px); background: rgba(27,23,18,0.22); -webkit-mask-image: linear-gradient(#000 70%, transparent); mask-image: linear-gradient(#000 70%, transparent); }
   html.stz-scrolled header::before { opacity: 1; }
-  .stz-combined-on #process { display: none !important; }
   .stz-hero-shade { background: linear-gradient(180deg, rgba(27,23,18,0.35) 0%, rgba(27,23,18,0.05) 18%, rgba(27,23,18,0.25) 30%, rgba(27,23,18,0.72) 44%, rgba(27,23,18,0.94) 66%, rgba(27,23,18,0.97) 100%) !important; }
   .stz-hero-cap { text-shadow: 0 1px 10px rgba(0,0,0,0.8); }
   .stz-hero-body { padding-top: 0 !important; }
@@ -97,7 +93,7 @@ html, body { overflow-x: clip; max-width: 100%; }
 <script src="/lead.js?v=3"></script>
 <script src="/lead-modal.js?v=6"></script>
 <script src="/phone-cc.js?v=3" defer></script>
-<script src="/mobile-ux.js?v=10" defer></script>
+<script src="/mobile-ux.js?v=11" defer></script>
 <script src="/landing-mode.js?v=1" defer></script>
 <script src="/analytics.js?v=8"></script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -463,7 +459,7 @@ button,input,select,textarea{font-family:inherit}
           <span style="position:absolute;bottom:12px;right:16px;color:#F2C230;font-size:15px;font-weight:500;letter-spacing:0.02em;text-shadow:0 1px 3px rgba(0,0,0,0.55)">המחשה</span>
         </div>
       </div>
-      <div class="stz-carousel stz-noauto stz-envlist" style="display:flex;flex-direction:column">
+      <div class="stz-envlist" style="display:flex;flex-direction:column">
         <sc-for list="{{ envelope }}" as="r" hint-placeholder-count="5">
           <div onMouseEnter="{{ r.onEnter }}" onMouseLeave="{{ pinLeave }}" style="display:grid;grid-template-columns:{{ whyRowCols }};gap:clamp(1rem,2.5vw,1.75rem);align-items:center;padding-block:12px;padding-inline:12px;border-top:1px solid rgba(33,28,22,0.14);background:{{ r.bg }};transition:background 0.2s">
             <span style="display:grid;place-items:center;width:34px;height:34px;border-radius:50%;background:{{ r.numBg }};color:{{ r.numColor }};border:1px solid {{ r.numBorder }};font-size:14px;font-weight:600;transition:background 0.2s">{{ r.idx }}</span>
