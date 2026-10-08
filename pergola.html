@@ -6,6 +6,7 @@
 <style>
 /* decorative big numerals stick out of the page edge: clip them instead of letting the whole page scroll sideways */
 html, body { overflow-x: clip; max-width: 100%; }
+.stz-hide, .stz-carousel.stz-hide { display: none !important; }
 @media (max-width: 760px) {
   /* mobile: long stacks of cards become swipeable carousels (dots + auto-advance come from mobile-ux.js) */
   .stz-carousel { display: flex !important; flex-direction: row !important; overflow-x: auto; overflow-y: hidden; scroll-snap-type: x mandatory; gap: 14px !important; margin-inline: -4vw; padding: 4px 4vw 14px; scroll-padding-inline: 4vw; scrollbar-width: none; -webkit-overflow-scrolling: touch; overscroll-behavior-x: contain; }
@@ -90,7 +91,7 @@ html, body { overflow-x: clip; max-width: 100%; }
 <script src="/lead.js?v=3"></script>
 <script src="/lead-modal.js?v=6"></script>
 <script src="/phone-cc.js?v=3" defer></script>
-<script src="/mobile-ux.js?v=9" defer></script>
+<script src="/mobile-ux.js?v=10" defer></script>
 <script src="/landing-mode.js?v=1" defer></script>
 <script src="/analytics.js?v=7"></script>
 <link rel="preconnect" href="https://fonts.googleapis.com">

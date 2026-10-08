@@ -28,6 +28,7 @@
 
     var dots = document.createElement('div');
     dots.setAttribute('aria-hidden', 'true');
+    dots.__stzFor = car;
     dots.style.cssText = 'display:flex;justify-content:center;gap:7px;margin:2px 0 6px';
     var dotEls = cards.map(function () {
       var d = document.createElement('span');
@@ -105,7 +106,7 @@
     var steps = document.querySelector('#process .stz-steps');
     if (!why || !steps) return;
     var orig = why;
-    if (orig.__stzCombined) { if (orig.nextElementSibling && !orig.nextElementSibling.classList.contains('stz-combined')) orig.nextElementSibling.style.display = 'none'; return; }
+    if (orig.__stzCombined) { var cb = orig.parentNode.querySelector('.stz-combined'); if (cb) hideOrig(orig, cb); return; }
     var reasons = [].slice.call(orig.children).filter(function (c) { return c.querySelector('h3'); });
     var st = [].slice.call(steps.children).filter(function (c) { return c.querySelector('h3'); });
     if (reasons.length < 2 || st.length < 2) return;
@@ -125,10 +126,12 @@
       car.appendChild(d);
     });
     orig.parentNode.insertBefore(car, orig.nextSibling);
-    orig.style.display = 'none';
-    if (orig.nextElementSibling && orig.nextElementSibling !== car) orig.nextElementSibling.style.display = 'none';
-    var dr = orig.parentNode.querySelectorAll('.stz-carousel + div');
-    [].forEach.call(dr, function (x) { if (x.previousElementSibling === orig) x.style.display = 'none'; });
+    hideOrig(orig, car);
+  }
+  // .stz-carousel forces display:flex !important, so the original list is hidden with a class that beats it
+  function hideOrig(orig, car) {
+    orig.classList.add('stz-hide');
+    [].forEach.call(orig.parentNode.children, function (c) { if (c.__stzFor === orig) c.classList.add('stz-hide'); });
   }
 
   function scan() { combine(); document.querySelectorAll('.stz-carousel').forEach(setup); legend(); }
