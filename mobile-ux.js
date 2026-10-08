@@ -62,11 +62,12 @@
     car.addEventListener('scroll', function () { paint(); }, { passive: true });
     paint();
 
-    var stopped = reduce || car.classList.contains('stz-noauto'), timer = null, visible = false;
-    function stop() { stopped = true; if (timer) { clearInterval(timer); timer = null; } }
-    ['pointerdown', 'touchstart', 'wheel', 'keydown'].forEach(function (ev) { car.addEventListener(ev, stop, { passive: true }); });
+    // a touch pauses the auto-advance for a few seconds, then it carries on (customers rarely swipe on their own)
+    var stopped = reduce || car.classList.contains('stz-noauto'), paused = false, resumeT = null, timer = null, visible = false;
+    function pause() { paused = true; clearTimeout(resumeT); resumeT = setTimeout(function () { paused = false; }, 6000); }
+    ['pointerdown', 'touchstart', 'wheel', 'keydown'].forEach(function (ev) { car.addEventListener(ev, pause, { passive: true }); });
     function tick() {
-      if (stopped || !visible) return;
+      if (stopped || paused || !visible) return;
       var i = paint();
       var next = cards[(i + 1) % cards.length]; // loops; a touch stops it for good
       var cr = car.getBoundingClientRect(), nr = next.getBoundingClientRect();
@@ -78,7 +79,7 @@
         visible = es[0].isIntersecting;
         if (visible && !stopped && !timer) timer = setInterval(tick, 4200);
         if (!visible && timer) { clearInterval(timer); timer = null; }
-      }, { threshold: 0.6 }).observe(car);
+      }, { threshold: 0.35 }).observe(car);
     }
   }
 
