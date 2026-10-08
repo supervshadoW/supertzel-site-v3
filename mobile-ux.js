@@ -3,6 +3,9 @@
 (function () {
   var mq = window.matchMedia('(max-width: 760px)');
   if (!mq.matches) return;
+  // header blur strip is shown only after the page has moved (see pergola.html)
+  function onScroll() { document.documentElement.classList.toggle('stz-scrolled', (window.scrollY || 0) > 40); }
+  window.addEventListener('scroll', onScroll, { passive: true }); onScroll();
   var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
   function glide(el, to) {
