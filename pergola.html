@@ -32,9 +32,9 @@ html, body { overflow-x: clip; max-width: 100%; }
   /* mobile hero: taller, lighter photo, compact text anchored at the bottom */
   .stz-hero { min-height: 88vh !important; min-height: min(88svh, 760px) !important; }
   .stz-hero { min-height: 620px !important; min-height: min(max(calc(100vh - 70px), 620px), 780px) !important; min-height: min(max(calc(100svh - 70px), 620px), 780px) !important; }
-  /* the hero used to leave 120px of empty dark space under the last line; trim it and shorten the hero by the same amount so the text keeps its place over the photo */
-  .stz-hero { min-height: 528px !important; min-height: min(max(calc(100vh - 162px), 528px), 688px) !important; min-height: min(max(calc(100svh - 162px), 528px), 688px) !important; }
-  .stz-hero-body { padding-bottom: 28px !important; }
+  /* mobile hero fills the whole first screen; the text block sits at the bottom of it and the photo gets the space above */
+  .stz-hero { min-height: 560px !important; min-height: min(max(100vh, 560px), 920px) !important; min-height: min(max(100svh, 560px), 920px) !important; }
+  .stz-hero-body { padding-bottom: 36px !important; }
   /* mobile header: no thick band. Logo and the call-to-action float over the photo; section chips are gone (the side rail stays) */
   header { position: fixed !important; inset-inline: 0; top: 0; background: transparent !important; backdrop-filter: none !important; -webkit-backdrop-filter: none !important; border: 0 !important; box-shadow: none !important; pointer-events: none; }
   header > div[aria-hidden="true"], header nav[aria-label="ניווט מהיר"] { display: none !important; }
