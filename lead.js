@@ -21,7 +21,7 @@
       phone: String(p.phone || '').trim(),
       type: 'contact',
       solution: p.solution || '',
-      message: (p.message || '') + ' | עמוד: ' + location.pathname + utmText()
+      message: (p.message || '') + (/^\/(v1|design)\//.test(location.pathname) ? '' : ' | עמוד: ' + location.pathname) + utmText()
     });
     var H = { 'Content-Type': 'application/json', Authorization: 'Bearer ' + KEY, apikey: KEY };
     fetch(BASE + 'send-whatsapp', { method: 'POST', headers: H, body: body }).catch(function () {});

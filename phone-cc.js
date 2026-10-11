@@ -62,6 +62,7 @@
       var p = parse(input.value);
       var code = p.code || C[sel.selectedIndex][1];
       var ok = !!(p.local && window.stzPhoneValid && window.stzPhoneValid(code, p.local));
+      if (!ok && window.stzPhoneHint) msg.textContent = window.stzPhoneHint(code);
       msg.style.display = !ok && show ? 'block' : 'none';
       input.setAttribute('aria-invalid', ok ? 'false' : 'true');
       return ok;
