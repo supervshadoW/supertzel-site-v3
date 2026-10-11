@@ -27,7 +27,7 @@
     fetch(BASE + 'send-whatsapp', { method: 'POST', headers: H, body: body }).catch(function () {});
     return fetch(BASE + 'send-email', { method: 'POST', headers: H, body: body }).then(function (r) {
       if (!r.ok) throw new Error('send-email ' + r.status);
-      try { if (window.gtag) window.gtag('event', 'generate_lead', { form: p.source || 'site' }); } catch (e) {}
+      try { if (window.stzTrack) window.stzTrack('generate_lead', { form: p.source || 'site' }); else if (window.gtag) window.gtag('event', 'generate_lead', { form: p.source || 'site' }); } catch (e) {}
     });
   };
 })();
