@@ -2,6 +2,9 @@
    Same behaviour as the previous site: everything is denied by default and
    GA is configured only after the visitor actively accepts analytics. */
 (function () {
+  // The page runtime re-runs <helmet> scripts after the browser already ran them; run only once so events and page views are not counted twice.
+  if (window.__stzAnalytics) return;
+  window.__stzAnalytics = true;
   var GA_ID = 'G-573EPTRPVM';
   var ADS_ID = 'AW-18302540762';
   // Conversion labels from Google Ads (Tag setup). Fill in to send direct Ads conversions, e.g. lead: 'AbC-D_efG-h12345'.
@@ -17,10 +20,18 @@
   });
   gtag('js', new Date());
 
-  var s = document.createElement('script');
-  s.async = true;
-  s.src = 'https://www.googletagmanager.com/gtag/js?id=' + GA_ID;
-  document.head.appendChild(s);
+  // gtag.js is loaded after the page has loaded so it does not compete with the page itself; dataLayer queues everything until then.
+  var gtagLoaded = false;
+  function loadGtag() {
+    if (gtagLoaded) return;
+    gtagLoaded = true;
+    var s = document.createElement('script');
+    s.async = true;
+    s.src = 'https://www.googletagmanager.com/gtag/js?id=' + GA_ID;
+    document.head.appendChild(s);
+  }
+  if (document.readyState === 'complete') setTimeout(loadGtag, 0);
+  else { addEventListener('load', function () { setTimeout(loadGtag, 0); }); setTimeout(loadGtag, 6000); }
 
   function apply(state) {
     gtag('consent', 'update', {
@@ -40,10 +51,14 @@
   function clarity() {
     if (clarityOn) return;
     clarityOn = true;
+    // stz-clarity-later: inject the script after the page has loaded (calls made before that are queued by the stub below)
+    var later = function (fn) { if (document.readyState === 'complete') setTimeout(fn, 0); else addEventListener('load', function () { setTimeout(fn, 0); }); };
     (function (c, l, a, r, i, t, y) {
       c[a] = c[a] || function () { (c[a].q = c[a].q || []).push(arguments); };
-      t = l.createElement(r); t.async = 1; t.src = 'https://www.clarity.ms/tag/' + i;
-      y = l.getElementsByTagName(r)[0]; y.parentNode.insertBefore(t, y);
+      later(function () {
+        t = l.createElement(r); t.async = 1; t.src = 'https://www.clarity.ms/tag/' + i;
+        y = l.getElementsByTagName(r)[0]; y.parentNode.insertBefore(t, y);
+      });
     })(window, document, 'clarity', 'script', CLARITY_ID);
     try { window.clarity('consentv2', { ad_Storage: 'denied', analytics_Storage: 'granted' }); } catch (e) {}
   }

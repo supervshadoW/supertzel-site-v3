@@ -1,5 +1,7 @@
-// "מי אנחנו" section for the pergola landing page. Inserted before the projects section (or #why).
+// "מי אנחנו" section for the pergola landing page. Placed right after #why (the projects section follows it).
 (function () {
+  if (window.__stzLandingAbout) return;
+  window.__stzLandingAbout = true;
   // Sections are inserted after the browser has already jumped to a #anchor, which shifts the layout.
   // Re-align to the anchor after each insert, unless the visitor has already started scrolling.
   var touched = false;
@@ -9,10 +11,19 @@
     var t = document.getElementById(decodeURIComponent(location.hash.slice(1)));
     if (t) t.scrollIntoView();
   }
+  // The page runtime re-renders while it boots and can drop or reorder nodes that were inserted by hand. The section is only
+  // inserted into the rendered page (never into the inert <x-dc> template) and is put back into place if it drifts.
+  function rendered(el) { return !!el && !el.closest('x-dc'); }
+  function place(sec) {
+    var why = document.getElementById('why');
+    if (!rendered(why)) return false;
+    if (why.nextElementSibling !== sec) why.parentNode.insertBefore(sec, why.nextSibling);
+    return true;
+  }
   function build() {
-    if (document.getElementById('about')) return true;
-    var anchor = document.getElementById('projects') || document.getElementById('why');
-    if (!anchor) return false;
+    var existing = document.getElementById('about');
+    if (existing && rendered(existing)) return place(existing);
+    if (!rendered(document.getElementById('why'))) return false;
     var css = document.getElementById('about-css') || document.createElement('style'); css.id = 'about-css';
     css.textContent =
       '#about .ab-wrap{display:grid;grid-template-columns:1fr 1fr;gap:clamp(1.5rem,4vw,3.5rem);align-items:center}' +
@@ -35,11 +46,11 @@
       '<div style="margin-top:26px"><a href="#contact" style="display:inline-flex;align-items:center;min-height:48px;padding:0 26px;border-radius:100px;background:#B4813C;color:#1B1712;font-size:16px;font-weight:600">תאמו שיחת ייעוץ</a></div></div>' +
       '<div class="ab-img"><img src="/img/fast/slots/ab-hero.webp" alt="מרחב חוץ גמור של סופר צל" loading="lazy" decoding="async"></div>' +
       '</div></div>';
-    anchor.parentNode.insertBefore(sec, anchor);
+    place(sec);
     realign();
     return true;
   }
   // the page re-renders while it boots and can drop inserted nodes, so keep the section in place for a while
   var tries = 0;
-  (function tick() { build(); if (tries < 14) realign(); if (++tries > 60) return; setTimeout(tick, 500); })();
+  (function tick() { var had = !!document.getElementById('about'); build(); if (tries < 28 && had) realign(); if (++tries > 80) return; setTimeout(tick, tries < 40 ? 250 : 1000); })();
 })();
