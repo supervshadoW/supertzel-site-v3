@@ -12,7 +12,11 @@
     '[data-stepsl][data-run]>div[data-on]::before{animation:stzStepFill 4.2s linear forwards}' +
     '[data-stepsl]:hover>div[data-on]::before{animation-play-state:paused}' +
     '@keyframes stzStepFill{from{width:0}to{width:calc(100% - 28px)}}' +
-    '@media (max-width:760px){[data-stepsl]>div[data-on]{flex-grow:5.5!important}[data-stepsl]>div>div{min-width:170px}}' +
+    '@media (max-width:760px){[data-stepsl]{flex-direction:column!important;gap:8px!important}'+
+    '[data-stepsl]>div{flex:none!important;min-height:0!important;flex-direction:row!important;align-items:baseline!important;gap:14px!important;padding:14px 16px 20px!important}'+
+    '[data-stepsl]>div>div{min-width:0!important;opacity:1!important;transform:none!important}'+
+    '[data-stepsl]>div:not([data-on])>div p{display:none}'+
+    '[data-stepsl]>div[data-on]{background:rgba(245,240,228,0.13)!important}}' +
     '@media (prefers-reduced-motion:reduce){[data-stepsl]>div,[data-stepsl]>div>div{transition:none}[data-stepsl][data-run]>div[data-on]::before{animation:none;width:calc(100% - 28px)}}';
   var st = document.createElement('style'); st.textContent = css; document.head.appendChild(st);
   function init(c) {
