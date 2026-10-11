@@ -107,7 +107,8 @@ for name in ('index.html', 'pergola.html', 'projects.html', 'legal.html'):
     s2 = re.sub(r'analytics\.js\?v=(\d+)', lambda m: 'analytics.js?v=%d' % max(int(m.group(1)), 10), s)
     if s2 != s: write(name, s2)
 
-# 5) caching (text edit so the rest of vercel.json keeps its formatting)
+# 5) caching (text edit so the rest of vercel.json keeps its formatting).
+# Later header rules win over earlier ones, so /vendor goes after the generic "*.js" rule (max-age=300).
 raw = read('vercel.json')
 def rule(src):
     return ('                    {\n'
@@ -119,11 +120,19 @@ def rule(src):
             '                                        }\n'
             '                                    ]\n'
             '                    },\n')
-marker = '    "headers":  [\n'
+js_rule = ('                    {\n'
+           '                        "source":  "/(.*)\\\\.js",\n'
+           '                        "headers":  [\n'
+           '                                        {\n'
+           '                                            "key":  "Cache-Control",\n'
+           '                                            "value":  "public, max-age=300, must-revalidate"\n'
+           '                                        }\n'
+           '                                    ]\n'
+           '                    },\n')
 for src in ('/fonts/(.*)', '/vendor/(.*)'):
-    if f'"source":  "{src}"' not in raw:
-        assert marker in raw, 'vercel.json: headers array not found'
-        raw = raw.replace(marker, marker + rule(src), 1)
+    if f'"source":  "{src}"' in raw: continue
+    assert js_rule in raw, 'vercel.json: expected "*.js" cache rule not found'
+    raw = raw.replace(js_rule, js_rule + rule(src), 1)
 json.loads(raw)
 write('vercel.json', raw)
 print('performance fixes applied')
