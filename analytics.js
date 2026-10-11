@@ -3,6 +3,9 @@
    GA is configured only after the visitor actively accepts analytics. */
 (function () {
   var GA_ID = 'G-573EPTRPVM';
+  var ADS_ID = 'AW-18302540762';
+  // Conversion labels from Google Ads (Tag setup). Fill in to send direct Ads conversions, e.g. lead: 'AbC-D_efG-h12345'.
+  var ADS_LABELS = { lead: '', whatsapp: '', call: '' };
   var STORAGE_KEY = 'supertzel_cookie_consent_v2';
 
   window.dataLayer = window.dataLayer || [];
@@ -29,6 +32,7 @@
       personalization_storage: 'denied'
     });
     if (state.analytics) { gtag('config', GA_ID, { anonymize_ip: true }); clarity(); }
+    if (state.ads) gtag('config', ADS_ID);
   }
 
   // Microsoft Clarity (heatmaps / recordings): loaded only after analytics consent.
@@ -53,7 +57,11 @@
     apply(st);
   }
 
-  function track(name, params) { try { gtag('event', name, params || {}); } catch (e) {} }
+  function track(name, params) {
+    try { gtag('event', name, params || {}); } catch (e) {}
+    var key = name === 'generate_lead' ? 'lead' : name === 'contact_whatsapp' ? 'whatsapp' : name === 'contact_call' ? 'call' : '';
+    if (key && ADS_LABELS[key]) { try { gtag('event', 'conversion', { send_to: ADS_ID + '/' + ADS_LABELS[key] }); } catch (e) {} }
+  }
   window.stzTrack = track;
 
   // Click tracking: WhatsApp, phone call.
