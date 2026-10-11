@@ -1,4 +1,4 @@
-// "מי אנחנו" section for the home page and the pergola landing page. Inserted before the projects section (or #why).
+// "מי אנחנו" section for the pergola landing page. Inserted before the projects section (or #why).
 (function () {
   // Sections are inserted after the browser has already jumped to a #anchor, which shifts the layout.
   // Re-align to the anchor after each insert, unless the visitor has already started scrolling.
@@ -11,8 +11,7 @@
   }
   function build() {
     if (document.getElementById('about')) return true;
-    var home = location.pathname.indexOf('/pergola') !== 0;
-    var anchor = home ? (document.getElementById('reviews') || document.getElementById('faq')) : (document.getElementById('projects') || document.getElementById('why'));
+    var anchor = document.getElementById('projects') || document.getElementById('why');
     if (!anchor) return false;
     var css = document.getElementById('about-css') || document.createElement('style'); css.id = 'about-css';
     css.textContent =
