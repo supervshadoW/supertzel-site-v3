@@ -29,6 +29,12 @@ html, body { overflow-x: clip; max-width: 100%; }
 <link rel="icon" href="/favicon.ico?v=2" sizes="any">
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png?v=2">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png?v=2">
+<link rel="preload" href="/vendor/react-18.3.1.production.min.js" as="script">
+<link rel="preload" href="/vendor/react-dom-18.3.1.production.min.js" as="script">
+<link rel="preload" href="/fonts/rubik-hebrew-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/rubik-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+<style id="stz-fonts">@font-face{font-family:'Rubik';font-style:normal;font-weight:300 700;font-display:swap;src:url(/fonts/rubik-hebrew-wght-normal.woff2) format('woff2');unicode-range:U+0307-0308,U+0590-05FF,U+200C-2010,U+20AA,U+25CC,U+FB1D-FB4F}@font-face{font-family:'Rubik';font-style:normal;font-weight:300 700;font-display:swap;src:url(/fonts/rubik-latin-wght-normal.woff2) format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}</style>
+<script>window.__resources={"https://unpkg.com/react@18.3.1/umd/react.production.min.js":"/vendor/react-18.3.1.production.min.js","https://unpkg.com/react-dom@18.3.1/umd/react-dom.production.min.js":"/vendor/react-dom-18.3.1.production.min.js"};</script>
 <script src="/support.js"></script>
 <style id="stz-hero-grade">
 #hero [data-stage] img { filter: sepia(0.14) saturate(0.9) contrast(1.06) brightness(0.96); animation: stzKB 16s ease-in-out infinite alternate; transform-origin: 50% 55%; }
@@ -106,9 +112,7 @@ main :is(p, li, h1, h2, h3) :is(p, li, h1, h2, h3) { zoom: 1; }
 <script src="/lead.js?v=9"></script>
 <script src="/lead-modal.js?v=11"></script>
 <script src="/phone-cc.js?v=4" defer></script>
-<script src="/analytics.js?v=9"></script>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet">
+<script src="/analytics.js?v=10"></script>
 <style>
 html{scroll-padding-top:84px}
 @media (min-width:1061px){html{scroll-padding-top:84px}}

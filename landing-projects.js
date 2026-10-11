@@ -1,5 +1,7 @@
-// "פרויקטים שביצענו" section for the pergola landing page. Built from projects-data.js, inserted before #why.
+// "פרויקטים שביצענו" section for the pergola landing page. Built from projects-data.js, placed right after the 'who we are' section (or after #why).
 (function () {
+  if (window.__stzLandingProjects) return;
+  window.__stzLandingProjects = true;
   // Sections are inserted after the browser has already jumped to a #anchor, which shifts the layout.
   // Re-align to the anchor after each insert, unless the visitor has already started scrolling.
   var touched = false;
@@ -11,11 +13,22 @@
   }
   var PICK = ['pergola-modern-lighting-1', 'pergola-white-wood', 'balcony-electric-pergola-window', 'winter-1', 'project-deck-view', 'pergola-cream-louvers', 'glass-1', 'pergola-lighting-rishon', 'awning-jaffa-1'];
   function esc(t) { return String(t).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); }
+  // The page runtime re-renders while it boots and can drop or reorder nodes that were inserted by hand. Sections are only
+  // inserted into the rendered page (never into the inert <x-dc> template) and are put back into place if they drift.
+  function rendered(el) { return !!el && !el.closest('x-dc'); }
+  function place(sec) {
+    var why = document.getElementById('why');
+    if (!rendered(why)) return false;
+    var about = document.getElementById('about');
+    var anchor = rendered(about) && about.parentNode === why.parentNode ? about : why;
+    if (anchor.nextElementSibling !== sec) anchor.parentNode.insertBefore(sec, anchor.nextSibling);
+    return true;
+  }
   function build() {
-    if (document.getElementById('projects')) return true;
-    var anchor = document.getElementById('why');
+    var existing = document.getElementById('projects');
+    if (existing && rendered(existing)) return place(existing);
     var list = window.STZ_PROJECTS;
-    if (!anchor || !list) return false;
+    if (!rendered(document.getElementById('why')) || !list) return false;
     var cards = [];
     PICK.forEach(function (key) {
       for (var i = 0; i < list.length; i++) {
@@ -50,7 +63,7 @@
     html += '</div>' +
       '<div style="margin-top:clamp(1.5rem,3vh,2.25rem)"><a href="#lead" style="display:inline-flex;align-items:center;min-height:48px;padding:0 26px;border-radius:100px;background:#B4813C;color:#1B1712;font-size:16px;font-weight:600">תאמו שיחת ייעוץ</a></div></div>';
     sec.innerHTML = html;
-    anchor.parentNode.insertBefore(sec, anchor);
+    place(sec);
     realign();
     sec.addEventListener('click', function (e) {
       var b = e.target.closest('.lp-card'); if (!b) return;
@@ -66,7 +79,7 @@
   }
   function start() {
     var tries = 0;
-    (function tick() { build(); if (tries < 14) realign(); if (++tries > 60) return; setTimeout(tick, 500); })();
+    (function tick() { var had = !!document.getElementById('projects'); build(); if (tries < 28 && had) realign(); if (++tries > 80) return; setTimeout(tick, tries < 40 ? 250 : 1000); })();
   }
   if (window.STZ_PROJECTS) start();
   else { var s = document.createElement('script'); s.src = '/projects-data.js?v=2'; s.onload = start; document.head.appendChild(s); }

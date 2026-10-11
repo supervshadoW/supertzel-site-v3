@@ -61,6 +61,12 @@ html, body { overflow-x: clip; max-width: 100%; }
 <link rel="icon" href="/favicon.ico?v=2" sizes="any">
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png?v=2">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png?v=2">
+<link rel="preload" href="/vendor/react-18.3.1.production.min.js" as="script">
+<link rel="preload" href="/vendor/react-dom-18.3.1.production.min.js" as="script">
+<link rel="preload" href="/fonts/rubik-hebrew-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/rubik-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+<style id="stz-fonts">@font-face{font-family:'Rubik';font-style:normal;font-weight:300 700;font-display:swap;src:url(/fonts/rubik-hebrew-wght-normal.woff2) format('woff2');unicode-range:U+0307-0308,U+0590-05FF,U+200C-2010,U+20AA,U+25CC,U+FB1D-FB4F}@font-face{font-family:'Rubik';font-style:normal;font-weight:300 700;font-display:swap;src:url(/fonts/rubik-latin-wght-normal.woff2) format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}</style>
+<script>window.__resources={"https://unpkg.com/react@18.3.1/umd/react.production.min.js":"/vendor/react-18.3.1.production.min.js","https://unpkg.com/react-dom@18.3.1/umd/react-dom.production.min.js":"/vendor/react-dom-18.3.1.production.min.js"};</script>
 <script src="/support.js"></script>
 <meta name="ext-resource-dependency" content="img/logo-light-bg.png" data-resource-id="r0">
 <meta name="ext-resource-dependency" content="img/fast/w/hero-pergola.webp" data-resource-id="r1">
@@ -103,12 +109,9 @@ main :is(p, li, h1, h2, h3) :is(p, li, h1, h2, h3) { zoom: 1; }
 <script src="/phone-cc.js?v=4" defer></script>
 <script src="/mobile-ux.js?v=13" defer></script>
 <script src="/landing-mode.js?v=1" defer></script>
-<script src="/landing-projects.js?v=3" defer></script>
-<script src="/landing-about.js?v=2" defer></script>
-<script src="/analytics.js?v=9"></script>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
-<link href="https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet">
+<script src="/landing-projects.js?v=4" defer></script>
+<script src="/landing-about.js?v=3" defer></script>
+<script src="/analytics.js?v=10"></script>
 <style>
 html{direction:rtl;scroll-behavior:smooth;scroll-padding-top:126px}
 @media (min-width:1180px){html{scroll-padding-top:84px}}
@@ -519,7 +522,7 @@ header nav a:hover { color: #E8C48C !important; }
           <p class="stz-env-p" style="margin-top:22px;color:#4B443A;font-size:18px;max-width:44ch">כשפרויקט חוץ מתפצל בין כמה בעלי מקצוע, כל אחד רואה רק את החלק שלו. אנחנו פועלים כמסגרת שירות אחת שמסייעת בארגון הפרויקט — מתכנון יישומי ועד מסירה.</p>
         </div>
         <div style="position:relative;border-radius:28px;overflow:hidden;aspect-ratio:1014/553;background:#D9CFBC">
-          <img src="/img/fast/w/envelope-render-pins.webp" alt="הדמיה של מרחב חוץ עם פרגולה, מטבח חוץ, בר ופינת ישיבה" style="display:block;width:100%;height:100%;object-fit:cover">
+          <img loading="lazy" src="/img/fast/w/envelope-render-pins.webp" alt="הדמיה של מרחב חוץ עם פרגולה, מטבח חוץ, בר ופינת ישיבה" style="display:block;width:100%;height:100%;object-fit:cover">
           <button type="button" aria-label="1. פרגולה והצללה" onMouseEnter="{{ pin1Enter }}" onMouseLeave="{{ pinLeave }}" onClick="{{ pin1Tap }}" onFocus="{{ pin1Enter }}" style="position:absolute;left:50%;top:22%;transform:translate(-50%,-50%) scale({{ pin1Scale }});width:{{ pinSize }};height:{{ pinSize }};border-radius:50%;border:2px solid #FFFFFF;background:{{ pin1Bg }};color:#FFFFFF;font-family:inherit;font-size:15px;font-weight:600;cursor:pointer;box-shadow:0 2px 10px rgba(0,0,0,0.3);transition:transform 0.2s,background 0.2s;padding:0">1</button>
           <button type="button" aria-label="2. מטבח חוץ" onMouseEnter="{{ pin2Enter }}" onMouseLeave="{{ pinLeave }}" onClick="{{ pin2Tap }}" onFocus="{{ pin2Enter }}" style="position:absolute;left:16%;top:72%;transform:translate(-50%,-50%) scale({{ pin2Scale }});width:{{ pinSize }};height:{{ pinSize }};border-radius:50%;border:2px solid #FFFFFF;background:{{ pin2Bg }};color:#FFFFFF;font-family:inherit;font-size:15px;font-weight:600;cursor:pointer;box-shadow:0 2px 10px rgba(0,0,0,0.3);transition:transform 0.2s,background 0.2s;padding:0">2</button>
           <button type="button" aria-label="3. בר אירוח" onMouseEnter="{{ pin3Enter }}" onMouseLeave="{{ pinLeave }}" onClick="{{ pin3Tap }}" onFocus="{{ pin3Enter }}" style="position:absolute;left:31%;top:69%;transform:translate(-50%,-50%) scale({{ pin3Scale }});width:{{ pinSize }};height:{{ pinSize }};border-radius:50%;border:2px solid #FFFFFF;background:{{ pin3Bg }};color:#FFFFFF;font-family:inherit;font-size:15px;font-weight:600;cursor:pointer;box-shadow:0 2px 10px rgba(0,0,0,0.3);transition:transform 0.2s,background 0.2s;padding:0">3</button>
