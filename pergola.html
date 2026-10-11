@@ -145,7 +145,14 @@ button,input,select,textarea{font-family:inherit}
 }
 </style>
 <script>addEventListener('scroll', function () { document.documentElement.classList.toggle('stz-scrolled', (window.scrollY || 0) > 40); }, { passive: true });</script>
-<script src="/steps-slider.js?v=2"></script>
+<script src="/steps-slider.js?v=3"></script>
+<style id="stz-head-fit">
+@media (max-width: 420px) {
+  header > div:not([data-hprog]) { gap: 8px !important; }
+  header > div:not([data-hprog]) > div:last-child { gap: 8px !important; }
+  header a[href="#quick"] { padding-inline: 14px !important; }
+}
+</style>
 <style id="stz-head-all">
 header { position: fixed !important; inset-inline: 0; top: 0; background: transparent !important; -webkit-backdrop-filter: none !important; backdrop-filter: none !important; border-bottom: 0 !important; transition: background .25s ease, backdrop-filter .25s ease; }
 html.stz-scrolled header { background: rgba(27,23,18,0.72) !important; -webkit-backdrop-filter: blur(12px) !important; backdrop-filter: blur(12px) !important; }
