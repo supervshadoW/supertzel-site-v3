@@ -7,9 +7,8 @@
   window.__stzAnalytics = true;
   var GA_ID = 'G-573EPTRPVM';
   var ADS_ID = 'AW-18302540762';
-  // Direct Google Ads conversion for WhatsApp clicks (campaign account). Sent only on the campaign landing page.
-  var WA_ADS_ID = 'AW-6267135003';
-  var WA_CONVERSION = WA_ADS_ID + '/whatsapp_lead';
+  // Direct Google Ads conversion "WhatsApp - דף נחיתה פרגולות" (account 626-713-5003). Sent only on the campaign landing page.
+  var WA_CONVERSION = ADS_ID + '/0egZCPPEq5odENq3qpdE';
   function isLanding() { return location.hostname.indexOf('pergola.') === 0 || /^\/pergola(\/|$)/.test(location.pathname) || /[?&]landing=1(&|$)/.test(location.search); }
   // Conversion labels from Google Ads (Tag setup). Fill in to send direct Ads conversions, e.g. lead: 'AbC-D_efG-h12345'.
   var ADS_LABELS = { lead: '', whatsapp: '', call: '' };
@@ -47,7 +46,7 @@
       personalization_storage: 'denied'
     });
     if (state.analytics) { gtag('config', GA_ID, { anonymize_ip: true }); clarity(); }
-    if (state.ads) { gtag('config', ADS_ID); gtag('config', WA_ADS_ID); }
+    if (state.ads) gtag('config', ADS_ID);
   }
 
   // Microsoft Clarity (heatmaps / recordings): loaded only after analytics consent.
@@ -106,7 +105,7 @@
     var h = el.tagName === 'A' ? (el.getAttribute('href') || '') : '';
     if (h.indexOf('wa.me') > -1 || h.indexOf('api.whatsapp.com') > -1 || h.indexOf('whatsapp.com/send') > -1) {
       track('whatsapp_click', { source: location.pathname });
-      if (isLanding()) { try { gtag('event', 'conversion', { send_to: WA_CONVERSION }); } catch (x) {} }
+      if (isLanding()) { try { gtag('event', 'conversion', { send_to: WA_CONVERSION, value: 1.0, currency: 'ILS' }); } catch (x) {} }
     } else if (h.indexOf('tel:') === 0) track('contact_call', { source: location.pathname });
     else if (isMeetingClick(el)) track('book_meeting_click', { source: location.pathname, label: (el.innerText || '').trim().slice(0, 40) });
   }, true);
