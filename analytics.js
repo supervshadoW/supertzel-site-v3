@@ -9,6 +9,8 @@
   var ADS_ID = 'AW-18302540762';
   // Direct Google Ads conversion "WhatsApp - דף נחיתה פרגולות" (account 626-713-5003). Sent only on the campaign landing page.
   var WA_CONVERSION = ADS_ID + '/0egZCPPEq5odENq3qpdE';
+  // Direct Google Ads conversion "קליק לחיוג - דף נחיתה פרגולות". Values rank the leads: form 3 (set in Google Ads), WhatsApp 2, call 1.
+  var CALL_CONVERSION = ADS_ID + '/LAvhCM7wr5odENq3qpdE';
   function isLanding() { return location.hostname.indexOf('pergola.') === 0 || /^\/pergola(\/|$)/.test(location.pathname) || /[?&]landing=1(&|$)/.test(location.search); }
   // Conversion labels from Google Ads (Tag setup). Fill in to send direct Ads conversions, e.g. lead: 'AbC-D_efG-h12345'.
   var ADS_LABELS = { lead: '', whatsapp: '', call: '' };
@@ -105,8 +107,11 @@
     var h = el.tagName === 'A' ? (el.getAttribute('href') || '') : '';
     if (h.indexOf('wa.me') > -1 || h.indexOf('api.whatsapp.com') > -1 || h.indexOf('whatsapp.com/send') > -1) {
       track('whatsapp_click', { source: location.pathname });
-      if (isLanding()) { try { gtag('event', 'conversion', { send_to: WA_CONVERSION, value: 1.0, currency: 'ILS' }); } catch (x) {} }
-    } else if (h.indexOf('tel:') === 0) track('contact_call', { source: location.pathname });
+      if (isLanding()) { try { gtag('event', 'conversion', { send_to: WA_CONVERSION, value: 2.0, currency: 'ILS' }); } catch (x) {} }
+    } else if (h.indexOf('tel:') === 0) {
+      track('contact_call', { source: location.pathname });
+      if (isLanding()) { try { gtag('event', 'conversion', { send_to: CALL_CONVERSION, value: 1.0, currency: 'ILS' }); } catch (x) {} }
+    }
     else if (isMeetingClick(el)) track('book_meeting_click', { source: location.pathname, label: (el.innerText || '').trim().slice(0, 40) });
   }, true);
 
