@@ -8,7 +8,7 @@
   var css = document.createElement('style');
   css.textContent =
     '.stz-landing header nav[aria-label="ניווט מהיר"]{display:none!important}' +
-    '.stz-landing a[href="/projects"]{display:none!important}';
+    '.stz-landing footer a[href="/projects"]{display:none!important}';
   document.head.appendChild(css);
 
   var m = document.createElement('meta');
