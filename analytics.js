@@ -7,6 +7,10 @@
   window.__stzAnalytics = true;
   var GA_ID = 'G-573EPTRPVM';
   var ADS_ID = 'AW-18302540762';
+  // Direct Google Ads conversion for WhatsApp clicks (campaign account). Sent only on the campaign landing page.
+  var WA_ADS_ID = 'AW-6267135003';
+  var WA_CONVERSION = WA_ADS_ID + '/whatsapp_lead';
+  function isLanding() { return location.hostname.indexOf('pergola.') === 0 || /^\/pergola(\/|$)/.test(location.pathname) || /[?&]landing=1(&|$)/.test(location.search); }
   // Conversion labels from Google Ads (Tag setup). Fill in to send direct Ads conversions, e.g. lead: 'AbC-D_efG-h12345'.
   var ADS_LABELS = { lead: '', whatsapp: '', call: '' };
   var STORAGE_KEY = 'supertzel_cookie_consent_v2';
@@ -43,7 +47,7 @@
       personalization_storage: 'denied'
     });
     if (state.analytics) { gtag('config', GA_ID, { anonymize_ip: true }); clarity(); }
-    if (state.ads) gtag('config', ADS_ID);
+    if (state.ads) { gtag('config', ADS_ID); gtag('config', WA_ADS_ID); }
   }
 
   // Microsoft Clarity (heatmaps / recordings): loaded only after analytics consent.
@@ -74,18 +78,37 @@
 
   function track(name, params) {
     try { gtag('event', name, params || {}); } catch (e) {}
-    var key = name === 'generate_lead' ? 'lead' : name === 'contact_whatsapp' ? 'whatsapp' : name === 'contact_call' ? 'call' : '';
+    var key = name === 'generate_lead' ? 'lead' : name === 'whatsapp_click' ? 'whatsapp' : name === 'contact_call' ? 'call' : '';
     if (key && ADS_LABELS[key]) { try { gtag('event', 'conversion', { send_to: ADS_ID + '/' + ADS_LABELS[key] }); } catch (e) {} }
   }
   window.stzTrack = track;
 
-  // Click tracking: WhatsApp, phone call.
+  // Click tracking, each kind of click has its own event (no generic "cta_click"):
+  //   WhatsApp links      -> whatsapp_click (+ direct Ads conversion on the landing page)
+  //   phone links         -> contact_call
+  //   book a call / meeting buttons -> book_meeting_click
+  //   lead form           -> generate_lead, sent from lead.js only after validation and a successful send
+  var MEETING = /ייעוץ|השארת פרטים|מילוי פרטים|השאירו פרטים|תיאום|תאמו|צרו קשר|צור קשר/;
+  function isMeetingClick(el) {
+    if (!el || el.closest('#stz-lead-root') || el.closest('#stz-consent') || el.closest('form')) return false;
+    var href = el.tagName === 'A' ? (el.getAttribute('href') || '') : '';
+    if (el.tagName === 'A' && !/#(lead|contact|quick)$/.test(href) && !el.hasAttribute('data-lead-open')) return false;
+    if (!el.hasAttribute('data-lead-open') && !MEETING.test(el.innerText || '')) return false;
+    if (el.tagName === 'BUTTON') { // a button that sits next to form fields is a form submit, not a "book a call" button
+      var p = el;
+      for (var i = 0; i < 4 && p; i++, p = p.parentElement) if (p.querySelector && p.querySelector('input,textarea,select')) return false;
+    }
+    return true;
+  }
   document.addEventListener('click', function (e) {
-    var a = e.target && e.target.closest ? e.target.closest('a[href]') : null;
-    if (!a) return;
-    var h = a.getAttribute('href') || '';
-    if (h.indexOf('wa.me') > -1 || h.indexOf('api.whatsapp.com') > -1) track('contact_whatsapp', { source: location.pathname });
-    else if (h.indexOf('tel:') === 0) track('contact_call', { source: location.pathname });
+    var el = e.target && e.target.closest ? e.target.closest('a[href],button,[data-lead-open]') : null;
+    if (!el) return;
+    var h = el.tagName === 'A' ? (el.getAttribute('href') || '') : '';
+    if (h.indexOf('wa.me') > -1 || h.indexOf('api.whatsapp.com') > -1 || h.indexOf('whatsapp.com/send') > -1) {
+      track('whatsapp_click', { source: location.pathname });
+      if (isLanding()) { try { gtag('event', 'conversion', { send_to: WA_CONVERSION }); } catch (x) {} }
+    } else if (h.indexOf('tel:') === 0) track('contact_call', { source: location.pathname });
+    else if (isMeetingClick(el)) track('book_meeting_click', { source: location.pathname, label: (el.innerText || '').trim().slice(0, 40) });
   }, true);
 
   function banner() {
