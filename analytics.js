@@ -24,6 +24,12 @@
     security_storage: 'granted', wait_for_update: 500
   });
   gtag('js', new Date());
+  // Advanced consent mode: the Google tags run for every visitor, but until the visitor agrees no cookies are
+  // stored and Google receives only cookieless pings (used by Google Ads / GA4 to model conversions).
+  gtag('set', 'ads_data_redaction', true);
+  gtag('set', 'url_passthrough', true);
+  gtag('config', GA_ID, { anonymize_ip: true });
+  gtag('config', ADS_ID);
 
   // gtag.js is loaded after the page has loaded so it does not compete with the page itself; dataLayer queues everything until then.
   var gtagLoaded = false;
@@ -47,8 +53,7 @@
       ad_personalization: state.ads ? 'granted' : 'denied',
       personalization_storage: 'denied'
     });
-    if (state.analytics) { gtag('config', GA_ID, { anonymize_ip: true }); clarity(); }
-    if (state.ads) gtag('config', ADS_ID);
+    if (state.analytics) clarity();
   }
 
   // Microsoft Clarity (heatmaps / recordings): loaded only after analytics consent.
@@ -131,7 +136,7 @@
     d.style.cssText = 'position:fixed;inset-inline:12px;bottom:12px;z-index:2147483000;max-width:560px;margin-inline:auto;background:#1B1712;color:#F5F0E4;border:1px solid rgba(201,151,82,.45);border-radius:18px;padding:18px 20px;box-shadow:0 18px 50px rgba(0,0,0,.45);font:14px/1.6 inherit;font-family:inherit';
     d.innerHTML =
       '<div id="stz-consent-t" style="font-weight:700;font-size:16px;margin-bottom:6px">אנחנו מכבדים את הפרטיות שלך</div>' +
-      '<p style="margin:0 0 14px;opacity:.9">האתר משתמש בעוגיות (Cookies) כדי לתפעל שירותים בסיסיים, וכן — אם תסכים/י — כדי לנתח ביקורים באמצעות Google Analytics. חלק מהמידע מעובד בשרתי ספקים בחו״ל. באפשרותך לקבל, לדחות או להתאים אישית. <a href="/legal#privacy" style="color:#C99752;white-space:nowrap">למידע מלא — מדיניות הפרטיות</a></p>' +
+      '<p style="margin:0 0 14px;opacity:.9">האתר משתמש בעוגיות (Cookies) כדי לתפעל שירותים בסיסיים, וכן — אם תסכים/י — כדי לנתח ביקורים באמצעות Google Analytics. ללא הסכמה לא נשמרות עוגיות כאלה, ונשלחים אותות אנונימיים בלבד. חלק מהמידע מעובד בשרתי ספקים בחו״ל. באפשרותך לקבל, לדחות או להתאים אישית. <a href="/legal#privacy" style="color:#C99752;white-space:nowrap">למידע מלא — מדיניות הפרטיות</a></p>' +
       '<div id="stz-cc-custom" style="display:none;margin:0 0 14px;gap:10px;flex-direction:column">' +
       '<label style="display:flex;gap:10px;align-items:flex-start"><input type="checkbox" id="stz-cc-an" style="margin-top:5px"><span><strong>ניתוח ביקורים</strong><br><span style="opacity:.8;font-size:13px">Google Analytics ו-Microsoft Clarity: סטטיסטיקה, מפות חום והקלטות גלישה.</span></span></label>' +
       '<label style="display:flex;gap:10px;align-items:flex-start"><input type="checkbox" id="stz-cc-ad" style="margin-top:5px"><span><strong>פרסום ומדידת קמפיינים</strong><br><span style="opacity:.8;font-size:13px">Google Ads: מדידת פניות שהגיעו ממודעות.</span></span></label>' +
