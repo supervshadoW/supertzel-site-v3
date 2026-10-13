@@ -1210,6 +1210,9 @@ class Component extends DCLogic {
           { label: 'מאוורר תקרה משולב', x: '52.8%', y: '71.2%' }
         ] }
     ];
+    // Ad landing variants: ?s=awning opens on an awning slide (the awnings ad group links here); ?s=closure keeps the glass-closure slide first.
+    const sv = (location.search.match(/[?&]s=(\w+)/) || [])[1];
+    if (sv === 'awning') S.unshift({ k: 6, word: 'סוככים וגגונים בהתאמה אישית.', caption: 'סוכך זרועות חשמלי · הפעלה בשלט', src: '/img/fast/gallery/new-61-1.webp', pos: '50% 40%', alt: 'סוככי זרועות חשמליים בגוון כחול על חזית בניין', pins: [] });
     const ov = (this.state && this.state.pinOv) || {};
     return S.map((s, i) => ov[i] ? Object.assign({}, s, { pins: ov[i] }) : s);
   }
