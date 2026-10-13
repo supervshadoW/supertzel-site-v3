@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="he">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -110,8 +110,8 @@ main :is(p, li, h1, h2, h3) :is(p, li, h1, h2, h3) { zoom: 1; }
 <meta name="theme-color" content="#1B1712">
 <link rel="preload" as="image" href="/img/fast/hero/hero-pergola-kitchen-bar.webp" fetchpriority="high">
 <script src="/lead.js?v=9"></script>
-<script src="/lead-modal.js?v=11"></script>
-<script src="/phone-cc.js?v=4" defer></script>
+<script src="/lead-modal.js?v=12"></script>
+<script src="/phone-cc.js?v=5" defer></script>
 <script src="/analytics.js?v=14"></script>
 <style>
 html{scroll-padding-top:84px}
@@ -403,7 +403,7 @@ button,input,select,textarea{font-family:inherit}
                 <div data-bkctl="" style="display:flex;align-items:center;justify-content:space-between;gap:12px;margin-top:16px">
           <div style="display:flex;align-items:center;gap:8px">
             <button type="button" aria-label="לעמוד הקודם" onClick="{{ bookPrev }}" disabled="{{ bookAtStart }}" style="width:44px;height:44px;border-radius:100px;border:1px solid rgba(33,28,22,0.25);background:transparent;color:#211C16;font-size:17px;cursor:pointer;opacity:{{ bookPrevOp }}">→</button>
-            <span style="font-size:14px;font-weight:600;color:#211C16;min-width:44px;text-align:center">{{ bookNum }} / {{ bookTotal }}</span>
+            <span dir="ltr" style="font-size:14px;font-weight:600;color:#211C16;min-width:44px;text-align:center">{{ bookNum }} / {{ bookTotal }}</span>
             <button type="button" aria-label="לעמוד הבא" onClick="{{ bookNext }}" disabled="{{ bookAtEnd }}" style="width:44px;height:44px;border-radius:100px;border:1px solid #211C16;background:#211C16;color:#F5F0E4;font-size:17px;cursor:pointer;opacity:{{ bookNextOp }};animation:{{ bookRing }}" data-flip-anim="">←</button>
           </div>
           <button type="button" aria-pressed="{{ bookSoundPressed }}" aria-label="צליל דפדוף" onClick="{{ bookSoundToggle }}" style="display:{{ soundDisp }};align-items:center;gap:8px;min-height:44px;padding:0 14px;border-radius:100px;border:1px solid rgba(33,28,22,0.2);background:transparent;color:#4B443A;font:inherit;font-size:13.5px;cursor:pointer">{{ bookSoundLabel }}</button>
@@ -632,7 +632,7 @@ button,input,select,textarea{font-family:inherit}
       <div data-b2ctl="" style="display:flex;align-items:center;justify-content:space-between;gap:12px;margin-top:16px">
         <div style="display:flex;align-items:center;gap:8px">
           <button type="button" aria-label="לעמוד הקודם" onClick="{{ b2Prev }}" disabled="{{ b2AtStart }}" style="width:44px;height:44px;border-radius:100px;border:1px solid rgba(245,240,228,0.3);background:transparent;color:#F5F0E4;font-size:17px;cursor:pointer;opacity:{{ b2PrevOp }}">→</button>
-          <span style="font-size:14px;font-weight:600;color:#F5F0E4;min-width:44px;text-align:center">{{ b2Num }} / 2</span>
+          <span dir="ltr" style="font-size:14px;font-weight:600;color:#F5F0E4;min-width:44px;text-align:center">{{ b2Num }} / 2</span>
           <button type="button" aria-label="לעמוד הבא" onClick="{{ b2Next }}" disabled="{{ b2AtEnd }}" style="width:44px;height:44px;border-radius:100px;border:1px solid #C99752;background:#C99752;color:#1B1712;font-size:17px;cursor:pointer;opacity:{{ b2NextOp }};animation:{{ b2Ring }}" data-flip-anim="">←</button>
         </div>
         <button type="button" aria-pressed="{{ bookSoundPressed }}" aria-label="צליל דפדוף" onClick="{{ bookSoundToggle }}" style="display:{{ soundDisp }};align-items:center;gap:8px;min-height:44px;padding:0 14px;border-radius:100px;border:1px solid rgba(245,240,228,0.25);background:transparent;color:rgba(245,240,228,0.8);font:inherit;font-size:13.5px;cursor:pointer">{{ bookSoundLabel }}</button>

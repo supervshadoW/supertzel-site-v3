@@ -50,6 +50,7 @@
     var p0 = parse(input.value);
     if (p0.code) sel.selectedIndex = indexOfCode(p0.code);
     input.parentNode.insertBefore(sel, input);
+    if (!input.getAttribute('aria-label')) input.setAttribute('aria-label', 'טלפון');
     input.style.direction = 'ltr';
     input.style.textAlign = 'left';
     input.placeholder = input.placeholder || '54-123-4567';
