@@ -191,4 +191,36 @@ if lg2 != lg: write('legal.html', lg2)
 if not os.path.exists(os.path.join(ROOT, 'robots.txt')):
     write('robots.txt', 'User-agent: *\nAllow: /\n\nUser-agent: AdsBot-Google\nAllow: /\n\nUser-agent: AdsBot-Google-Mobile\nAllow: /\n')
 
+
+# 7) home page (index.html) and projects page: contrast, accessible names, SEO data. The campaign landing page is not touched here.
+def sub(name, pattern, repl, label, flags=0):
+    t = read(name)
+    t2, n = re.subn(pattern, repl, t, flags=flags)
+    if n: write(name, t2)
+    return n
+# kickers on the cream background were gold #B4813C (contrast 3.0:1, AA needs 4.5:1); the kicker on the dark section keeps the gold
+sub('index.html', r'(<div style="display:inline-flex;align-items:center;gap:10px;)color:#B4813C(;font-size:1[0-9.]*px;font-weight:600;[^"]*"><span[^>]*></span>)(01 · מעטפת|מתחילים מכאן|02 · מרכיבי|04 · מהשטח)', r'\1color:#80561E\2\3', 'kicker contrast')
+sub('index.html', r'<span style="opacity:0\.7">(0[35])</span>', r'<span style="opacity:0.9">\1</span>', 'numbering contrast')
+sub('index.html', r'color:rgba\(245,240,228,0\.45\)(">פחות מדקה)', r'color:rgba(245,240,228,0.6)\1', 'hint contrast')
+# visible text must be part of the accessible name: the logo link shows "IL PROJECTS"; the project cards show more than the (truncated) title
+patch('index.html', '<a style="display:inline-flex;flex-direction:column;align-items:flex-end" href="/" aria-label="לעמוד הבית">', '<a style="display:inline-flex;flex-direction:column;align-items:flex-end" href="/" aria-label="סופר צל IL PROJECTS — לעמוד הבית">', 'logo link name')
+patch('index.html', '<a href="/projects" draggable="false" aria-label="{{ p.title }}" style=', '<a href="/projects" draggable="false" style=', 'project card name')
+patch('projects.html', '<button type="button" onClick="{{ p.open }}" aria-label="{{ p.aria }}" style=', '<button type="button" onClick="{{ p.open }}" style=', 'project card name (projects page)')
+# the numbered hotspots on the hero take their name from their content ("1 מטבח חוץ") instead of a label that hides the number
+patch('index.html', '<button type="button" aria-label="{{ p.label }}" onPointerDown="{{ p.onDown }}"', '<button type="button" onPointerDown="{{ p.onDown }}"', 'hotspot name')
+# the consent line under the lead form on the dark section
+sub('index.html', r'color:rgba\(245,240,228,0\.45\)(;text-align:center;line-height:1\.6">השארת פרטים)', r'color:rgba(245,240,228,0.62)\1', 'consent line contrast')
+# projects page: the call button shows "חייגו" so the name must contain it
+patch('projects.html', '<a href="tel:0553100154" aria-label="התקשרו" style=', '<a href="tel:0553100154" aria-label="חייגו לסופר צל" style=', 'call button name')
+# projects page header: the current-page link was gold on the light header (2.3:1); gold stays on the dark scrolled header
+patch('projects.html', '<a href="#gallery" style="font-size:15px;white-space:nowrap;color:#C99752;font-weight:500">פרויקטים</a>', '<a href="#gallery" style="font-size:15px;white-space:nowrap;color:{{ hdAccent }};font-weight:500">פרויקטים</a>', 'current link colour')
+patch('projects.html', "      hdFg: this.state.scrolled ? '#F5F0E4' : '#211C16',\n", "      hdFg: this.state.scrolled ? '#F5F0E4' : '#211C16',\n      hdAccent: this.state.scrolled ? '#C99752' : '#80561E',\n", 'current link colour state')
+# search engines: canonical + structured data (no ratings, no price, not typed as a contractor)
+LD = '{"@context":"https://schema.org","@type":"LocalBusiness","name":"סופר צל","alternateName":"IL Projects","url":"https://supertzel.co.il/","telephone":"+972553100154","email":"ilprojects.israel@gmail.com","logo":"https://supertzel.co.il/img/logo-light-bg.png","image":"https://supertzel.co.il/img/fast/hero/hero-pergola-kitchen-bar.webp","description":"הצללה וקירוי, סגירות זכוכית, מטבחי חוץ, דקים, גידור ובנייה קלה — בהתאמה אישית, עם נקודת קשר אחת מהמדידה ועד המסירה.","areaServed":["מרכז","שפלה","דרום"]}'
+if 'application/ld+json' not in read('index.html'):
+    patch('index.html', VIEWPORT, VIEWPORT + '\n<link rel="canonical" href="https://supertzel.co.il/">\n<script type="application/ld+json">' + LD + '</script>', 'canonical + structured data')
+# the mobile menu closes on Escape
+shutil.copy(f'{ASSETS}/home-a11y.js', f'{ROOT}/home-a11y.js')
+patch('index.html', '<script src="/steps-slider.js?v=3"></script>', '<script src="/steps-slider.js?v=3"></script>\n<script src="/home-a11y.js?v=1" defer></script>', 'menu Escape')
+
 print('performance fixes applied')

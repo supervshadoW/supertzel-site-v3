@@ -58,7 +58,7 @@ button,input,select{font-family:inherit}
         <nav style="display:flex;align-items:center;gap:clamp(0.9rem,1.8vw,1.75rem)">
           <a href="/" style="font-size:15px;white-space:nowrap;color:inherit">דף הבית</a>
           <a href="/#services" style="font-size:15px;white-space:nowrap;color:inherit">מה אנחנו עושים</a>
-          <a href="#gallery" style="font-size:15px;white-space:nowrap;color:#C99752;font-weight:500">פרויקטים</a>
+          <a href="#gallery" style="font-size:15px;white-space:nowrap;color:{{ hdAccent }};font-weight:500">פרויקטים</a>
           <a href="/#process" style="font-size:15px;white-space:nowrap;color:inherit">איך זה עובד</a>
         </nav>
         <a href="#contact" style="background:#B4813C;color:#1B1712;padding:12px 26px;font-size:15px;font-weight:600;border-radius:100px;white-space:nowrap" style-hover="background:#C99752;color:#1B1712">תאמו שיחת ייעוץ</a>
@@ -104,7 +104,7 @@ button,input,select{font-family:inherit}
       </sc-if>
       <sc-for list="{{ cards }}" as="p" hint-placeholder-count="9">
         <div style="position:relative;min-width:0">
-        <button type="button" onClick="{{ p.open }}" aria-label="{{ p.aria }}" style="position:relative;display:block;padding:0;border:0;border-radius:22px;overflow:hidden;aspect-ratio:4/3;background:#1B1712;cursor:pointer;text-align:start;font:inherit;color:#F5F0E4" style-hover="box-shadow:0 18px 40px rgba(27,23,18,0.22)">
+        <button type="button" onClick="{{ p.open }}" style="position:relative;display:block;padding:0;border:0;border-radius:22px;overflow:hidden;aspect-ratio:4/3;background:#1B1712;cursor:pointer;text-align:start;font:inherit;color:#F5F0E4" style-hover="box-shadow:0 18px 40px rgba(27,23,18,0.22)">
           <img src="{{ p.cover }}" alt="{{ p.title }}" loading="lazy" decoding="async" style="display:block;width:100%;height:100%;object-fit:cover;transition:transform 0.7s cubic-bezier(0.2,0.7,0.2,1)">
           <span style="position:absolute;top:14px;inset-inline-start:14px;display:inline-flex;align-items:center;padding:5px 12px;border-radius:100px;background:rgba(245,240,228,0.94);color:#1B1712;font-size:12.5px;font-weight:600">{{ p.catLabel }}</span>
           <sc-if value="{{ p.multi }}" hint-placeholder-val="{{ false }}">
@@ -250,7 +250,7 @@ button,input,select{font-family:inherit}
 
 <sc-if value="{{ narrow }}" hint-placeholder-val="{{ false }}">
   <div style="position:fixed;z-index:95;inset-inline:0;bottom:0;display:flex;gap:8px;padding:10px 12px calc(10px + env(safe-area-inset-bottom));background:rgba(27,23,18,0.96);border-top:1px solid rgba(245,240,228,0.12)">
-    <a href="tel:0553100154" aria-label="התקשרו" style="display:flex;align-items:center;justify-content:center;min-width:48px;min-height:48px;border-radius:100px;border:1px solid rgba(245,240,228,0.3);color:#F5F0E4;font-size:14px;padding:0 14px">חייגו</a>
+    <a href="tel:0553100154" aria-label="חייגו לסופר צל" style="display:flex;align-items:center;justify-content:center;min-width:48px;min-height:48px;border-radius:100px;border:1px solid rgba(245,240,228,0.3);color:#F5F0E4;font-size:14px;padding:0 14px">חייגו</a>
     <a href="{{ waHref }}" target="_blank" rel="noopener" style="display:flex;align-items:center;justify-content:center;min-height:48px;border-radius:100px;border:1px solid rgba(245,240,228,0.3);color:#F5F0E4;font-size:14px;padding:0 14px">וואטסאפ</a>
     <a href="#contact" style="flex:1;display:flex;align-items:center;justify-content:center;min-height:48px;border-radius:100px;background:#B4813C;color:#1B1712;font-weight:600;font-size:15.5px">תאמו שיחת ייעוץ</a>
   </div>
@@ -358,6 +358,7 @@ class Component extends DCLogic {
       wide: !m, narrow: n,
       hdBg: this.state.scrolled ? 'rgba(27,23,18,0.95)' : 'rgba(245,240,228,0)',
       hdFg: this.state.scrolled ? '#F5F0E4' : '#211C16',
+      hdAccent: this.state.scrolled ? '#C99752' : '#80561E',
       hdBd: this.state.scrolled ? 'rgba(245,240,228,0.12)' : 'rgba(33,28,22,0)',
       hdBtnBd: this.state.scrolled ? 'rgba(245,240,228,0.35)' : 'rgba(33,28,22,0.28)',
       logoLightOp: this.state.scrolled ? '0' : '1',
