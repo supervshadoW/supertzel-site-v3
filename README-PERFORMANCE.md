@@ -35,6 +35,14 @@ The script is safe to run repeatedly. It does the following, with no visual chan
    footer of the previous Lovable site). On the landing page only the two `href` values change. The home page keeps its
    reviews section (with the icons) hidden, as requested.
 
+9. **Home page only, usability and scroll feel (`apply.py` section 9, one `<style id="stz-ux">` block plus a few attributes):**
+   a larger touch area for the hero slide dots (they are 6px tall), footer links at least 32px tall, a soft shadow behind the
+   gold hero caption so it stays readable over bright photos, the existing "rise in" effect on the project-type and projects
+   headers, and a slight depth effect: the photos in the project-type cards and the component tiles drift a few percent inside
+   their frames while the page scrolls (`[data-par]`, CSS scroll-driven animations, so browsers without support show the still
+   photo). The depth effect is off with "reduce motion" and with the page's own accessibility menu. To remove it, delete the
+   `[data-par]` rules from the `stz-ux` block.
+
 The "who we are" and "projects" sections of the pergola landing page are inserted by `landing-about.js` and
 `landing-projects.js` right after `#why` (in that order). They only insert into the rendered page and put themselves back in
 place if the page re-renders, so the order is the same on every load.
