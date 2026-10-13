@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Re-applies the site's performance and measurement fixes. Safe to run more than once.
+"""Re-applies the site's performance, measurement, accessibility and policy fixes. Safe to run more than once.
 
 Run it from the repository root after copying a fresh export of the pages over the repo
 (a new export overwrites index.html, pergola.html, projects.html, legal.html, analytics.js,
@@ -17,6 +17,10 @@ What it does (no visual change):
   4. Logos are shipped at 3x their displayed size (112KB -> 15KB), the landing hero is re-encoded (-30%), and the
      simulation image below the fold is lazy-loaded.
   5. vercel.json: immutable caching for /vendor and /fonts.
+  6. Accessibility / SEO / Google Ads policy: lang="he", meta descriptions, the business name as text in the first screen
+     of the landing page (Google Ads "business name prominence"), a name for the phone fields, a left-to-right page
+     counter ("1 / 2" instead of "2 / 1"), no bogus requests for template placeholders, robots.txt, and the privacy
+     policy no longer lists Google Fonts (fonts are served from this site).
 """
 import json, os, re, shutil, sys
 
@@ -135,4 +139,56 @@ for src in ('/fonts/(.*)', '/vendor/(.*)'):
     raw = raw.replace(js_rule, js_rule + rule(src), 1)
 json.loads(raw)
 write('vercel.json', raw)
+
+# 6) accessibility / SEO / policy fixes. patch() skips quietly when already applied and warns when the text it expects is gone.
+changed_js = set()
+def patch(name, old, new, label, count=1):
+    s = read(name)
+    if new in s:
+        return False
+    if old not in s:
+        print(f'WARNING: {name}: "{label}" not applied (expected text not found)')
+        return False
+    write(name, s.replace(old, new, count))
+    if name.endswith('.js'): changed_js.add(name)
+    return True
+
+PAGES = ('index.html', 'pergola.html', 'projects.html', 'legal.html')
+for name in PAGES:
+    patch(name, '<html>', '<html lang="he">', 'lang')
+VIEWPORT = '<meta name="viewport" content="width=device-width, initial-scale=1">'
+DESC = {
+    'pergola.html': 'פרגולות והצללה בהתאמה אישית: פרגולות אלומיניום, תריס חשמלי ועץ, סוככים ורשתות צל. מדידה בשטח, תכנון יישומי ונקודת קשר אחת מהמדידה ועד המסירה. סופר צל — מרכז, שפלה ודרום. תאמו שיחת ייעוץ.',
+    'projects.html': 'פרויקטים שביצענו — פרגולות, סגירות זכוכית, מטבחי חוץ, דקים וגידור. תמונות מפרויקטים של סופר צל.',
+    'legal.html': 'תקנון, מדיניות פרטיות והצהרת נגישות של סופר צל.',
+}
+for name, text in DESC.items():
+    if 'name="description"' not in read(name):
+        patch(name, VIEWPORT, VIEWPORT + '\n<meta name="description" content="' + text + '">', 'meta description')
+# Google Ads "business name prominence": the name must be visible as text in the first screen on phones
+patch('pergola.html', "heroCapShow: n ? 'פרגולות והצללה' : S[cs].caption,", "heroCapShow: n ? 'סופר צל · פרגולות והצללה' : S[cs].caption,", 'business name in the hero caption')
+# page counters in a right-to-left page: "1 / 2" was drawn as "2 / 1"
+patch('index.html', '<span style="font-size:14px;font-weight:600;color:#211C16;min-width:44px;text-align:center">{{ bookNum }} / {{ bookTotal }}</span>', '<span dir="ltr" style="font-size:14px;font-weight:600;color:#211C16;min-width:44px;text-align:center">{{ bookNum }} / {{ bookTotal }}</span>', 'page counter')
+patch('index.html', '<span style="font-size:14px;font-weight:600;color:#F5F0E4;min-width:44px;text-align:center">{{ b2Num }} / 2</span>', '<span dir="ltr" style="font-size:14px;font-weight:600;color:#F5F0E4;min-width:44px;text-align:center">{{ b2Num }} / 2</span>', 'page counter 2')
+# the raw template made the browser request "/{{ pMain }}" etc. (404s); lazy images inside hidden markup are not requested
+for name, srcs in (('pergola.html', ('{{ pMain }}', '{{ t.src }}')), ('projects.html', ('{{ mSrc }}', '{{ t.src }}'))):
+    for src in srcs:
+        patch(name, f'<img src="{src}"', f'<img loading="lazy" src="{src}"', f'lazy {src}')
+# phone fields: the country-code select is inserted into the label, which left the number field without a name
+patch('phone-cc.js', "    input.parentNode.insertBefore(sel, input);\n", "    input.parentNode.insertBefore(sel, input);\n    if (!input.getAttribute('aria-label')) input.setAttribute('aria-label', 'טלפון');\n", 'phone field name')
+patch('lead-modal.js', "telI.required = true;", "telI.required = true; telI.setAttribute('aria-label', 'טלפון');", 'modal phone field name')
+# cache-busting for the scripts changed above
+for js in sorted(changed_js):
+    for name in PAGES:
+        t = read(name)
+        t2 = re.sub(re.escape(js) + r'\?v=(\d+)', lambda m: '%s?v=%d' % (js, int(m.group(1)) + 1), t)
+        if t2 != t: write(name, t2)
+# privacy policy: Google Fonts is no longer used
+lg = read('legal.html')
+lg2 = re.sub(r'\s*<tr[^>]*><td[^>]*>Google Fonts</td>.*?</tr>', '', lg, count=1, flags=re.S)
+if lg2 != lg: write('legal.html', lg2)
+# robots.txt (explicitly lets the Google Ads crawlers in)
+if not os.path.exists(os.path.join(ROOT, 'robots.txt')):
+    write('robots.txt', 'User-agent: *\nAllow: /\n\nUser-agent: AdsBot-Google\nAllow: /\n\nUser-agent: AdsBot-Google-Mobile\nAllow: /\n')
+
 print('performance fixes applied')

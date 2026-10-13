@@ -1,8 +1,9 @@
 <!DOCTYPE html>
-<html>
+<html lang="he">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="פרויקטים שביצענו — פרגולות, סגירות זכוכית, מטבחי חוץ, דקים וגידור. תמונות מפרויקטים של סופר צל.">
 <style>html, body { overflow-x: clip; max-width: 100%; }</style>
 <link rel="icon" href="/favicon.ico?v=2" sizes="any">
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png?v=2">
@@ -30,8 +31,8 @@ main :is(p, li, h1, h2, h3) :is(p, li, h1, h2, h3) { zoom: 1; }
 <title>פרויקטים שביצענו | סופר צל</title>
 <script src="/projects-data.js"></script>
 <script src="/lead.js?v=9"></script>
-<script src="/lead-modal.js?v=10"></script>
-<script src="/phone-cc.js?v=4" defer></script>
+<script src="/lead-modal.js?v=11"></script>
+<script src="/phone-cc.js?v=5" defer></script>
 <script src="/analytics.js?v=14"></script>
 <script src="/image-slot.js"></script>
 <style>
@@ -201,7 +202,7 @@ button,input,select{font-family:inherit}
       <div style="display:grid;grid-template-columns:{{ modalCols }};gap:clamp(1.25rem,3vw,2.25rem);align-items:start">
         <div style="min-width:0">
           <div style="position:relative;border-radius:18px;overflow:hidden;aspect-ratio:16/10;background:#1B1712">
-            <img src="{{ mSrc }}" alt="{{ mTitle }}" style="display:block;width:100%;height:100%;object-fit:cover">
+            <img loading="lazy" src="{{ mSrc }}" alt="{{ mTitle }}" style="display:block;width:100%;height:100%;object-fit:cover">
             <sc-if value="{{ mMulti }}" hint-placeholder-val="{{ false }}">
               <button type="button" onClick="{{ prev }}" aria-label="התמונה הקודמת" style="position:absolute;top:50%;inset-inline-start:12px;transform:translateY(-50%);width:44px;height:44px;border-radius:50%;border:0;background:rgba(245,240,228,0.92);color:#1B1712;font-size:18px;cursor:pointer">›</button>
               <button type="button" onClick="{{ next }}" aria-label="התמונה הבאה" style="position:absolute;top:50%;inset-inline-end:12px;transform:translateY(-50%);width:44px;height:44px;border-radius:50%;border:0;background:rgba(245,240,228,0.92);color:#1B1712;font-size:18px;cursor:pointer">‹</button>
@@ -210,7 +211,7 @@ button,input,select{font-family:inherit}
           <sc-if value="{{ mMulti }}" hint-placeholder-val="{{ false }}">
             <div style="display:flex;gap:8px;margin-top:10px;overflow-x:auto">
               <sc-for list="{{ thumbs }}" as="t" hint-placeholder-count="3">
-                <button type="button" onClick="{{ t.pick }}" aria-label="{{ t.aria }}" style="flex:0 0 auto;width:84px;aspect-ratio:4/3;padding:0;border-radius:10px;overflow:hidden;border:2px solid {{ t.bc }};background:#1B1712;cursor:pointer;opacity:{{ t.op }}"><img src="{{ t.src }}" alt="" style="display:block;width:100%;height:100%;object-fit:cover"></button>
+                <button type="button" onClick="{{ t.pick }}" aria-label="{{ t.aria }}" style="flex:0 0 auto;width:84px;aspect-ratio:4/3;padding:0;border-radius:10px;overflow:hidden;border:2px solid {{ t.bc }};background:#1B1712;cursor:pointer;opacity:{{ t.op }}"><img loading="lazy" src="{{ t.src }}" alt="" style="display:block;width:100%;height:100%;object-fit:cover"></button>
               </sc-for>
             </div>
           </sc-if>

@@ -102,7 +102,7 @@
     sel = el('select', S.sel); sel.setAttribute('aria-label', 'קידומת מדינה'); sel.autocomplete = 'tel-country-code';
     C.forEach(function (c) { var o = document.createElement('option'); o.value = c[1]; o.textContent = '+' + c[1] + ' ' + c[0]; o.style.color = '#211C16'; sel.appendChild(o); });
     sel.onchange = setPh;
-    telI = el('input', S.inp + ';direction:ltr;text-align:left'); telI.type = 'tel'; telI.inputMode = 'tel'; telI.autocomplete = 'tel-national'; telI.required = true;
+    telI = el('input', S.inp + ';direction:ltr;text-align:left'); telI.type = 'tel'; telI.inputMode = 'tel'; telI.autocomplete = 'tel-national'; telI.required = true; telI.setAttribute('aria-label', 'טלפון');
     telI.addEventListener('input', detect);
     row.appendChild(sel); row.appendChild(telI); l2.appendChild(row);
     err = el('p', 'margin:0;font-size:13.5px;color:#E8C48C;text-align:center;display:none', 'נא למלא שם ומספר טלפון תקין'); err.setAttribute('role', 'alert');
