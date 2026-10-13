@@ -223,6 +223,32 @@ if 'application/ld+json' not in read('index.html'):
 shutil.copy(f'{ASSETS}/home-a11y.js', f'{ROOT}/home-a11y.js')
 patch('index.html', '<script src="/steps-slider.js?v=3"></script>', '<script src="/steps-slider.js?v=3"></script>\n<script src="/home-a11y.js?v=1" defer></script>', 'menu Escape')
 
+# 9) home page only: usability and scroll feel. The campaign landing page is not touched here.
+UX_CSS = """<style id="stz-ux">
+/* hero slide dots are 6px tall: give them a roomier touch area (the dots look the same) */
+[data-hdot]{position:relative}
+[data-hdot]::after{content:"";position:absolute;inset:-14px -3px}
+/* footer links and buttons were 22px tall */
+footer a,footer button{display:inline-flex;align-items:center;min-height:32px}
+/* depth: the photos in the project-type cards and the component tiles drift slightly inside their frames while the page scrolls.
+   Needs scroll-driven animations (Chrome, Edge, Safari 26+); other browsers show the still photo. */
+@keyframes stz-par{from{translate:0 -4%;scale:1.09}to{translate:0 4%;scale:1.09}}
+@media (prefers-reduced-motion:no-preference){@supports (animation-timeline:view()){
+[data-par]{view-timeline:--stz-par block}
+[data-par]>img{animation:stz-par linear both;animation-timeline:--stz-par;animation-range:cover}
+}}
+</style>
+"""
+patch('index.html', '<style id="stz-rail-m">', UX_CSS + '<style id="stz-rail-m">', 'ux css')
+patch('index.html', '<button type="button" aria-label="{{ d.label }}" onClick="{{ d.onClick }}" style="width:{{ d.w }};height:6px;', '<button type="button" data-hdot="" aria-label="{{ d.label }}" onClick="{{ d.onClick }}" style="width:{{ d.w }};height:6px;', 'hero dots touch area')
+patch('index.html', 'margin-bottom:18px;white-space:nowrap;animation:stz-up 1s 0.2s both">', 'margin-bottom:18px;white-space:nowrap;text-shadow:0 1px 12px rgba(14,11,8,0.7);animation:stz-up 1s 0.2s both">', 'hero caption legibility')
+patch('index.html', '<div style="display:flex;justify-content:space-between;align-items:flex-end;gap:12px 28px;flex-wrap:wrap;margin-bottom:clamp(1.25rem,3vh,2rem)">', '<div data-reveal="" style="display:flex;justify-content:space-between;align-items:flex-end;gap:12px 28px;flex-wrap:wrap;margin-bottom:clamp(1.25rem,3vh,2rem)">', 'reveal: project type header')
+patch('index.html', '<div style="display:flex;justify-content:space-between;align-items:flex-end;gap:16px 28px;flex-wrap:wrap;margin-bottom:clamp(1.5rem,4vh,2.25rem)">', '<div data-reveal="" style="display:flex;justify-content:space-between;align-items:flex-end;gap:16px 28px;flex-wrap:wrap;margin-bottom:clamp(1.5rem,4vh,2.25rem)">', 'reveal: projects header')
+patch('index.html', '<button type="button" role="radio" aria-checked="{{ c.on }}" onClick="{{ c.onTap }}" style="font:inherit;text-align:start;cursor:pointer;position:relative;display:block;width:100%;aspect-ratio:{{ pthAr }}', '<button type="button" role="radio" data-par="" aria-checked="{{ c.on }}" onClick="{{ c.onTap }}" style="font:inherit;text-align:start;cursor:pointer;position:relative;display:block;width:100%;aspect-ratio:{{ pthAr }}', 'parallax: project type cards')
+patch('index.html', '<button type="button" aria-pressed="{{ t.pressed }}" aria-label="{{ t.aria }}" onClick="{{ t.onTap }}" style="grid-column:{{ t.col }};grid-row:{{ t.row }};position:relative;border:0;', '<button type="button" data-par="" aria-pressed="{{ t.pressed }}" aria-label="{{ t.aria }}" onClick="{{ t.onTap }}" style="grid-column:{{ t.col }};grid-row:{{ t.row }};position:relative;border:0;', 'parallax: component tiles', count=2)
+# the page's own accessibility menu (reduce motion) must stop the parallax too: scroll-driven animations ignore animation-duration
+patch('index.html', "transition-duration:0.001ms!important;scroll-behavior:auto!important}');", "transition-duration:0.001ms!important;scroll-behavior:auto!important}[data-par]>img{animation:none!important}');", 'parallax respects the accessibility menu')
+
 # 8) social profile links: the export links the icons to the generic Facebook / Instagram front pages. These are the Super Tzel
 # accounts (taken from the footer of the previous Lovable site). On the landing page only the two href values change.
 FB_URL = 'https://www.facebook.com/profile.php?id=100092952702392'

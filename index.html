@@ -148,6 +148,20 @@ button,input,select,textarea{font-family:inherit}
 @media (prefers-reduced-motion:reduce){[data-reveal]{opacity:1;transform:none;transition:none}}
 @media (max-width:640px){body{font-size:15px}p,li{line-height:1.7}[style*="font-size: 18px"],[style*="font-size: 17.5px"]{font-size:15.5px!important}[style*="font-size: 17px"]{font-size:15px!important}[style*="font-size: 16.5px"],[style*="font-size: 16px"],[style*="font-size: 15.5px"]{font-size:14.5px!important}[style*="font-size: 15px"]{font-size:14px!important}h1{font-size:29px!important;line-height:1.12!important}h2{font-size:24px!important;line-height:1.2!important;letter-spacing:-0.02em!important}h3[style*="font-size: 2"]{font-size:19px!important;line-height:1.25!important}h3[style*="font-size: 1"]{font-size:17px!important}}
 </style>
+<style id="stz-ux">
+/* hero slide dots are 6px tall: give them a roomier touch area (the dots look the same) */
+[data-hdot]{position:relative}
+[data-hdot]::after{content:"";position:absolute;inset:-14px -3px}
+/* footer links and buttons were 22px tall */
+footer a,footer button{display:inline-flex;align-items:center;min-height:32px}
+/* depth: the photos in the project-type cards and the component tiles drift slightly inside their frames while the page scrolls.
+   Needs scroll-driven animations (Chrome, Edge, Safari 26+); other browsers show the still photo. */
+@keyframes stz-par{from{translate:0 -4%;scale:1.09}to{translate:0 4%;scale:1.09}}
+@media (prefers-reduced-motion:no-preference){@supports (animation-timeline:view()){
+[data-par]{view-timeline:--stz-par block}
+[data-par]>img{animation:stz-par linear both;animation-timeline:--stz-par;animation-range:cover}
+}}
+</style>
 <style id="stz-rail-m">
 @media (max-width: 760px) {
   nav[aria-label="גלילה מהירה בין פרקים"] { left: -6px !important; }
@@ -308,14 +322,14 @@ button,input,select,textarea{font-family:inherit}
       </sc-if>
       <div class="stz-h-dots" style="position:absolute;top:{{ heroMetaTop }};bottom:{{ heroMetaBottom }};inset-inline-end:clamp(16px,4vw,48px);z-index:4;display:flex;align-items:center;gap:10px">
         <sc-for list="{{ heroDots }}" as="d" hint-placeholder-count="2">
-          <button type="button" aria-label="{{ d.label }}" onClick="{{ d.onClick }}" style="width:{{ d.w }};height:6px;border-radius:100px;border:0;padding:0;cursor:pointer;background:{{ d.bg }};transition:width 0.3s,background 0.3s"></button>
+          <button type="button" data-hdot="" aria-label="{{ d.label }}" onClick="{{ d.onClick }}" style="width:{{ d.w }};height:6px;border-radius:100px;border:0;padding:0;cursor:pointer;background:{{ d.bg }};transition:width 0.3s,background 0.3s"></button>
         </sc-for>
       </div>
     </div>
     <div style="position:relative;z-index:3;min-height:{{ heroH }};margin-top:{{ heroTextPull }};display:flex;flex-direction:column;justify-content:flex-end;pointer-events:none">
       <div style="width:min(var(--stz-side,92%),calc(var(--stz-max,1180px) + 60px));margin-inline:auto;padding-block:{{ heroTextPad }};display:grid;grid-template-columns:{{ heroGrid }};gap:clamp(1.25rem,4vw,3.5rem);align-items:end;pointer-events:auto">
         <div style="min-width:0">
-          <div style="display:flex;align-items:center;gap:12px;color:#E8C48C;font-size:{{ kickerSize }};margin-bottom:18px;white-space:nowrap;animation:stz-up 1s 0.2s both">
+          <div style="display:flex;align-items:center;gap:12px;color:#E8C48C;font-size:{{ kickerSize }};margin-bottom:18px;white-space:nowrap;text-shadow:0 1px 12px rgba(14,11,8,0.7);animation:stz-up 1s 0.2s both">
             <span style="display:block;width:34px;height:1px;background:#C99752;flex:0 0 auto"></span>
             <span>{{ heroCaption }}</span>
           </div>
@@ -420,7 +434,7 @@ button,input,select,textarea{font-family:inherit}
 
   <section id="scope" style="position:relative;padding-block:clamp(2.75rem,8vh,5.5rem) clamp(1rem,3vh,2rem);scroll-margin-top:70px">
     <div style="width:min(var(--stz-side,92%),var(--stz-max,1180px));margin-inline:auto">
-      <div style="display:flex;justify-content:space-between;align-items:flex-end;gap:12px 28px;flex-wrap:wrap;margin-bottom:clamp(1.25rem,3vh,2rem)">
+      <div data-reveal="" style="display:flex;justify-content:space-between;align-items:flex-end;gap:12px 28px;flex-wrap:wrap;margin-bottom:clamp(1.25rem,3vh,2rem)">
         <div>
           <div style="display:inline-flex;align-items:center;gap:10px;color:#80561E;font-size:14.5px;font-weight:600;letter-spacing:0.04em;margin-bottom:18px;white-space:nowrap"><span style="display:block;width:24px;height:1px;background:#B4813C"></span>מתחילים מכאן</div>
           <h2 style="font-size:clamp(30px,3.9vw,48px);letter-spacing:-0.025em;line-height:1.1">איזה מרחב חוץ אתם מתכננים?</h2>
@@ -429,7 +443,7 @@ button,input,select,textarea{font-family:inherit}
       </div>
       <div role="radiogroup" aria-label="סוג הפרויקט" style="display:grid;grid-template-columns:{{ pthCols }};gap:14px">
         <sc-for list="{{ pthCards }}" as="c" hint-placeholder-count="3">
-          <button type="button" role="radio" aria-checked="{{ c.on }}" onClick="{{ c.onTap }}" style="font:inherit;text-align:start;cursor:pointer;position:relative;display:block;width:100%;aspect-ratio:{{ pthAr }};padding:0;border-radius:20px;overflow:hidden;background:#1B1712;border:2px solid {{ c.bc }};box-shadow:{{ c.sh }};color:#F5F0E4;transition:border-color 0.2s,box-shadow 0.25s,transform 0.18s" style-hover="border-color:#B4813C" style-active="transform:scale(0.98)">
+          <button type="button" role="radio" data-par="" aria-checked="{{ c.on }}" onClick="{{ c.onTap }}" style="font:inherit;text-align:start;cursor:pointer;position:relative;display:block;width:100%;aspect-ratio:{{ pthAr }};padding:0;border-radius:20px;overflow:hidden;background:#1B1712;border:2px solid {{ c.bc }};box-shadow:{{ c.sh }};color:#F5F0E4;transition:border-color 0.2s,box-shadow 0.25s,transform 0.18s" style-hover="border-color:#B4813C" style-active="transform:scale(0.98)">
             <img src="{{ c.src }}" alt="" loading="lazy" decoding="async" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover">
             <span aria-hidden="true" style="position:absolute;inset:0;background:linear-gradient(0deg,rgba(17,14,11,0.92) 0%,rgba(17,14,11,0.7) 38%,rgba(17,14,11,0.12) 68%,rgba(17,14,11,0) 100%)"></span>
             <span aria-hidden="true" style="position:absolute;top:14px;right:14px;z-index:1;display:flex;align-items:center;justify-content:center;width:32px;height:32px;border-radius:50%;background:{{ c.dotBg }};border:2px solid #F5F0E4;color:#1B1712;font-size:14px;font-weight:700">{{ c.mark }}</span>
@@ -475,7 +489,7 @@ button,input,select,textarea{font-family:inherit}
       <div ref="{{ pzRef }}" style="margin-top:clamp(1.5rem,4vh,2.5rem);display:flex;flex-direction:column;gap:{{ pzGap }}">
       <div aria-label="מרכיבי הבסיס" style="display:grid;grid-template-columns:{{ pzCols }};grid-auto-rows:{{ pzRowH }};gap:{{ pzGap }};transition:gap 0.4s">
         <sc-for list="{{ pzCore }}" as="t" hint-placeholder-count="4">
-          <button type="button" aria-pressed="{{ t.pressed }}" aria-label="{{ t.aria }}" onClick="{{ t.onTap }}" style="grid-column:{{ t.col }};grid-row:{{ t.row }};position:relative;border:0;padding:0;border-radius:{{ pzRad }};overflow:hidden;background:#2A241D;cursor:pointer;font:inherit;transform:{{ t.tf }};opacity:{{ t.op }};box-shadow:{{ t.sh }};outline:{{ t.ol }};outline-offset:-3px;transition:outline-color 0.2s,border-radius 0.3s">
+          <button type="button" data-par="" aria-pressed="{{ t.pressed }}" aria-label="{{ t.aria }}" onClick="{{ t.onTap }}" style="grid-column:{{ t.col }};grid-row:{{ t.row }};position:relative;border:0;padding:0;border-radius:{{ pzRad }};overflow:hidden;background:#2A241D;cursor:pointer;font:inherit;transform:{{ t.tf }};opacity:{{ t.op }};box-shadow:{{ t.sh }};outline:{{ t.ol }};outline-offset:-3px;transition:outline-color 0.2s,border-radius 0.3s">
             <img src="{{ t.src }}" alt="{{ t.title }}" loading="lazy" decoding="async" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover">
             <span style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(17,14,11,0) 35%,rgba(17,14,11,0.82) 100%)"></span>
             <span style="position:absolute;top:10px;right:10px;display:flex;align-items:center;justify-content:center;width:28px;height:28px;border-radius:50%;border:1px solid {{ t.bc }};background:{{ t.bg }};color:{{ t.fg }};font-size:12px;font-weight:700">{{ t.mark }}</span>
@@ -486,7 +500,7 @@ button,input,select,textarea{font-family:inherit}
       <div style="display:flex;align-items:center;gap:10px;margin-top:8px;color:#8A5F24;font-size:13.5px;font-weight:600;opacity:{{ pzAddLblOp }};transition:opacity 0.5s"><span aria-hidden="true" style="display:block;width:20px;height:1px;background:#B4813C"></span>ומשלימים את המרחב</div>
       <div aria-label="תוספות משלימות" style="display:grid;grid-template-columns:{{ pzAddCols }};grid-auto-rows:{{ pzAddRowH }};gap:{{ pzGap }};transition:gap 0.4s">
         <sc-for list="{{ pzAdd }}" as="t" hint-placeholder-count="4">
-          <button type="button" aria-pressed="{{ t.pressed }}" aria-label="{{ t.aria }}" onClick="{{ t.onTap }}" style="grid-column:{{ t.col }};grid-row:{{ t.row }};position:relative;border:0;padding:0;border-radius:{{ pzRad }};overflow:hidden;background:#2A241D;cursor:pointer;font:inherit;transform:{{ t.tf }};opacity:{{ t.op }};box-shadow:{{ t.sh }};outline:{{ t.ol }};outline-offset:-3px;transition:outline-color 0.2s,border-radius 0.3s">
+          <button type="button" data-par="" aria-pressed="{{ t.pressed }}" aria-label="{{ t.aria }}" onClick="{{ t.onTap }}" style="grid-column:{{ t.col }};grid-row:{{ t.row }};position:relative;border:0;padding:0;border-radius:{{ pzRad }};overflow:hidden;background:#2A241D;cursor:pointer;font:inherit;transform:{{ t.tf }};opacity:{{ t.op }};box-shadow:{{ t.sh }};outline:{{ t.ol }};outline-offset:-3px;transition:outline-color 0.2s,border-radius 0.3s">
             <img src="{{ t.src }}" alt="{{ t.title }}" loading="lazy" decoding="async" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover">
             <span style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(17,14,11,0) 35%,rgba(17,14,11,0.82) 100%)"></span>
             <span style="position:absolute;top:10px;right:10px;display:flex;align-items:center;justify-content:center;width:28px;height:28px;border-radius:50%;border:1px solid {{ t.bc }};background:{{ t.bg }};color:{{ t.fg }};font-size:12px;font-weight:700">{{ t.mark }}</span>
@@ -646,7 +660,7 @@ button,input,select,textarea{font-family:inherit}
 
   <section id="projects" style="padding-block:clamp(1.75rem,4vh,4rem) clamp(3rem,8vh,5rem)">
     <div style="width:min(var(--stz-side,92%),var(--stz-max,1180px));margin-inline:auto">
-      <div style="display:flex;justify-content:space-between;align-items:flex-end;gap:16px 28px;flex-wrap:wrap;margin-bottom:clamp(1.5rem,4vh,2.25rem)">
+      <div data-reveal="" style="display:flex;justify-content:space-between;align-items:flex-end;gap:16px 28px;flex-wrap:wrap;margin-bottom:clamp(1.5rem,4vh,2.25rem)">
         <div>
           <div style="display:inline-flex;align-items:center;gap:10px;color:#80561E;font-size:14.5px;font-weight:600;margin-bottom:18px;white-space:nowrap"><span style="display:block;width:24px;height:1px;background:#B4813C"></span>04 · מהשטח</div>
           <h2 style="font-size:clamp(30px,3.9vw,48px);letter-spacing:-0.025em;line-height:1.1">פרויקטים שביצענו</h2><p style="margin-top:10px;color:#4B443A;font-size:16px;max-width:44ch">{{ projSub }}</p>
@@ -1379,7 +1393,7 @@ class Component extends DCLogic {
     const rules = [];
     if (a.contrast) rules.push('html{filter:contrast(1.35) saturate(1.15)}');
     if (a.links) rules.push('a,button{text-decoration:underline!important;text-underline-offset:3px;outline:1px dashed rgba(180,129,60,0.85);outline-offset:2px}');
-    if (a.motion) rules.push('*,*::before,*::after{animation-duration:0.001ms!important;animation-iteration-count:1!important;transition-duration:0.001ms!important;scroll-behavior:auto!important}');
+    if (a.motion) rules.push('*,*::before,*::after{animation-duration:0.001ms!important;animation-iteration-count:1!important;transition-duration:0.001ms!important;scroll-behavior:auto!important}[data-par]>img{animation:none!important}');
     if (a.cursor) rules.push("html,body,a,button{cursor:url(\"data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='42' height='42' viewBox='0 0 42 42'><path d='M6 2 34 20 21 22 16 38Z' fill='%23fff' stroke='%23111' stroke-width='2.5' stroke-linejoin='round'/></svg>\") 4 2, auto}");
     el.textContent = rules.join('\n');
     this.saveA11y();
