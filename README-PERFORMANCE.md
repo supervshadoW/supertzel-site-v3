@@ -25,6 +25,11 @@ The script is safe to run repeatedly. It does the following, with no visual chan
    "2 / 1" in the right-to-left page), `loading="lazy"` on the template placeholder images (the browser used to request
    `/{{ pMain }}` and got 404s), `robots.txt`, and the privacy policy no longer lists Google Fonts.
 
+7. **Home page and projects page only (the landing page structure is never touched here):** gold kicker lines on the cream
+   background and a few grey hints darkened to meet WCAG AA contrast, accessible names that contain the visible text
+   (logo link, numbered hero hotspots, project cards, call button), `canonical` + `LocalBusiness` structured data (no rating,
+   no price, not typed as a contractor) on the home page, and Escape closes the mobile menu (`home-a11y.js`).
+
 The "who we are" and "projects" sections of the pergola landing page are inserted by `landing-about.js` and
 `landing-projects.js` right after `#why` (in that order). They only insert into the rendered page and put themselves back in
 place if the page re-renders, so the order is the same on every load.

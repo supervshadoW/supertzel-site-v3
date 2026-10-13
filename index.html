@@ -3,6 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="canonical" href="https://supertzel.co.il/">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"LocalBusiness","name":"סופר צל","alternateName":"IL Projects","url":"https://supertzel.co.il/","telephone":"+972553100154","email":"ilprojects.israel@gmail.com","logo":"https://supertzel.co.il/img/logo-light-bg.png","image":"https://supertzel.co.il/img/fast/hero/hero-pergola-kitchen-bar.webp","description":"הצללה וקירוי, סגירות זכוכית, מטבחי חוץ, דקים, גידור ובנייה קלה — בהתאמה אישית, עם נקודת קשר אחת מהמדידה ועד המסירה.","areaServed":["מרכז","שפלה","דרום"]}</script>
 <style>
 /* decorative big numerals stick out of the page edge: clip them instead of letting the whole page scroll sideways */
 html, body { overflow-x: clip; max-width: 100%; }
@@ -163,6 +165,7 @@ button,input,select,textarea{font-family:inherit}
 [data-bkdark] { background: #FBF7EE !important; }
 </style>
 <script src="/steps-slider.js?v=3"></script>
+<script src="/home-a11y.js?v=1" defer></script>
 <style id="stz-build-modal">
 #build[data-state="closed"] { display: none !important; }
 #build[data-state="open"] { position: fixed !important; inset: 0; z-index: 260; overflow-y: auto; overscroll-behavior: contain; padding-block: 56px 40px !important; }
@@ -185,7 +188,7 @@ button,input,select,textarea{font-family:inherit}
 <header style="position:sticky;top:0;z-index:100;background:rgba(245,240,228,0.9);backdrop-filter:blur(14px) saturate(1.2);border-bottom:1px solid rgba(33,28,22,0.14)">
   <div style="width:min(var(--stz-side,92%),var(--stz-max,1180px));margin-inline:auto;display:flex;align-items:center;justify-content:space-between;gap:20px;min-height:70px">
     <div style="display:flex;align-items:center;gap:12px">
-      <a style="display:inline-flex;flex-direction:column;align-items:flex-end" href="/" aria-label="לעמוד הבית">
+      <a style="display:inline-flex;flex-direction:column;align-items:flex-end" href="/" aria-label="סופר צל IL PROJECTS — לעמוד הבית">
         <img src="/img/logo-light-bg.png" alt="סופר צל — מעטפת מקצועית לחלל החוץ" style="display:block;height:44px;width:auto;flex:0 0 auto"><span style="display:block;margin-top:-1px;font-size:8.5px;font-weight:600;letter-spacing:0.16em;color:#B4813C;line-height:1;text-align:right;direction:ltr">IL PROJECTS</span>
       </a>
     </div>
@@ -274,7 +277,7 @@ button,input,select,textarea{font-family:inherit}
               <img src="/img/fast/hero/hero-panoramic-balcony.webp" alt="{{ sl.alt }}" loading="lazy" decoding="async" style="display:{{ sl.show2 }};width:100%;height:100%;object-fit:cover">
               <img src="/img/fast/hero/hero-deck-wood.webp" alt="{{ sl.alt }}" loading="lazy" decoding="async" style="display:{{ sl.show3 }};width:100%;height:100%;object-fit:cover">
               <sc-for list="{{ sl.pins }}" as="p" hint-placeholder-count="3">
-                <button type="button" aria-label="{{ p.label }}" onPointerDown="{{ p.onDown }}" onMouseEnter="{{ p.onEnter }}" onFocus="{{ p.onEnter }}" onClick="{{ p.onEnter }}" style="position:absolute;left:{{ p.x }};top:{{ p.y }};z-index:{{ p.z }};transform:translate(-50%,-50%);background:transparent;border:0;padding:0;cursor:pointer;font:inherit;touch-action:none">
+                <button type="button" onPointerDown="{{ p.onDown }}" onMouseEnter="{{ p.onEnter }}" onFocus="{{ p.onEnter }}" onClick="{{ p.onEnter }}" style="position:absolute;left:{{ p.x }};top:{{ p.y }};z-index:{{ p.z }};transform:translate(-50%,-50%);background:transparent;border:0;padding:0;cursor:pointer;font:inherit;touch-action:none">
                   <span style="position:relative;display:grid;place-items:center;width:{{ pinSize }};height:{{ pinSize }};border-radius:50%;border:2px solid #FFFFFF;background:{{ p.bg }};color:#FFFFFF;font-size:14px;font-weight:600;box-shadow:0 2px 14px rgba(0,0,0,0.4);transform:scale({{ p.scale }});transition:transform 0.25s,background 0.25s">{{ p.n }}</span>
                   <span style="position:absolute;top:{{ p.lTop }};bottom:{{ p.lBottom }};left:50%;transform:translateX({{ p.lShift }}) translateY({{ p.labelY }});opacity:{{ p.labelOp }};transition:opacity 0.25s,transform 0.25s;white-space:nowrap;background:#F5F0E4;color:#1B1712;font-size:14px;font-weight:600;padding:7px 14px;border-radius:100px;box-shadow:0 8px 22px rgba(0,0,0,0.35);pointer-events:none">{{ p.label }}</span>
                 </button>
@@ -343,7 +346,7 @@ button,input,select,textarea{font-family:inherit}
     <div style="width:min(var(--stz-side,92%),var(--stz-max,1180px));margin-inline:auto;position:relative;z-index:1">
       <div data-reveal="" style="display:flex;justify-content:space-between;align-items:flex-end;gap:clamp(1rem,4vw,2.5rem);flex-wrap:wrap;margin-bottom:clamp(2rem,5vh,3.2rem)">
         <div style="flex:1 1 560px;min-width:0">
-          <div style="display:inline-flex;align-items:center;gap:10px;color:#B4813C;font-size:14.5px;font-weight:600;letter-spacing:0.04em;margin-bottom:24px;white-space:nowrap"><span style="display:block;width:24px;height:1px;background:#B4813C"></span>01 · מעטפת מקצועית לחלל החוץ</div>
+          <div style="display:inline-flex;align-items:center;gap:10px;color:#80561E;font-size:14.5px;font-weight:600;letter-spacing:0.04em;margin-bottom:24px;white-space:nowrap"><span style="display:block;width:24px;height:1px;background:#B4813C"></span>01 · מעטפת מקצועית לחלל החוץ</div>
           <h2 style="font-size:clamp(34px,4.6vw,60px);letter-spacing:-0.03em;line-height:1.12;text-wrap:balance">פרויקט חוץ שלם — <br>נקודת קשר אחת.</h2>
         </div>
         <p style="margin:0;flex:1 1 320px;color:#4B443A;font-size:18px;max-width:38ch">מרחב חוץ אחד נבנה מכמה שכבות. אצלנו כולן מתוכננות יחד, בשפה חומרית אחת — מהקונספט ועד המסירה.</p>
@@ -419,7 +422,7 @@ button,input,select,textarea{font-family:inherit}
     <div style="width:min(var(--stz-side,92%),var(--stz-max,1180px));margin-inline:auto">
       <div style="display:flex;justify-content:space-between;align-items:flex-end;gap:12px 28px;flex-wrap:wrap;margin-bottom:clamp(1.25rem,3vh,2rem)">
         <div>
-          <div style="display:inline-flex;align-items:center;gap:10px;color:#B4813C;font-size:14.5px;font-weight:600;letter-spacing:0.04em;margin-bottom:18px;white-space:nowrap"><span style="display:block;width:24px;height:1px;background:#B4813C"></span>מתחילים מכאן</div>
+          <div style="display:inline-flex;align-items:center;gap:10px;color:#80561E;font-size:14.5px;font-weight:600;letter-spacing:0.04em;margin-bottom:18px;white-space:nowrap"><span style="display:block;width:24px;height:1px;background:#B4813C"></span>מתחילים מכאן</div>
           <h2 style="font-size:clamp(30px,3.9vw,48px);letter-spacing:-0.025em;line-height:1.1">איזה מרחב חוץ אתם מתכננים?</h2>
         </div>
         <div style="display:flex;flex-direction:column;gap:6px;max-width:40ch"><p style="margin:0;color:#211C16;font-size:17px;font-weight:500">לחצו על הכרטיס שמתאר את הפרויקט שלכם.</p><p style="margin:0;color:#4B443A;font-size:15.5px">הדף יציג פרויקטים, שאלות ומידע שמתאימים לכם. אפשר להחליף בכל רגע, והבחירה תצורף לפנייה.</p></div>
@@ -464,7 +467,7 @@ button,input,select,textarea{font-family:inherit}
     <div style="width:min(var(--stz-side,92%),var(--stz-max,1180px));margin-inline:auto;position:relative;z-index:1">
       <div data-reveal="" style="display:flex;justify-content:space-between;align-items:flex-end;gap:clamp(1rem,4vw,2.5rem);flex-wrap:wrap;margin-bottom:clamp(2.5rem,6vh,4rem)">
         <div>
-          <div style="display:inline-flex;align-items:center;gap:10px;color:#B4813C;font-size:14.5px;font-weight:600;letter-spacing:0.04em;margin-bottom:24px"><span style="display:block;width:24px;height:1px;background:#B4813C"></span>02 · מרכיבי המעטפת</div>
+          <div style="display:inline-flex;align-items:center;gap:10px;color:#80561E;font-size:14.5px;font-weight:600;letter-spacing:0.04em;margin-bottom:24px"><span style="display:block;width:24px;height:1px;background:#B4813C"></span>02 · מרכיבי המעטפת</div>
           <h2 style="font-size:clamp(34px,4.6vw,60px);letter-spacing:-0.03em;line-height:1.12;max-width:16ch;text-wrap:balance">מרחב חוץ הרמוני נבנה מתוך תמונה כוללת.</h2>
         </div>
         <p style="margin:0;color:#4B443A;font-size:18px;max-width:30ch">שבעה תחומי שירות שמתחברים למעטפת אחת. לחצו על מה שמעניין אתכם — נצרף את זה לפנייה.</p>
@@ -510,7 +513,7 @@ button,input,select,textarea{font-family:inherit}
       </sc-if>
     </div>
       <div style="width:min(var(--stz-side,92%),var(--stz-max,1180px));margin:clamp(2rem,5vh,3rem) auto 0;display:flex;justify-content:flex-end">
-      <a href="#fit" style="display:inline-flex;white-space:nowrap;align-items:center;gap:10px;font-size:15.5px;font-weight:500;color:#6E4D1E;border-bottom:1px solid rgba(180,129,60,0.5);padding-bottom:3px" style-hover="color:#211C16;border-color:currentColor"><span style="opacity:0.7">03</span> למי זה מתאים <span aria-hidden="true">←</span></a>
+      <a href="#fit" style="display:inline-flex;white-space:nowrap;align-items:center;gap:10px;font-size:15.5px;font-weight:500;color:#6E4D1E;border-bottom:1px solid rgba(180,129,60,0.5);padding-bottom:3px" style-hover="color:#211C16;border-color:currentColor"><span style="opacity:0.9">03</span> למי זה מתאים <span aria-hidden="true">←</span></a>
     </div>
   </section>
 
@@ -645,14 +648,14 @@ button,input,select,textarea{font-family:inherit}
     <div style="width:min(var(--stz-side,92%),var(--stz-max,1180px));margin-inline:auto">
       <div style="display:flex;justify-content:space-between;align-items:flex-end;gap:16px 28px;flex-wrap:wrap;margin-bottom:clamp(1.5rem,4vh,2.25rem)">
         <div>
-          <div style="display:inline-flex;align-items:center;gap:10px;color:#B4813C;font-size:14.5px;font-weight:600;margin-bottom:18px;white-space:nowrap"><span style="display:block;width:24px;height:1px;background:#B4813C"></span>04 · מהשטח</div>
+          <div style="display:inline-flex;align-items:center;gap:10px;color:#80561E;font-size:14.5px;font-weight:600;margin-bottom:18px;white-space:nowrap"><span style="display:block;width:24px;height:1px;background:#B4813C"></span>04 · מהשטח</div>
           <h2 style="font-size:clamp(30px,3.9vw,48px);letter-spacing:-0.025em;line-height:1.1">פרויקטים שביצענו</h2><p style="margin-top:10px;color:#4B443A;font-size:16px;max-width:44ch">{{ projSub }}</p>
         </div>
       </div>
       <div style="position:relative">
         <div ref="{{ projRef }}" onPointerDown="{{ projDown }}" onPointerMove="{{ projMove }}" onPointerUp="{{ projUp }}" onPointerLeave="{{ projUp }}" onClickCapture="{{ projClickCap }}" style="display:flex;gap:{{ projGap }};overflow-x:auto;scroll-snap-type:x mandatory;scroll-behavior:smooth;-webkit-overflow-scrolling:touch;scrollbar-width:none;padding-bottom:4px;cursor:grab;touch-action:pan-x pan-y;user-select:none">
           <sc-for list="{{ homeProj }}" as="p" hint-placeholder-count="6">
-            <a href="/projects" draggable="false" aria-label="{{ p.title }}" style="position:relative;flex:0 0 {{ projSlideW }};scroll-snap-align:start;display:block;border-radius:18px;overflow:hidden;aspect-ratio:4/5;background:#ECE4D2;color:#F5F0E4">
+            <a href="/projects" draggable="false" style="position:relative;flex:0 0 {{ projSlideW }};scroll-snap-align:start;display:block;border-radius:18px;overflow:hidden;aspect-ratio:4/5;background:#ECE4D2;color:#F5F0E4">
               <img src="{{ p.src }}" alt="{{ p.title }}" draggable="false" loading="lazy" decoding="async" style="position:absolute;inset:0;display:block;width:100%;height:100%;object-fit:cover;pointer-events:none">
               <sc-if value="{{ p.hasParts }}" hint-placeholder-val="{{ false }}"><span style="position:absolute;top:10px;right:10px;padding:4px 10px;border-radius:100px;background:#B4813C;color:#1B1712;font-size:12px;font-weight:600">{{ p.badge }}</span></sc-if>
               <span style="position:absolute;inset-inline:0;bottom:0;display:flex;flex-direction:column;gap:3px;padding:44px 14px 14px;background:linear-gradient(180deg,rgba(17,14,11,0) 0%,rgba(17,14,11,0.86) 62%)">
@@ -674,7 +677,7 @@ button,input,select,textarea{font-family:inherit}
       <a href="/projects" style="margin-top:14px;display:flex;align-items:center;justify-content:center;gap:10px;min-height:52px;border:1px solid #211C16;border-radius:100px;font-size:16px;font-weight:600;color:#211C16" style-hover="background:#211C16;color:#F5F0E4">לכל הפרויקטים <span aria-hidden="true">←</span></a>
     </div>
       <div style="width:min(var(--stz-side,92%),var(--stz-max,1180px));margin:clamp(2rem,5vh,3rem) auto 0;display:flex;justify-content:flex-end">
-      <a href="#faq" style="display:inline-flex;white-space:nowrap;align-items:center;gap:10px;font-size:15.5px;font-weight:500;color:#6E4D1E;border-bottom:1px solid rgba(180,129,60,0.5);padding-bottom:3px" style-hover="color:#211C16;border-color:currentColor"><span style="opacity:0.7">05</span> שאלות נפוצות <span aria-hidden="true">←</span></a>
+      <a href="#faq" style="display:inline-flex;white-space:nowrap;align-items:center;gap:10px;font-size:15.5px;font-weight:500;color:#6E4D1E;border-bottom:1px solid rgba(180,129,60,0.5);padding-bottom:3px" style-hover="color:#211C16;border-color:currentColor"><span style="opacity:0.9">05</span> שאלות נפוצות <span aria-hidden="true">←</span></a>
     </div>
   </section>
 
@@ -736,7 +739,7 @@ button,input,select,textarea{font-family:inherit}
       </div>
     </div>
       <div style="width:min(var(--stz-side,92%),var(--stz-max,1180px));margin:clamp(2rem,5vh,3rem) auto 0;display:flex;justify-content:flex-end">
-      <a href="#faq" style="display:inline-flex;white-space:nowrap;align-items:center;gap:10px;font-size:15.5px;font-weight:500;color:#6E4D1E;border-bottom:1px solid rgba(180,129,60,0.5);padding-bottom:3px" style-hover="color:#211C16;border-color:currentColor"><span style="opacity:0.7">05</span> שאלות נפוצות <span aria-hidden="true">←</span></a>
+      <a href="#faq" style="display:inline-flex;white-space:nowrap;align-items:center;gap:10px;font-size:15.5px;font-weight:500;color:#6E4D1E;border-bottom:1px solid rgba(180,129,60,0.5);padding-bottom:3px" style-hover="color:#211C16;border-color:currentColor"><span style="opacity:0.9">05</span> שאלות נפוצות <span aria-hidden="true">←</span></a>
     </div>
   </section>
   </sc-if>
@@ -837,7 +840,7 @@ button,input,select,textarea{font-family:inherit}
           <div style="display:grid;gap:12px">
             <div style="display:flex;align-items:center;justify-content:space-between;gap:12px">
               <span style="font-size:13px;color:#C99752;font-weight:600">שלב {{ stepNum }} מתוך 4</span>
-              <span style="font-size:13px;color:rgba(245,240,228,0.45)">פחות מדקה</span>
+              <span style="font-size:13px;color:rgba(245,240,228,0.6)">פחות מדקה</span>
             </div>
             <div style="height:3px;border-radius:100px;background:rgba(245,240,228,0.14);overflow:hidden">
               <div style="height:100%;background:#C99752;border-radius:100px;transition:width 0.4s ease;width:{{ stepPct }}"></div>
@@ -921,7 +924,7 @@ button,input,select,textarea{font-family:inherit}
             </sc-if>
           </div>
 
-          <p style="font-size:13px;color:rgba(245,240,228,0.45);text-align:center;line-height:1.6">השארת פרטים מהווה הסכמה ליצירת קשר לצורך טיפול בפנייה זו בלבד.</p>
+          <p style="font-size:13px;color:rgba(245,240,228,0.62);text-align:center;line-height:1.6">השארת פרטים מהווה הסכמה ליצירת קשר לצורך טיפול בפנייה זו בלבד.</p>
         </div>
         </sc-if>
       </div>
