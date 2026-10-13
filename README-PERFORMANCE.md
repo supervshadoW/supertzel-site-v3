@@ -30,6 +30,11 @@ The script is safe to run repeatedly. It does the following, with no visual chan
    (logo link, numbered hero hotspots, project cards, call button), `canonical` + `LocalBusiness` structured data (no rating,
    no price, not typed as a contractor) on the home page, and Escape closes the mobile menu (`home-a11y.js`).
 
+8. **Social links:** the export links the Facebook / Instagram icons to the generic front pages (`facebook.com/`,
+   `instagram.com/`). `apply.py` sets the real Super Tzel profiles (`FB_URL`, `IG_URL` at the top of section 8; taken from the
+   footer of the previous Lovable site). On the landing page only the two `href` values change. The home page keeps its
+   reviews section (with the icons) hidden, as requested.
+
 The "who we are" and "projects" sections of the pergola landing page are inserted by `landing-about.js` and
 `landing-projects.js` right after `#why` (in that order). They only insert into the rendered page and put themselves back in
 place if the page re-renders, so the order is the same on every load.
