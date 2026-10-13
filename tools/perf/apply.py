@@ -223,4 +223,13 @@ if 'application/ld+json' not in read('index.html'):
 shutil.copy(f'{ASSETS}/home-a11y.js', f'{ROOT}/home-a11y.js')
 patch('index.html', '<script src="/steps-slider.js?v=3"></script>', '<script src="/steps-slider.js?v=3"></script>\n<script src="/home-a11y.js?v=1" defer></script>', 'menu Escape')
 
+# 8) social profile links: the export links the icons to the generic Facebook / Instagram front pages. These are the Super Tzel
+# accounts (taken from the footer of the previous Lovable site). On the landing page only the two href values change.
+FB_URL = 'https://www.facebook.com/profile.php?id=100092952702392'
+IG_URL = 'https://www.instagram.com/super.tzel/'
+patch('index.html', "fbUrl: this.props.facebookUrl || 'https://www.facebook.com/',", f"fbUrl: this.props.facebookUrl || '{FB_URL}',", 'home facebook link')
+patch('index.html', "igUrl: this.props.instagramUrl || 'https://www.instagram.com/',", f"igUrl: this.props.instagramUrl || '{IG_URL}',", 'home instagram link')
+patch('pergola.html', '<a href="https://www.facebook.com/" target="_blank" rel="noopener" aria-label="פייסבוק"', f'<a href="{FB_URL}" target="_blank" rel="noopener" aria-label="פייסבוק"', 'landing facebook link')
+patch('pergola.html', '<a href="https://www.instagram.com/" target="_blank" rel="noopener" aria-label="אינסטגרם"', f'<a href="{IG_URL}" target="_blank" rel="noopener" aria-label="אינסטגרם"', 'landing instagram link')
+
 print('performance fixes applied')
