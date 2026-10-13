@@ -1212,7 +1212,13 @@ class Component extends DCLogic {
     ];
     // Ad landing variants: ?s=awning opens on an awning slide (the awnings ad group links here); ?s=closure keeps the glass-closure slide first.
     const sv = (location.search.match(/[?&]s=(\w+)/) || [])[1];
-    if (sv === 'awning') S.unshift({ k: 6, word: 'סוככים וגגונים בהתאמה אישית.', caption: 'סוכך זרועות חשמלי · הפעלה בשלט', src: '/img/fast/gallery/new-61-1.webp', pos: '50% 40%', alt: 'סוככי זרועות חשמליים בגוון כחול על חזית בניין', pins: [] });
+    if (sv === 'awning') S.unshift({ k: 6, word: 'סוככים וגגונים בהתאמה אישית.', caption: 'סוכך זרועות חשמלי · הפעלה בשלט', src: '/img/fast/gallery/new-61-1.webp', pos: '50% 40%', alt: 'סוככי זרועות חשמליים בגוון כחול על חזית בניין',
+      pins: [
+        { label: 'סוכך זרועות חשמלי', x: '24%', y: '36%' },
+        { label: 'זרועות אלומיניום מתקפלות', x: '68%', y: '33%' },
+        { label: 'התאמה למידות החזית', x: '52%', y: '24%' },
+        { label: 'אריג בגוון לבחירה', x: '82%', y: '30%' }
+      ] });
     const ov = (this.state && this.state.pinOv) || {};
     return S.map((s, i) => ov[i] ? Object.assign({}, s, { pins: ov[i] }) : s);
   }
