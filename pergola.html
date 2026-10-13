@@ -414,6 +414,9 @@ header nav a:hover { color: #E8C48C !important; }
             <div style="display:flex;flex-direction:column;justify-content:center;padding:{{ galPad }}">
               <h3 style="font-size:{{ g.titleSize }};color:#211C16">{{ g.title }}</h3>
               <p style="margin-top:8px;color:#4B443A;font-size:{{ galBodyFs }};max-width:44ch">{{ g.body }}</p>
+              <sc-if value="{{ g.hasMore }}" hint-placeholder-val="{{ false }}">
+                <a href="{{ g.more }}" style="margin-top:10px;align-self:flex-start;display:inline-flex;align-items:center;gap:6px;color:#8F6326;font-size:14.5px;font-weight:600;text-decoration:underline;text-underline-offset:4px" style-hover="color:#211C16">לעבודות נוספות <span aria-hidden="true">←</span></a>
+              </sc-if>
               <sc-if value="{{ g.hasProject }}" hint-placeholder-val="{{ false }}">
                 <button onClick="{{ g.onOpen }}" style="margin-top:14px;align-self:flex-start;display:inline-flex;align-items:center;gap:8px;background:transparent;border:1px solid rgba(33,28,22,0.28);color:#211C16;font-family:inherit;font-size:14.5px;font-weight:600;min-height:44px;padding:0 18px;border-radius:100px;cursor:pointer" style-hover="background:#211C16;color:#F5F0E4;border-color:#211C16">פרטי הפרויקט</button>
               </sc-if>
@@ -1476,7 +1479,15 @@ class Component extends DCLogic {
       galRows: n ? 'auto' : 'auto 1fr',
       galPad: n ? '16px 16px 18px' : '24px 24px 26px',
       galBodyFs: n ? '14px' : '15px',
-      get gal() { return (galSrc ? galFix(galSrc) : galFix(this.glass)).map(g => Object.assign({}, g, { pk: PICK(g.title) })); },
+      get gal() {
+        // each catalog card links to the matching filtered gallery on /projects
+        const MORE = [
+          [/סוכך|סוככ|גגונ/, 'q=סוכך|גגון'], [/רשת|מפרש/, 'q=רשת|מפרש'], [/עץ/, 'cat=shade&q=עץ'], [/פרגול/, 'cat=shade'],
+          [/מחיצ/, 'q=מחיצ'], [/בנייה קלה|חדר/, 'cat=envelope'], [/סגיר|חלונות|זכוכית/, 'cat=glass'], [/דק|ריצוף/, 'cat=deck'], [/מטבח|בר/, 'cat=envelope']
+        ];
+        const moreFor = t => { const m = MORE.find(x => x[0].test(t)); return m ? '/projects?' + m[1] : ''; };
+        return (galSrc ? galFix(galSrc) : galFix(this.glass)).map(g => { const more = moreFor(g.title); return Object.assign({}, g, { pk: PICK(g.title), more: more, hasMore: !!more }); });
+      },
       galNote: (GAL_TABS.find(t => t.id === (this.state.galTab || 'shade')) || GAL_TABS[0]).note,
       glass: [
         { num: '01', span: n ? 'span 1' : 'span 6', minH: n ? '280px' : '420px', titleSize: n ? '23px' : '30px', slotId: 'pg-g1', src: '/img/fast/lp/pg-g1.webp', title: 'סגירת זכוכית למרפסת', body: 'מערכות זכוכית בהזזה בפרופיל אלומיניום דק — המרפסת נשארת פתוחה לאור ולנוף, ומאפשרת שימוש נוח גם בחורף. הפתרון שאנחנו ממליצים עליו כשרוצים חלל סגור ומואר.' },
