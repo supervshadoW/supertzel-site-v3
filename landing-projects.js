@@ -149,6 +149,8 @@
       '#projects .ba{position:relative;aspect-ratio:2.14/1;border-radius:18px;overflow:hidden;margin-bottom:14px;background:#1B1712;touch-action:pan-y;user-select:none;cursor:ew-resize}' +
       '#projects .ba img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;pointer-events:none}' +
       '#projects .ba .ba-top{clip-path:inset(0 0 0 var(--x,50%))}' +
+      // zoom the after photo slightly from its left edge so the third-party street sign at the far right stays out of frame
+      '#projects .ba .ba-top{transform:scale(1.16);transform-origin:0 55%;clip-path:inset(0 0 0 calc(var(--x,50%) / 1.16))}' +
       '#projects .ba .ba-bar{position:absolute;top:0;bottom:0;left:var(--x,50%);width:3px;margin-left:-1.5px;background:#E8C48C;box-shadow:0 0 12px rgba(0,0,0,.5)}' +
       '#projects .ba .ba-knob{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:46px;height:46px;border-radius:50%;background:#E8C48C;color:#1B1712;display:grid;place-items:center;font-size:18px;font-weight:700;box-shadow:0 4px 18px rgba(0,0,0,.45)}' +
       '#projects .ba .ba-l{position:absolute;top:12px;padding:5px 12px;border-radius:100px;background:rgba(27,23,18,.78);color:#F5F0E4;font-size:13.5px;font-weight:600}' +
