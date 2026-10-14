@@ -76,8 +76,7 @@
     sec.innerHTML = html;
     place(sec);
     realign();
-    rotate(sec, cards, list);
-    beforeAfter(sec);
+    rotate(sec, cards, list); // the before / after slider above the grid comes from ba-story.js
     sec.addEventListener('click', function (e) {
       var b = e.target.closest('.lp-card'); if (!b) return;
       // Project details: photos with next / previous, place and client, description and specs, and a consultation button.
@@ -138,49 +137,6 @@
       };
       pre.src = next.photos[0];
     }, 3200);
-  }
-
-  // Before / after of the Kfar Saba driveway: drag the handle (or use the arrow keys) to compare.
-  function beforeAfter(sec) {
-    var grid = sec.querySelector('.lp-grid');
-    if (!grid || sec.querySelector('.ba')) return;
-    var css = document.createElement('style');
-    css.textContent =
-      '#projects .ba{position:relative;aspect-ratio:2.14/1;border-radius:18px;overflow:hidden;margin-bottom:14px;background:#1B1712;touch-action:pan-y;user-select:none;cursor:ew-resize}' +
-      '#projects .ba img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;pointer-events:none}' +
-      '#projects .ba .ba-top{clip-path:inset(0 0 0 var(--x,50%))}' +
-      // zoom the after photo slightly from its left edge so the third-party street sign at the far right stays out of frame
-      '#projects .ba .ba-top{transform:scale(1.16);transform-origin:0 55%;clip-path:inset(0 0 0 calc(var(--x,50%) / 1.16))}' +
-      '#projects .ba .ba-bar{position:absolute;top:0;bottom:0;left:var(--x,50%);width:3px;margin-left:-1.5px;background:#E8C48C;box-shadow:0 0 12px rgba(0,0,0,.5)}' +
-      '#projects .ba .ba-knob{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:46px;height:46px;border-radius:50%;background:#E8C48C;color:#1B1712;display:grid;place-items:center;font-size:18px;font-weight:700;box-shadow:0 4px 18px rgba(0,0,0,.45)}' +
-      '#projects .ba .ba-l{position:absolute;top:12px;padding:5px 12px;border-radius:100px;background:rgba(27,23,18,.78);color:#F5F0E4;font-size:13.5px;font-weight:600}' +
-      '#projects .ba-cap{margin:0 0 clamp(1.5rem,3vh,2rem);color:#4B443A;font-size:15px}' +
-      '@media (max-width:760px){#projects .ba{aspect-ratio:4/3}}';
-    document.head.appendChild(css);
-    var ba = document.createElement('div');
-    ba.className = 'ba'; ba.setAttribute('role', 'slider'); ba.setAttribute('tabindex', '0');
-    ba.setAttribute('aria-label', 'לפני ואחרי: גררו כדי להשוות'); ba.setAttribute('aria-valuemin', '0'); ba.setAttribute('aria-valuemax', '100');
-    ba.innerHTML = '<img src="/img/fast/gallery/before-46-1.jpg" alt="לפני: חניה בשלבי פירוק ועבודות עפר" loading="lazy" decoding="async">' +
-      '<img class="ba-top" src="/img/fast/gallery/new-46-3.webp" alt="אחרי: יציקת בטון, פרגולת אלומיניום ושער חשמלי" loading="lazy" decoding="async">' +
-      '<span class="ba-l" style="left:12px">לפני</span><span class="ba-l" style="right:12px">אחרי</span>' +
-      '<div class="ba-bar"><span class="ba-knob" aria-hidden="true">⇆</span></div>';
-    var cap = document.createElement('p');
-    cap.className = 'ba-cap';
-    cap.textContent = 'לפני ואחרי · כפר סבא: יציקת בטון, פרגולת אלומיניום עם תאורה ושער חשמלי. גררו את הפס כדי להשוות.';
-    grid.parentNode.insertBefore(ba, grid);
-    grid.parentNode.insertBefore(cap, grid);
-    function set(p) { p = Math.max(0, Math.min(100, p)); ba.style.setProperty('--x', p + '%'); ba.setAttribute('aria-valuenow', Math.round(p)); }
-    function at(e) { var r = ba.getBoundingClientRect(); set((e.clientX - r.left) / r.width * 100); }
-    var drag = false;
-    ba.addEventListener('pointerdown', function (e) { drag = true; try { ba.setPointerCapture(e.pointerId); } catch (x) {} at(e); });
-    ba.addEventListener('pointermove', function (e) { if (drag) at(e); });
-    ba.addEventListener('pointerup', function () { drag = false; });
-    ba.addEventListener('pointercancel', function () { drag = false; });
-    ba.addEventListener('keydown', function (e) {
-      var v = parseFloat(ba.style.getPropertyValue('--x')) || 50;
-      if (e.key === 'ArrowLeft') { set(v - 5); e.preventDefault(); } else if (e.key === 'ArrowRight') { set(v + 5); e.preventDefault(); }
-    });
-    set(50);
   }
 
   function start() {
