@@ -40,14 +40,24 @@
     var css = document.getElementById('projects-css') || document.createElement('style'); css.id = 'projects-css';
     css.textContent =
       '#projects .lp-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}' +
-      '#projects .lp-card{position:relative;display:block;padding:0;border:0;border-radius:18px;overflow:hidden;aspect-ratio:4/3;cursor:zoom-in;background:#1B1712;font:inherit;text-align:start}' +
+      '#projects .lp-card{position:relative;display:block;padding:0;border:0;border-radius:18px;overflow:hidden;aspect-ratio:4/3;cursor:pointer;background:#1B1712;font:inherit;text-align:start}' +
       '#projects .lp-card img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .5s ease}' +
       '#projects .lp-card:hover img{transform:scale(1.04)}' +
       '#projects .lp-card span{position:absolute;inset-inline:0;bottom:0;padding:34px 16px 14px;color:#fff;font-size:15.5px;font-weight:600;line-height:1.3;background:linear-gradient(0deg,rgba(17,14,11,.88),rgba(17,14,11,0))}' +
       '@media (max-width:900px){#projects .lp-grid{grid-template-columns:repeat(2,1fr);gap:10px}#projects .lp-card:nth-child(9){display:none}#projects .lp-card span{font-size:13.5px;padding:26px 12px 11px}}' +
-      '#lp-box{position:fixed;inset:0;z-index:2147483100;background:rgba(14,11,8,.94);display:flex;align-items:center;justify-content:center;padding:16px}' +
-      '#lp-box img{max-width:100%;max-height:88vh;border-radius:12px;object-fit:contain}' +
-      '#lp-box button{position:absolute;top:14px;inset-inline-start:14px;width:44px;height:44px;border-radius:50%;border:1px solid rgba(245,240,228,.5);background:rgba(27,23,18,.7);color:#F5F0E4;font-size:22px;cursor:pointer}';
+      '#lp-box{position:fixed;inset:0;z-index:2147483100;background:rgba(14,11,8,.9);display:flex;align-items:center;justify-content:center;padding:16px}' +
+      '#lp-box .lb-card{position:relative;width:min(980px,100%);max-height:92vh;overflow:auto;background:#F5F0E4;border-radius:20px;display:grid;grid-template-columns:1.3fr 1fr}' +
+      '#lp-box .lb-ph{position:relative;background:#1B1712;min-height:320px}' +
+      '#lp-box .lb-ph img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}' +
+      '#lp-box .lb-nav{position:absolute;top:50%;transform:translateY(-50%);width:42px;height:42px;border-radius:50%;border:0;background:rgba(27,23,18,.7);color:#F5F0E4;font-size:20px;cursor:pointer}' +
+      '#lp-box .lb-count{position:absolute;bottom:10px;inset-inline-start:10px;background:rgba(27,23,18,.75);color:#E8C48C;font-size:12.5px;padding:3px 10px;border-radius:100px}' +
+      '#lp-box .lb-txt{padding:26px 24px;display:flex;flex-direction:column;gap:12px;color:#211C16}' +
+      '#lp-box .lb-meta{color:#8F6326;font-size:14px;font-weight:600}' +
+      '#lp-box .lb-txt p{color:#4B443A;font-size:15.5px;line-height:1.6;margin:0}' +
+      '#lp-box .lb-txt ul{margin:0;padding-inline-start:18px;color:#4B443A;font-size:14.5px;line-height:1.55}' +
+      '#lp-box .lb-cta{align-self:flex-start;margin-top:6px;display:inline-flex;align-items:center;min-height:48px;padding:0 24px;border-radius:100px;background:#B4813C;color:#1B1712;font-size:15.5px;font-weight:600;text-decoration:none}' +
+      '#lp-box .lb-x{position:absolute;top:12px;inset-inline-end:12px;z-index:2;width:44px;height:44px;border-radius:50%;border:0;background:rgba(27,23,18,.75);color:#F5F0E4;font-size:22px;cursor:pointer}' +
+      '@media (max-width:760px){#lp-box{padding:0;align-items:flex-end}#lp-box .lb-card{grid-template-columns:1fr;border-radius:20px 20px 0 0;max-height:94vh}#lp-box .lb-ph{min-height:0;aspect-ratio:4/3}#lp-box .lb-txt{padding:20px 18px 26px}}';
     if (!css.parentNode) document.head.appendChild(css);
     var sec = document.createElement('section');
     sec.id = 'projects';
@@ -55,7 +65,7 @@
     var html = '<div style="width:min(var(--stz-side,92%),var(--stz-max,1180px));margin-inline:auto">' +
       '<div style="display:inline-flex;align-items:center;gap:10px;color:#B4813C;font-size:14.5px;font-weight:600;margin-bottom:18px;white-space:nowrap"><span style="display:block;width:24px;height:1px;background:#B4813C"></span>פרויקטים שביצענו</div>' +
       '<h2 style="font-size:clamp(28px,3.6vw,44px);letter-spacing:-0.02em;line-height:1.12;max-width:20ch">כך זה נראה אצל לקוחות</h2>' +
-      '<p style="margin:14px 0 clamp(1.25rem,3vh,2rem);color:#4B443A;font-size:17px;max-width:52ch">פרגולות, סגירות והצללה מפרויקטים שבוצעו. לחצו על תמונה להגדלה.</p>' +
+      '<p style="margin:14px 0 clamp(1.25rem,3vh,2rem);color:#4B443A;font-size:17px;max-width:52ch">פרגולות, סגירות והצללה מפרויקטים שבוצעו. לחצו על פרויקט לפרטים ולתמונות נוספות.</p>' +
       '<div class="lp-grid">';
     cards.forEach(function (c, i) {
       html += '<button type="button" class="lp-card" data-i="' + i + '"><img src="' + esc(c.src) + '" alt="' + esc(c.p.title) + '" loading="lazy" decoding="async"><span>' + esc(c.p.title) + '</span></button>';
@@ -67,13 +77,33 @@
     realign();
     sec.addEventListener('click', function (e) {
       var b = e.target.closest('.lp-card'); if (!b) return;
-      var c = cards[+b.getAttribute('data-i')];
-      var box = document.createElement('div'); box.id = 'lp-box'; box.setAttribute('role', 'dialog'); box.setAttribute('aria-label', c.p.title);
-      box.innerHTML = '<img src="' + esc(c.src) + '" alt="' + esc(c.p.title) + '"><button type="button" aria-label="סגירה">×</button>';
-      function close() { box.remove(); removeEventListener('keydown', key); }
+      // Project details: photos with next / previous, place and client, description and specs, and a consultation button.
+      var c = cards[+b.getAttribute('data-i')], p = c.p, ph = c.all, at = Math.max(0, ph.indexOf(c.src));
+      var CAT = { shade: 'הצללה וקירוי', glass: 'סגירות', envelope: 'בנייה קלה ומעטפת חוץ', deck: 'דקים ופיתוח', fence: 'גידור וחיפויים' };
+      var meta = [p.place, p.client ? 'לקוח ' + p.client : '', CAT[p.cat]].filter(Boolean).join(' · ');
+      var box = document.createElement('div'); box.id = 'lp-box'; box.setAttribute('role', 'dialog'); box.setAttribute('aria-modal', 'true'); box.setAttribute('aria-label', p.title);
+      box.innerHTML = '<div class="lb-card"><button type="button" class="lb-x" aria-label="סגירה">×</button>' +
+        '<div class="lb-ph"><img alt="' + esc(p.title) + '">' +
+        (ph.length > 1 ? '<button type="button" class="lb-nav" data-d="-1" aria-label="התמונה הקודמת" style="inset-inline-start:10px">›</button><button type="button" class="lb-nav" data-d="1" aria-label="התמונה הבאה" style="inset-inline-end:10px">‹</button><span class="lb-count"></span>' : '') +
+        '</div><div class="lb-txt"><h3 style="font-size:22px;line-height:1.25;margin:0">' + esc(p.title) + '</h3>' +
+        (meta ? '<div class="lb-meta">' + esc(meta) + '</div>' : '') +
+        (p.desc ? '<p>' + esc(p.desc) + '</p>' : '') +
+        (p.specs && p.specs.length ? '<ul>' + p.specs.map(function (s) { return '<li>' + esc(s) + '</li>'; }).join('') + '</ul>' : '') +
+        '<a href="#lead" class="lb-cta">רוצים משהו דומה? לשיחת ייעוץ</a></div></div>';
+      var img = box.querySelector('.lb-ph img'), cnt = box.querySelector('.lb-count');
+      function show() { img.src = ph[at]; if (p.captions && p.captions[at]) img.alt = p.captions[at]; if (cnt) cnt.textContent = (at + 1) + ' / ' + ph.length; }
+      function close() { box.remove(); removeEventListener('keydown', key); document.documentElement.style.overflow = ''; }
       function key(ev) { if (ev.key === 'Escape') close(); }
-      box.addEventListener('click', close); addEventListener('keydown', key);
+      box.addEventListener('click', function (ev) {
+        var nav = ev.target.closest('.lb-nav');
+        if (nav) { at = (at + (+nav.getAttribute('data-d')) + ph.length) % ph.length; show(); return; }
+        if (ev.target === box || ev.target.closest('.lb-x') || ev.target.closest('.lb-cta')) close();
+      });
+      addEventListener('keydown', key);
+      show();
+      document.documentElement.style.overflow = 'hidden';
       document.body.appendChild(box);
+      try { box.querySelector('.lb-x').focus(); } catch (x) {}
     });
     return true;
   }
@@ -82,5 +112,5 @@
     (function tick() { var had = !!document.getElementById('projects'); build(); if (tries < 28 && had) realign(); if (++tries > 80) return; setTimeout(tick, tries < 40 ? 250 : 1000); })();
   }
   if (window.STZ_PROJECTS) start();
-  else { var s = document.createElement('script'); s.src = '/projects-data.js?v=2'; s.onload = start; document.head.appendChild(s); }
+  else { var s = document.createElement('script'); s.src = '/projects-data.js?v=3'; s.onload = start; document.head.appendChild(s); }
 })();

@@ -31,13 +31,26 @@
       '#about .ab-img img{display:block;width:100%;height:100%;object-fit:cover}' +
       '#about .ab-pts{display:flex;flex-wrap:wrap;gap:10px;margin:22px 0 0;padding:0;list-style:none}' +
       '#about .ab-pts li{padding:9px 16px;border-radius:100px;border:1px solid rgba(180,129,60,.5);color:#211C16;font-size:15px;font-weight:500}' +
-      '@media (max-width:860px){#about .ab-wrap{grid-template-columns:1fr}}';
+      '@media (max-width:860px){#about .ab-wrap{grid-template-columns:1fr}}' +
+      // slow strip of project photos drifting behind the text
+      '#about{position:relative;overflow:hidden}#about>.ab-in{position:relative;z-index:1}' +
+      '#about .ab-strip{position:absolute;inset:0;display:flex;align-items:center;pointer-events:none;z-index:0;opacity:.13;filter:grayscale(.35) sepia(.25);-webkit-mask-image:linear-gradient(90deg,transparent,#000 18%,#000 82%,transparent);mask-image:linear-gradient(90deg,transparent,#000 18%,#000 82%,transparent)}' +
+      '#about .ab-track{display:flex;gap:16px;width:max-content;animation:ab-drift 90s linear infinite}' +
+      '#about .ab-track img{height:clamp(220px,34vh,320px);width:auto;aspect-ratio:4/3;object-fit:cover;border-radius:18px;filter:blur(1.5px)}' +
+      '@keyframes ab-drift{from{transform:translateX(0)}to{transform:translateX(50%)}}' +
+      '#about .ab-pts li{opacity:0;transform:translateY(10px);transition:opacity .6s ease,transform .6s ease}' +
+      '#about.ab-on .ab-pts li{opacity:1;transform:none}' +
+      '#about.ab-on .ab-pts li:nth-child(2){transition-delay:.25s}#about.ab-on .ab-pts li:nth-child(3){transition-delay:.5s}' +
+      '@media (prefers-reduced-motion:reduce){#about .ab-track{animation:none}#about .ab-pts li{opacity:1;transform:none;transition:none}}';
     if (!css.parentNode) document.head.appendChild(css);
     var sec = document.createElement('section');
     sec.id = 'about';
     sec.style.cssText = 'padding-block:clamp(3rem,8vh,5.5rem)';
+    var G = '/img/fast/gallery/', PH = ['new-52-4', 'pergola-modern-lighting-1', 'new-55-1', 'project-deck-view', 'new-58-1', 'glass-1', 'new-60-1', 'awning-jaffa-1', 'new-46-3', 'pergola-white-wood'];
+    var strip = PH.concat(PH).map(function (k) { return '<img src="' + G + k + '.webp" alt="" loading="lazy" decoding="async">'; }).join('');
     sec.innerHTML =
-      '<div style="width:min(var(--stz-side,92%),var(--stz-max,1180px));margin-inline:auto"><div class="ab-wrap">' +
+      '<div class="ab-strip" aria-hidden="true"><div class="ab-track">' + strip + '</div></div>' +
+      '<div class="ab-in" style="width:min(var(--stz-side,92%),var(--stz-max,1180px));margin-inline:auto"><div class="ab-wrap">' +
       '<div><div style="display:inline-flex;align-items:center;gap:10px;color:#B4813C;font-size:14.5px;font-weight:600;margin-bottom:18px;white-space:nowrap"><span style="display:block;width:24px;height:1px;background:#B4813C"></span>מי אנחנו</div>' +
       '<h2 style="font-size:clamp(28px,3.6vw,44px);letter-spacing:-0.02em;line-height:1.12">בית אחד לכל מעטפת החוץ</h2>' +
       '<p style="margin:18px 0 0;color:#4B443A;font-size:17px;line-height:1.65">סופר צל היא מעטפת מקצועית לתכנון יישומי, ביצוע ותיאום של פרויקטי חוץ. הפעילות שלנו צמחה מתוך שנים של ניסיון מעשי בשטח — ממערכות קירוי, הצללה ואלומיניום, דרך ריצוף ודקים, ועד פיתוח נוף ובנייה קלה.</p>' +
@@ -48,6 +61,11 @@
       '</div></div>';
     place(sec);
     realign();
+    // the three points light up one after another when the section comes into view
+    if ('IntersectionObserver' in window) {
+      var io = new IntersectionObserver(function (en) { if (en[0].isIntersecting) { sec.classList.add('ab-on'); io.disconnect(); } }, { threshold: 0.3 });
+      io.observe(sec);
+    } else sec.classList.add('ab-on');
     return true;
   }
   // the page re-renders while it boots and can drop inserted nodes, so keep the section in place for a while
