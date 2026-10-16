@@ -12,8 +12,9 @@
   // Direct Google Ads conversion "קליק לחיוג - דף נחיתה פרגולות". Values rank the leads: form 3 (set in Google Ads), WhatsApp 2, call 1.
   var CALL_CONVERSION = ADS_ID + '/LAvhCM7wr5odENq3qpdE';
   function isLanding() { return location.hostname.indexOf('pergola.') === 0 || /^\/pergola(\/|$)/.test(location.pathname) || /[?&]landing=1(&|$)/.test(location.search); }
-  // Conversion labels from Google Ads (Tag setup). Fill in to send direct Ads conversions, e.g. lead: 'AbC-D_efG-h12345'.
-  var ADS_LABELS = { lead: '', whatsapp: '', call: '' };
+  // Direct Google Ads conversion "ליד טופס – פרגולות" (website, primary). Sent after a successful form send (lead.js -> track('generate_lead')), only on the campaign
+  // landing page. WhatsApp and call have their own constants above, so their labels stay empty here (each action fires once).
+  var ADS_LABELS = { lead: 'PV87CK6v454dENq3qpdE', whatsapp: '', call: '' };
   var STORAGE_KEY = 'supertzel_cookie_consent_v2';
 
   window.dataLayer = window.dataLayer || [];
@@ -85,7 +86,7 @@
   function track(name, params) {
     try { gtag('event', name, params || {}); } catch (e) {}
     var key = name === 'generate_lead' ? 'lead' : name === 'whatsapp_click' ? 'whatsapp' : name === 'contact_call' ? 'call' : '';
-    if (key && ADS_LABELS[key]) { try { gtag('event', 'conversion', { send_to: ADS_ID + '/' + ADS_LABELS[key] }); } catch (e) {} }
+    if (key && ADS_LABELS[key] && isLanding()) { try { gtag('event', 'conversion', { send_to: ADS_ID + '/' + ADS_LABELS[key] }); } catch (e) {} }
   }
   window.stzTrack = track;
 
