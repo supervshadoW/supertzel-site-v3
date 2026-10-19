@@ -9,7 +9,7 @@
   var ADS_ID = 'AW-18302540762';
   // Direct Google Ads conversion "WhatsApp - דף נחיתה פרגולות" (account 626-713-5003). Sent only on the campaign landing page.
   var WA_CONVERSION = ADS_ID + '/0egZCPPEq5odENq3qpdE';
-  // Direct Google Ads conversion "קליק לחיוג - דף נחיתה פרגולות". Values rank the leads: form 3 (set in Google Ads), WhatsApp 2, call 1.
+  // Direct Google Ads conversion "קליק לחיוג - דף נחיתה פרגולות". Values rank the leads: form and WhatsApp 3 (the form's value is set in Google Ads), call 1.
   var CALL_CONVERSION = ADS_ID + '/LAvhCM7wr5odENq3qpdE';
   function isLanding() { return location.hostname.indexOf('pergola.') === 0 || /^\/pergola(\/|$)/.test(location.pathname) || /[?&]landing=1(&|$)/.test(location.search); }
   // Direct Google Ads conversion "ליד טופס – פרגולות" (website, primary). Sent after a successful form send (lead.js -> track('generate_lead')), only on the campaign
@@ -17,8 +17,8 @@
   var ADS_LABELS = { lead: 'PV87CK6v454dENq3qpdE', whatsapp: '', call: '' };
   var STORAGE_KEY = 'supertzel_cookie_consent_v2';
   // WhatsApp leads from ads, measured without cookies: a WhatsApp click by a visitor who came from an ad adds a lead number to the message
-  // and sends the number with the ad click id to the "לידים מוואטסאפ ממודעות גוגל" sheet (Make webhook). Leads marked "טוב" in the sheet
-  // are imported into Google Ads as the "ליד איכותי" conversion.
+  // and sends the number with the ad click id to the "לידים מוואטסאפ ממודעות גוגל" sheet (Make webhook). Google Ads imports every row of the
+  // sheet as the "ליד וואטסאפ" conversion, except rows marked "לא רלוונטי".
   var LEAD_HOOK = 'https://hook.eu1.make.com/e4o38y7cadpybznwb94ialfs29h88sgl';
   var CLICK_KEYS = ['gclid', 'wbraid', 'gbraid', 'utm_source', 'utm_medium', 'utm_campaign', 'utm_term', 'utm_content'];
   function adClick() {
@@ -161,7 +161,7 @@
     var h = el.tagName === 'A' ? (el.getAttribute('href') || '') : '';
     if (h.indexOf('wa.me') > -1 || h.indexOf('api.whatsapp.com') > -1 || h.indexOf('whatsapp.com/send') > -1) {
       track('whatsapp_click', { source: location.pathname });
-      if (isLanding()) { try { gtag('event', 'conversion', { send_to: WA_CONVERSION, value: 2.0, currency: 'ILS' }); } catch (x) {} }
+      if (isLanding()) { try { gtag('event', 'conversion', { send_to: WA_CONVERSION, value: 3.0, currency: 'ILS' }); } catch (x) {} }
       adLead(el);
     } else if (h.indexOf('tel:') === 0) {
       track('contact_call', { source: location.pathname });
