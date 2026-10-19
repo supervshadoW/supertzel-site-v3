@@ -19,7 +19,7 @@
   // Leads from ads, measured without cookies: a WhatsApp click by a visitor who came from an ad adds a lead number to the message and sends
   // the number with the ad click id to the "לידים מוואטסאפ ממודעות גוגל" sheet (Make webhook); a sent lead form adds a row the same way.
   // Every row is reported to Google Ads as the "ליד ממודעה" conversion, except rows marked "לא רלוונטי".
-  var LEAD_HOOK = 'https://hook.eu1.make.com/e4o38y7cadpybznwb94ialfs29h88sgl';
+  var LEAD_HOOK = 'https://hook.eu1.make.com/1yguewe7vva74win8tqkxqys4bnbtw42';
   var CLICK_KEYS = ['gclid', 'wbraid', 'gbraid', 'utm_source', 'utm_medium', 'utm_campaign', 'utm_term', 'utm_content'];
   function adClick() {
     var ids = {};

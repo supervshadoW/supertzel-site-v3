@@ -21,15 +21,13 @@
   דרך Sheets עצמו (Make, Update a Cell, USER_ENTERED), כי נוסחה מ-xlsx לא נבדקה:
   `=IFERROR(FILTER('לידים'!E2:G,'לידים'!E2:E<>"",'לידים'!C2:C<>"לא רלוונטי"),)`
 
-## מה נשאר (Make)
-ההחלטה: הכול תחת **supervshadow@gmail.com** (סופר צל), גם חשבון ה-Make.
-1. לחבר את ה-connector של Make ב-Claude לחשבון ה-Make של supervshadow (claude.ai/customize/connectors), ולפתוח סשן חדש.
-2. ב-Make של supervshadow: webhook חדש (gateway-webhook) → לעדכן `LEAD_HOOK` ב-`analytics.js` (ולהעלות את `?v=`).
-3. Credential request אחד: `google-sheets` + `google-ads-conversions` (שניהם supervshadow).
-4. תרחיש 1 (מיידי): webhook → filter (`lead` = 6 ספרות או `kind=טופס`, ויש gclid/wbraid/gbraid) → Google Sheets Add a Row (RAW).
-5. תרחיש 2 (יומי): Google Ads API דרך `google-ads-conversions:makeAnApiCall`:
-   - פעם אחת: לבדוק `customer.auto_tagging_enabled`, פעולות ההמרה (סטטוס, primary/secondary, סוג), ו-final URLs של המודעות.
-   - פעם אחת: ליצור פעולת המרה `ליד ממודעה` מסוג UPLOAD_CLICKS, ערך 3 ILS, ספירה One.
-   - כל יום: לשורות עם gclid שלא סומנו "לא רלוונטי" ולא הועלו → `uploadClickConversions` (כפילויות נדחות אצל גוגל).
-6. למחוק את ה-webhook הזמני בחשבון IL PROJECTS (id 3933364) ואת בקשות החיבור שלא אושרו שם.
-7. חבילה חינמית: 1,000 פעולות בחודש, 2 תרחישים פעילים. שורה = 2 פעולות.
+## Make (חשבון supervshadow@gmail.com, team 2129528)
+- webhook: `לידים ממודעות (וואטסאפ וטופס)` (id 3935096) = `LEAD_HOOK`.
+- Credential request (Google Sheets + Google Ads, שניהם supervshadow): `21ada348-e54e-43d4-8847-ac0b3b9e24ac`.
+- תרחיש 1 (מיידי): webhook → filter (`lead` = 6 ספרות או `kind=טופס`, ויש gclid/wbraid/gbraid) → Google Sheets Add a Row (RAW).
+- תרחיש 2 (יומי): Google Ads API דרך `google-ads-conversions:makeAnApiCall`:
+  - פעם אחת: לבדוק `customer.auto_tagging_enabled`, פעולות ההמרה (סטטוס, primary/secondary, סוג), ו-final URLs של המודעות.
+  - פעם אחת: ליצור פעולת המרה `ליד ממודעה` מסוג UPLOAD_CLICKS, ערך 3 ILS, ספירה One.
+  - כל יום: לשורות עם gclid שלא סומנו "לא רלוונטי" → `uploadClickConversions` (כפילויות נדחות אצל גוגל).
+- חבילה חינמית: 1,000 פעולות בחודש, 2 תרחישים פעילים. שורה = 2 פעולות.
+- שאריות בחשבון IL PROJECTS (לא בשימוש, אפשר למחוק ידנית): webhook 3933364 ושתי בקשות חיבור שלא אושרו.
