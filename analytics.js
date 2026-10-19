@@ -16,9 +16,9 @@
   // landing page. WhatsApp and call have their own constants above, so their labels stay empty here (each action fires once).
   var ADS_LABELS = { lead: 'PV87CK6v454dENq3qpdE', whatsapp: '', call: '' };
   var STORAGE_KEY = 'supertzel_cookie_consent_v2';
-  // WhatsApp leads from ads, measured without cookies: a WhatsApp click by a visitor who came from an ad adds a lead number to the message
-  // and sends the number with the ad click id to the "לידים מוואטסאפ ממודעות גוגל" sheet (Make webhook). Google Ads imports every row of the
-  // sheet as the "ליד וואטסאפ" conversion, except rows marked "לא רלוונטי".
+  // Leads from ads, measured without cookies: a WhatsApp click by a visitor who came from an ad adds a lead number to the message and sends
+  // the number with the ad click id to the "לידים מוואטסאפ ממודעות גוגל" sheet (Make webhook); a sent lead form adds a row the same way.
+  // Every row is reported to Google Ads as the "ליד ממודעה" conversion, except rows marked "לא רלוונטי".
   var LEAD_HOOK = 'https://hook.eu1.make.com/e4o38y7cadpybznwb94ialfs29h88sgl';
   var CLICK_KEYS = ['gclid', 'wbraid', 'gbraid', 'utm_source', 'utm_medium', 'utm_campaign', 'utm_term', 'utm_content'];
   function adClick() {
@@ -53,9 +53,14 @@
     if (leadSentNo === no) return; // one sheet row per lead number
     leadSentNo = no;
     try { sessionStorage.setItem('stz-lead-sent', no); } catch (e) {}
+    adRow('וואטסאפ', no, ids);
+  }
+  // A lead form sent by a visitor from an ad gets a sheet row too (a form lead counts the same as a WhatsApp lead).
+  function adRow(kind, no, ids) {
     var s = '';
     try { s = new URLSearchParams(location.search).get('s') || ''; } catch (e) {}
     var d = new URLSearchParams();
+    d.set('kind', kind);
     d.set('lead', no);
     d.set('page', location.pathname + (s ? '?s=' + s : ''));
     d.set('gclid', ids.gclid || '');
@@ -135,6 +140,7 @@
     try { gtag('event', name, params || {}); } catch (e) {}
     var key = name === 'generate_lead' ? 'lead' : name === 'whatsapp_click' ? 'whatsapp' : name === 'contact_call' ? 'call' : '';
     if (key && ADS_LABELS[key] && isLanding()) { try { gtag('event', 'conversion', { send_to: ADS_ID + '/' + ADS_LABELS[key] }); } catch (e) {} }
+    if (key === 'lead') { var ids = adClick(); if (ids) adRow('טופס', '', ids); }
   }
   window.stzTrack = track;
 
@@ -177,7 +183,9 @@
     if (!document.getElementById('stz-consent-css')) {
       var st = document.createElement('style'); st.id = 'stz-consent-css';
       // phones: same wording, tighter layout so the banner takes about a quarter of the screen instead of 40%
-      st.textContent = '@media (max-width:760px){#stz-consent{inset-inline:8px!important;bottom:8px!important;padding:12px 14px!important;border-radius:16px!important;font-size:12.5px!important;line-height:1.45!important}#stz-consent #stz-consent-t{font-size:14px!important;margin-bottom:3px!important}#stz-consent p{margin:0 0 10px!important}#stz-consent #stz-cc-main{flex-wrap:nowrap!important;gap:6px!important}#stz-consent #stz-cc-main button{min-height:44px!important;font-size:13px!important;flex:1 1 0!important;padding:0 6px!important}#stz-consent #stz-cc-main button[data-a=custom]{flex:0 0 auto!important;padding:0 8px!important}}';
+      st.textContent = '@media (max-width:760px){#stz-consent{inset-inline:8px!important;bottom:8px!important;padding:12px 14px!important;border-radius:16px!important;font-size:12.5px!important;line-height:1.45!important}#stz-consent #stz-consent-t{font-size:14px!important;margin-bottom:3px!important}#stz-consent p{margin:0 0 10px!important}#stz-consent #stz-cc-main{flex-wrap:nowrap!important;gap:6px!important}#stz-consent #stz-cc-main button{min-height:44px!important;font-size:13px!important;flex:1 1 0!important;padding:0 6px!important}#stz-consent #stz-cc-main button[data-a=custom]{flex:0 0 auto!important;padding:0 8px!important}' +
+        // after the visitor scrolls on: a short banner above the floating WhatsApp / call / meeting buttons instead of over them
+        '#stz-consent.stz-mini{bottom:84px!important;padding:10px 12px!important}#stz-consent.stz-mini>#stz-consent-t,#stz-consent.stz-mini>p{display:none!important}#stz-consent.stz-mini>#stz-cc-mini{display:block!important}}';
       document.head.appendChild(st);
     }
     d.setAttribute('role', 'dialog');
@@ -187,6 +195,7 @@
     d.innerHTML =
       '<div id="stz-consent-t" style="font-weight:700;font-size:16px;margin-bottom:6px">אנחנו מכבדים את הפרטיות שלך</div>' +
       '<p style="margin:0 0 14px;opacity:.9">האתר משתמש בעוגיות (Cookies) כדי לתפעל שירותים בסיסיים, וכן — אם תסכים/י — כדי לנתח ביקורים באמצעות Google Analytics. ללא הסכמה לא נשמרות עוגיות כאלה, ונשלחים רק נתוני מדידה מוגבלים, כמפורט במדיניות. חלק מהמידע מעובד בשרתי ספקים בחו״ל. באפשרותך לקבל, לדחות או להתאים אישית. <a href="/legal#privacy" style="color:#C99752;white-space:nowrap">למידע מלא — מדיניות הפרטיות</a></p>' +
+      '<div id="stz-cc-mini" style="display:none;margin:0 0 8px;font-size:12.5px;opacity:.9">האתר משתמש בעוגיות. <a href="/legal#privacy" style="color:#C99752">מדיניות הפרטיות</a></div>' +
       '<div id="stz-cc-custom" style="display:none;margin:0 0 14px;gap:10px;flex-direction:column">' +
       '<label style="display:flex;gap:10px;align-items:flex-start"><input type="checkbox" id="stz-cc-an" style="margin-top:5px"><span><strong>ניתוח ביקורים</strong><br><span style="opacity:.8;font-size:13px">Google Analytics ו-Microsoft Clarity: סטטיסטיקה, מפות חום והקלטות גלישה.</span></span></label>' +
       '<label style="display:flex;gap:10px;align-items:flex-start"><input type="checkbox" id="stz-cc-ad" style="margin-top:5px"><span><strong>פרסום ומדידת קמפיינים</strong><br><span style="opacity:.8;font-size:13px">Google Ads: מדידת פניות שהגיעו ממודעות.</span></span></label>' +
@@ -207,6 +216,7 @@
         d.querySelector('#stz-cc-ad').checked = !!cur.ads;
         d.querySelector('#stz-cc-custom').style.display = 'flex';
         d.querySelector('#stz-cc-main').style.display = 'none';
+        d.classList.remove('stz-mini');
         return;
       }
       if (a === 'save') save(d.querySelector('#stz-cc-an').checked, d.querySelector('#stz-cc-ad').checked);
@@ -214,6 +224,11 @@
       d.remove();
     });
     document.body.appendChild(d);
+    var mini = function () {
+      if (!d.isConnected) { removeEventListener('scroll', mini); return; }
+      if ((window.scrollY || 0) > 300 && d.querySelector('#stz-cc-custom').style.display !== 'flex') d.classList.add('stz-mini');
+    };
+    addEventListener('scroll', mini, { passive: true });
   }
   window.openCookieSettings = banner;
 
