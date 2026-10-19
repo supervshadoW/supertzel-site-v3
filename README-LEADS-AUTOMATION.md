@@ -17,15 +17,14 @@
 (נוצר בדרייב של anastasiyaminov@gmail.com, משותף לעריכה עם supervshadow@gmail.com).
 - לשונית `לידים` (Make כותב, ערכים RAW): A זמן · B מס' פנייה · C איכות (טוב / לא רלוונטי, לא חובה) · D עמוד (+ kind) ·
   E gclid · F שם ההמרה (`ליד ממודעה`) · G זמן ההמרה (`YYYY-MM-DD HH:mm:ss`, Asia/Jerusalem) · H wbraid · I gbraid · J utm.
-- לשונית `העלאה לגוגל`: שורת `Parameters:TimeZone=Asia/Jerusalem` + כותרות. **הנוסחה ב-A3 עוד לא סופית**: צריך לכתוב אותה
-  דרך Sheets עצמו (Make, Update a Cell, USER_ENTERED), כי נוסחה מ-xlsx לא נבדקה:
+- לשונית `העלאה לגוגל`: שורת `Parameters:TimeZone=Asia/Jerusalem` + כותרות, וב-A3 (נכתב דרך Sheets, נבדק עם שורת בדיקה שנמחקה):
   `=IFERROR(FILTER('לידים'!E2:G,'לידים'!E2:E<>"",'לידים'!C2:C<>"לא רלוונטי"),)`
 
 ## Make (חשבון supervshadow@gmail.com, team 2129528)
 - webhook: `לידים ממודעות (וואטסאפ וטופס)` (id 3935096) = `LEAD_HOOK`.
 - Credential request (Google Sheets + Google Ads, שניהם supervshadow): `21ada348-e54e-43d4-8847-ac0b3b9e24ac`.
-- תרחיש 1 (מיידי): webhook → filter (`lead` = 6 ספרות או `kind=טופס`, ויש gclid/wbraid/gbraid) → Google Sheets Add a Row (RAW).
-- תרחיש 2 (יומי): Google Ads API דרך `google-ads-conversions:makeAnApiCall`:
+- תרחיש 1 `לידים ממודעות → גיליון` (id 8054590, פעיל, נבדק מקצה לקצה): webhook → filter (`lead` = 6 ספרות או `kind=טופס`, ויש gclid/wbraid/gbraid) → Google Sheets Add a Row (RAW, OVERWRITE), חיבור 12115761.
+- תרחיש 2 (יומי, **ממתין לאישור החיבור ל-Google Ads**): Google Ads API דרך `google-ads-conversions:makeAnApiCall`:
   - פעם אחת: לבדוק `customer.auto_tagging_enabled`, פעולות ההמרה (סטטוס, primary/secondary, סוג), ו-final URLs של המודעות.
   - פעם אחת: ליצור פעולת המרה `ליד ממודעה` מסוג UPLOAD_CLICKS, ערך 3 ILS, ספירה One.
   - כל יום: לשורות עם gclid שלא סומנו "לא רלוונטי" → `uploadClickConversions` (כפילויות נדחות אצל גוגל).
