@@ -82,14 +82,24 @@
 
   function placeProc() {
     var sl = [].filter.call(document.querySelectorAll('[data-stepsl]'), rendered)[0];
-    if (!sl || (sl.nextElementSibling && sl.nextElementSibling.classList.contains('stz-proc-box'))) return;
+    if (!sl || document.querySelector('.stz-proc-box')) return;
     var steps = [].slice.call(sl.children);
     if (steps.length < 2) return;
     var box = document.createElement('div');
     box.className = 'stz-proc-box';
     box.innerHTML = '<div class="stz-proc-t">' + PROC_TITLE + '</div><div class="stz-proc">' +
       PROC.map(function (p, i) { return '<figure data-i="' + i + '"><img src="' + p.src + '" alt="' + p.cap + '" loading="lazy" decoding="async"><figcaption>' + p.cap + '</figcaption></figure>'; }).join('') + '</div>';
-    sl.parentNode.insertBefore(box, sl.nextSibling);
+    // Put the strip under "בית אחד לכל מעטפת החוץ" (the about column next to the steps) so both columns are balanced;
+    // if that layout is not on the page, keep it right after the steps as before.
+    var aboutH = [].filter.call(document.querySelectorAll('h1,h2,h3'), function (h) { return rendered(h) && /בית אחד לכל מעטפת החוץ/.test(h.textContent); })[0];
+    var col = null;
+    if (aboutH) {
+      var a = aboutH;
+      while (a && a.parentElement && !a.parentElement.contains(sl)) a = a.parentElement;
+      if (a && a.parentElement && a.parentElement.contains(sl) && !a.contains(sl)) col = a;
+    }
+    if (col) { box.style.marginTop = 'clamp(1.25rem,3vh,2rem)'; col.appendChild(box); }
+    else sl.parentNode.insertBefore(box, sl.nextSibling);
     var figs = [].slice.call(box.querySelectorAll('figure'));
     function sync() {
       var on = 0; steps.forEach(function (s, j) { if (s.hasAttribute('data-on')) on = j; });
