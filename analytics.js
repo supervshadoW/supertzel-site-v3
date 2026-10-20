@@ -9,13 +9,66 @@
   var ADS_ID = 'AW-18302540762';
   // Direct Google Ads conversion "WhatsApp - דף נחיתה פרגולות" (account 626-713-5003). Sent only on the campaign landing page.
   var WA_CONVERSION = ADS_ID + '/0egZCPPEq5odENq3qpdE';
-  // Direct Google Ads conversion "קליק לחיוג - דף נחיתה פרגולות". Values rank the leads: form 3 (set in Google Ads), WhatsApp 2, call 1.
+  // Direct Google Ads conversion "קליק לחיוג - דף נחיתה פרגולות". Values rank the leads: form and WhatsApp 3 (the form's value is set in Google Ads), call 1.
   var CALL_CONVERSION = ADS_ID + '/LAvhCM7wr5odENq3qpdE';
   function isLanding() { return location.hostname.indexOf('pergola.') === 0 || /^\/pergola(\/|$)/.test(location.pathname) || /[?&]landing=1(&|$)/.test(location.search); }
   // Direct Google Ads conversion "ליד טופס – פרגולות" (website, primary). Sent after a successful form send (lead.js -> track('generate_lead')), only on the campaign
   // landing page. WhatsApp and call have their own constants above, so their labels stay empty here (each action fires once).
   var ADS_LABELS = { lead: 'PV87CK6v454dENq3qpdE', whatsapp: '', call: '' };
   var STORAGE_KEY = 'supertzel_cookie_consent_v2';
+  // Leads from ads, measured without cookies: a WhatsApp click by a visitor who came from an ad adds a lead number to the message and sends
+  // the number with the ad click id to the "לידים מוואטסאפ ממודעות גוגל" sheet (Make webhook); a sent lead form adds a row the same way.
+  // Every row is reported to Google Ads as the "ליד ממודעה" conversion, except rows marked "לא רלוונטי".
+  var LEAD_HOOK = 'https://hook.eu1.make.com/1yguewe7vva74win8tqkxqys4bnbtw42';
+  var CLICK_KEYS = ['gclid', 'wbraid', 'gbraid', 'utm_source', 'utm_medium', 'utm_campaign', 'utm_term', 'utm_content'];
+  function adClick() {
+    var ids = {};
+    try { var q = new URLSearchParams(location.search); CLICK_KEYS.forEach(function (k) { if (q.get(k)) ids[k] = q.get(k); }); } catch (e) {}
+    if (ids.gclid || ids.wbraid || ids.gbraid) { try { sessionStorage.setItem('stz-click', JSON.stringify(ids)); } catch (e) {} return ids; }
+    try { ids = JSON.parse(sessionStorage.getItem('stz-click') || '{}') || {}; } catch (e) { ids = {}; }
+    return ids.gclid || ids.wbraid || ids.gbraid ? ids : null;
+  }
+  adClick(); // keep the click id for the whole visit, also after moving to a page without it in the address
+  function leadNo() {
+    var n = '';
+    try { n = sessionStorage.getItem('stz-lead-no') || ''; } catch (e) {}
+    if (!/^\d{6}$/.test(n)) {
+      var r = Math.random();
+      try { var a = new Uint32Array(1); crypto.getRandomValues(a); r = a[0] / 4294967296; } catch (e) {}
+      n = String(100000 + Math.floor(r * 900000));
+      try { sessionStorage.setItem('stz-lead-no', n); } catch (e) {}
+    }
+    return n;
+  }
+  var leadSentNo = '';
+  function adLead(a) {
+    var ids = adClick();
+    if (!ids) return;
+    var no = leadNo(), line = "מס' פנייה: " + no;
+    var href = a.getAttribute('href') || '', m = href.match(/[?&]text=([^&#]*)/), text = '';
+    try { text = m ? decodeURIComponent(m[1].replace(/\+/g, ' ')) : ''; } catch (e) {}
+    var t = encodeURIComponent((text.replace(/\s*מס' פנייה: \d+$/, '') + '\n' + line).replace(/^\n/, ''));
+    a.setAttribute('href', m ? href.replace(/([?&]text=)[^&#]*/, '$1' + t) : href + (href.indexOf('?') > -1 ? '&' : '?') + 'text=' + t);
+    try { leadSentNo = leadSentNo || sessionStorage.getItem('stz-lead-sent') || ''; } catch (e) {}
+    if (leadSentNo === no) return; // one sheet row per lead number
+    leadSentNo = no;
+    try { sessionStorage.setItem('stz-lead-sent', no); } catch (e) {}
+    adRow('וואטסאפ', no, ids);
+  }
+  // A lead form sent by a visitor from an ad gets a sheet row too (a form lead counts the same as a WhatsApp lead).
+  function adRow(kind, no, ids) {
+    var s = '';
+    try { s = new URLSearchParams(location.search).get('s') || ''; } catch (e) {}
+    var d = new URLSearchParams();
+    d.set('kind', kind);
+    d.set('lead', no);
+    d.set('page', location.pathname + (s ? '?s=' + s : ''));
+    d.set('gclid', ids.gclid || '');
+    d.set('wbraid', ids.wbraid || '');
+    d.set('gbraid', ids.gbraid || '');
+    d.set('utm', CLICK_KEYS.slice(3).filter(function (k) { return ids[k]; }).map(function (k) { return k.slice(4) + '=' + ids[k]; }).join(', '));
+    try { if (!(navigator.sendBeacon && navigator.sendBeacon(LEAD_HOOK, d))) fetch(LEAD_HOOK, { method: 'POST', body: d, mode: 'no-cors', keepalive: true }); } catch (e) {}
+  }
 
   window.dataLayer = window.dataLayer || [];
   window.gtag = window.gtag || function () { window.dataLayer.push(arguments); };
@@ -87,11 +140,12 @@
     try { gtag('event', name, params || {}); } catch (e) {}
     var key = name === 'generate_lead' ? 'lead' : name === 'whatsapp_click' ? 'whatsapp' : name === 'contact_call' ? 'call' : '';
     if (key && ADS_LABELS[key] && isLanding()) { try { gtag('event', 'conversion', { send_to: ADS_ID + '/' + ADS_LABELS[key] }); } catch (e) {} }
+    if (key === 'lead') { var ids = adClick(); if (ids) adRow('טופס', '', ids); }
   }
   window.stzTrack = track;
 
   // Click tracking, each kind of click has its own event (no generic "cta_click"):
-  //   WhatsApp links      -> whatsapp_click (+ direct Ads conversion on the landing page)
+  //   WhatsApp links      -> whatsapp_click (+ direct Ads conversion on the landing page, + lead number and sheet row for visitors from an ad)
   //   phone links         -> contact_call
   //   book a call / meeting buttons -> book_meeting_click
   //   lead form           -> generate_lead, sent from lead.js only after validation and a successful send
@@ -113,7 +167,8 @@
     var h = el.tagName === 'A' ? (el.getAttribute('href') || '') : '';
     if (h.indexOf('wa.me') > -1 || h.indexOf('api.whatsapp.com') > -1 || h.indexOf('whatsapp.com/send') > -1) {
       track('whatsapp_click', { source: location.pathname });
-      if (isLanding()) { try { gtag('event', 'conversion', { send_to: WA_CONVERSION, value: 2.0, currency: 'ILS' }); } catch (x) {} }
+      if (isLanding()) { try { gtag('event', 'conversion', { send_to: WA_CONVERSION, value: 3.0, currency: 'ILS' }); } catch (x) {} }
+      adLead(el);
     } else if (h.indexOf('tel:') === 0) {
       track('contact_call', { source: location.pathname });
       if (isLanding()) { try { gtag('event', 'conversion', { send_to: CALL_CONVERSION, value: 1.0, currency: 'ILS' }); } catch (x) {} }
@@ -128,7 +183,9 @@
     if (!document.getElementById('stz-consent-css')) {
       var st = document.createElement('style'); st.id = 'stz-consent-css';
       // phones: same wording, tighter layout so the banner takes about a quarter of the screen instead of 40%
-      st.textContent = '@media (max-width:760px){#stz-consent{inset-inline:8px!important;bottom:8px!important;padding:12px 14px!important;border-radius:16px!important;font-size:12.5px!important;line-height:1.45!important}#stz-consent #stz-consent-t{font-size:14px!important;margin-bottom:3px!important}#stz-consent p{margin:0 0 10px!important}#stz-consent #stz-cc-main{flex-wrap:nowrap!important;gap:6px!important}#stz-consent #stz-cc-main button{min-height:44px!important;font-size:13px!important;flex:1 1 0!important;padding:0 6px!important}#stz-consent #stz-cc-main button[data-a=custom]{flex:0 0 auto!important;padding:0 8px!important}}';
+      st.textContent = '@media (max-width:760px){#stz-consent{inset-inline:8px!important;bottom:8px!important;padding:12px 14px!important;border-radius:16px!important;font-size:12.5px!important;line-height:1.45!important}#stz-consent #stz-consent-t{font-size:14px!important;margin-bottom:3px!important}#stz-consent p{margin:0 0 10px!important}#stz-consent #stz-cc-main{flex-wrap:nowrap!important;gap:6px!important}#stz-consent #stz-cc-main button{min-height:44px!important;font-size:13px!important;flex:1 1 0!important;padding:0 6px!important}#stz-consent #stz-cc-main button[data-a=custom]{flex:0 0 auto!important;padding:0 8px!important}' +
+        // after the visitor scrolls on: a short banner above the floating WhatsApp / call / meeting buttons instead of over them
+        '#stz-consent.stz-mini{bottom:84px!important;padding:10px 12px!important}#stz-consent.stz-mini>#stz-consent-t,#stz-consent.stz-mini>p{display:none!important}#stz-consent.stz-mini>#stz-cc-mini{display:block!important}}';
       document.head.appendChild(st);
     }
     d.setAttribute('role', 'dialog');
@@ -137,7 +194,8 @@
     d.style.cssText = 'position:fixed;inset-inline:12px;bottom:12px;z-index:2147483000;max-width:560px;margin-inline:auto;background:#1B1712;color:#F5F0E4;border:1px solid rgba(201,151,82,.45);border-radius:18px;padding:18px 20px;box-shadow:0 18px 50px rgba(0,0,0,.45);font:14px/1.6 inherit;font-family:inherit';
     d.innerHTML =
       '<div id="stz-consent-t" style="font-weight:700;font-size:16px;margin-bottom:6px">אנחנו מכבדים את הפרטיות שלך</div>' +
-      '<p style="margin:0 0 14px;opacity:.9">האתר משתמש בעוגיות (Cookies) כדי לתפעל שירותים בסיסיים, וכן — אם תסכים/י — כדי לנתח ביקורים באמצעות Google Analytics. ללא הסכמה לא נשמרות עוגיות כאלה, ונשלחים אותות אנונימיים בלבד. חלק מהמידע מעובד בשרתי ספקים בחו״ל. באפשרותך לקבל, לדחות או להתאים אישית. <a href="/legal#privacy" style="color:#C99752;white-space:nowrap">למידע מלא — מדיניות הפרטיות</a></p>' +
+      '<p style="margin:0 0 14px;opacity:.9">האתר משתמש בעוגיות (Cookies) כדי לתפעל שירותים בסיסיים, וכן — אם תסכים/י — כדי לנתח ביקורים באמצעות Google Analytics. ללא הסכמה לא נשמרות עוגיות כאלה, ונשלחים רק נתוני מדידה מוגבלים, כמפורט במדיניות. חלק מהמידע מעובד בשרתי ספקים בחו״ל. באפשרותך לקבל, לדחות או להתאים אישית. <a href="/legal#privacy" style="color:#C99752;white-space:nowrap">למידע מלא — מדיניות הפרטיות</a></p>' +
+      '<div id="stz-cc-mini" style="display:none;margin:0 0 8px;font-size:12.5px;opacity:.9">האתר משתמש בעוגיות. <a href="/legal#privacy" style="color:#C99752">מדיניות הפרטיות</a></div>' +
       '<div id="stz-cc-custom" style="display:none;margin:0 0 14px;gap:10px;flex-direction:column">' +
       '<label style="display:flex;gap:10px;align-items:flex-start"><input type="checkbox" id="stz-cc-an" style="margin-top:5px"><span><strong>ניתוח ביקורים</strong><br><span style="opacity:.8;font-size:13px">Google Analytics ו-Microsoft Clarity: סטטיסטיקה, מפות חום והקלטות גלישה.</span></span></label>' +
       '<label style="display:flex;gap:10px;align-items:flex-start"><input type="checkbox" id="stz-cc-ad" style="margin-top:5px"><span><strong>פרסום ומדידת קמפיינים</strong><br><span style="opacity:.8;font-size:13px">Google Ads: מדידת פניות שהגיעו ממודעות.</span></span></label>' +
@@ -158,6 +216,7 @@
         d.querySelector('#stz-cc-ad').checked = !!cur.ads;
         d.querySelector('#stz-cc-custom').style.display = 'flex';
         d.querySelector('#stz-cc-main').style.display = 'none';
+        d.classList.remove('stz-mini');
         return;
       }
       if (a === 'save') save(d.querySelector('#stz-cc-an').checked, d.querySelector('#stz-cc-ad').checked);
@@ -165,6 +224,11 @@
       d.remove();
     });
     document.body.appendChild(d);
+    var mini = function () {
+      if (!d.isConnected) { removeEventListener('scroll', mini); return; }
+      if ((window.scrollY || 0) > 300 && d.querySelector('#stz-cc-custom').style.display !== 'flex') d.classList.add('stz-mini');
+    };
+    addEventListener('scroll', mini, { passive: true });
   }
   window.openCookieSettings = banner;
 
