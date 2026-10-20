@@ -30,6 +30,7 @@
     '.stz-proc figcaption{position:absolute;inset-inline:0;bottom:0;padding:26px 12px 10px;color:#F5F0E4;font-size:13.5px;font-weight:600;background:linear-gradient(0deg,rgba(17,14,11,.85),rgba(17,14,11,0))}' +
     '.stz-proc-t{margin-top:clamp(1.5rem,3vh,2rem);font-size:13px;font-weight:600;letter-spacing:.06em;opacity:.8}' +
     '@media (max-width:760px){.stz-proc figure{aspect-ratio:auto;height:220px}.stz-proc figure:not([data-on]) figcaption{display:none}}' +
+    '.stz-proc-side .stz-proc figure{aspect-ratio:auto;height:180px;max-height:none}' + // lower strip under the about text, so both columns end about together
     '@media (prefers-reduced-motion:reduce){.stz-proc figure{transition:none}}';
   document.head.appendChild(css);
 
@@ -98,7 +99,7 @@
       while (a && a.parentElement && !a.parentElement.contains(sl)) a = a.parentElement;
       if (a && a.parentElement && a.parentElement.contains(sl) && !a.contains(sl)) col = a;
     }
-    if (col) { box.style.marginTop = 'clamp(1.25rem,3vh,2rem)'; col.appendChild(box); }
+    if (col) { box.classList.add('stz-proc-side'); box.style.marginTop = 'clamp(1.25rem,3vh,2rem)'; col.appendChild(box); }
     else sl.parentNode.insertBefore(box, sl.nextSibling);
     var figs = [].slice.call(box.querySelectorAll('figure'));
     function sync() {
