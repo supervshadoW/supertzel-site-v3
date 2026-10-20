@@ -4,11 +4,12 @@
   if (window.__stzBaStory) return;
   window.__stzBaStory = true;
   var G = '/img/fast/gallery/';
+  // Kfar Saba: a returning client (black pergola in 2024) — this time concrete pour, electric gate and a lit aluminium pergola.
+  var PROC_TITLE = 'מהשטח · כפר סבא: חזרנו ללקוח מ-2024 להשלים את מרחב החוץ';
   var PROC = [
-    { src: G + 'deck-proc-1.jpg', cap: 'החומרים מגיעים לשטח' },
-    { src: G + 'deck-proc-2.jpg', cap: 'שלד מפולס לפי המידות' },
-    { src: G + 'deck-proc-3.jpg', cap: 'טיפול בשלד לפני הדק' },
-    { src: G + 'deck-proc-4.jpg', cap: 'הדק המוגמר' }
+    { src: G + 'new-46-3.webp', cap: 'שער חשמלי ופרגולה שחורה בכניסה' },
+    { src: G + 'new-46-4.webp', cap: 'יציקת בטון ותאורה שקועה בקורות' },
+    { src: G + 'new-46-2.webp', cap: 'תאורת LED לאורך הרפרפות' }
   ];
   function rendered(el) { return !!el && !el.closest('x-dc'); }
 
@@ -86,7 +87,7 @@
     if (steps.length < 2) return;
     var box = document.createElement('div');
     box.className = 'stz-proc-box';
-    box.innerHTML = '<div class="stz-proc-t">מהשטח · דק בבית פרטי, שלב אחרי שלב</div><div class="stz-proc">' +
+    box.innerHTML = '<div class="stz-proc-t">' + PROC_TITLE + '</div><div class="stz-proc">' +
       PROC.map(function (p, i) { return '<figure data-i="' + i + '"><img src="' + p.src + '" alt="' + p.cap + '" loading="lazy" decoding="async"><figcaption>' + p.cap + '</figcaption></figure>'; }).join('') + '</div>';
     sl.parentNode.insertBefore(box, sl.nextSibling);
     var figs = [].slice.call(box.querySelectorAll('figure'));
