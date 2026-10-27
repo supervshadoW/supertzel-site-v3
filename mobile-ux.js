@@ -8,6 +8,15 @@
   window.addEventListener('scroll', onScroll, { passive: true }); onScroll();
   var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
+  // Catalog tiles: a tap opens the description (one open at a time); taps on the tile's own links / buttons are left alone.
+  document.addEventListener('click', function (e) {
+    var card = e.target.closest && e.target.closest('#catalog .stz-gcard');
+    if (!card || e.target.closest('a,button')) return;
+    var was = card.hasAttribute('data-open');
+    [].forEach.call(document.querySelectorAll('#catalog .stz-gcard[data-open]'), function (c) { c.removeAttribute('data-open'); });
+    if (!was) card.setAttribute('data-open', '');
+  });
+
   // Tap targets: small links / dots / bars get an invisible 44px touch area (look unchanged).
   var tapCss = document.createElement('style');
   tapCss.textContent = '.stz-tap-s{position:relative}.stz-tap::after{content:"";position:absolute;left:50%;top:50%;width:max(100%,44px);height:max(100%,44px);transform:translate(-50%,-50%)}';
