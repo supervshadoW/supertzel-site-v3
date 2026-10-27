@@ -8,6 +8,23 @@
   window.addEventListener('scroll', onScroll, { passive: true }); onScroll();
   var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
+  // Tap targets: small links / dots / bars get an invisible 44px touch area (look unchanged).
+  var tapCss = document.createElement('style');
+  tapCss.textContent = '.stz-tap{position:relative}.stz-tap::after{content:"";position:absolute;left:50%;top:50%;width:max(100%,44px);height:max(100%,44px);transform:translate(-50%,-50%)}';
+  document.head.appendChild(tapCss);
+  function growTaps() {
+    [].forEach.call(document.querySelectorAll('a,button,[role=button]'), function (e) {
+      if (e.classList.contains('stz-tap') || e.closest('x-dc') || e.closest('#stz-consent,#stz-lead-root')) return;
+      var r = e.getBoundingClientRect();
+      if (!r.width || !r.height || (r.height >= 40 && r.width >= 40)) return;
+      if (getComputedStyle(e).position !== 'static') return; // already positioned: leave layout alone
+      e.classList.add('stz-tap');
+    });
+  }
+  var tapT;
+  new MutationObserver(function () { clearTimeout(tapT); tapT = setTimeout(growTaps, 400); }).observe(document.body, { childList: true, subtree: true });
+  setTimeout(growTaps, 1200);
+
   function glide(el, to) {
     var from = el.scrollLeft, t0 = null, dur = 650;
     var snap = el.style.scrollSnapType;
