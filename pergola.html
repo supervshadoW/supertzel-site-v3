@@ -91,6 +91,8 @@ html, body { overflow-x: clip; max-width: 100%; }
 [role="tablist"] > button[aria-selected="true"] { color: #211C16 !important; border-bottom-color: #B4813C !important; }
 /* the generic "why" cards were removed (kept only as a placement anchor for the about / projects sections) */
 #why { display: none !important; }
+/* page order: catalog > sun simulator > projects (script) > reviews > process + form > about (script) > envelope > FAQ > contact. 'reality' is hidden: the simulator banner carries its message. */
+#reality { display: none !important; }
 </style>
 <link rel="icon" href="/favicon.ico?v=2" sizes="any">
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png?v=2">
@@ -143,9 +145,9 @@ main :is(p, li, h1, h2, h3) :is(p, li, h1, h2, h3) { zoom: 1; }
 <script src="/phone-cc.js?v=6" defer></script>
 <script src="/mobile-ux.js?v=16" defer></script>
 <script src="/landing-mode.js?v=2" defer></script>
-<script src="/landing-projects.js?v=9" defer></script>
-<script src="/landing-about.js?v=7" defer></script>
-<script src="/ba-story.js?v=4" defer></script>
+<script src="/landing-projects.js?v=10" defer></script>
+<script src="/landing-about.js?v=8" defer></script>
+<script src="/ba-story.js?v=5" defer></script>
 <script src="/analytics.js?v=18"></script>
 <style>
 html{direction:rtl;scroll-behavior:smooth;scroll-padding-top:126px}
@@ -491,6 +493,42 @@ header nav a:hover { color: #E8C48C !important; }
     </div>
   </section>
 
+  <section id="reviews" style="background:#211C16;color:#F5F0E4;padding-block:clamp(4rem,10vh,6.9rem)">
+    <div style="width:min(var(--stz-side,92%),var(--stz-max,1180px));margin-inline:auto">
+      <div style="display:flex;justify-content:space-between;align-items:flex-end;gap:clamp(1rem,4vw,2.5rem);flex-wrap:wrap;margin-bottom:clamp(2rem,5vh,3.2rem)">
+        <div>
+          <div style="display:inline-flex;align-items:center;gap:10px;color:#C99752;font-size:14.5px;font-weight:600;margin-bottom:24px;white-space:nowrap"><span style="display:block;width:24px;height:1px;background:#C99752"></span>לקוחות מספרים</div>
+          <h2 style="font-size:clamp(30px,3.9vw,48px);letter-spacing:-0.025em;color:#F5F0E4;max-width:22ch">מה אומרים הלקוחות עלינו ועל הצוות</h2>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:14px;align-items:flex-start">
+          <span style="font-size:15px;color:rgba(245,240,228,0.75)">מה הלקוחות מספרים עלינו</span>
+          
+        </div>
+      </div>
+      <div style="position:relative;border-top:1px solid rgba(245,240,228,0.18);padding-top:clamp(1.5rem,3.5vh,2.25rem)">
+        <span style="position:absolute;top:-0.16em;inset-inline-start:0;font-size:clamp(90px,13vw,170px);line-height:1;color:#C99752;opacity:0.14;pointer-events:none;user-select:none">”</span>
+        <blockquote style="position:relative;z-index:1;margin:0;max-width:34ch;font-size:clamp(20px,2.4vw,31px);font-weight:300;line-height:1.45;color:#F5F0E4;text-wrap:pretty;min-height:{{ quoteMinH }}">{{ quoteEl }}</blockquote>
+        <div style="display:flex;align-items:flex-end;justify-content:space-between;gap:clamp(1.5rem,4vw,3rem);flex-wrap:wrap;margin-top:clamp(1.5rem,4vh,2.4rem)">
+          <span style="font-size:16px;color:#F5F0E4">{{ activeAuthor }}</span>
+          <div style="display:flex;align-items:center;gap:18px">
+            <span style="font-size:14px;color:rgba(245,240,228,0.6);letter-spacing:0.08em">{{ revCounter }}</span>
+            <div style="display:flex;gap:10px">
+              <button onClick="{{ revPrev }}" aria-label="הביקורת הקודמת" style="width:52px;height:52px;border-radius:100px;border:1px solid rgba(245,240,228,0.35);background:transparent;color:#F5F0E4;font-size:20px;line-height:1;cursor:pointer" style-hover="background:rgba(245,240,228,0.1);border-color:#F5F0E4">›</button>
+              <button onClick="{{ revNext }}" aria-label="הביקורת הבאה" style="width:52px;height:52px;border-radius:100px;border:1px solid rgba(245,240,228,0.35);background:transparent;color:#F5F0E4;font-size:20px;line-height:1;cursor:pointer" style-hover="background:rgba(245,240,228,0.1);border-color:#F5F0E4">‹</button>
+            </div>
+          </div>
+        </div>
+        <div style="display:flex;gap:8px;margin-top:clamp(1.5rem,4vh,2.25rem)">
+          <sc-for list="{{ revDots }}" as="d" hint-placeholder-count="3">
+            <button onClick="{{ d.onPick }}" aria-label="{{ d.label }}" style="flex:1;height:2px;padding:0;border:0;background:rgba(245,240,228,0.2);cursor:pointer">
+              <span style="display:block;height:100%;width:{{ d.fill }};background:#C99752;transition:width 0.4s ease"></span>
+            </button>
+          </sc-for>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <div style="position:relative;overflow:hidden;background:#1B1712">
     <div style="position:absolute;inset:0;z-index:0">
       <img src="/img/fast/w/lead-process-white-kitchen.webp" alt="" loading="lazy" decoding="async" style="display:block;width:100%;height:100%;object-fit:cover">
@@ -598,41 +636,7 @@ header nav a:hover { color: #E8C48C !important; }
   </section>
 
 
-  <section id="reviews" style="background:#211C16;color:#F5F0E4;padding-block:clamp(4rem,10vh,6.9rem)">
-    <div style="width:min(var(--stz-side,92%),var(--stz-max,1180px));margin-inline:auto">
-      <div style="display:flex;justify-content:space-between;align-items:flex-end;gap:clamp(1rem,4vw,2.5rem);flex-wrap:wrap;margin-bottom:clamp(2rem,5vh,3.2rem)">
-        <div>
-          <div style="display:inline-flex;align-items:center;gap:10px;color:#C99752;font-size:14.5px;font-weight:600;margin-bottom:24px;white-space:nowrap"><span style="display:block;width:24px;height:1px;background:#C99752"></span>לקוחות מספרים</div>
-          <h2 style="font-size:clamp(30px,3.9vw,48px);letter-spacing:-0.025em;color:#F5F0E4;max-width:22ch">מה אומרים הלקוחות עלינו ועל הצוות</h2>
-        </div>
-        <div style="display:flex;flex-direction:column;gap:14px;align-items:flex-start">
-          <span style="font-size:15px;color:rgba(245,240,228,0.75)">מה הלקוחות מספרים עלינו</span>
-          
-        </div>
-      </div>
-      <div style="position:relative;border-top:1px solid rgba(245,240,228,0.18);padding-top:clamp(1.5rem,3.5vh,2.25rem)">
-        <span style="position:absolute;top:-0.16em;inset-inline-start:0;font-size:clamp(90px,13vw,170px);line-height:1;color:#C99752;opacity:0.14;pointer-events:none;user-select:none">”</span>
-        <blockquote style="position:relative;z-index:1;margin:0;max-width:34ch;font-size:clamp(20px,2.4vw,31px);font-weight:300;line-height:1.45;color:#F5F0E4;text-wrap:pretty;min-height:{{ quoteMinH }}">{{ quoteEl }}</blockquote>
-        <div style="display:flex;align-items:flex-end;justify-content:space-between;gap:clamp(1.5rem,4vw,3rem);flex-wrap:wrap;margin-top:clamp(1.5rem,4vh,2.4rem)">
-          <span style="font-size:16px;color:#F5F0E4">{{ activeAuthor }}</span>
-          <div style="display:flex;align-items:center;gap:18px">
-            <span style="font-size:14px;color:rgba(245,240,228,0.6);letter-spacing:0.08em">{{ revCounter }}</span>
-            <div style="display:flex;gap:10px">
-              <button onClick="{{ revPrev }}" aria-label="הביקורת הקודמת" style="width:52px;height:52px;border-radius:100px;border:1px solid rgba(245,240,228,0.35);background:transparent;color:#F5F0E4;font-size:20px;line-height:1;cursor:pointer" style-hover="background:rgba(245,240,228,0.1);border-color:#F5F0E4">›</button>
-              <button onClick="{{ revNext }}" aria-label="הביקורת הבאה" style="width:52px;height:52px;border-radius:100px;border:1px solid rgba(245,240,228,0.35);background:transparent;color:#F5F0E4;font-size:20px;line-height:1;cursor:pointer" style-hover="background:rgba(245,240,228,0.1);border-color:#F5F0E4">‹</button>
-            </div>
-          </div>
-        </div>
-        <div style="display:flex;gap:8px;margin-top:clamp(1.5rem,4vh,2.25rem)">
-          <sc-for list="{{ revDots }}" as="d" hint-placeholder-count="3">
-            <button onClick="{{ d.onPick }}" aria-label="{{ d.label }}" style="flex:1;height:2px;padding:0;border:0;background:rgba(245,240,228,0.2);cursor:pointer">
-              <span style="display:block;height:100%;width:{{ d.fill }};background:#C99752;transition:width 0.4s ease"></span>
-            </button>
-          </sc-for>
-        </div>
-      </div>
-    </div>
-  </section>
+
 
   <section id="elephant" style="padding-block:clamp(3rem,8vh,5rem)">
     <div style="width:min(var(--stz-side,92%),calc(var(--stz-max,1180px) - 140px));margin-inline:auto;display:grid;grid-template-columns:{{ eleCols }};gap:clamp(1.5rem,4vw,3rem);align-items:start">

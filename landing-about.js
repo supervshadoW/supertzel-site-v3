@@ -17,7 +17,8 @@
   function place(sec) {
     var why = document.getElementById('why');
     if (!rendered(why)) return false;
-    if (why.nextElementSibling !== sec) why.parentNode.insertBefore(sec, why.nextSibling);
+    var pr = document.getElementById('process'), blk = pr && pr.parentNode && pr.parentNode.parentNode === why.parentNode ? pr.parentNode : why;
+    if (blk.nextElementSibling !== sec) blk.parentNode.insertBefore(sec, blk.nextSibling);
     return true;
   }
   function build() {
