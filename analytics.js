@@ -224,6 +224,8 @@
       d.remove();
     });
     document.body.appendChild(d);
+    // phones: start with the short banner so the first screen (headline + buttons) stays visible
+    if (window.matchMedia && matchMedia('(max-width:760px)').matches) d.classList.add('stz-mini');
     var mini = function () {
       if (!d.isConnected) { removeEventListener('scroll', mini); return; }
       if ((window.scrollY || 0) > 300 && d.querySelector('#stz-cc-custom').style.display !== 'flex') d.classList.add('stz-mini');
