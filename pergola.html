@@ -23,6 +23,8 @@ html, body { overflow-x: clip; max-width: 100%; }
   .stz-carousel { display: flex !important; flex-direction: row !important; overflow-x: auto; overflow-y: hidden; scroll-snap-type: x mandatory; gap: 14px !important; margin-inline: -4vw; padding: 4px 4vw 14px; scroll-padding-inline: 4vw; scrollbar-width: none; -webkit-overflow-scrolling: touch; overscroll-behavior-x: contain; }
   .stz-carousel::-webkit-scrollbar { display: none; }
   #catalog .stz-gcard { min-height: 440px; }
+  #catalog { padding-bottom: 1.5rem !important; }
+  #why { padding-top: 0.5rem !important; }
   .stz-carousel > div { flex: 0 0 82% !important; max-width: 82%; scroll-snap-align: start; grid-column: auto !important; }
   /* mobile: the "4 questions" intro box comes before the questions; grid children may shrink so carousels never widen the page */
   .stz-faq-intro { order: -1; }
@@ -121,7 +123,7 @@ main :is(p, li, h1, h2, h3) :is(p, li, h1, h2, h3) { zoom: 1; }
 <script src="/phone-cc.js?v=6" defer></script>
 <script src="/mobile-ux.js?v=16" defer></script>
 <script src="/landing-mode.js?v=2" defer></script>
-<script src="/landing-projects.js?v=8" defer></script>
+<script src="/landing-projects.js?v=9" defer></script>
 <script src="/landing-about.js?v=4" defer></script>
 <script src="/ba-story.js?v=4" defer></script>
 <script src="/analytics.js?v=18"></script>
@@ -453,7 +455,7 @@ header nav a:hover { color: #E8C48C !important; }
   <section id="why" style="padding-block:clamp(1.5rem,4vh,2.5rem) clamp(4rem,10vh,6.9rem)">
     <div style="width:min(var(--stz-side,92%),var(--stz-max,1180px));margin-inline:auto">
       <div style="display:inline-flex;align-items:center;gap:10px;color:#B4813C;font-size:14.5px;font-weight:600;margin-bottom:24px;white-space:nowrap"><span style="display:block;width:24px;height:1px;background:#B4813C"></span>למה סופר צל</div>
-      <h2 style="font-size:clamp(32px,4.4vw,56px);max-width:18ch">מה ההבדל <span style="font-weight:300;color:#8F6326">שלא רואים בעין</span></h2>
+      <h2 style="font-size:clamp(32px,4.4vw,56px);max-width:18ch">למה זה נראה אחרת <span style="font-weight:300;color:#8F6326">כשהעבודה מסתיימת</span></h2>
       <div class="stz-carousel" style="display:grid;grid-template-columns:{{ threeCols }};gap:clamp(1.25rem,3vw,1.5rem);margin-top:clamp(2.25rem,6vh,3.4rem)">
         <sc-for list="{{ reasons }}" as="r" hint-placeholder-count="3">
           <div style="background:#ECE4D2;border:1px solid rgba(33,28,22,0.14);border-radius:28px;padding:clamp(1.6rem,3vw,2.3rem)">
@@ -1531,9 +1533,9 @@ class Component extends DCLogic {
         { num: '04', title: 'מסירה', body: 'בהתאם לתנאי ההתקשרות שנקבעו בכתב.' }
       ],
       reasons: [
-        { title: 'פרופילים, מחברים וצביעה', body: 'עובי הפרופילים, איכות המחברים ושיטת הצביעה — רשומים במפרט בכתב, רכיב אחרי רכיב, כדי שתוכלו להשוות.' },
-        { title: 'עיגון לפי השטח', body: 'שיטת העיגון נבחרת לפי סוג הקיר או הרצפה ולפי תנאי המקום. ככל שנדרש ליווי הנדסי — הוא מתואם מול בעלי מקצוע מוסמכים.' },
-        { title: 'ייצור לפי מידה', body: 'כל פתרון מיוצר למידות, לגוון ולקו של הבית — לא מתוך קטלוג מוכן.' }
+        { title: 'מרחב שנראה כמו חלק מהבית', body: 'הגוון, הפרופיל והקו נבחרים לפי הבית והמרחב שלכם, ולא מתוך קטלוג מוכן. התוצאה נראית כחלק טבעי מהמרחב.' },
+        { title: 'רואים הכול לפני שמתחילים', body: 'אחרי מדידה בשטח, עיגון, חומרים וגימור רשומים במפרט בכתב, רכיב אחרי רכיב. כך אפשר להשוות בין הצעות ולדעת בדיוק על מה אתם מחליטים.' },
+        { title: 'אדם אחד מלווה אתכם עד הסוף', body: 'נקודת קשר אחת מהמדידה ועד ההתקנה, בלי ריצה בין ספקים. עבודות ייעודיות וליווי הנדסי, ככל שנדרשים, מתואמים מול בעלי מקצוע מוסמכים.' }
       ],
       faqs: faqData.map((item, i) => ({
         q: item.q,
