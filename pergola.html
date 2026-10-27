@@ -492,7 +492,8 @@ header nav a:hover { color: #E8C48C !important; }
       </div>
       <div style="position:relative;border-top:1px solid rgba(245,240,228,0.18);padding-top:clamp(1.5rem,3.5vh,2.25rem)">
         <span style="position:absolute;top:-0.16em;inset-inline-start:0;font-size:clamp(90px,13vw,170px);line-height:1;color:#C99752;opacity:0.14;pointer-events:none;user-select:none">”</span>
-        <blockquote style="position:relative;z-index:1;margin:0;max-width:34ch;font-size:clamp(20px,2.4vw,31px);font-weight:300;line-height:1.45;color:#F5F0E4;text-wrap:pretty;min-height:{{ quoteMinH }}">{{ quoteEl }}</blockquote>
+        <blockquote style="position:relative;z-index:1;margin:0;max-width:38ch;font-size:clamp(20px,2.4vw,31px);font-weight:300;line-height:1.45;color:#F5F0E4;text-wrap:pretty;min-height:{{ quoteMinH }}">{{ quoteEl }}</blockquote>
+        <sc-if value="{{ revLong }}" hint-placeholder-val="{{ false }}"><button type="button" onClick="{{ revToggle }}" style="position:relative;z-index:1;margin-top:14px;min-height:44px;padding:0;border:0;background:transparent;color:#E8C48C;font:inherit;font-size:15px;font-weight:600;cursor:pointer;text-decoration:underline;text-underline-offset:4px">{{ revToggleLabel }}</button></sc-if>
         <div style="display:flex;align-items:flex-end;justify-content:space-between;gap:clamp(1.5rem,4vw,3rem);flex-wrap:wrap;margin-top:clamp(1.5rem,4vh,2.4rem)">
           <span style="font-size:16px;color:#F5F0E4">{{ activeAuthor }}</span>
           <div style="display:flex;align-items:center;gap:18px">
@@ -960,10 +961,9 @@ const LIGHT_SUNROOM = {
 
 class Component extends DCLogic {
   revsFallback = [
-    { text: 'הבית שלנו משמש כמרכז תרבות ואנשים רבים מגיעים כך שהיה חשוב לי שיהיה חזק, יפה ומרחף. איוון הגשים את זה.', meta: 'Tamar Melzer Krymolowski' },
-    { text: 'סופר צל התקינו לי פרגולת אלומניום, יצא מושלם! הצוות מיומן, מקצועי ואדיב.', meta: 'Daniel Ohana' },
-    { text: 'סופר צל זה איוון ואיוון מקצועי, אמין, חרוץ נעים הליכות וישר. הפרגולה יצאה מושלמת ואיוון עשה הכל כדי שנהיה מרוצים.', meta: 'ירון שלומי' },
-    { text: 'איוון התקין לי 2 פרגולות במרפסת ובמרפסת שרות. בכל התהליך איוון היה שרותי מאוד, הסביר וייעץ. עבודה מקצועית והתוצאה הייתה בדיוק כמו שתיכננו. מומלץ בחום.', meta: 'Jack Mayer' },
+    { text: 'אני שמחה להמליץ ב-ח-ו-ם על איוון, לא רק בגלל שהוא איש ישר, אמין, מקצועי ונעים, אלא בגלל שלקח לי יותר משנה למצוא איש כמוהו לעבודה שרציתי. המחירים היו בשמיים והדרישות שלי היו לא קלות במיוחד. איוון הבין את הצרכים שלי מהרגע הראשון ועשה בול את מה שהבטיח ותיאר. אין מה להמשיך לחפש כי עוד איש כמוהו לא מצאתי, וחיפשתי המון. הבית שלנו משמש כמרכז תרבות ואנשים רבים מגיעים כך שהיה חשוב לי שיהיה חזק, יפה ומרחף. איוון הגשים את זה.', meta: 'Tamar Melzer Krymolowski' },
+    { text: 'איוון התקין לי 2 פרגולות במרפסת ובמרפסת שרות בכל התהליך איוון היה שרותי מאוד, הסביר וייעץ. עבודה מקצועית והתוצאה הייתה בדיוק כמו שתיכננו. מומלץ בחום.', meta: 'Jack Mayer' },
+    { text: 'עבודה מקצועית , צוות אדיב , עובדים יעיל ועומדים בזמנים שמציבים . רב תודות', meta: 'GalariSevenTTV' },
   ];
 
   get revs() {
@@ -985,7 +985,7 @@ class Component extends DCLogic {
       })
       .catch(() => undefined);
   }
-  state = { heroIn: true, modalOpen: false, narrow: false, openFaq: 0, sent: false, quickSent: false, project: null, photo: 0, revIdx: 0, liveReviews: null, reviewsUrl: null, gRating: '4.5', gCount: '23', form: { name: '', phone: '', city: '', scope: '', notes: '' } };
+  state = { heroIn: true, modalOpen: false, narrow: false, openFaq: 0, sent: false, quickSent: false, project: null, photo: 0, revIdx: 0, liveReviews: null, reviewsUrl: null, revOpen: false, gRating: '4.5', gCount: '23', form: { name: '', phone: '', city: '', scope: '', notes: '' } };
 
 
 
@@ -1066,6 +1066,7 @@ class Component extends DCLogic {
       // the first review (hosts) stays ~15s, the others ~10s
       this.setState(s => {
         const need = s.revIdx === 0 ? 3 : 2;
+        if (s.revOpen) { revHold = 0; return null; }
         if (revHold < need) return null;
         revHold = 0;
         return { revIdx: (s.revIdx + 1) % len };
@@ -1609,17 +1610,20 @@ class Component extends DCLogic {
       quoteMinH: '0',
       quoteEl: React.createElement('span', {
         key: this.revs[Math.min(this.state.revIdx, this.revs.length - 1)].meta,
-        style: { display: 'block', animation: 'stz-quote 0.55s cubic-bezier(0.2,0.7,0.2,1) both' }
+        style: Object.assign({ display: 'block', animation: 'stz-quote 0.55s cubic-bezier(0.2,0.7,0.2,1) both' }, (this.revs[Math.min(this.state.revIdx, this.revs.length - 1)].text.length > 190 && !this.state.revOpen) ? { display: '-webkit-box', WebkitBoxOrient: 'vertical', WebkitLineClamp: 5, overflow: 'hidden' } : {})
       }, this.revs[Math.min(this.state.revIdx, this.revs.length - 1)].text),
+      revLong: this.revs[Math.min(this.state.revIdx, this.revs.length - 1)].text.length > 190,
+      revToggle: () => this.setState(s => ({ revOpen: !s.revOpen })),
+      revToggleLabel: this.state.revOpen ? 'הצגת פחות ↑' : 'קראו את הביקורת המלאה ↓',
       activeAuthor: this.revs[Math.min(this.state.revIdx, this.revs.length - 1)].meta,
       revCounter: '',
-      revPrev: () => this.setState(s => ({ revIdx: (s.revIdx - 1 + this.revs.length) % this.revs.length })),
-      revNext: () => this.setState(s => ({ revIdx: (s.revIdx + 1) % this.revs.length })),
+      revPrev: () => this.setState(s => ({ revIdx: (s.revIdx - 1 + this.revs.length) % this.revs.length, revOpen: false })),
+      revNext: () => this.setState(s => ({ revIdx: (s.revIdx + 1) % this.revs.length, revOpen: false })),
       reviewsUrl: this.state.reviewsUrl || 'https://share.google/n2Wgx4gup5LDSbWLk',
       revDots: this.revs.map((_, i) => ({
         fill: i === this.state.revIdx ? '100%' : '0%',
         label: 'ביקורת ' + (i + 1),
-        onPick: () => this.setState({ revIdx: i })
+        onPick: () => this.setState({ revIdx: i, revOpen: false })
       })),
       pgErr: !!this.state.pgErr,
       onQuickSubmit: () => {
