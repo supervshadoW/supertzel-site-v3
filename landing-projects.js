@@ -12,7 +12,7 @@
     if (t) t.scrollIntoView();
   }
   // Three flagship projects, three different outdoor-envelope styles (a full envelope, hosting, a balcony); a tagline under each title.
-  var PICK = ['new-46-3', 'kitchen-1', 'balcony-electric-pergola-window'];
+  var PICK = ['new-46-3', 'project-balcony-glass-louver', 'balcony-electric-pergola-window', 'glass-1', 'winter-1', 'new-52-1'];
   var TAG = { 'new-46-3': 'כפר סבא · חזרנו ללקוח מ-2024 להשלים את מרחב החוץ', 'kitchen-1': 'מרחב אירוח בחוץ · מטבח, בר ופינת ישיבה', 'balcony-electric-pergola-window': 'מרפסת עם שליטה באור ובצל בלחיצת כפתור' };
   function esc(t) { return String(t).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); }
   // The page runtime re-renders while it boots and can drop or reorder nodes that were inserted by hand. Sections are only
@@ -45,8 +45,9 @@
       '#projects .lp-card{position:relative;display:block;padding:0;border:0;border-radius:18px;overflow:hidden;aspect-ratio:4/3;cursor:pointer;background:#1B1712;font:inherit;text-align:start}' +
       '#projects .lp-card img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .5s ease}' +
       '#projects .lp-card:hover img{transform:scale(1.04)}' +
-      '#projects .lp-grid.lp-feat{grid-template-columns:repeat(3,1fr);gap:16px}#projects .lp-feat .lp-card{aspect-ratio:3/4;border-radius:22px}#projects .lp-feat .lp-card span{font-size:19px;padding:60px 18px 18px;line-height:1.25}#projects .lp-feat .lp-card em{display:block;margin-top:6px;font-style:normal;font-size:13.5px;font-weight:500;color:#E8C48C;line-height:1.35}#projects .lp-feat .lp-card b{position:absolute;top:12px;inset-inline-start:12px;background:rgba(27,23,18,.78);color:#E8C48C;font-size:12.5px;font-weight:600;padding:4px 12px;border-radius:100px}' +
-      '@media (max-width:900px){#projects .lp-grid.lp-feat{display:flex;gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;margin-inline:-4vw;padding:2px 4vw 12px;scroll-padding-inline:4vw;scrollbar-width:none}#projects .lp-grid.lp-feat::-webkit-scrollbar{display:none}#projects .lp-feat .lp-card{flex:0 0 80%;aspect-ratio:4/5;scroll-snap-align:start}#projects .lp-feat .lp-card span{font-size:17px;padding:56px 14px 14px}}' +
+      '#projects .lp-grid.lp-feat{display:flex;gap:10px;overflow-x:auto;scroll-snap-type:x proximity;scrollbar-width:none;padding-bottom:6px}#projects .lp-grid.lp-feat::-webkit-scrollbar{display:none}#projects .lp-feat .lp-card{flex:0 0 clamp(138px,24vw,190px);aspect-ratio:1/1!important;border-radius:16px!important;scroll-snap-align:start}#projects .lp-feat .lp-card span{font-size:12.5px!important;padding:34px 10px 10px!important;line-height:1.25}#projects .lp-feat .lp-card em,#projects .lp-feat .lp-card b{display:none!important}' +
+      '#projects .lp-grid.lp-feat.zz{grid-template-columns:repeat(3,1fr);gap:16px}#projects .lp-feat .lp-card{aspect-ratio:3/4;border-radius:22px}#projects .lp-feat .lp-card span{font-size:19px;padding:60px 18px 18px;line-height:1.25}#projects .lp-feat .lp-card em{display:block;margin-top:6px;font-style:normal;font-size:13.5px;font-weight:500;color:#E8C48C;line-height:1.35}#projects .lp-feat .lp-card b{position:absolute;top:12px;inset-inline-start:12px;background:rgba(27,23,18,.78);color:#E8C48C;font-size:12.5px;font-weight:600;padding:4px 12px;border-radius:100px}' +
+      '@media (max-width:900px){#projects .lp-grid.lp-feat{margin-inline:-4vw;padding-inline:4vw;scroll-padding-inline:4vw}}' +
       '#projects .lp-card span{position:absolute;inset-inline:0;bottom:0;padding:34px 16px 14px;color:#fff;font-size:15.5px;font-weight:600;line-height:1.3;background:linear-gradient(0deg,rgba(17,14,11,.88),rgba(17,14,11,0))}' +
       '@media (max-width:900px){#projects .lp-grid{grid-template-columns:repeat(2,1fr);gap:10px}#projects .lp-card:nth-child(9){display:none}#projects .lp-card span{font-size:13.5px;padding:26px 12px 11px}}' +
       '#lp-box{position:fixed;inset:0;z-index:2147483100;background:rgba(14,11,8,.9);display:flex;align-items:center;justify-content:center;padding:16px}' +
@@ -65,11 +66,11 @@
     if (!css.parentNode) document.head.appendChild(css);
     var sec = document.createElement('section');
     sec.id = 'projects';
-    sec.style.cssText = 'padding-block:0 clamp(3rem,8vh,5.5rem)';
+    sec.style.cssText = 'padding-block:0 clamp(1.5rem,4vh,3rem)';
     var html = '<div style="width:min(var(--stz-side,92%),var(--stz-max,1180px));margin-inline:auto">' +
       '<div style="display:inline-flex;align-items:center;gap:10px;color:#B4813C;font-size:14.5px;font-weight:600;margin-bottom:18px;white-space:nowrap"><span style="display:block;width:24px;height:1px;background:#B4813C"></span>פרויקטים שביצענו</div>' +
-      '<h2 style="font-size:clamp(28px,3.6vw,44px);letter-spacing:-0.02em;line-height:1.12;max-width:20ch">כך זה נראה אצל לקוחות</h2>' +
-      '<p style="margin:14px 0 clamp(1.25rem,3vh,2rem);color:#4B443A;font-size:17px;max-width:52ch">שלושה פרויקטים, שלושה סגנונות של מעטפת חוץ. לחצו על פרויקט לפרטים ולתמונות נוספות.</p>' +
+      '<h2 style="font-size:clamp(28px,3.6vw,44px);letter-spacing:-0.02em;line-height:1.12;max-width:20ch">עוד פרויקטים מהשטח</h2>' +
+      '<p style="margin:14px 0 clamp(1.25rem,3vh,2rem);color:#4B443A;font-size:17px;max-width:52ch">לחצו על פרויקט לפרטים ולתמונות נוספות.</p>' +
       '<div class="lp-grid lp-feat">';
     cards.forEach(function (c, i) {
       var tg = ''; Object.keys(TAG).forEach(function (k) { if (c.src.indexOf('/' + k + '.webp') > -1) tg = TAG[k]; });
