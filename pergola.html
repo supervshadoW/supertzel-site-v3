@@ -92,7 +92,8 @@ html, body { overflow-x: clip; max-width: 100%; }
 /* the generic "why" cards were removed (kept only as a placement anchor for the about / projects sections) */
 #why { display: none !important; }
 /* page order: catalog > sun simulator > projects (script) > reviews > process + form > about (script) > envelope > FAQ > contact. 'reality' is hidden: the simulator banner carries its message. */
-#reality, #envelope { display: none !important; }
+#reality { display: none !important; }
+#envelope { display: none; }
 </style>
 <link rel="icon" href="/favicon.ico?v=2" sizes="any">
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png?v=2">
@@ -141,12 +142,12 @@ main :is(p, li, h1, h2, h3) :is(p, li, h1, h2, h3) { zoom: 1; }
 <template id="__bundler_thumbnail"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200"><rect width="200" height="200" fill="#1B1712"></rect><rect x="40" y="76" width="120" height="12" rx="4" fill="#B4813C"></rect><rect x="52" y="96" width="8" height="52" fill="#B4813C"></rect><rect x="140" y="96" width="8" height="52" fill="#B4813C"></rect><rect x="40" y="52" width="120" height="8" rx="4" fill="#E8C48C"></rect></svg></template>
 <link rel="preload" as="image" href="/img/fast/lp/pg-hero.webp" fetchpriority="high">
 <script src="/lead.js?v=9"></script>
-<script src="/lead-modal.js?v=12"></script>
+<script src="/lead-modal.js?v=13"></script>
 <script src="/phone-cc.js?v=6" defer></script>
 <script src="/mobile-ux.js?v=16" defer></script>
-<script src="/landing-mode.js?v=2" defer></script>
+<script src="/landing-mode.js?v=3" defer></script>
 <script src="/landing-projects.js?v=14" defer></script>
-<script src="/landing-about.js?v=9" defer></script>
+<script src="/landing-about.js?v=10" defer></script>
 <script src="/ba-story.js?v=6" defer></script>
 <script src="/analytics.js?v=18"></script>
 <style>
@@ -238,10 +239,10 @@ header nav a:hover { color: #E8C48C !important; }
         <a href="#process" style="font-size:15px;white-space:nowrap">איך זה עובד</a>
         <a href="#elephant" style="font-size:15px;white-space:nowrap">שאלות</a>
       </nav>
-      <a href="#lead" style="background:#B4813C;color:#1B1712;padding:12px 26px;font-size:15px;font-weight:600;border-radius:100px;white-space:nowrap;transition:background 0.2s ease,transform 0.18s ease" style-hover="background:#C99752;color:#1B1712" style-active="transform:scale(0.96)">תאמו שיחת ייעוץ</a>
+      <a href="#lead" style="background:#B4813C;color:#1B1712;padding:12px 26px;font-size:15px;font-weight:600;border-radius:100px;white-space:nowrap;transition:background 0.2s ease,transform 0.18s ease" style-hover="background:#C99752;color:#1B1712" style-active="transform:scale(0.96)">תיאום פגישת ייעוץ</a>
       </sc-if>
       <sc-if value="{{ navNarrow }}" hint-placeholder-val="{{ false }}">
-      <a href="#lead" style="display:inline-flex;align-items:center;min-height:44px;padding:0 20px;background:#B4813C;border-radius:100px;font-size:15px;font-weight:600;white-space:nowrap;color:#1B1712;box-shadow:0 4px 16px rgba(0,0,0,0.25)" style-hover="background:#C99752;color:#1B1712">תאמו שיחת ייעוץ</a>
+      <a href="#lead" style="display:inline-flex;align-items:center;min-height:44px;padding:0 20px;background:#B4813C;border-radius:100px;font-size:15px;font-weight:600;white-space:nowrap;color:#1B1712;box-shadow:0 4px 16px rgba(0,0,0,0.25)" style-hover="background:#C99752;color:#1B1712">תיאום פגישת ייעוץ</a>
       <button type="button" aria-label="תפריט ניווט" aria-expanded="{{ menuOpenA }}" onClick="{{ menuToggle }}" style="display:flex;flex-direction:column;align-items:center;justify-content:center;gap:5px;width:44px;height:44px;border:1px solid rgba(245,240,228,0.5);border-radius:100px;background:rgba(27,23,18,0.25);cursor:pointer;padding:0"><span style="display:block;width:18px;height:1.5px;background:#F5F0E4;border-radius:2px"></span><span style="display:block;width:18px;height:1.5px;background:#F5F0E4;border-radius:2px"></span><span style="display:block;width:12px;height:1.5px;background:#F5F0E4;border-radius:2px;align-self:center"></span></button>
       </sc-if>
     </div>

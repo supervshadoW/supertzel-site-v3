@@ -1,3 +1,15 @@
+// Anchor safety (campaign sitelinks / old links): removed or hidden targets map to the right section, #lead opens the form.
+(function () {
+  var MAP = { why: 'about', reality: 'catalog' };
+  function go() {
+    var h = decodeURIComponent((location.hash || '').slice(1)); if (!h) return;
+    if ((h === 'lead' || h === 'quick') && window.stzOpenLead) { window.stzOpenLead('pergola'); return; }
+    var id = MAP[h]; if (!id) return;
+    var el = document.getElementById(id); if (el && el.offsetHeight) el.scrollIntoView();
+  }
+  var n = 0; (function t() { go(); if (++n < 6) setTimeout(t, 700); })();
+  addEventListener('hashchange', go);
+})();
 /* Campaign landing mode: on pergola.supertzel.co.il (or with ?landing=1 for testing) the page stands alone.
    No links out to the rest of the site (logo, "projects"), no section menu in the header, kept out of search results. */
 (function () {

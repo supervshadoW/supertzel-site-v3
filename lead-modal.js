@@ -86,14 +86,17 @@
     if (cur()[1] === '972' || n.charAt(0) === '0') n = n.replace(/^0+/, '');
     return '+' + cur()[1] + n;
   }
+  var hHead, whenW, callW, scopeW, pDay = '', pTime = '', pCall = '', mode = 'call';
   function build() {
     root = el('div', S.back); root.id = 'stz-lead-root'; root.setAttribute('role', 'dialog'); root.setAttribute('aria-modal', 'true'); root.setAttribute('aria-label', 'תיאום שיחת ייעוץ');
     var card = el('div', S.card);
     var x = el('button', S.x, '&times;'); x.type = 'button'; x.setAttribute('aria-label', 'סגירה'); x.onclick = close;
     form = el('form', 'display:grid;gap:14px'); form.noValidate = true;
-    form.appendChild(el('div', 'display:grid;gap:8px;padding-left:44px',
-      '<span style="font-size:13.5px;font-weight:600;color:#C99752">שיחת ייעוץ ללא התחייבות</span>' +
-      '<h3 style="margin:0;font-size:clamp(22px,5vw,26px);line-height:1.2;letter-spacing:-0.02em;color:#F5F0E4">השאירו שם וטלפון — ונחזור אליכם</h3>'));
+    hHead = el('div', 'display:grid;gap:8px;padding-left:44px',
+      '<span data-h="k" style="font-size:13.5px;font-weight:600;color:#C99752">שיחת ייעוץ ללא התחייבות</span>' +
+      '<h3 data-h="t" style="margin:0;font-size:clamp(22px,5vw,26px);line-height:1.2;letter-spacing:-0.02em;color:#F5F0E4">השאירו שם וטלפון — ונחזור אליכם</h3>' +
+      '<p data-h="s" style="margin:0;font-size:14.5px;line-height:1.5;color:rgba(245,240,228,0.78)"></p>');
+    form.appendChild(hHead);
     picksW = el('div', 'display:none;gap:10px;padding:12px 14px;border-radius:14px;background:rgba(245,240,228,0.05);border:1px solid rgba(201,151,82,0.35)');
     form.appendChild(picksW);
     var l1 = el('label', S.lab, '<span>שם מלא</span>'); nameI = el('input', S.inp); nameI.type = 'text'; nameI.autocomplete = 'name'; nameI.required = true; l1.appendChild(nameI);
@@ -107,7 +110,7 @@
     row.appendChild(sel); row.appendChild(telI); l2.appendChild(row);
     err = el('p', 'margin:0;font-size:13.5px;color:#E8C48C;text-align:center;display:none', 'נא למלא שם ומספר טלפון תקין'); err.setAttribute('role', 'alert');
     btn = el('button', S.btn, 'תאמו שיחת ייעוץ'); btn.type = 'submit';
-    var scope = '', scopeW = el('div', 'display:grid;gap:8px', '<span style="font-size:14px;font-weight:600;color:#F5F0E4">סוג הפרויקט <span style="font-weight:400;color:rgba(245,240,228,0.6)">(לא חובה)</span></span>');
+    var scope = ''; scopeW = el('div', 'display:grid;gap:8px', '<span style="font-size:14px;font-weight:600;color:#F5F0E4">סוג הפרויקט <span style="font-weight:400;color:rgba(245,240,228,0.6)">(לא חובה)</span></span>');
     var scopeR = el('div', 'display:grid;grid-template-columns:1fr 1fr;gap:8px');
     ['רכיב אחד', 'כמה רכיבים יחד', 'מרחב חוץ שלם', 'עוד לא יודעים'].forEach(function (t) {
       var b = el('button', 'min-height:44px;padding:6px 10px;border-radius:12px;border:1px solid rgba(245,240,228,0.25);background:transparent;color:#F5F0E4;font:inherit;font-size:14px;cursor:pointer', t); b.type = 'button'; b.setAttribute('aria-pressed', 'false');
@@ -116,7 +119,24 @@
     });
     scopeSet = function (t) { scope = t; scopeR.querySelectorAll('button').forEach(function (x) { var on = x.textContent === scope; x.setAttribute('aria-pressed', on ? 'true' : 'false'); x.style.background = on ? '#B4813C' : 'transparent'; x.style.color = on ? '#1B1712' : '#F5F0E4'; x.style.borderColor = on ? '#B4813C' : 'rgba(245,240,228,0.25)'; }); try { window.stzLeadScopeChange && window.stzLeadScopeChange(t); } catch (e) {} };
     scopeW.appendChild(scopeR); window.stzLeadScope = function () { return scope; };
-    form.appendChild(l1); form.appendChild(l2); form.appendChild(scopeW); form.appendChild(err); form.appendChild(btn);
+    function chipRow(title, items, onPick, cols) {
+      var w = el('div', 'display:grid;gap:8px', '<span style="font-size:14px;font-weight:600;color:#F5F0E4">' + title + '</span>');
+      var r = el('div', 'display:grid;grid-template-columns:' + (cols || '1fr 1fr') + ';gap:8px');
+      items.forEach(function (t) {
+        var b = el('button', 'min-height:46px;padding:6px 10px;border-radius:12px;border:1px solid rgba(245,240,228,0.25);background:transparent;color:#F5F0E4;font:inherit;font-size:14px;cursor:pointer', t); b.type = 'button'; b.setAttribute('aria-pressed', 'false');
+        b.onclick = function () { var on = b.getAttribute('aria-pressed') !== 'true'; r.querySelectorAll('button').forEach(function (x) { x.setAttribute('aria-pressed', 'false'); x.style.background = 'transparent'; x.style.color = '#F5F0E4'; x.style.borderColor = 'rgba(245,240,228,0.25)'; }); if (on) { b.setAttribute('aria-pressed', 'true'); b.style.background = '#B4813C'; b.style.color = '#1B1712'; b.style.borderColor = '#B4813C'; } onPick(on ? t : ''); };
+        r.appendChild(b);
+      });
+      w.appendChild(r); return w;
+    }
+    var DN = ['א׳', 'ב׳', 'ג׳', 'ד׳', 'ה׳'], days = [], dd = new Date(); dd.setHours(12, 0, 0, 0);
+    while (days.length < 6) { dd.setDate(dd.getDate() + 1); if (dd.getDay() <= 4) days.push('יום ' + DN[dd.getDay()] + ' · ' + dd.getDate() + '.' + (dd.getMonth() + 1)); }
+    whenW = el('div', 'display:none;gap:14px');
+    whenW.appendChild(chipRow('באיזה יום נוח לכם?', days, function (v) { pDay = v; }, '1fr 1fr'));
+    whenW.appendChild(chipRow('באיזו שעה?', ['בוקר · 08:00–12:00', 'צהריים · 12:00–16:00', 'אחר הצהריים · 16:00–19:00'], function (v) { pTime = v; }, '1fr'));
+    callW = el('div', 'display:none;gap:8px');
+    callW.appendChild(chipRow('מתי נוח לדבר? <span style="font-weight:400;color:rgba(245,240,228,0.6)">(לא חובה)</span>', ['בוקר', 'צהריים', 'אחר הצהריים', 'כל שעה'], function (v) { pCall = v; }, '1fr 1fr'));
+    form.appendChild(l1); form.appendChild(l2); form.appendChild(whenW); form.appendChild(callW); form.appendChild(scopeW); form.appendChild(err); form.appendChild(btn);
     form.appendChild(el('p', 'margin:0;font-size:12.5px;color:rgba(245,240,228,0.6);text-align:center;line-height:1.5', 'השארת פרטים מהווה הסכמה ליצירת קשר לצורך טיפול בפנייה זו בלבד. <a href="/legal#privacy" target="_blank" rel="noopener" style="color:#C99752">מדיניות הפרטיות</a>'));
     form.onsubmit = submit;
     done = el('div', 'display:none;gap:10px;text-align:center;padding:12px 0',
@@ -130,22 +150,35 @@
     e.preventDefault();
     var nm = nameI.value.trim(), digits = telI.value.replace(/\D/g, '');
     if (nm.length < 2 || !window.stzPhoneValid(cur()[1], digits)) { err.textContent = nm.length < 2 ? 'נא למלא שם מלא' : window.stzPhoneHint(C[sel.selectedIndex][1]); err.style.display = 'block'; return; }
+    if (mode === 'meeting' && (!pDay || !pTime)) { err.textContent = 'נא לבחור יום ושעה נוחים לפגישה'; err.style.display = 'block'; return; }
     err.style.display = 'none';
     var phone = e164();
     var note = (window.stzLeadNote || '').trim();
     var p = location.pathname.split('/').pop().replace(/\.html$/, '').replace(/^(preview|sim)-/, '');
     var page = /pergola/.test(p) ? 'פרגולות והצללה' : /projects/.test(p) ? 'פרויקטים' : /legal/.test(p) ? 'מידע משפטי' : 'דף הבית';
     var msg = 'פנייה מהטופס הצף · ' + page + (note ? ' | ' + (/^מה מעניין/.test(note) ? '' : 'מה מתאר אותי: ') + note : '');
-    var sc = window.stzLeadScope ? window.stzLeadScope() : ''; if (sc) msg += ' | סוג הפרויקט: ' + sc;
+    var sc = window.stzLeadScope ? window.stzLeadScope() : ''; if (sc && mode !== 'meeting') msg += ' | סוג הפרויקט: ' + sc;
+    if (mode === 'meeting') msg = 'בקשת פגישת ייעוץ: ' + pDay + ', ' + pTime + ' | ' + msg; else if (pCall) msg += ' | נוח לדבר: ' + pCall;
     var PK = picks(); if (PK.length) msg += ' | ' + PK.map(function (r) { return r.k + ': ' + r.v.join(', '); }).join(' | ');
-    form.style.display = 'none'; done.style.display = 'grid';
-    var send = window.stzSendLead ? window.stzSendLead({ name: nm, phone: phone, solution: note || page, message: msg, source: 'modal_' + page }) : Promise.reject();
+    form.style.display = 'none'; done.style.display = 'grid'; try { done.querySelector('p').textContent = mode === 'meeting' ? 'נחזור אליכם בהקדם לאישור הפגישה.' : 'נחזור אליכם בהקדם לתיאום שיחת ייעוץ.'; } catch (x) {}
+    var send = window.stzSendLead ? window.stzSendLead({ name: nm, phone: phone, solution: note || page, message: msg, source: (mode === 'meeting' ? 'meeting_' : 'modal_') + page }) : Promise.reject();
     send.catch(function () {
-      location.href = 'https://wa.me/972559958231?text=' + encodeURIComponent('היי, אשמח לתאם שיחת ייעוץ.\nשם: ' + nm + '\nטלפון: ' + phone + (note ? '\n' + (/^מה מעניין/.test(note) ? '' : 'מה מתאר אותי: ') + note : ''));
+      location.href = 'https://wa.me/972559958231?text=' + encodeURIComponent((mode === 'meeting' ? 'היי, אשמח לתאם פגישת ייעוץ: ' + pDay + ', ' + pTime + '.\nשם: ' : 'היי, אשמח לתאם שיחת ייעוץ.\nשם: ') + nm + '\nטלפון: ' + phone + (note ? '\n' + (/^מה מעניין/.test(note) ? '' : 'מה מתאר אותי: ') + note : ''));
     });
   }
-  function open(src) {
+  function setMode(m) {
+    mode = m === 'meeting' ? 'meeting' : 'call';
+    var T = { k: hHead.querySelector('[data-h=k]'), t: hHead.querySelector('[data-h=t]'), s: hHead.querySelector('[data-h=s]') };
+    if (mode === 'meeting') { T.k.textContent = 'פגישת ייעוץ ללא התחייבות'; T.t.textContent = 'בחרו יום ושעה — ונאשר מולכם'; T.s.textContent = 'נחזור אליכם בטלפון לאישור הפגישה והשעה המדויקת.'; btn.textContent = 'בקשת פגישה'; whenW.style.display = 'grid'; callW.style.display = 'none'; }
+    else { T.k.textContent = 'שיחת ייעוץ ללא התחייבות'; T.t.textContent = 'השאירו שם וטלפון — ונחזור אליכם'; T.s.textContent = ''; T.s.style.display = 'none'; btn.textContent = 'תאמו שיחת ייעוץ'; whenW.style.display = 'none'; callW.style.display = 'grid'; }
+    if (mode === 'meeting') T.s.style.display = 'block';
+    scopeW.style.display = mode === 'meeting' ? 'none' : 'grid';
+    pDay = ''; pTime = ''; pCall = '';
+    [whenW, callW].forEach(function (w) { w.querySelectorAll('button').forEach(function (x) { x.setAttribute('aria-pressed', 'false'); x.style.background = 'transparent'; x.style.color = '#F5F0E4'; x.style.borderColor = 'rgba(245,240,228,0.25)'; }); });
+  }
+  function open(src, m) {
     if (!root) build();
+    setMode(m);
     source = src || source;
     last = document.activeElement;
     form.style.display = 'grid'; done.style.display = 'none'; err.style.display = 'none';
@@ -165,12 +198,12 @@
     var href = a.getAttribute('href') || '';
     if (href.charAt(0) !== '#' && href.indexOf(location.pathname) === -1 && !a.hasAttribute('data-lead-open')) return;
     e.preventDefault();
-    open((location.pathname.replace(/\//g, '') || 'home'));
+    open((location.pathname.replace(/\//g, '') || 'home'), (a.getAttribute('data-lead-open') === 'meeting' || /פגישה/.test(a.innerText || '')) ? 'meeting' : 'call');
   }, true);
 
   // Plain <button> CTAs (including the floating bottom bar) open the same window.
   // Form submit buttons are left alone: they have an input/textarea within a few levels above them.
-  var CTA = /ייעוץ|השארת פרטים|מילוי פרטים|השאירו פרטים|תיאום|צרו קשר|צור קשר/;
+  var CTA = /ייעוץ|פגישה|השארת פרטים|מילוי פרטים|השאירו פרטים|תיאום|צרו קשר|צור קשר/;
   document.addEventListener('click', function (e) {
     var b = e.target.closest && e.target.closest('button');
     if (!b || (root && root.contains(b)) || b.type === 'submit' && b.form) return;
@@ -180,6 +213,6 @@
       if (p.querySelector && p.querySelector('input,textarea,select')) return;
     }
     e.preventDefault(); e.stopPropagation();
-    open((location.pathname.replace(/\//g, '') || 'home'));
+    open((location.pathname.replace(/\//g, '') || 'home'), (b.getAttribute('data-lead-open') === 'meeting' || /פגישה/.test(b.innerText || '')) ? 'meeting' : 'call');
   }, true);
 })();
