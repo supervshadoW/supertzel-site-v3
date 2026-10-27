@@ -130,10 +130,11 @@
       w.appendChild(r); return w;
     }
     var DN = ['א׳', 'ב׳', 'ג׳', 'ד׳', 'ה׳'], days = [], dd = new Date(); dd.setHours(12, 0, 0, 0);
-    while (days.length < 6) { dd.setDate(dd.getDate() + 1); if (dd.getDay() <= 4) days.push('יום ' + DN[dd.getDay()] + ' · ' + dd.getDate() + '.' + (dd.getMonth() + 1)); }
+    while (days.length < 6) { dd.setDate(dd.getDate() + 1); if (dd.getDay() <= 4) days.push(DN[dd.getDay()] + ' ' + dd.getDate() + '.' + (dd.getMonth() + 1)); }
     whenW = el('div', 'display:none;gap:14px');
-    whenW.appendChild(chipRow('באיזה יום נוח לכם?', days, function (v) { pDay = v; }, '1fr 1fr'));
-    whenW.appendChild(chipRow('באיזו שעה?', ['בוקר · 08:00–12:00', 'צהריים · 12:00–16:00', 'אחר הצהריים · 16:00–19:00'], function (v) { pTime = v; }, '1fr'));
+    whenW.appendChild(chipRow('באיזה יום נוח לכם?', days, function (v) { pDay = 'יום ' + v; }, '1fr 1fr 1fr'));
+    var TW = { 'בוקר': 'בוקר (8–12)', 'צהריים': 'צהריים (12–16)', 'אחה״צ': 'אחר הצהריים (16–19)' };
+    whenW.appendChild(chipRow('באיזו שעה? <span style="font-weight:400;color:rgba(245,240,228,0.6)">בוקר 8–12 · צהריים 12–16 · אחה״צ 16–19</span>', ['בוקר', 'צהריים', 'אחה״צ'], function (v) { pTime = v ? TW[v] : ''; }, '1fr 1fr 1fr'));
     callW = el('div', 'display:none;gap:8px');
     callW.appendChild(chipRow('מתי נוח לדבר? <span style="font-weight:400;color:rgba(245,240,228,0.6)">(לא חובה)</span>', ['בוקר', 'צהריים', 'אחר הצהריים', 'כל שעה'], function (v) { pCall = v; }, '1fr 1fr'));
     form.appendChild(l1); form.appendChild(l2); form.appendChild(whenW); form.appendChild(callW); form.appendChild(scopeW); form.appendChild(err); form.appendChild(btn);
