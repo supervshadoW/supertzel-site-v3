@@ -145,8 +145,8 @@ main :is(p, li, h1, h2, h3) :is(p, li, h1, h2, h3) { zoom: 1; }
 <script src="/phone-cc.js?v=6" defer></script>
 <script src="/mobile-ux.js?v=16" defer></script>
 <script src="/landing-mode.js?v=2" defer></script>
-<script src="/landing-projects.js?v=13" defer></script>
-<script src="/landing-about.js?v=8" defer></script>
+<script src="/landing-projects.js?v=14" defer></script>
+<script src="/landing-about.js?v=9" defer></script>
 <script src="/ba-story.js?v=6" defer></script>
 <script src="/analytics.js?v=18"></script>
 <style>
@@ -346,6 +346,7 @@ header nav a:hover { color: #E8C48C !important; }
           <button onClick="{{ openModal }}" style="flex:{{ procBtnFlex }};background:#B4813C;color:#1B1712;border:0;padding:17px 40px;font-size:17px;font-weight:600;border-radius:100px;cursor:pointer;white-space:nowrap" style-hover="background:#C99752">תאמו שיחת ייעוץ</button>
           <a href="{{ waHref }}" target="_blank" rel="noopener" style="flex:{{ procBtnFlex }};display:inline-flex;align-items:center;justify-content:center;gap:10px;color:#F5F0E4;padding:16px 30px;font-size:17px;white-space:nowrap;border:1px solid rgba(245,240,228,0.55);border-radius:100px;background:rgba(27,23,18,0.25)" style-hover="background:rgba(245,240,228,0.1);border-color:#F5F0E4;color:#F5F0E4"><svg viewBox="0 0 32 32" width="20" height="20" fill="#25D366" aria-hidden="true"><path d="M16.04 3.2c-7.06 0-12.8 5.74-12.8 12.8 0 2.26.6 4.47 1.73 6.42L3.2 28.8l6.55-1.72a12.75 12.75 0 0 0 6.29 1.65c7.06 0 12.8-5.74 12.8-12.8S23.1 3.2 16.04 3.2zm7.5 18.1c-.31.88-1.83 1.7-2.53 1.76-.65.07-1.46.1-2.36-.15-.54-.17-1.24-.4-2.13-.79-3.75-1.62-6.2-5.4-6.38-5.65-.19-.25-1.52-2.02-1.52-3.86s.96-2.74 1.3-3.11c.34-.38.75-.47 1-.47h.72c.23 0 .54-.09.84.64.31.75 1.06 2.59 1.15 2.78.09.19.16.41.03.66-.13.25-.19.41-.38.63-.19.22-.4.49-.57.66-.19.19-.39.4-.17.78.22.38.98 1.62 2.1 2.62 1.45 1.29 2.67 1.69 3.05 1.88.38.19.6.16.82-.09.22-.25.94-1.1 1.2-1.48.25-.38.5-.31.84-.19.34.13 2.18 1.03 2.56 1.22.38.19.62.28.72.44.09.16.09.91-.22 1.79z"></path></svg>שיחת וואטסאפ מהירה</a>
         </div>
+        <a href="{{ reviewsHref }}" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:8px;font-size:14px;font-weight:600;color:#F5F0E4;min-height:36px"><span aria-hidden="true" style="color:#E8B45C;letter-spacing:2px">★★★★★</span>{{ gRating }} בגוגל · {{ gCount }} ביקורות</a>
         <p style="margin-top:-2px;font-size:13px;color:rgba(245,240,228,0.65)">✓ שיחת ייעוץ ומדידה ללא התחייבות · מרכז, שפלה ודרום</p>
       </div>
     </div>
@@ -461,23 +462,7 @@ header nav a:hover { color: #E8C48C !important; }
 
   </main></div>
 
-  <section id="sun" style="position:relative;padding-block:0 clamp(2rem,5vh,3.5rem)">
-    <div style="width:min(var(--stz-side,92%),var(--stz-max,1180px));margin-inline:auto">
-      <button type="button" onClick="{{ sunOpen }}" class="stz-sun-card" style="font:inherit;text-align:start;cursor:pointer;width:100%;position:relative;display:flex;align-items:center;justify-content:space-between;gap:clamp(1rem,3vw,2rem);padding:clamp(1.25rem,3vw,2rem) clamp(1.25rem,3.4vw,2.5rem);border:0;border-radius:26px;overflow:hidden;background:#1B1712;color:#F5F0E4;box-shadow:0 26px 54px -34px rgba(33,28,22,0.5)" style-hover="box-shadow:0 30px 64px -32px rgba(33,28,22,0.65)" style-active="transform:scale(0.995)">
-        <span aria-hidden="true" class="stz-sun-ico" style="position:relative;flex:none;width:clamp(84px,12vw,150px);height:clamp(60px,8vw,84px)">
-          <span style="position:absolute;inset-inline:0;bottom:0;height:200%;border:1px dashed rgba(232,196,140,0.5);border-bottom:0;border-radius:50% 50% 0 0 / 100% 100% 0 0"></span>
-          <span style="position:absolute;bottom:0;inset-inline:0;height:1px;background:rgba(245,240,228,0.25)"></span>
-          <span style="position:absolute;top:2%;inset-inline-start:28%;width:26px;height:26px;border-radius:50%;background:#E8B45C;box-shadow:0 0 0 8px rgba(232,180,92,0.16),0 0 34px rgba(232,180,92,0.55)"></span>
-        </span>
-        <span style="flex:1 1 auto;min-width:0;display:flex;flex-direction:column;gap:6px">
-          <span style="font-size:13.5px;font-weight:600;color:#E8C48C;letter-spacing:0.04em">סימולטור שמש</span>
-          <span style="font-size:clamp(18px,2vw,23px);font-weight:600;line-height:1.3">ראו איך השמש עוברת בשטח שלכם</span>
-          <span class="stz-sun-sub" style="font-size:15.5px;line-height:1.5;color:rgba(245,240,228,0.82)">בחרו כיוון ועונה, גררו את השמש וראו איפה נופל הצל לאורך היום, עם פרגולה ובלי.</span>
-        </span>
-        <span class="stz-sun-cta" style="flex:none;display:inline-flex;align-items:center;gap:10px;min-height:48px;padding:0 24px;border-radius:100px;background:#B4813C;color:#1B1712;font-size:15.5px;font-weight:600;white-space:nowrap">פתחו את הסימולטור <span aria-hidden="true">←</span></span>
-      </button>
-    </div>
-  </section>
+
   <section id="why" style="padding-block:clamp(1.5rem,4vh,2.5rem) clamp(4rem,10vh,6.9rem)">
     <div style="width:min(var(--stz-side,92%),var(--stz-max,1180px));margin-inline:auto">
       <div style="display:inline-flex;align-items:center;gap:10px;color:#B4813C;font-size:14.5px;font-weight:600;margin-bottom:24px;white-space:nowrap"><span style="display:block;width:24px;height:1px;background:#B4813C"></span>למה סופר צל</div>
@@ -593,6 +578,24 @@ header nav a:hover { color: #E8C48C !important; }
     </div>
   </section>
   </div>
+
+  <section id="sun" style="position:relative;padding-block:clamp(2rem,5vh,3.5rem)">
+    <div style="width:min(var(--stz-side,92%),var(--stz-max,1180px));margin-inline:auto">
+      <button type="button" onClick="{{ sunOpen }}" class="stz-sun-card" style="font:inherit;text-align:start;cursor:pointer;width:100%;position:relative;display:flex;align-items:center;justify-content:space-between;gap:clamp(1rem,3vw,2rem);padding:clamp(1.25rem,3vw,2rem) clamp(1.25rem,3.4vw,2.5rem);border:0;border-radius:26px;overflow:hidden;background:#1B1712;color:#F5F0E4;box-shadow:0 26px 54px -34px rgba(33,28,22,0.5)" style-hover="box-shadow:0 30px 64px -32px rgba(33,28,22,0.65)" style-active="transform:scale(0.995)">
+        <span aria-hidden="true" class="stz-sun-ico" style="position:relative;flex:none;width:clamp(84px,12vw,150px);height:clamp(60px,8vw,84px)">
+          <span style="position:absolute;inset-inline:0;bottom:0;height:200%;border:1px dashed rgba(232,196,140,0.5);border-bottom:0;border-radius:50% 50% 0 0 / 100% 100% 0 0"></span>
+          <span style="position:absolute;bottom:0;inset-inline:0;height:1px;background:rgba(245,240,228,0.25)"></span>
+          <span style="position:absolute;top:2%;inset-inline-start:28%;width:26px;height:26px;border-radius:50%;background:#E8B45C;box-shadow:0 0 0 8px rgba(232,180,92,0.16),0 0 34px rgba(232,180,92,0.55)"></span>
+        </span>
+        <span style="flex:1 1 auto;min-width:0;display:flex;flex-direction:column;gap:6px">
+          <span style="font-size:13.5px;font-weight:600;color:#E8C48C;letter-spacing:0.04em">סימולטור שמש</span>
+          <span style="font-size:clamp(18px,2vw,23px);font-weight:600;line-height:1.3">ראו איך השמש עוברת בשטח שלכם</span>
+          <span class="stz-sun-sub" style="font-size:15.5px;line-height:1.5;color:rgba(245,240,228,0.82)">בחרו כיוון ועונה, גררו את השמש וראו איפה נופל הצל לאורך היום, עם פרגולה ובלי.</span>
+        </span>
+        <span class="stz-sun-cta" style="flex:none;display:inline-flex;align-items:center;gap:10px;min-height:48px;padding:0 24px;border-radius:100px;background:#B4813C;color:#1B1712;font-size:15.5px;font-weight:600;white-space:nowrap">פתחו את הסימולטור <span aria-hidden="true">←</span></span>
+      </button>
+    </div>
+  </section>
 
   <section id="envelope" style="background:#ECE4D2;padding-block:clamp(3.5rem,9vh,6rem);border-block:1px solid rgba(33,28,22,0.14)">
     <div style="width:min(var(--stz-side,92%),var(--stz-max,1180px));margin-inline:auto">
@@ -958,8 +961,9 @@ const LIGHT_SUNROOM = {
 class Component extends DCLogic {
   revsFallback = [
     { text: '…הבית שלנו משמש כמרכז תרבות ואנשים רבים מגיעים כך שהיה חשוב לי שיהיה חזק, יפה ומרחף…', meta: 'Tamar Melzer Krymolowski' },
-    { text: '…לא האמנתי כמה יפה ומדוייק הגגון יצא לצרכים שלנו... תודה רבה על העבודה המדהימה ועל ההקשבה לצריכים שלנו אנחנו מאוהבים בגגון החדש…', meta: 'topaz askar' },
+    { text: '…התקינו לי פרגולת אלומניום יצא מושלם ! הצוות מיומן , מקצועי ואדיב .. … שירות ברמה גבוהה מאוד ושימוש בחומרים איכותיים .. ממליץ בחום !!', meta: 'Daniel Ohana' },
     { text: '…הפרגולה יצאה מושלמת ואיוון עשה הכל כדי שנהיה מרוצים… ממליץ על סופר צל בחום.', meta: 'ירון שלומי' },
+    { text: '…איוון היה שרותי מאוד, הסביר וייעץ. עבודה מקצועית והתוצאה הייתה בדיוק כמו שתיכננו. מומלץ בחום.', meta: 'Jack Mayer' },
   ];
 
   get revs() {
@@ -974,22 +978,14 @@ class Component extends DCLogic {
       .then(r => r.json())
       .then(d => {
         if (!d || d.error || !Array.isArray(d.reviews)) return;
-        // Curated, premium-positioned reviews only (about the look, the listening and the result). Excerpts keep the customers' own words;
-        // the full reviews stay on Google. Reviews framed around price or "tradesmen" are not shown.
-        const PICK = [
-          ['הבית שלנו משמש כמרכז תרבות', '…הבית שלנו משמש כמרכז תרבות ואנשים רבים מגיעים כך שהיה חשוב לי שיהיה חזק, יפה ומרחף…'],
-          ['לא האמנתי כמה יפה ומדוייק', '…לא האמנתי כמה יפה ומדוייק הגגון יצא לצרכים שלנו... תודה רבה על העבודה המדהימה ועל ההקשבה לצריכים שלנו אנחנו מאוהבים בגגון החדש…'],
-          ['הפרגולה יצאה מושלמת', '…הפרגולה יצאה מושלמת ואיוון עשה הכל כדי שנהיה מרוצים… ממליץ על סופר צל בחום.']
-        ];
-        const top = PICK.map(pk => {
-          const r = d.reviews.find(x => x && x.text && x.text.indexOf(pk[0]) > -1 && (typeof x.rating !== 'number' || x.rating >= 4));
-          return r ? { text: pk[1], meta: r.author || 'ביקורת גוגל' } : null;
-        }).filter(Boolean);        if (top.length) this.setState({ liveReviews: top, revIdx: 0 });
+        // The reviews shown are curated (revsFallback); the live data only provides the Google rating and the link.
+        if (typeof d.rating === 'number') this.setState({ gRating: d.rating.toFixed(1) });
+        if (typeof d.userRatingCount === 'number') this.setState({ gCount: String(d.userRatingCount) });
         if (typeof d.googleMapsUri === 'string' && d.googleMapsUri) this.setState({ reviewsUrl: d.googleMapsUri });
       })
       .catch(() => undefined);
   }
-  state = { heroIn: true, modalOpen: false, narrow: false, openFaq: 0, sent: false, quickSent: false, project: null, photo: 0, revIdx: 0, liveReviews: null, reviewsUrl: null, form: { name: '', phone: '', city: '', scope: '', notes: '' } };
+  state = { heroIn: true, modalOpen: false, narrow: false, openFaq: 0, sent: false, quickSent: false, project: null, photo: 0, revIdx: 0, liveReviews: null, reviewsUrl: null, gRating: '4.5', gCount: '23', form: { name: '', phone: '', city: '', scope: '', notes: '' } };
 
 
 
@@ -1369,6 +1365,7 @@ class Component extends DCLogic {
       resetSlide: () => { const ov = Object.assign({}, this.state.pinOv || {}); delete ov[cs]; this.savePins(ov); this.setState({ pinSel: null }); },
       readPct: (this.state.readPct || 0) + '%',
       reviewsHref: this.state.reviewsUrl || 'https://share.google/h9gkVk0fzgS3ILbQ6',
+      gRating: this.state.gRating, gCount: this.state.gCount,
       pinSize: n ? '30px' : '36px',
       dotsTop: n ? '86px' : '96px', dotsBottom: 'auto',
       heroCaption: S[cs].caption,

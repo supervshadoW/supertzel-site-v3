@@ -21,8 +21,8 @@
   function place(sec) {
     var why = document.getElementById('why');
     if (!rendered(why)) return false;
-    var sun = document.getElementById('sun');
-    var anchor = rendered(sun) && sun.parentNode === why.parentNode ? sun : why;
+    var rv = document.getElementById('reviews');
+    var anchor = rendered(rv) && rv.parentNode === why.parentNode ? rv : why;
     if (anchor.nextElementSibling !== sec) anchor.parentNode.insertBefore(sec, anchor.nextSibling);
     return true;
   }
