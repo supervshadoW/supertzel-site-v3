@@ -8,6 +8,15 @@
 /* decorative big numerals stick out of the page edge: clip them instead of letting the whole page scroll sideways */
 html, body { overflow-x: clip; max-width: 100%; }
 .stz-hide, .stz-carousel.stz-hide { display: none !important; }
+@keyframes stz-sheet { from { transform: translateY(40px); opacity: 0 } to { transform: none; opacity: 1 } }
+.stz-sun-dlg { animation: stz-sheet .42s cubic-bezier(.2,.7,.2,1) both; }
+@media (max-width: 760px) {
+  .stz-sun-wrap { align-items: flex-end !important; padding: 0 !important; }
+  .stz-sun-dlg { border-radius: 24px 24px 0 0 !important; max-height: 92vh !important; width: 100% !important; }
+  .stz-sun-card { flex-wrap: wrap; }
+  .stz-sun-card .stz-sun-cta { width: 100%; justify-content: center; }
+  .stz-sun-card .stz-sun-ico { display: none; }
+}
 /* catalog tiles: full image, title always visible, description + actions on hover / focus / tap (same idea as the home page tiles) */
 #catalog .stz-gcard { position: relative; overflow: hidden; background: #2A241D; min-height: 400px; display: block; cursor: pointer; outline-offset: -3px; }
 #catalog .stz-gcard img { transition: transform .8s cubic-bezier(.2,.7,.2,1); }
@@ -385,21 +394,7 @@ header nav a:hover { color: #E8C48C !important; }
             </div>
         </div>
       </div>
-      <button type="button" onClick="{{ sunOpen }}" style="font:inherit;text-align:start;cursor:pointer;position:relative;display:flex;flex-direction:column;justify-content:space-between;gap:28px;min-height:clamp(300px,34vw,420px);padding:clamp(1.5rem,3.4vw,2.5rem);border:0;border-radius:26px;overflow:hidden;background:#1B1712;color:#F5F0E4;box-shadow:0 30px 60px -36px rgba(33,28,22,0.45)" style-hover="box-shadow:0 34px 70px -34px rgba(33,28,22,0.6)" style-active="transform:scale(0.99)">
-        <span aria-hidden="true" style="position:relative;display:block;height:clamp(110px,14vw,160px)">
-          <span style="position:absolute;inset-inline:6%;bottom:0;height:200%;border:1px dashed rgba(232,196,140,0.45);border-bottom:0;border-radius:50% 50% 0 0 / 100% 100% 0 0"></span>
-          <span style="position:absolute;bottom:0;inset-inline:0;height:1px;background:rgba(245,240,228,0.25)"></span>
-          <span style="position:absolute;top:18%;inset-inline-start:24%;width:34px;height:34px;border-radius:50%;background:#E8B45C;box-shadow:0 0 0 10px rgba(232,180,92,0.16),0 0 40px rgba(232,180,92,0.55)"></span>
-          <span style="position:absolute;bottom:6px;inset-inline-start:6%;font-size:12.5px;color:rgba(245,240,228,0.6)">בוקר</span>
-          <span style="position:absolute;bottom:6px;inset-inline-end:6%;font-size:12.5px;color:rgba(245,240,228,0.6)">ערב</span>
-        </span>
-        <span style="display:flex;flex-direction:column;gap:10px">
-          <span style="font-size:14px;font-weight:600;color:#E8C48C;letter-spacing:0.04em">סימולטור שמש</span>
-          <span style="font-size:clamp(19px,1.9vw,22px);font-weight:600;line-height:1.3">ראו איך השמש עוברת בשטח שלכם</span>
-          <span style="font-size:16px;line-height:1.55;color:rgba(245,240,228,0.85)">בחרו כיוון ועונה, גררו את השמש — וראו איפה נופל הצל לאורך היום, עם פרגולה ובלי.</span>
-          <span style="align-self:flex-start;margin-top:6px;display:inline-flex;align-items:center;gap:10px;min-height:48px;padding:0 24px;border-radius:100px;background:#B4813C;color:#1B1712;font-size:15.5px;font-weight:600;white-space:nowrap">פתחו את הסימולטור <span aria-hidden="true">←</span></span>
-        </span>
-      </button>
+
     </div>
   </section>
 
@@ -452,6 +447,23 @@ header nav a:hover { color: #E8C48C !important; }
 
   </main></div>
 
+  <section id="sun" style="position:relative;padding-block:0 clamp(2rem,5vh,3.5rem)">
+    <div style="width:min(var(--stz-side,92%),var(--stz-max,1180px));margin-inline:auto">
+      <button type="button" onClick="{{ sunOpen }}" class="stz-sun-card" style="font:inherit;text-align:start;cursor:pointer;width:100%;position:relative;display:flex;align-items:center;justify-content:space-between;gap:clamp(1rem,3vw,2rem);padding:clamp(1.25rem,3vw,2rem) clamp(1.25rem,3.4vw,2.5rem);border:0;border-radius:26px;overflow:hidden;background:#1B1712;color:#F5F0E4;box-shadow:0 26px 54px -34px rgba(33,28,22,0.5)" style-hover="box-shadow:0 30px 64px -32px rgba(33,28,22,0.65)" style-active="transform:scale(0.995)">
+        <span aria-hidden="true" class="stz-sun-ico" style="position:relative;flex:none;width:clamp(84px,12vw,150px);height:clamp(60px,8vw,84px)">
+          <span style="position:absolute;inset-inline:0;bottom:0;height:200%;border:1px dashed rgba(232,196,140,0.5);border-bottom:0;border-radius:50% 50% 0 0 / 100% 100% 0 0"></span>
+          <span style="position:absolute;bottom:0;inset-inline:0;height:1px;background:rgba(245,240,228,0.25)"></span>
+          <span style="position:absolute;top:2%;inset-inline-start:28%;width:26px;height:26px;border-radius:50%;background:#E8B45C;box-shadow:0 0 0 8px rgba(232,180,92,0.16),0 0 34px rgba(232,180,92,0.55)"></span>
+        </span>
+        <span style="flex:1 1 auto;min-width:0;display:flex;flex-direction:column;gap:6px">
+          <span style="font-size:13.5px;font-weight:600;color:#E8C48C;letter-spacing:0.04em">סימולטור שמש</span>
+          <span style="font-size:clamp(18px,2vw,23px);font-weight:600;line-height:1.3">ראו איך השמש עוברת בשטח שלכם</span>
+          <span class="stz-sun-sub" style="font-size:15.5px;line-height:1.5;color:rgba(245,240,228,0.82)">בחרו כיוון ועונה, גררו את השמש וראו איפה נופל הצל לאורך היום, עם פרגולה ובלי.</span>
+        </span>
+        <span class="stz-sun-cta" style="flex:none;display:inline-flex;align-items:center;gap:10px;min-height:48px;padding:0 24px;border-radius:100px;background:#B4813C;color:#1B1712;font-size:15.5px;font-weight:600;white-space:nowrap">פתחו את הסימולטור <span aria-hidden="true">←</span></span>
+      </button>
+    </div>
+  </section>
   <section id="why" style="padding-block:clamp(1.5rem,4vh,2.5rem) clamp(4rem,10vh,6.9rem)">
     <div style="width:min(var(--stz-side,92%),var(--stz-max,1180px));margin-inline:auto">
       <div style="display:inline-flex;align-items:center;gap:10px;color:#B4813C;font-size:14.5px;font-weight:600;margin-bottom:24px;white-space:nowrap"><span style="display:block;width:24px;height:1px;background:#B4813C"></span>למה סופר צל</div>
@@ -739,8 +751,8 @@ header nav a:hover { color: #E8C48C !important; }
 
 
 <sc-if value="{{ sunIsOpen }}" hint-placeholder-val="{{ false }}">
-<div onClick="{{ sunClose }}" style="position:fixed;inset:0;z-index:530;background:rgba(17,14,11,0.8);display:flex;align-items:center;justify-content:center;padding:clamp(10px,3vw,32px)">
-  <div role="dialog" aria-modal="true" aria-label="סימולטור שמש" onClick="{{ stopProp }}" style="width:min(100%,980px);max-height:94vh;overflow:auto;background:#F5F0E4;border-radius:26px;padding:clamp(1rem,2.4vw,1.75rem);display:flex;flex-direction:column;gap:14px">
+<div class="stz-sun-wrap" onClick="{{ sunClose }}" style="position:fixed;inset:0;z-index:530;background:rgba(17,14,11,0.8);display:flex;align-items:center;justify-content:center;padding:clamp(10px,3vw,32px)">
+  <div class="stz-sun-dlg" role="dialog" aria-modal="true" aria-label="סימולטור שמש" onClick="{{ stopProp }}" style="width:min(100%,980px);max-height:94vh;overflow:auto;background:#F5F0E4;border-radius:26px;padding:clamp(1rem,2.4vw,1.75rem);display:flex;flex-direction:column;gap:14px">
     <div style="display:flex;align-items:center;justify-content:space-between;gap:12px">
       <div style="display:flex;flex-direction:column;gap:2px"><span style="font-size:13px;color:#8F6326;font-weight:600">סימולטור שמש · המחשה כללית</span><h3 style="font-size:clamp(20px,2.4vw,26px)">איך השמש עוברת במרחב החוץ שלכם?</h3></div>
       <button type="button" aria-label="סגירה" onClick="{{ sunClose }}" style="flex:none;width:44px;height:44px;border-radius:50%;border:1px solid rgba(33,28,22,0.25);background:transparent;font-size:22px;line-height:1;cursor:pointer;color:#211C16">×</button>
@@ -1425,7 +1437,7 @@ class Component extends DCLogic {
       sunIsOpen: !!this.state.sunOpen,
       sunOpen: () => { this.setState({ sunOpen: true }, () => setTimeout(() => this.initSun(), 0)); try { window.gtag && window.gtag('event', 'sun_sim_open'); } catch (e) {} },
       sunClose: () => this.setState({ sunOpen: false }),
-      baCols: n ? '1fr' : 'minmax(0,0.9fr) minmax(0,1.1fr)',
+      baCols: '1fr',
       baRatio: n ? '1/1' : '5/4',
       pinLeave: () => this.setState({ envPin: null }),
       pinSize: n ? '30px' : '38px',
