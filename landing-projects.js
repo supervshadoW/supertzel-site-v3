@@ -77,8 +77,7 @@
       html += '<button type="button" class="lp-card" data-i="' + i + '"><img src="' + esc(c.src) + '" alt="' + esc(c.p.title) + '" loading="lazy" decoding="async"><b>0' + (i + 1) + '</b><span>' + esc(c.p.title) + (tg ? '<em>' + esc(tg) + '</em>' : '') + '</span></button>';
     });
     html += '</div>' +
-      '<div style="margin-top:clamp(1.5rem,3vh,2.25rem);display:flex;flex-wrap:wrap;gap:12px"><a href="#lead" style="display:inline-flex;align-items:center;min-height:48px;padding:0 26px;border-radius:100px;background:#B4813C;color:#1B1712;font-size:16px;font-weight:600">תאמו שיחת ייעוץ</a>' +
-      '<a href="/projects" class="lp-all" style="display:inline-flex;align-items:center;gap:8px;min-height:48px;padding:0 24px;border-radius:100px;border:1px solid rgba(33,28,22,0.3);color:#211C16;font-size:16px;font-weight:600">לכל ' + list.length + ' הפרויקטים <span aria-hidden="true">←</span></a></div></div>';
+      '<div style="margin-top:clamp(.75rem,2vh,1.25rem)"><a href="/projects" class="lp-all" style="display:inline-flex;align-items:center;gap:6px;min-height:44px;color:#6E4D1E;font-size:15px;font-weight:600;border-bottom:1px solid rgba(110,77,30,0.4)">לכל ' + list.length + ' הפרויקטים <span aria-hidden="true">←</span></a></div></div>';
     sec.innerHTML = html;
     place(sec);
     realign();
