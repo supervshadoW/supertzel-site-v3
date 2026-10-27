@@ -115,5 +115,5 @@
   }
 
   var tries = 0;
-  (function tick() { placeBA(); if (++tries > 80) return; setTimeout(tick, tries < 40 ? 300 : 1000); })();
+  (function tick() { if (++tries > 80) return; setTimeout(tick, tries < 40 ? 300 : 1000); })();
 })();
