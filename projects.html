@@ -4,7 +4,13 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="description" content="פרויקטים שביצענו — פרגולות, סגירות זכוכית, מטבחי חוץ, דקים וגידור. תמונות מפרויקטים של סופר צל.">
-<style>html, body { overflow-x: clip; max-width: 100%; }</style>
+<style>html, body { overflow-x: clip; max-width: 100%; }/* filter tabs: one calm row of text tabs with an underline for the selected one (instead of a cluster of outlined pills) */
+[role="tablist"] { flex-wrap: nowrap !important; overflow-x: auto; gap: 6px 26px !important; scrollbar-width: none; -webkit-overflow-scrolling: touch; }
+[role="tablist"]::-webkit-scrollbar { display: none; }
+[role="tablist"] > button { flex: 0 0 auto; background: transparent !important; border: 0 !important; border-bottom: 2px solid transparent !important; border-radius: 0 !important; padding: 0 2px !important; min-height: 48px; color: #6B6257 !important; font-weight: 600; white-space: nowrap; transition: color .2s, border-color .2s; }
+[role="tablist"] > button:hover { color: #211C16 !important; }
+[role="tablist"] > button[aria-selected="true"] { color: #211C16 !important; border-bottom-color: #B4813C !important; }
+</style>
 <link rel="icon" href="/favicon.ico?v=2" sizes="any">
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png?v=2">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png?v=2">

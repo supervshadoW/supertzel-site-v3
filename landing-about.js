@@ -29,8 +29,8 @@
       '#about .ab-wrap{display:grid;grid-template-columns:1fr 1fr;gap:clamp(1.5rem,4vw,3.5rem);align-items:center}' +
       '#about .ab-img{border-radius:20px;overflow:hidden;aspect-ratio:4/3;background:#ECE4D2}' +
       '#about .ab-img img{display:block;width:100%;height:100%;object-fit:cover}' +
-      '#about .ab-pts{display:flex;flex-wrap:wrap;gap:10px;margin:22px 0 0;padding:0;list-style:none}' +
-      '#about .ab-pts li{padding:9px 16px;border-radius:100px;border:1px solid rgba(180,129,60,.5);color:#211C16;font-size:15px;font-weight:500}' +
+      '#about .ab-pts{display:grid;gap:10px;margin:22px 0 0;padding:0;list-style:none}' +
+      '#about .ab-pts li{position:relative;padding:0 26px 0 0;color:#211C16;font-size:16px;font-weight:500;line-height:1.5}#about .ab-pts li::before{content:"";position:absolute;inset-inline-start:0;top:.55em;width:14px;height:1px;background:#B4813C}' +
       '@media (max-width:860px){#about .ab-wrap{grid-template-columns:1fr}}' +
       // slow strip of project photos drifting behind the text
       '#about{position:relative;overflow:hidden}#about>.ab-in{position:relative;z-index:1}' +
