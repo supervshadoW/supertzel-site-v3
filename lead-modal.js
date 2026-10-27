@@ -198,12 +198,12 @@
     var href = a.getAttribute('href') || '';
     if (href.charAt(0) !== '#' && href.indexOf(location.pathname) === -1 && !a.hasAttribute('data-lead-open')) return;
     e.preventDefault();
-    open((location.pathname.replace(/\//g, '') || 'home'), (a.getAttribute('data-lead-open') === 'meeting' || /פגישה/.test(a.innerText || '')) ? 'meeting' : 'call');
+    open((location.pathname.replace(/\//g, '') || 'home'), (a.getAttribute('data-lead-open') === 'meeting' || /פגיש/.test(a.innerText || '')) ? 'meeting' : 'call');
   }, true);
 
   // Plain <button> CTAs (including the floating bottom bar) open the same window.
   // Form submit buttons are left alone: they have an input/textarea within a few levels above them.
-  var CTA = /ייעוץ|פגישה|השארת פרטים|מילוי פרטים|השאירו פרטים|תיאום|צרו קשר|צור קשר/;
+  var CTA = /ייעוץ|פגיש|השארת פרטים|מילוי פרטים|השאירו פרטים|תיאום|צרו קשר|צור קשר/;
   document.addEventListener('click', function (e) {
     var b = e.target.closest && e.target.closest('button');
     if (!b || (root && root.contains(b)) || b.type === 'submit' && b.form) return;
@@ -213,6 +213,6 @@
       if (p.querySelector && p.querySelector('input,textarea,select')) return;
     }
     e.preventDefault(); e.stopPropagation();
-    open((location.pathname.replace(/\//g, '') || 'home'), (b.getAttribute('data-lead-open') === 'meeting' || /פגישה/.test(b.innerText || '')) ? 'meeting' : 'call');
+    open((location.pathname.replace(/\//g, '') || 'home'), (b.getAttribute('data-lead-open') === 'meeting' || /פגיש/.test(b.innerText || '')) ? 'meeting' : 'call');
   }, true);
 })();
