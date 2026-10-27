@@ -1422,8 +1422,18 @@ class Component extends DCLogic {
         if (!d || d.error || !Array.isArray(d.reviews)) return;
         const WORDS = ['סופר צל', 'החברה', 'הצוות', 'צוות', 'התקנה', 'שירות', 'ביצוע', 'גימור'];
         const score = r => WORDS.reduce((a, w) => a + (r.text.indexOf(w) > -1 ? 1 : 0), 0);
+        // Premium positioning: curated excerpts (customers' own words) for the reviews about the look and the result;
+        // reviews framed around price or "tradesmen" are not shown. Full reviews stay on Google.
+        const PICK = [
+          ['הבית שלנו משמש כמרכז תרבות', '…הבית שלנו משמש כמרכז תרבות ואנשים רבים מגיעים כך שהיה חשוב לי שיהיה חזק, יפה ומרחף…'],
+          ['לא האמנתי כמה יפה ומדוייק', '…לא האמנתי כמה יפה ומדוייק הגגון יצא לצרכים שלנו... תודה רבה על העבודה המדהימה ועל ההקשבה לצריכים שלנו אנחנו מאוהבים בגגון החדש…'],
+          ['הפרגולה יצאה מושלמת', '…הפרגולה יצאה מושלמת ואיוון עשה הכל כדי שנהיה מרוצים… ממליץ על סופר צל בחום.']
+        ];
+        const EXCL = /בעל(י)?\s?מקצוע|איש מקצוע|אנשי מקצוע|קבלן|מחיר|זול|נזילות|בנאדם|הנדימן/;
         const top = d.reviews
           .filter(r => r && r.text && r.text.trim() && (typeof r.rating !== 'number' || r.rating >= 4))
+          .map(r => { const pk = PICK.find(x => r.text.indexOf(x[0]) > -1); return pk ? Object.assign({}, r, { text: pk[1] }) : (EXCL.test(r.text) ? null : r); })
+          .filter(Boolean)
           .sort((a, b) => score(b) - score(a)).slice(0, 10);
         this.setState({
           reviews: top,
