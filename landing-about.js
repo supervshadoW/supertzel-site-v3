@@ -55,7 +55,7 @@
       '<h2 style="font-size:clamp(28px,3.6vw,44px);letter-spacing:-0.02em;line-height:1.12">בית אחד לכל מעטפת החוץ</h2>' +
       '<p style="margin:18px 0 0;color:#4B443A;font-size:17px;line-height:1.65">סופר צל היא מעטפת מקצועית לתכנון יישומי, ביצוע ותיאום של פרויקטי חוץ. הפעילות שלנו צמחה מתוך שנים של ניסיון מעשי בשטח — ממערכות קירוי, הצללה ואלומיניום, דרך ריצוף ודקים, ועד פיתוח נוף ובנייה קלה.</p>' +
       '<p style="margin:14px 0 0;color:#4B443A;font-size:17px;line-height:1.65">אנחנו קוראים תוכניות ופרטי גמר לעומק, ומסייעים בבניית רצף ביצוע מתואם לפי המפרט שסוכם בכתב — בשפה חומרית אחידה, מול נקודת קשר אחת.</p>' +
-      '<ul class="ab-pts"><li>נקודת קשר אחת</li><li>ניסיון בהצללה ובקירוי</li><li>תיאום מול בעלי מקצוע מוסמכים, לפי אופי הפרויקט</li></ul>' +
+      '<ul class="ab-pts"><li>נקודת קשר אחת מהמדידה ועד ההתקנה</li><li>מפרט בכתב, רכיב אחרי רכיב, כדי שתוכלו להשוות בין הצעות</li><li>גוון, פרופיל וקו שמותאמים לבית ולמרחב, לא מקטלוג מוכן</li></ul>' +
       '<div style="margin-top:26px"><a href="#contact" style="display:inline-flex;align-items:center;min-height:48px;padding:0 26px;border-radius:100px;background:#B4813C;color:#1B1712;font-size:16px;font-weight:600">תאמו שיחת ייעוץ</a></div></div>' +
       '<div class="ab-img"><img src="/img/fast/slots/ab-hero.webp" alt="מרחב חוץ גמור של סופר צל" loading="lazy" decoding="async"></div>' +
       '</div></div>';

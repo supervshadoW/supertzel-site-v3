@@ -23,6 +23,9 @@ html, body { overflow-x: clip; max-width: 100%; }
 #catalog .stz-gcard:hover img, #catalog .stz-gcard:focus-within img, #catalog .stz-gcard[data-open] img { transform: scale(1.04); }
 #catalog .stz-gshade { position: absolute; inset: 0; background: linear-gradient(180deg, rgba(17,14,11,0) 38%, rgba(17,14,11,.86) 100%); transition: background .45s ease; }
 #catalog .stz-gcard:hover .stz-gshade, #catalog .stz-gcard:focus-within .stz-gshade, #catalog .stz-gcard[data-open] .stz-gshade { background: linear-gradient(180deg, rgba(17,14,11,.15) 0%, rgba(17,14,11,.92) 100%); }
+#catalog .stz-gtxt::before { content: ""; display: block; width: 34px; height: 2px; background: #C99752; margin-bottom: 10px; }
+#catalog .stz-gsum { margin-top: 6px; color: rgba(245,240,228,.86); font-size: 14px; line-height: 1.45; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+#catalog .stz-geb { font-weight: 500; opacity: .85; }
 #catalog .stz-gtxt { position: absolute; inset-inline: 0; bottom: 0; padding: 20px 20px 22px; z-index: 2; }
 #catalog .stz-gmore { max-height: 0; opacity: 0; overflow: hidden; transition: max-height .5s ease, opacity .4s ease; }
 #catalog .stz-gcard:hover .stz-gmore, #catalog .stz-gcard:focus-within .stz-gmore, #catalog .stz-gcard[data-open] .stz-gmore { max-height: 420px; opacity: 1; }
@@ -86,6 +89,8 @@ html, body { overflow-x: clip; max-width: 100%; }
 [role="tablist"] > button { flex: 0 0 auto; background: transparent !important; border: 0 !important; border-bottom: 2px solid transparent !important; border-radius: 0 !important; padding: 0 2px !important; min-height: 48px; color: #6B6257 !important; font-weight: 600; font-size: 15px !important; white-space: nowrap; transition: color .2s, border-color .2s; }
 [role="tablist"] > button:hover { color: #211C16 !important; }
 [role="tablist"] > button[aria-selected="true"] { color: #211C16 !important; border-bottom-color: #B4813C !important; }
+/* the generic "why" cards were removed (kept only as a placement anchor for the about / projects sections) */
+#why { display: none !important; }
 </style>
 <link rel="icon" href="/favicon.ico?v=2" sizes="any">
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png?v=2">
@@ -139,7 +144,7 @@ main :is(p, li, h1, h2, h3) :is(p, li, h1, h2, h3) { zoom: 1; }
 <script src="/mobile-ux.js?v=16" defer></script>
 <script src="/landing-mode.js?v=2" defer></script>
 <script src="/landing-projects.js?v=9" defer></script>
-<script src="/landing-about.js?v=5" defer></script>
+<script src="/landing-about.js?v=6" defer></script>
 <script src="/ba-story.js?v=4" defer></script>
 <script src="/analytics.js?v=18"></script>
 <style>
@@ -227,7 +232,7 @@ header nav a:hover { color: #E8C48C !important; }
         <a href="#catalog" data-gal="shade" style="font-size:15px;white-space:nowrap">פרגולות והצללה</a>
         <a href="#glass" data-gal="glass" style="font-size:15px;white-space:nowrap">סגירות</a>
         <a href="#projects" style="font-size:15px;white-space:nowrap">פרויקטים</a>
-        <a href="#why" style="font-size:15px;white-space:nowrap">למה סופר צל</a>
+        <a href="#about" style="font-size:15px;white-space:nowrap">מי אנחנו</a>
         <a href="#process" style="font-size:15px;white-space:nowrap">איך זה עובד</a>
         <a href="#elephant" style="font-size:15px;white-space:nowrap">שאלות</a>
       </nav>
@@ -250,7 +255,7 @@ header nav a:hover { color: #E8C48C !important; }
     <a href="#reality" onClick="{{ menuClose }}" style="display:flex;align-items:center;justify-content:space-between;min-height:54px;border-bottom:1px solid rgba(245,240,228,0.14);font-size:20px;font-weight:500;color:#F5F0E4">השמש במרחב <span style="color:#C99752;font-size:13px;letter-spacing:0.14em">02</span></a>
     <a href="#catalog" data-gal="shade" onClick="{{ menuClose }}" style="display:flex;align-items:center;justify-content:space-between;min-height:54px;border-bottom:1px solid rgba(245,240,228,0.14);font-size:20px;font-weight:500;color:#F5F0E4">פרגולות והצללה <span style="color:#C99752;font-size:13px;letter-spacing:0.14em">03</span></a>
     <a href="#glass" data-gal="glass" onClick="{{ menuClose }}" style="display:flex;align-items:center;justify-content:space-between;min-height:54px;border-bottom:1px solid rgba(245,240,228,0.14);font-size:20px;font-weight:500;color:#F5F0E4">סגירות <span style="color:#C99752;font-size:13px;letter-spacing:0.14em">04</span></a>
-    <a href="#why" onClick="{{ menuClose }}" style="display:flex;align-items:center;justify-content:space-between;min-height:54px;border-bottom:1px solid rgba(245,240,228,0.14);font-size:20px;font-weight:500;color:#F5F0E4">למה סופר צל <span style="color:#C99752;font-size:13px;letter-spacing:0.14em">05</span></a>
+    <a href="#about" onClick="{{ menuClose }}" style="display:flex;align-items:center;justify-content:space-between;min-height:54px;border-bottom:1px solid rgba(245,240,228,0.14);font-size:20px;font-weight:500;color:#F5F0E4">מי אנחנו <span style="color:#C99752;font-size:13px;letter-spacing:0.14em">05</span></a>
     <a href="#process" onClick="{{ menuClose }}" style="display:flex;align-items:center;justify-content:space-between;min-height:54px;border-bottom:1px solid rgba(245,240,228,0.14);font-size:20px;font-weight:500;color:#F5F0E4">איך זה עובד <span style="color:#C99752;font-size:13px;letter-spacing:0.14em">06</span></a>
     <a href="#envelope" onClick="{{ menuClose }}" style="display:flex;align-items:center;justify-content:space-between;min-height:54px;border-bottom:1px solid rgba(245,240,228,0.14);font-size:20px;font-weight:500;color:#F5F0E4">מעבר להצללה <span style="color:#C99752;font-size:13px;letter-spacing:0.14em">07</span></a>
     <a href="#reviews" onClick="{{ menuClose }}" style="display:flex;align-items:center;justify-content:space-between;min-height:54px;border-bottom:1px solid rgba(245,240,228,0.14);font-size:20px;font-weight:500;color:#F5F0E4">ביקורות <span style="color:#C99752;font-size:13px;letter-spacing:0.14em">08</span></a>
@@ -425,13 +430,14 @@ header nav a:hover { color: #E8C48C !important; }
           <div class="stz-gcard" tabindex="0" style="grid-column:{{ g.span }};border-radius:{{ galRad }}">
             <img src="{{ g.src }}" alt="{{ g.title }}" loading="lazy" decoding="async" style="position:absolute;inset:0;display:block;width:100%;height:100%;object-fit:cover">
             <span class="stz-gshade" aria-hidden="true"></span>
-            <span style="position:absolute;top:12px;inset-inline-start:12px;z-index:3;background:rgba(27,23,18,0.78);color:#E8C48C;font-size:12.5px;font-weight:600;letter-spacing:0.5px;padding:4px 10px;border-radius:100px">{{ g.num }}</span>
+            <span style="position:absolute;top:12px;inset-inline-start:12px;z-index:3;background:rgba(27,23,18,0.78);color:#E8C48C;font-size:12.5px;font-weight:600;letter-spacing:0.5px;padding:4px 10px;border-radius:100px">{{ g.num }} / {{ g.of }}<span class="stz-geb"> · {{ galEb }}</span></span>
             <div class="stz-gtxt">
               <h3 style="font-size:{{ g.titleSize }};color:#F5F0E4;text-shadow:0 2px 18px rgba(14,11,8,0.5)">{{ g.title }}</h3>
+              <p class="stz-gsum">{{ g.sum }}</p>
               <div class="stz-gmore">
-                <p style="margin-top:8px;color:rgba(245,240,228,0.9);font-size:{{ galBodyFs }};max-width:44ch">{{ g.body }}</p>
+                <sc-if value="{{ g.hasRest }}" hint-placeholder-val="{{ false }}"><p style="margin-top:8px;color:rgba(245,240,228,0.9);font-size:{{ galBodyFs }};max-width:44ch">{{ g.rest }}</p></sc-if>
                 <sc-if value="{{ g.hasMore }}" hint-placeholder-val="{{ false }}">
-                  <a href="{{ g.more }}" style="margin-top:10px;display:inline-flex;align-items:center;gap:6px;color:#E8C48C;font-size:14.5px;font-weight:600;text-decoration:underline;text-underline-offset:4px">לעבודות נוספות <span aria-hidden="true">←</span></a>
+                  <a href="{{ g.more }}" style="margin-top:10px;display:inline-flex;align-items:center;gap:6px;color:#E8C48C;font-size:14.5px;font-weight:600;text-decoration:underline;text-underline-offset:4px">פרויקטים נוספים <span aria-hidden="true">←</span></a>
                 </sc-if>
                 <sc-if value="{{ g.hasProject }}" hint-placeholder-val="{{ false }}">
                   <button onClick="{{ g.onOpen }}" style="margin-top:12px;display:inline-flex;align-items:center;gap:8px;background:transparent;border:1px solid rgba(245,240,228,0.5);color:#F5F0E4;font-family:inherit;font-size:14.5px;font-weight:600;min-height:44px;padding:0 18px;border-radius:100px;cursor:pointer">פרטי הפרויקט</button>
@@ -442,12 +448,12 @@ header nav a:hover { color: #E8C48C !important; }
           </div>
         </sc-for>
       </div>
-      <div style="display:flex;justify-content:space-between;align-items:center;gap:14px 24px;flex-wrap:wrap;margin-top:clamp(1.75rem,4vh,2.5rem)">
-        <p style="color:#4B443A;font-size:16px;max-width:46ch">{{ galNote }}</p>
-        <button type="button" aria-pressed="{{ galLike.pressed }}" onClick="{{ galLike.onTap }}" style="display:inline-flex;align-items:center;gap:8px;min-height:44px;padding:0 18px;border-radius:100px;border:1px solid {{ galLike.bc }};background:{{ galLike.bg }};color:#211C16;font-family:inherit;font-size:14.5px;font-weight:600;cursor:pointer"><span aria-hidden="true" style="display:grid;place-items:center;width:18px;height:18px;border-radius:50%;border:1px solid {{ galLike.bc }};background:{{ galLike.dot }};color:#1B1712;font-size:11px">{{ galLike.mark }}</span>{{ galLike.label }}</button>
-        <a href="#lead" style="display:inline-flex;align-items:center;min-height:48px;padding:0 24px;border-radius:100px;background:#211C16;color:#F5F0E4;font-size:15.5px;font-weight:600;text-decoration:none" style-hover="background:#B4813C">בואו נתכנן את המרחב שלכם</a>
-        <a href="/projects" style="display:inline-flex;align-items:center;gap:8px;min-height:48px;padding:0 22px;border-radius:100px;border:1px solid rgba(33,28,22,0.3);color:#211C16;font-size:15px;font-weight:600;white-space:nowrap" style-hover="background:#211C16;color:#F5F0E4;border-color:#211C16">לכל הפרויקטים <span aria-hidden="true">←</span></a>
+      <div style="display:flex;flex-direction:column;align-items:center;text-align:center;gap:14px;margin-top:clamp(1.25rem,3vh,2rem)">
+        <p style="color:#4B443A;font-size:15.5px;max-width:46ch">{{ galNote }}</p>
+        <a href="#lead" style="display:inline-flex;align-items:center;justify-content:center;min-height:52px;padding:0 34px;border-radius:100px;background:#B4813C;color:#1B1712;font-size:16px;font-weight:600;text-decoration:none" style-hover="background:#C99752">תאמו שיחת ייעוץ</a>
+        <a href="/projects" style="display:inline-flex;align-items:center;gap:6px;min-height:44px;color:#6E4D1E;font-size:15px;font-weight:600;border-bottom:1px solid rgba(110,77,30,0.4)" style-hover="color:#211C16">לכל הפרויקטים <span aria-hidden="true">←</span></a>
       </div>
+
     </div>
   </section>
 
@@ -1524,8 +1530,9 @@ class Component extends DCLogic {
           [/מחיצ/, 'q=מחיצ'], [/בנייה קלה|חדר/, 'cat=envelope'], [/סגיר|חלונות|זכוכית/, 'cat=glass'], [/דק|ריצוף/, 'cat=deck'], [/מטבח|בר/, 'cat=envelope']
         ];
         const moreFor = t => { const m = MORE.find(x => x[0].test(t)); return m ? '/projects?' + m[1] : ''; };
-        return (galSrc ? galFix(galSrc) : galFix(this.glass)).map(g => { const more = moreFor(g.title); return Object.assign({}, g, { pk: PICK(g.title), more: more, hasMore: !!more }); });
+        const galList = (galSrc ? galFix(galSrc) : galFix(this.glass)); return galList.map(g => { const more = moreFor(g.title); const parts = String(g.body || '').split(' — '); return Object.assign({}, g, { pk: PICK(g.title), more: more, hasMore: !!more, sum: parts[0], rest: parts.slice(1).join(' — '), hasRest: parts.length > 1, of: String(galList.length).padStart(2, '0') }); });
       },
+      galEb: ({ shade: 'הצללה וקירוי', glass: 'סגירות', kitchen: 'מטבחי חוץ', deck: 'דקים וריצוף' })[this.state.galTab || 'shade'] || '',
       galNote: (GAL_TABS.find(t => t.id === (this.state.galTab || 'shade')) || GAL_TABS[0]).note,
       glass: [
         { num: '01', span: n ? 'span 1' : 'span 6', minH: n ? '280px' : '420px', titleSize: n ? '23px' : '30px', slotId: 'pg-g1', src: '/img/fast/lp/pg-g1.webp', title: 'סגירת זכוכית למרפסת', body: 'מערכות זכוכית בהזזה בפרופיל אלומיניום דק — המרפסת נשארת פתוחה לאור ולנוף, ומאפשרת שימוש נוח גם בחורף. הפתרון שאנחנו ממליצים עליו כשרוצים חלל סגור ומואר.' },
