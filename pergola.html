@@ -12,6 +12,8 @@ html, body { overflow-x: clip; max-width: 100%; }
   /* mobile: long stacks of cards become swipeable carousels (dots + auto-advance come from mobile-ux.js) */
   .stz-carousel { display: flex !important; flex-direction: row !important; overflow-x: auto; overflow-y: hidden; scroll-snap-type: x mandatory; gap: 14px !important; margin-inline: -4vw; padding: 4px 4vw 14px; scroll-padding-inline: 4vw; scrollbar-width: none; -webkit-overflow-scrolling: touch; overscroll-behavior-x: contain; }
   .stz-carousel::-webkit-scrollbar { display: none; }
+  #catalog .stz-carousel > div { grid-template-columns: 1fr !important; grid-template-rows: auto 1fr !important; }
+  #catalog .stz-carousel > div > div:first-child { min-height: 190px !important; }
   .stz-carousel > div { flex: 0 0 82% !important; max-width: 82%; scroll-snap-align: start; grid-column: auto !important; }
   /* mobile: the "4 questions" intro box comes before the questions; grid children may shrink so carousels never widen the page */
   .stz-faq-intro { order: -1; }
