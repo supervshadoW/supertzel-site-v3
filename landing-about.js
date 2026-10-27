@@ -61,7 +61,7 @@
       '<h2 style="font-size:clamp(28px,3.6vw,44px);letter-spacing:-0.02em;line-height:1.12">בית אחד לכל מעטפת החוץ</h2>' +
       '<p style="margin:16px 0 0;color:#4B443A;font-size:17px;line-height:1.6">סופר צל היא מעטפת מקצועית לתכנון יישומי, ביצוע ותיאום של פרויקטי חוץ, מהצללה וקירוי ועד דקים ובנייה קלה. הניסיון שלנו צמח מתוך שנים של עבודה מעשית בשטח.</p>' +
       '<ul class="ab-pts"><li>נקודת קשר אחת מהמדידה ועד ההתקנה</li><li>מפרט בכתב, רכיב אחרי רכיב, כדי שתוכלו להשוות בין הצעות</li><li>גוון, פרופיל וקו שמותאמים לבית ולמרחב, לא מקטלוג מוכן</li></ul>' +
-      '<button type="button" class="ab-env">ראו כמה עוד כולל מרחב החוץ <span aria-hidden="true">←</span></button>' +
+      '<button type="button" class="ab-env">ראו איך אפשר לשדרג את מרחב החוץ שלכם <span aria-hidden="true">←</span></button>' +
       '<div style="margin-top:26px"><a href="#contact" style="display:inline-flex;align-items:center;min-height:48px;padding:0 26px;border-radius:100px;background:#B4813C;color:#1B1712;font-size:16px;font-weight:600">תאמו שיחת ייעוץ</a></div></div>' +
       '<div class="ab-img"><img src="/img/fast/gallery/new-46-2.webp" alt="פרויקט בכפר סבא: פרגולת אלומיניום עם תאורה שקועה" loading="lazy" decoding="async"></div>' +
       '</div></div>';
