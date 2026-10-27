@@ -1712,7 +1712,7 @@ class Component extends DCLogic {
       fbUrl: this.props.facebookUrl || 'https://www.facebook.com/profile.php?id=100092952702392',
       igUrl: this.props.instagramUrl || 'https://www.instagram.com/super.tzel/',
       hasCount: !!this.state.ratingCount,
-      countText: this.state.ratingCount ? 'מתוך ' + this.state.ratingCount + ' ביקורות בגוגל' : 'דירוג ממוצע בגוגל',
+      countText: 'דירוג ממוצע בגוגל',
       reviewsUrl: this.state.reviewsUrl || 'https://share.google/h9gkVk0fzgS3ILbQ6',
       ...this.pathVals(n),
       hasReviews: false, // reviews section hidden on the home page by request (was: (this.state.reviews || []).length > 0)
