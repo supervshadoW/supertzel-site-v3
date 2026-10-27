@@ -50,6 +50,17 @@
     var p0 = parse(input.value);
     if (p0.code) sel.selectedIndex = indexOfCode(p0.code);
     input.parentNode.insertBefore(sel, input);
+    // phones: the code sits as a small "+972" box to the left of the number (same row) instead of a full extra field
+    var box = input.parentNode;
+    if (window.matchMedia && matchMedia('(max-width:760px)').matches && getComputedStyle(box).display === 'grid') {
+      box.style.gridTemplateColumns = '1fr 92px';
+      [].forEach.call(box.children, function (k) { if (k !== sel && k !== input) k.style.gridColumn = '1 / -1'; });
+      sel.style.gridColumn = '2'; sel.style.gridRow = '2'; input.style.gridColumn = '1'; input.style.gridRow = '2';
+      sel.style.padding = '12px 6px'; sel.style.textAlign = 'center'; sel.style.direction = 'ltr';
+      var shorten = function () { [].forEach.call(sel.options, function (o, j) { o.textContent = '+' + C[j][1] + (j === sel.selectedIndex ? '' : ' ' + C[j][0]); }); };
+      shorten(); sel.addEventListener('change', shorten); sel.addEventListener('blur', shorten);
+      sel.__stzShort = shorten;
+    }
     if (!input.getAttribute('aria-label')) input.setAttribute('aria-label', 'טלפון');
     input.style.direction = 'ltr';
     input.style.textAlign = 'left';
@@ -70,7 +81,7 @@
     };
     sel.addEventListener('change', function () { normalize(input, sel, true); input.__stzCheck(!!input.value); });
     input.addEventListener('blur', function () { normalize(input, sel); input.__stzCheck(!!input.value); });
-    input.addEventListener('input', function () { var p = parse(input.value); if (p.code) sel.selectedIndex = indexOfCode(p.code); });
+    input.addEventListener('input', function () { var p = parse(input.value); if (p.code) { sel.selectedIndex = indexOfCode(p.code); if (sel.__stzShort) sel.__stzShort(); } });
     // Enter / programmatic submit paths: normalise just before any click on a button in the same form area.
     document.addEventListener('pointerdown', function () { if (document.activeElement === input) normalize(input, sel); }, true);
   }
