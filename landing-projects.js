@@ -21,8 +21,8 @@
   function place(sec) {
     var why = document.getElementById('why');
     if (!rendered(why)) return false;
-    var rv = document.getElementById('reviews');
-    var anchor = rendered(rv) && rv.parentNode === why.parentNode ? rv : why;
+    var cat = document.getElementById('catalog');
+    var anchor = rendered(cat) && cat.parentNode === why.parentNode ? cat : why;
     if (anchor.nextElementSibling !== sec) anchor.parentNode.insertBefore(sec, anchor.nextSibling);
     return true;
   }
@@ -45,7 +45,7 @@
       '#projects .lp-card{position:relative;display:block;padding:0;border:0;border-radius:18px;overflow:hidden;aspect-ratio:4/3;cursor:pointer;background:#1B1712;font:inherit;text-align:start}' +
       '#projects .lp-card img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .5s ease}' +
       '#projects .lp-card:hover img{transform:scale(1.04)}' +
-      '#projects .lp-grid.lp-feat{display:flex;gap:10px;overflow-x:auto;scroll-snap-type:x proximity;scrollbar-width:none;padding-bottom:6px}#projects .lp-grid.lp-feat::-webkit-scrollbar{display:none}#projects .lp-feat .lp-card{flex:0 0 clamp(138px,24vw,190px);aspect-ratio:1/1!important;border-radius:16px!important;scroll-snap-align:start}#projects .lp-feat .lp-card span{font-size:12.5px!important;padding:34px 10px 10px!important;line-height:1.25}#projects .lp-feat .lp-card em,#projects .lp-feat .lp-card b{display:none!important}' +
+      '#projects .lp-grid.lp-feat{display:flex;gap:10px;overflow-x:auto;scroll-snap-type:x proximity;scrollbar-width:none;padding-bottom:6px}#projects .lp-grid.lp-feat::-webkit-scrollbar{display:none}#projects .lp-feat .lp-card{flex:0 0 clamp(190px,34vw,260px);aspect-ratio:4/5!important;border-radius:16px!important;scroll-snap-align:start}#projects .lp-feat .lp-card span{font-size:14.5px!important;padding:44px 12px 12px!important;line-height:1.3}#projects .lp-feat .lp-card em,#projects .lp-feat .lp-card b{display:none!important}' +
       '#projects .lp-grid.lp-feat.zz{grid-template-columns:repeat(3,1fr);gap:16px}#projects .lp-feat .lp-card{aspect-ratio:3/4;border-radius:22px}#projects .lp-feat .lp-card span{font-size:19px;padding:60px 18px 18px;line-height:1.25}#projects .lp-feat .lp-card em{display:block;margin-top:6px;font-style:normal;font-size:13.5px;font-weight:500;color:#E8C48C;line-height:1.35}#projects .lp-feat .lp-card b{position:absolute;top:12px;inset-inline-start:12px;background:rgba(27,23,18,.78);color:#E8C48C;font-size:12.5px;font-weight:600;padding:4px 12px;border-radius:100px}' +
       '@media (max-width:900px){#projects .lp-grid.lp-feat{margin-inline:-4vw;padding-inline:4vw;scroll-padding-inline:4vw}}' +
       '#projects .lp-card span{position:absolute;inset-inline:0;bottom:0;padding:34px 16px 14px;color:#fff;font-size:15.5px;font-weight:600;line-height:1.3;background:linear-gradient(0deg,rgba(17,14,11,.88),rgba(17,14,11,0))}' +
@@ -69,7 +69,7 @@
     sec.style.cssText = 'padding-block:0 clamp(1.5rem,4vh,3rem)';
     var html = '<div style="width:min(var(--stz-side,92%),var(--stz-max,1180px));margin-inline:auto">' +
       '<div style="display:inline-flex;align-items:center;gap:10px;color:#B4813C;font-size:14.5px;font-weight:600;margin-bottom:18px;white-space:nowrap"><span style="display:block;width:24px;height:1px;background:#B4813C"></span>פרויקטים שביצענו</div>' +
-      '<h2 style="font-size:clamp(28px,3.6vw,44px);letter-spacing:-0.02em;line-height:1.12;max-width:20ch">עוד פרויקטים מהשטח</h2>' +
+      '<h2 style="font-size:clamp(28px,3.6vw,44px);letter-spacing:-0.02em;line-height:1.12;max-width:20ch">פרויקטים שביצענו</h2>' +
       '<p style="margin:14px 0 clamp(1.25rem,3vh,2rem);color:#4B443A;font-size:17px;max-width:52ch">לחצו על פרויקט לפרטים ולתמונות נוספות.</p>' +
       '<div class="lp-grid lp-feat">';
     cards.forEach(function (c, i) {
