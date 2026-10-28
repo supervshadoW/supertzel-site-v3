@@ -1255,7 +1255,10 @@ class Component extends DCLogic {
         { label: 'אריג בגוון לבחירה', x: '82%', y: '30%' }
       ] });
     // The search ads sell aluminium pergolas: by default open on the aluminium pergola slide (the glass-closure slide stays first for ?s=closure).
-    if (!sv) { const ai = S.findIndex(x => x.k === 0); if (ai > 0) S.unshift(S.splice(ai, 1)[0]); }
+    // Per-topic ad landing: ?s=alu / electric / kitchen / wood opens on the matching slide (headline and photo), so each ad group lands on its own topic.
+    const topicK = { alu: 4, electric: 2, kitchen: 0, wood: 5 }[sv];
+    if (topicK !== undefined) { const ti = S.findIndex(x => x.k === topicK); if (ti > 0) S.unshift(S.splice(ti, 1)[0]); }
+    else if (!sv) { const ai = S.findIndex(x => x.k === 0); if (ai > 0) S.unshift(S.splice(ai, 1)[0]); }
     const ov = (this.state && this.state.pinOv) || {};
     return S.map((s, i) => ov[i] ? Object.assign({}, s, { pins: ov[i] }) : s);
   }
