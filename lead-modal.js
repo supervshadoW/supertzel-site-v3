@@ -136,8 +136,15 @@
     var TW = { 'בוקר': 'בוקר (8–12)', 'צהריים': 'צהריים (12–16)', 'אחה״צ': 'אחר הצהריים (16–19)' };
     whenW.appendChild(chipRow('באיזו שעה? <span style="font-weight:400;color:rgba(245,240,228,0.6)">בוקר 8–12 · צהריים 12–16 · אחה״צ 16–19</span>', ['בוקר', 'צהריים', 'אחה״צ'], function (v) { pTime = v ? TW[v] : ''; }, '1fr 1fr 1fr'));
     callW = el('div', 'display:none;gap:14px');
-    callW.appendChild(chipRow('באיזה יום נוח לדבר? <span style="font-weight:400;color:rgba(245,240,228,0.6)">(לא חובה)</span>', days, function (v) { pCallDay = v ? 'יום ' + v : ''; }, '1fr 1fr 1fr'));
-    callW.appendChild(chipRow('ובאיזו שעה? <span style="font-weight:400;color:rgba(245,240,228,0.6)">(עוזר לנו לחזור אליכם בזמן)</span>', ['בוקר', 'צהריים', 'אחר הצהריים', 'כל שעה'], function (v) { pCall = v; }, '1fr 1fr'));
+    callW.appendChild(chipRow('מתי נוח שנחזור אליכם? <span style="font-weight:400;color:rgba(245,240,228,0.6)">(לא חובה)</span>', days, function (v) { pCallDay = v ? 'יום ' + v : ''; }, '1fr 1fr 1fr'));
+    callW.appendChild(chipRow('ובאיזו שעה? <span style="font-weight:400;color:rgba(245,240,228,0.6)">(עוזר לנו לחזור אליכם בזמן)</span>', ['בוקר', 'צהריים', 'אחה״צ', 'כל שעה'], function (v) { pCall = v; }, '1fr 1fr'));
+    // phones: one compact block — days in a single swipe row, four time chips in one row, no project-type question (the form stays short)
+    callW.className = 'stz-call'; scopeW.className = 'stz-scope';
+    if (!document.getElementById('stz-call-css')) {
+      var cs = document.createElement('style'); cs.id = 'stz-call-css';
+      cs.textContent = '@media (max-width:700px){#stz-lead-root .stz-call{gap:8px!important}#stz-lead-root .stz-call>div:first-child>div:last-child{display:flex!important;flex-wrap:nowrap;overflow-x:auto;gap:6px;padding-bottom:2px}#stz-lead-root .stz-call>div:first-child button{flex:0 0 auto;min-width:68px;min-height:40px;font-size:13.5px}#stz-lead-root .stz-call>div:last-child>span{display:none}#stz-lead-root .stz-call>div:last-child>div{grid-template-columns:repeat(4,1fr)!important;gap:6px!important}#stz-lead-root .stz-call>div:last-child button{min-height:40px;padding:4px 2px;font-size:13px}#stz-lead-root .stz-scope{display:none!important}}';
+      document.head.appendChild(cs);
+    }
     form.appendChild(l1); form.appendChild(l2); form.appendChild(whenW); form.appendChild(callW); form.appendChild(scopeW); form.appendChild(err); form.appendChild(btn);
     form.appendChild(el('p', 'margin:0;font-size:12.5px;color:rgba(245,240,228,0.6);text-align:center;line-height:1.5', 'השארת פרטים מהווה הסכמה ליצירת קשר לצורך טיפול בפנייה זו בלבד. <a href="/legal#privacy" target="_blank" rel="noopener" style="color:#C99752">מדיניות הפרטיות</a>'));
     form.onsubmit = submit;
