@@ -1005,7 +1005,7 @@ class Component extends DCLogic {
     this.applyLook();
     this.onGalClick = e => { const a = e.target.closest && e.target.closest('[data-gal]'); if (a) this.setState({ galTab: a.getAttribute('data-gal') }); };
     document.addEventListener('click', this.onGalClick, true);
-    try { if (location.hash === '#glass' || new URLSearchParams(location.search).get('s') === 'glass') this.setState({ galTab: 'glass' }); } catch (e) {}
+    try { if (location.hash === '#glass' || new URLSearchParams(location.search).get('s') === 'glass') this.setState({ galTab: 'glass' }); const gt = new URLSearchParams(location.search).get('t'); if (['shade', 'glass', 'kitchen', 'deck'].indexOf(gt) > -1) this.setState({ galTab: gt }); } catch (e) {}
     setTimeout(() => {
       try {
         const q = new URLSearchParams(location.search).get('s') || location.hash.slice(1);
