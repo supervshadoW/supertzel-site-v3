@@ -86,7 +86,7 @@
     if (cur()[1] === '972' || n.charAt(0) === '0') n = n.replace(/^0+/, '');
     return '+' + cur()[1] + n;
   }
-  var hHead, whenW, callW, scopeW, pDay = '', pTime = '', pCall = '', mode = 'call';
+  var hHead, whenW, callW, scopeW, pDay = '', pTime = '', pCall = '', pCallDay = '', mode = 'call';
   function build() {
     root = el('div', S.back); root.id = 'stz-lead-root'; root.setAttribute('role', 'dialog'); root.setAttribute('aria-modal', 'true'); root.setAttribute('aria-label', 'תיאום שיחת ייעוץ');
     var card = el('div', S.card);
@@ -135,8 +135,9 @@
     whenW.appendChild(chipRow('באיזה יום נוח לכם?', days, function (v) { pDay = 'יום ' + v; }, '1fr 1fr 1fr'));
     var TW = { 'בוקר': 'בוקר (8–12)', 'צהריים': 'צהריים (12–16)', 'אחה״צ': 'אחר הצהריים (16–19)' };
     whenW.appendChild(chipRow('באיזו שעה? <span style="font-weight:400;color:rgba(245,240,228,0.6)">בוקר 8–12 · צהריים 12–16 · אחה״צ 16–19</span>', ['בוקר', 'צהריים', 'אחה״צ'], function (v) { pTime = v ? TW[v] : ''; }, '1fr 1fr 1fr'));
-    callW = el('div', 'display:none;gap:8px');
-    callW.appendChild(chipRow('מתי נוח לדבר? <span style="font-weight:400;color:rgba(245,240,228,0.6)">(לא חובה)</span>', ['בוקר', 'צהריים', 'אחר הצהריים', 'כל שעה'], function (v) { pCall = v; }, '1fr 1fr'));
+    callW = el('div', 'display:none;gap:14px');
+    callW.appendChild(chipRow('באיזה יום נוח לדבר? <span style="font-weight:400;color:rgba(245,240,228,0.6)">(לא חובה)</span>', days, function (v) { pCallDay = v ? 'יום ' + v : ''; }, '1fr 1fr 1fr'));
+    callW.appendChild(chipRow('ובאיזו שעה? <span style="font-weight:400;color:rgba(245,240,228,0.6)">(עוזר לנו לחזור אליכם בזמן)</span>', ['בוקר', 'צהריים', 'אחר הצהריים', 'כל שעה'], function (v) { pCall = v; }, '1fr 1fr'));
     form.appendChild(l1); form.appendChild(l2); form.appendChild(whenW); form.appendChild(callW); form.appendChild(scopeW); form.appendChild(err); form.appendChild(btn);
     form.appendChild(el('p', 'margin:0;font-size:12.5px;color:rgba(245,240,228,0.6);text-align:center;line-height:1.5', 'השארת פרטים מהווה הסכמה ליצירת קשר לצורך טיפול בפנייה זו בלבד. <a href="/legal#privacy" target="_blank" rel="noopener" style="color:#C99752">מדיניות הפרטיות</a>'));
     form.onsubmit = submit;
@@ -159,7 +160,7 @@
     var page = /pergola/.test(p) ? 'פרגולות והצללה' : /projects/.test(p) ? 'פרויקטים' : /legal/.test(p) ? 'מידע משפטי' : 'דף הבית';
     var msg = 'פנייה מהטופס הצף · ' + page + (note ? ' | ' + (/^מה מעניין/.test(note) ? '' : 'מה מתאר אותי: ') + note : '');
     var sc = window.stzLeadScope ? window.stzLeadScope() : ''; if (sc && mode !== 'meeting') msg += ' | סוג הפרויקט: ' + sc;
-    if (mode === 'meeting') msg = 'בקשת פגישת ייעוץ: ' + pDay + ', ' + pTime + ' | ' + msg; else if (pCall) msg += ' | נוח לדבר: ' + pCall;
+    if (mode === 'meeting') msg = 'בקשת פגישת ייעוץ: ' + pDay + ', ' + pTime + ' | ' + msg; else if (pCall || pCallDay) msg += ' | נוח לדבר: ' + [pCallDay, pCall].filter(Boolean).join(', ');
     var PK = picks(); if (PK.length) msg += ' | ' + PK.map(function (r) { return r.k + ': ' + r.v.join(', '); }).join(' | ');
     form.style.display = 'none'; done.style.display = 'grid'; try { done.querySelector('p').textContent = mode === 'meeting' ? 'נחזור אליכם בהקדם לאישור הפגישה.' : 'נחזור אליכם בהקדם לתיאום שיחת ייעוץ.'; } catch (x) {}
     var send = window.stzSendLead ? window.stzSendLead({ name: nm, phone: phone, solution: note || page, message: msg, source: (mode === 'meeting' ? 'meeting_' : 'modal_') + page }) : Promise.reject();
@@ -171,10 +172,10 @@
     mode = m === 'meeting' ? 'meeting' : 'call';
     var T = { k: hHead.querySelector('[data-h=k]'), t: hHead.querySelector('[data-h=t]'), s: hHead.querySelector('[data-h=s]') };
     if (mode === 'meeting') { T.k.textContent = 'פגישת ייעוץ ללא התחייבות'; T.t.textContent = 'בחרו יום ושעה — ונאשר מולכם'; T.s.textContent = 'נחזור אליכם בטלפון לאישור הפגישה והשעה המדויקת.'; btn.textContent = 'בקשת פגישה'; whenW.style.display = 'grid'; callW.style.display = 'none'; }
-    else { T.k.textContent = 'שיחת ייעוץ ללא התחייבות'; T.t.textContent = 'השאירו שם וטלפון — ונחזור אליכם'; T.s.textContent = ''; T.s.style.display = 'none'; btn.textContent = 'תאמו שיחת ייעוץ'; whenW.style.display = 'none'; callW.style.display = 'grid'; }
+    else { T.k.textContent = 'שיחת ייעוץ ללא התחייבות'; T.t.textContent = 'השאירו שם וטלפון, ונחזור אליכם בזמן שנוח לכם'; T.s.textContent = ''; T.s.style.display = 'none'; btn.textContent = 'תאמו שיחת ייעוץ'; whenW.style.display = 'none'; callW.style.display = 'grid'; }
     if (mode === 'meeting') T.s.style.display = 'block';
     scopeW.style.display = mode === 'meeting' ? 'none' : 'grid';
-    pDay = ''; pTime = ''; pCall = '';
+    pDay = ''; pTime = ''; pCall = ''; pCallDay = '';
     [whenW, callW].forEach(function (w) { w.querySelectorAll('button').forEach(function (x) { x.setAttribute('aria-pressed', 'false'); x.style.background = 'transparent'; x.style.color = '#F5F0E4'; x.style.borderColor = 'rgba(245,240,228,0.25)'; }); });
   }
   function open(src, m) {

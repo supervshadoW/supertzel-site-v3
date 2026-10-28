@@ -142,7 +142,7 @@ main :is(p, li, h1, h2, h3) :is(p, li, h1, h2, h3) { zoom: 1; }
 <template id="__bundler_thumbnail"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200"><rect width="200" height="200" fill="#1B1712"></rect><rect x="40" y="76" width="120" height="12" rx="4" fill="#B4813C"></rect><rect x="52" y="96" width="8" height="52" fill="#B4813C"></rect><rect x="140" y="96" width="8" height="52" fill="#B4813C"></rect><rect x="40" y="52" width="120" height="8" rx="4" fill="#E8C48C"></rect></svg></template>
 <link rel="preload" as="image" href="/img/fast/lp/pg-hero.webp" fetchpriority="high">
 <script src="/lead.js?v=9"></script>
-<script src="/lead-modal.js?v=15"></script>
+<script src="/lead-modal.js?v=16"></script>
 <script src="/phone-cc.js?v=6" defer></script>
 <script src="/mobile-ux.js?v=16" defer></script>
 <script src="/landing-mode.js?v=4" defer></script>
@@ -239,10 +239,10 @@ header nav a:hover { color: #E8C48C !important; }
         <a href="#process" style="font-size:15px;white-space:nowrap">איך זה עובד</a>
         <a href="#elephant" style="font-size:15px;white-space:nowrap">שאלות</a>
       </nav>
-      <a href="#lead" style="background:#B4813C;color:#1B1712;padding:12px 26px;font-size:15px;font-weight:600;border-radius:100px;white-space:nowrap;transition:background 0.2s ease,transform 0.18s ease" style-hover="background:#C99752;color:#1B1712" style-active="transform:scale(0.96)">תיאום פגישת ייעוץ</a>
+      <a href="#lead" style="background:#B4813C;color:#1B1712;padding:12px 26px;font-size:15px;font-weight:600;border-radius:100px;white-space:nowrap;transition:background 0.2s ease,transform 0.18s ease" style-hover="background:#C99752;color:#1B1712" style-active="transform:scale(0.96)">תיאום פגישה</a>
       </sc-if>
       <sc-if value="{{ navNarrow }}" hint-placeholder-val="{{ false }}">
-      <a href="#lead" style="display:inline-flex;align-items:center;min-height:44px;padding:0 20px;background:#B4813C;border-radius:100px;font-size:15px;font-weight:600;white-space:nowrap;color:#1B1712;box-shadow:0 4px 16px rgba(0,0,0,0.25)" style-hover="background:#C99752;color:#1B1712">תיאום פגישת ייעוץ</a>
+      <a href="#lead" style="display:inline-flex;align-items:center;min-height:44px;padding:0 20px;background:#B4813C;border-radius:100px;font-size:15px;font-weight:600;white-space:nowrap;color:#1B1712;box-shadow:0 4px 16px rgba(0,0,0,0.25)" style-hover="background:#C99752;color:#1B1712">תיאום פגישה</a>
       <button type="button" aria-label="תפריט ניווט" aria-expanded="{{ menuOpenA }}" onClick="{{ menuToggle }}" style="display:flex;flex-direction:column;align-items:center;justify-content:center;gap:5px;width:44px;height:44px;border:1px solid rgba(245,240,228,0.5);border-radius:100px;background:rgba(27,23,18,0.25);cursor:pointer;padding:0"><span style="display:block;width:18px;height:1.5px;background:#F5F0E4;border-radius:2px"></span><span style="display:block;width:18px;height:1.5px;background:#F5F0E4;border-radius:2px"></span><span style="display:block;width:12px;height:1.5px;background:#F5F0E4;border-radius:2px;align-self:center"></span></button>
       </sc-if>
     </div>
@@ -539,7 +539,7 @@ header nav a:hover { color: #E8C48C !important; }
           </sc-for>
         </div>
         <div class="stz-proc-cta" style="display:flex;gap:12px;flex-wrap:wrap;margin-top:clamp(1.75rem,4vh,2.5rem)">
-          <a href="#lead" style="flex:{{ procBtnFlex }};text-align:center;background:#B4813C;color:#1B1712;padding:15px 32px;font-size:16px;font-weight:600;border-radius:100px" style-hover="background:#C99752;color:#1B1712">לתיאום פגישת ייעוץ</a>
+          <a href="#lead" style="flex:{{ procBtnFlex }};text-align:center;background:#B4813C;color:#1B1712;padding:15px 32px;font-size:16px;font-weight:600;border-radius:100px" style-hover="background:#C99752;color:#1B1712">לתיאום שיחת ייעוץ</a>
           <a href="{{ waHref }}" style="flex:{{ procBtnFlex }};text-align:center;color:#F5F0E4;padding:15px 28px;font-size:16px;border:1px solid rgba(245,240,228,0.4);border-radius:100px" style-hover="background:rgba(245,240,228,0.08);border-color:#F5F0E4;color:#F5F0E4">שליחת הודעה בוואטסאפ</a>
         </div>
       </div>
@@ -1581,7 +1581,7 @@ class Component extends DCLogic {
       fabCtaH: n ? '52px' : '62px', fabCtaPad: n ? '12px' : '26px', fabCtaFs: n ? '15px' : '16.5px',
       // phones: one full-width bar with labelled buttons (meeting · call · WhatsApp); desktop keeps the round icons
       fabRight: n ? '12px' : 'auto', fabCtaFlex: n ? '1 1 auto' : '0 0 auto', fabIconD: n ? 'none' : 'block',
-      fabCtaTxt: n ? 'קביעת פגישה' : 'תיאום פגישת ייעוץ', fabLblD: n ? 'inline' : 'none',
+      fabCtaTxt: 'לתיאום שיחת ייעוץ', fabLblD: n ? 'inline' : 'none',
       fabDotPad: n ? '14px' : '0', fabCallIc: n ? '20' : '27', fabWaIc: n ? '24' : '32',
       fabOp: this.state.pastHero ? '1' : '0',
       fabPe: this.state.pastHero ? 'auto' : 'none',
