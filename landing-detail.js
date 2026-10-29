@@ -30,7 +30,7 @@
     if (info.kw) kws = info.kw;
     var scored = [];
     list.forEach(function (p) {
-      if (!p.photos || !p.photos.length) return;
+      if (!p.photos || !p.photos.length || /משרד|מחיצות|מפעל/.test(p.title)) return; // home-owner page: no office or factory partitions
       if (info.cat && p.cat !== info.cat && !(info.cat === 'shade' && /שילוב|מעוצב/.test(title) && p.cat === 'envelope')) return;
       var hay = (p.title + ' ' + (p.desc || '')), s = 0;
       if (kws) kws.forEach(function (k) { if (hay.indexOf(k) > -1) s++; });
