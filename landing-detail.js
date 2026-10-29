@@ -103,12 +103,13 @@
     var img = card.querySelector('img'), info = tabInfo(), shots = pick(title, info);
     if (!shots.length && img) shots = [{ src: img.getAttribute('src'), cap: title }];
     var catKey = { glass: 'glass', deck: 'deck', kitchen: 'envelope', shade: 'shade' }[info.tab] || 'shade';
+    window.__stzLastItem = title;
     root.innerHTML =
       '<div class="dt-card"><button type="button" class="dt-x" aria-label="סגירה">&times;</button>' +
       '<div class="dt-eb">' + esc(ebT) + '</div><h3>' + esc(title) + '</h3>' +
       (sum ? '<p class="dt-p">' + esc(sum.trim()) + '</p>' : '') + (rest ? '<p class="dt-p">' + esc(rest.trim()) + '</p>' : '') +
       (shots.length ? '<div class="dt-h">דוגמאות מפרויקטים שביצענו</div><div class="dt-row">' + shots.map(function (s) { return '<figure><img src="' + esc(s.src) + '" alt="' + esc(s.cap || title) + '" loading="lazy" decoding="async">' + (s.cap ? '<figcaption>' + esc(s.cap) + '</figcaption>' : '') + '</figure>'; }).join('') + '</div>' : '') +
-      '<div class="dt-cta"><button type="button" class="dt-btn" data-lead-open>לתיאום שיחת ייעוץ</button><a class="dt-lnk" href="/projects?cat=' + catKey + '">לכל הפרויקטים בקטגוריה ←</a></div></div>';
+      '<div class="dt-cta"><button type="button" class="dt-btn" data-lead-open>לתיאום שיחת ייעוץ</button><a class="dt-lnk" href="https://wa.me/972559958231" target="_blank" rel="noopener">שלחו לנו בוואטסאפ</a><a class="dt-lnk" href="/projects?cat=' + catKey + '">לכל הפרויקטים בקטגוריה ←</a></div></div>';
     root.querySelector('.dt-btn').addEventListener('click', function () { setTimeout(close, 0); });
     root.classList.add('on'); document.documentElement.classList.add('stz-dt-open');
     root.querySelector('.dt-card').scrollTop = 0;
@@ -124,6 +125,22 @@
   document.addEventListener('keydown', function (e) {
     if ((e.key === 'Enter' || e.key === ' ') && e.target && e.target.classList && e.target.classList.contains('stz-gcard') && e.target.closest('#catalog')) { e.preventDefault(); open(e.target); }
   });
+
+  // ---- context for the floating form and for WhatsApp: what the visitor is interested in, most specific first
+  var TOPIC = { alu: 'פרגולת אלומיניום', electric: 'פרגולה חשמלית', wood: 'פרגולת עץ או פרגולה מיוחדת', closure: 'סגירת חורף ומרפסת בזכוכית', kitchen: 'מטבח חוץ ובר', awning: 'סוכך זרועות' };
+  function entryTopic() { var m = (location.search.match(/[?&]s=(\w+)/) || [])[1]; return TOPIC[m] || ''; }
+  function pickedItems() { var n = (window.stzLeadNote || '').replace(/^מעניין אותי:\s*/, '').trim(); return /^מה מתאר/.test(n) ? '' : n; }
+  window.stzLeadContext = function () { return pickedItems() || window.__stzLastItem || entryTopic() || ''; };
+  // WhatsApp text that follows the button: inside an open sheet or a catalog card = that item; anywhere else = selected items, last viewed item or the ad topic
+  window.stzWaText = function (el) {
+    var ctx = '';
+    try {
+      if (el.closest && el.closest('#stz-dt')) ctx = window.__stzLastItem || '';
+      else { var card = el.closest && el.closest('#catalog .stz-gcard'); if (card) { var h = card.querySelector('h3'); ctx = h ? h.textContent.replace(/\s*[+▾]\s*$/, '').trim() : ''; } }
+    } catch (e) {}
+    ctx = ctx || window.stzLeadContext();
+    return ctx ? 'היי, הגעתי מהאתר ואשמח לשמוע על ' + ctx + ' ולתאם ייעוץ קצר.' : '';
+  };
 
   // ---- always-visible "add to my enquiry" tick on every catalog card (it drives the hidden toggle inside the card, so the choice is sent with the enquiry)
   var pcss = document.createElement('style');

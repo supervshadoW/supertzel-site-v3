@@ -168,6 +168,11 @@
     if (h.indexOf('wa.me') > -1 || h.indexOf('api.whatsapp.com') > -1 || h.indexOf('whatsapp.com/send') > -1) {
       track('whatsapp_click', { source: location.pathname });
       if (isLanding()) { try { gtag('event', 'conversion', { send_to: WA_CONVERSION, value: 3.0, currency: 'ILS' }); } catch (x) {} }
+      // the message follows the button that was pressed (the page supplies the text: open item, selected items or ad topic)
+      try {
+        var wt = window.stzWaText && window.stzWaText(el), hh = el.getAttribute('href') || '';
+        if (wt) el.setAttribute('href', /[?&]text=/.test(hh) ? hh.replace(/([?&]text=)[^&#]*/, '$1' + encodeURIComponent(wt)) : hh + (hh.indexOf('?') > -1 ? '&' : '?') + 'text=' + encodeURIComponent(wt));
+      } catch (x) {}
       adLead(el);
     } else if (h.indexOf('tel:') === 0) {
       track('contact_call', { source: location.pathname });

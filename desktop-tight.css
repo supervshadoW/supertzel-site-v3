@@ -1,0 +1,11 @@
+/* Desktop only: tighter vertical rhythm (sections, headings, tab rows). Phones are not touched. */
+@media (min-width: 901px) {
+  #catalog, #projects, #reviews, #process, #about, #elephant, #contact, #sun,
+  #why, #scope, #services, #fit, #faq { padding-block: clamp(1.75rem, 4.5vh, 3rem) !important; }
+  #catalog [role="tablist"] { margin-bottom: 1rem !important; padding-bottom: .85rem !important; }
+  main section div[style*="margin-bottom:24px"], section div[style*="margin-bottom:24px"] { margin-bottom: 12px !important; }
+  section div[style*="margin-bottom:18px"] { margin-bottom: 10px !important; }
+  section div[style*="margin-bottom:clamp(1.75rem,4vh,2.5rem)"] { margin-bottom: 1rem !important; }
+  section div[style*="margin-bottom:clamp(2rem,5vh,3.5rem)"], section div[style*="margin-bottom:clamp(2.5rem,6vh,4rem)"] { margin-bottom: 1.25rem !important; }
+  section h2 { margin-bottom: 0; }
+}
