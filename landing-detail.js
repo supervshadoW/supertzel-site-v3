@@ -124,4 +124,70 @@
   document.addEventListener('keydown', function (e) {
     if ((e.key === 'Enter' || e.key === ' ') && e.target && e.target.classList && e.target.classList.contains('stz-gcard') && e.target.closest('#catalog')) { e.preventDefault(); open(e.target); }
   });
+
+  // ---- always-visible "add to my enquiry" tick on every catalog card (it drives the hidden toggle inside the card, so the choice is sent with the enquiry)
+  var pcss = document.createElement('style');
+  pcss.textContent =
+    '#catalog .stz-gcard .stz-pick{position:absolute;top:10px;inset-inline-end:10px;z-index:5;display:grid;place-items:center;width:44px;height:44px;border-radius:50%;border:1.5px solid rgba(245,240,228,.85);background:rgba(27,23,18,.55);color:#F5F0E4;font:inherit;font-size:24px;line-height:1;cursor:pointer;backdrop-filter:blur(3px);transition:background .2s,border-color .2s,transform .15s}' +
+    '#catalog .stz-gcard .stz-pick[aria-pressed=true]{background:#B4813C;border-color:#B4813C;color:#1B1712;font-size:22px;font-weight:700}' +
+    '#catalog .stz-gcard .stz-pick:active{transform:scale(.92)}' +
+    '#catalog .stz-gcard .stz-pick-t{position:absolute;top:18px;inset-inline-end:60px;z-index:5;padding:3px 10px;border-radius:100px;background:rgba(27,23,18,.7);color:#E8C48C;font-size:12.5px;font-weight:600;pointer-events:none;opacity:0;transition:opacity .2s}' +
+    '#catalog .stz-gcard .stz-pick[aria-pressed=true]+.stz-pick-t{opacity:1}';
+  document.head.appendChild(pcss);
+  function hiddenPk(card) { return card.querySelector('.stz-gmore button[aria-pressed]'); }
+  function syncPicks() {
+    [].forEach.call(document.querySelectorAll('#catalog .stz-gcard'), function (card) {
+      var hp = hiddenPk(card), b = card.querySelector('.stz-pick');
+      if (!hp) { if (b) { b.remove(); var t0 = card.querySelector('.stz-pick-t'); if (t0) t0.remove(); } return; }
+      if (!b) {
+        b = document.createElement('button'); b.type = 'button'; b.className = 'stz-pick'; b.setAttribute('aria-label', 'הוסיפו לפנייה');
+        var t = document.createElement('span'); t.className = 'stz-pick-t'; t.textContent = 'נוסף לפנייה';
+        card.appendChild(b); card.appendChild(t);
+      }
+      var on = hp.getAttribute('aria-pressed') === 'true';
+      b.setAttribute('aria-pressed', on ? 'true' : 'false'); b.textContent = on ? '✓' : '+';
+    });
+  }
+  document.addEventListener('click', function (e) {
+    var b = e.target.closest && e.target.closest('#catalog .stz-pick');
+    if (!b) return;
+    e.stopPropagation(); e.preventDefault();
+    var hp = hiddenPk(b.closest('.stz-gcard')); if (hp) hp.click();
+    setTimeout(syncPicks, 60);
+  }, true);
+  var pk = 0;
+  (function wait() {
+    var cat = document.getElementById('catalog');
+    if (cat && !cat.closest('x-dc')) {
+      syncPicks();
+      new MutationObserver(function () { clearTimeout(pk); pk = setTimeout(syncPicks, 80); }).observe(cat, { childList: true, subtree: true, attributes: true, attributeFilter: ['aria-pressed'] });
+    } else setTimeout(wait, 400);
+  })();
+
+  // ---- slim, inviting simulator strip right under the projects (the full banner stays further down)
+  var scss = document.createElement('style');
+  scss.textContent =
+    '#sun-teaser{width:min(var(--stz-side,92%),var(--stz-max,1180px));margin:0 auto;padding-block:6px}' +
+    '#sun-teaser button{display:flex;align-items:center;gap:14px;width:100%;min-height:64px;padding:10px 18px;border:0;border-radius:100px;background:#1B1712;color:#F5F0E4;font:inherit;cursor:pointer;text-align:start;box-shadow:0 14px 30px -20px rgba(33,28,22,.6)}' +
+    '#sun-teaser .st-dot{flex:none;width:28px;height:28px;border-radius:50%;background:#E8B45C;box-shadow:0 0 0 6px rgba(232,180,92,.18),0 0 26px rgba(232,180,92,.55);animation:st-pulse 2.4s ease-in-out infinite}' +
+    '#sun-teaser .st-t{flex:1 1 auto;min-width:0;font-size:15.5px;font-weight:600;line-height:1.3}#sun-teaser .st-t small{display:block;font-size:13px;font-weight:400;color:rgba(245,240,228,.75)}' +
+    '#sun-teaser .st-go{flex:none;min-height:40px;padding:0 18px;border-radius:100px;background:#B4813C;color:#1B1712;font-size:14.5px;font-weight:600;display:inline-flex;align-items:center}' +
+    '@keyframes st-pulse{0%,100%{box-shadow:0 0 0 6px rgba(232,180,92,.18),0 0 26px rgba(232,180,92,.55)}50%{box-shadow:0 0 0 12px rgba(232,180,92,.08),0 0 38px rgba(232,180,92,.8)}}' +
+    '@media (prefers-reduced-motion:reduce){#sun-teaser .st-dot{animation:none}}' +
+    '@media (max-width:520px){#sun-teaser .st-go{padding:0 12px;font-size:13.5px}#sun-teaser .st-t small{display:none}}';
+  document.head.appendChild(scss);
+  var st = 0;
+  (function placeTeaser() {
+    var pr = document.getElementById('projects'), card = document.querySelector('#sun .stz-sun-card');
+    if (pr && !pr.closest('x-dc') && card) {
+      var tz = document.getElementById('sun-teaser');
+      if (!tz) {
+        tz = document.createElement('div'); tz.id = 'sun-teaser';
+        tz.innerHTML = '<button type="button" aria-label="פתחו את סימולטור השמש"><span class="st-dot" aria-hidden="true"></span><span class="st-t">איך השמש נופלת אצלכם בשטח?<small>שחקו עם כיוון, עונה ושעה, עם פרגולה ובלי</small></span><span class="st-go">נסו את הסימולטור</span></button>';
+        tz.querySelector('button').addEventListener('click', function () { var c = document.querySelector('#sun .stz-sun-card'); if (c) c.click(); });
+      }
+      if (pr.nextElementSibling !== tz) pr.parentNode.insertBefore(tz, pr.nextSibling);
+    }
+    if (++st < 40) setTimeout(placeTeaser, st < 20 ? 500 : 1500);
+  })();
 })();
