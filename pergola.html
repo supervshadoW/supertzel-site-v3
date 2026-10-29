@@ -370,14 +370,14 @@ header nav a:hover { color: #E8C48C !important; }
         <span>פרגולות אלומיניום</span><span style="color:#C99752">•</span>
         <span>פרגולות תריס חשמליות</span><span style="color:#C99752">•</span>
         <span>פרגולות עץ</span><span style="color:#C99752">•</span>
-        <span>סוככים וגגונים</span><span style="color:#C99752">•</span>
+        <span>סוככים קבועים</span><span style="color:#C99752">•</span>
         <span>רשתות צל מעוצבות</span><span style="color:#C99752">•</span>
       </span>
       <span style="display:inline-flex;align-items:center;gap:34px;padding:0 17px;font-size:20px;font-weight:500" aria-hidden="true">
         <span>פרגולות אלומיניום</span><span style="color:#C99752">•</span>
         <span>פרגולות תריס חשמליות</span><span style="color:#C99752">•</span>
         <span>פרגולות עץ</span><span style="color:#C99752">•</span>
-        <span>סוככים וגגונים</span><span style="color:#C99752">•</span>
+        <span>סוככים קבועים</span><span style="color:#C99752">•</span>
         <span>רשתות צל מעוצבות</span><span style="color:#C99752">•</span>
       </span>
     </div>
@@ -750,7 +750,7 @@ header nav a:hover { color: #E8C48C !important; }
               <option value="alu" style="color:#211C16">פרגולת אלומיניום</option>
               <option value="louver" style="color:#211C16">פרגולת תריס חשמלית</option>
               <option value="wood" style="color:#211C16">פרגולת עץ</option>
-              <option value="awning" style="color:#211C16">סוכך, גגון או רשת צל</option>
+              <option value="awning" style="color:#211C16">סוכך או רשת צל</option>
               <option value="full" style="color:#211C16">מעטפת חוץ רחבה יותר</option>
               <option value="other" style="color:#211C16">עדיין בודקים אפשרויות</option>
             </select>
@@ -961,7 +961,6 @@ const LIGHT_SUNROOM = {
 
 class Component extends DCLogic {
   revsFallback = [
-    { text: 'אני שמחה להמליץ ב-ח-ו-ם על איוון, לא רק בגלל שהוא איש ישר, אמין, מקצועי ונעים, אלא בגלל שלקח לי יותר משנה למצוא איש כמוהו לעבודה שרציתי. המחירים היו בשמיים והדרישות שלי היו לא קלות במיוחד. איוון הבין את הצרכים שלי מהרגע הראשון ועשה בול את מה שהבטיח ותיאר. אין מה להמשיך לחפש כי עוד איש כמוהו לא מצאתי, וחיפשתי המון. הבית שלנו משמש כמרכז תרבות ואנשים רבים מגיעים כך שהיה חשוב לי שיהיה חזק, יפה ומרחף. איוון הגשים את זה.', meta: 'Tamar Melzer Krymolowski' },
     { text: 'איוון התקין לי 2 פרגולות במרפסת ובמרפסת שרות בכל התהליך איוון היה שרותי מאוד, הסביר וייעץ. עבודה מקצועית והתוצאה הייתה בדיוק כמו שתיכננו. מומלץ בחום.', meta: 'Jack Mayer' },
     { text: 'עבודה מקצועית , צוות אדיב , עובדים יעיל ועומדים בזמנים שמציבים . רב תודות', meta: 'GalariSevenTTV' },
   ];
@@ -1413,7 +1412,7 @@ class Component extends DCLogic {
       { num: '03', span: n ? 'span 1' : 'span 2', inner: '1fr', minH: n ? '240px' : '280px', titleSize: n ? '21px' : '22px', slotId: 'pg-3', src: '/img/fast/w/pergola-wood-slats.webp', title: 'פרגולות עץ וגוון דמוי עץ', body: 'פרגולת עץ טבעי, או אלומיניום בגוון דמוי עץ — מראה חם שמשתלב בבית ובגינה, עם אפשרויות גימור לפי הטעם והשימוש.' },
       { num: '04', span: n ? 'span 1' : 'span 2', inner: '1fr', minH: n ? '240px' : '280px', titleSize: n ? '21px' : '22px', slotId: 'pg-4', src: '/img/fast/w/pg4-wood-kitchen.webp', title: 'פרגולות מיוחדות ומעוצבות', body: 'פרגולות בעיצוב מיוחד: שילובי עץ ואלומיניום, במבוק, גוונים ופרופילים שונים — וגם סגירת זכוכית, מטבח חוץ, גדר או דק כחלק מאותו פרויקט.' },
       { num: '05', span: n ? 'span 1' : 'span 2', inner: '1fr', minH: n ? '240px' : '280px', titleSize: n ? '21px' : '22px', slotId: 'pg-5', src: '/img/fast/w/awning-leumi.webp', title: 'סוככי זרועות חשמליים וידניים', body: 'פתיחה וסגירה לפי הצורך — לחזיתות בתים, למרפסות ולויטרינות עסקים, באריגים וגוונים לבחירה.' },
-      { num: '06', span: n ? 'span 1' : 'span 3', inner: '1fr', minH: n ? '250px' : '340px', titleSize: n ? '22px' : '27px', slotId: 'pg-7', src: '/img/fast/w/pg7-wave-awning.webp', title: 'סוככים וגגונים קבועים', body: 'סוככים גליים וגגונים קבועים לפתחים, לחלונות ולכניסות — באריג או בקירוי קשיח, להפחתת חשיפה לשמש.' },
+      { num: '06', span: n ? 'span 1' : 'span 3', inner: '1fr', minH: n ? '250px' : '340px', titleSize: n ? '22px' : '27px', slotId: 'pg-7', src: '/img/fast/w/pg7-wave-awning.webp', title: 'סוככים קבועים', body: 'סוככים גליים קבועים לפתחים, לחלונות ולכניסות — באריג או בקירוי קשיח, להפחתת חשיפה לשמש.' },
       { num: '07', span: n ? 'span 1' : 'span 3', inner: '1fr', minH: n ? '250px' : '340px', titleSize: n ? '22px' : '27px', slotId: 'pg-6', src: '/img/fast/lp/pg-6-hq.webp', title: 'רשתות צל ומפרשי צל', body: 'הצללה קלה ואוורירית למרחבים פתוחים — תכנון יישומי צורני לגינות, למרחבי חוץ ולשטחים ציבוריים.' }
     ];
     const galPick = this.state.galTab || 'shade';
