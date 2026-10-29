@@ -392,7 +392,7 @@ footer a,footer button{display:inline-flex;align-items:center;min-height:32px}
                     <span style="display:flex;align-items:baseline;gap:10px;flex-wrap:wrap"><span style="font-size:clamp(18px,1.9vw,20px);font-weight:600;line-height:1.25">{{ k.title }}</span><sc-if value="{{ k.full }}" hint-placeholder-val="{{ false }}"><span style="color:#8A5F24;font-size:12.5px;font-weight:600;letter-spacing:0.04em;white-space:nowrap">המבוקש ביותר</span></sc-if></span>
                     <span style="color:#4B443A;font-size:14.5px;line-height:1.45">{{ k.body }}</span>
                   </span>
-                  <span aria-hidden="true" style="display:flex;align-items:center;justify-content:center;width:34px;height:34px;border-radius:100px;border:1px solid {{ k.signBc }};background:{{ k.signBg }};color:{{ k.signFg }};font-size:17px;font-weight:300;line-height:1;transform:rotate({{ k.signRot }});transition:transform 0.35s ease,background 0.25s">+</span>
+                  <span aria-hidden="true" style="display:flex;align-items:center;justify-content:center;width:34px;height:34px;border-radius:100px;border:1px solid {{ k.signBc }};background:{{ k.signBg }};color:{{ k.signFg }};font-size:17px;font-weight:300;line-height:1;transform:rotate({{ k.signRot }});transition:transform 0.35s ease,background 0.25s">{{ k.signMark }}</span>
                 </button>
                 <div style="overflow:hidden;max-height:{{ k.revealH }};opacity:{{ k.revealOp }};transition:max-height 0.45s cubic-bezier(0.2,0.7,0.2,1),opacity 0.3s ease">
                   <ul style="list-style:none;padding:0 36px 18px 0;margin:0;display:grid;gap:8px">
@@ -766,7 +766,7 @@ footer a,footer button{display:inline-flex;align-items:center;min-height:32px}
             <button type="button" onClick="{{ fq0Toggle }}" aria-expanded="{{ fq0Exp }}" style="width:100%;display:grid;grid-template-columns:36px minmax(0,1fr) 28px;gap:14px;align-items:center;background:transparent;border:0;padding:18px 0;text-align:right;cursor:pointer;color:#211C16;font:inherit">
               <span style="font-size:13px;letter-spacing:0.1em;color:#8F6326">01</span>
               <span style="font-size:clamp(17px,1.8vw,20px);font-weight:600;line-height:1.3">{{ fqQ0 }}</span>
-              <span aria-hidden="true" style="display:grid;place-items:center;width:28px;height:28px;border-radius:50%;border:1px solid rgba(33,28,22,0.2);font-size:17px;line-height:1;color:#8F6326;transform:rotate({{ fq0Rot }});transition:transform 0.25s">+</span>
+              <span aria-hidden="true" style="display:grid;place-items:center;width:28px;height:28px;border-radius:50%;border:1px solid rgba(33,28,22,0.2);font-size:17px;line-height:1;color:#8F6326;transform:rotate({{ fq0Rot }});transition:transform 0.25s">▾</span>
             </button>
             <sc-if value="{{ fq0Open }}" hint-placeholder-val="{{ true }}">
               <p style="color:#4B443A;font-size:15.5px;line-height:1.6;padding:0 50px 20px 0;max-width:58ch">{{ fqA0 }}</p>
@@ -776,7 +776,7 @@ footer a,footer button{display:inline-flex;align-items:center;min-height:32px}
             <button type="button" onClick="{{ fq1Toggle }}" aria-expanded="{{ fq1Exp }}" style="width:100%;display:grid;grid-template-columns:36px minmax(0,1fr) 28px;gap:14px;align-items:center;background:transparent;border:0;padding:18px 0;text-align:right;cursor:pointer;color:#211C16;font:inherit">
               <span style="font-size:13px;letter-spacing:0.1em;color:#8F6326">02</span>
               <span style="font-size:clamp(17px,1.8vw,20px);font-weight:600;line-height:1.3">{{ fqQ1 }}</span>
-              <span aria-hidden="true" style="display:grid;place-items:center;width:28px;height:28px;border-radius:50%;border:1px solid rgba(33,28,22,0.2);font-size:17px;line-height:1;color:#8F6326;transform:rotate({{ fq1Rot }});transition:transform 0.25s">+</span>
+              <span aria-hidden="true" style="display:grid;place-items:center;width:28px;height:28px;border-radius:50%;border:1px solid rgba(33,28,22,0.2);font-size:17px;line-height:1;color:#8F6326;transform:rotate({{ fq1Rot }});transition:transform 0.25s">▾</span>
             </button>
             <sc-if value="{{ fq1Open }}" hint-placeholder-val="{{ false }}">
               <p style="color:#4B443A;font-size:15.5px;line-height:1.6;padding:0 50px 20px 0;max-width:58ch">{{ fqA1 }}</p>
@@ -786,7 +786,7 @@ footer a,footer button{display:inline-flex;align-items:center;min-height:32px}
             <button type="button" onClick="{{ fq2Toggle }}" aria-expanded="{{ fq2Exp }}" style="width:100%;display:grid;grid-template-columns:36px minmax(0,1fr) 28px;gap:14px;align-items:center;background:transparent;border:0;padding:18px 0;text-align:right;cursor:pointer;color:#211C16;font:inherit">
               <span style="font-size:13px;letter-spacing:0.1em;color:#8F6326">03</span>
               <span style="font-size:clamp(17px,1.8vw,20px);font-weight:600;line-height:1.3">{{ fqQ2 }}</span>
-              <span aria-hidden="true" style="display:grid;place-items:center;width:28px;height:28px;border-radius:50%;border:1px solid rgba(33,28,22,0.2);font-size:17px;line-height:1;color:#8F6326;transform:rotate({{ fq2Rot }});transition:transform 0.25s">+</span>
+              <span aria-hidden="true" style="display:grid;place-items:center;width:28px;height:28px;border-radius:50%;border:1px solid rgba(33,28,22,0.2);font-size:17px;line-height:1;color:#8F6326;transform:rotate({{ fq2Rot }});transition:transform 0.25s">▾</span>
             </button>
             <sc-if value="{{ fq2Open }}" hint-placeholder-val="{{ false }}">
               <p style="color:#4B443A;font-size:15.5px;line-height:1.6;padding:0 50px 20px 0;max-width:58ch">{{ fqA2 }}</p>
@@ -796,7 +796,7 @@ footer a,footer button{display:inline-flex;align-items:center;min-height:32px}
             <button type="button" onClick="{{ fq3Toggle }}" aria-expanded="{{ fq3Exp }}" style="width:100%;display:grid;grid-template-columns:36px minmax(0,1fr) 28px;gap:14px;align-items:center;background:transparent;border:0;padding:18px 0;text-align:right;cursor:pointer;color:#211C16;font:inherit">
               <span style="font-size:13px;letter-spacing:0.1em;color:#8F6326">04</span>
               <span style="font-size:clamp(17px,1.8vw,20px);font-weight:600;line-height:1.3">"האם הפרויקט שלי דורש היתר או אישורים?"</span>
-              <span aria-hidden="true" style="display:grid;place-items:center;width:28px;height:28px;border-radius:50%;border:1px solid rgba(33,28,22,0.2);font-size:17px;line-height:1;color:#8F6326;transform:rotate({{ fq3Rot }});transition:transform 0.25s">+</span>
+              <span aria-hidden="true" style="display:grid;place-items:center;width:28px;height:28px;border-radius:50%;border:1px solid rgba(33,28,22,0.2);font-size:17px;line-height:1;color:#8F6326;transform:rotate({{ fq3Rot }});transition:transform 0.25s">▾</span>
             </button>
             <sc-if value="{{ fq3Open }}" hint-placeholder-val="{{ false }}">
               <p style="color:#4B443A;font-size:15.5px;line-height:1.6;padding:0 50px 20px 0;max-width:58ch">התשובה משתנה לפי סוג השירות, היקף הפרויקט ותקנות הרשות המקומית. לא נגיד "יהיה בסדר" לפני שבודקים. אישורים, תשתיות וליווי הנדסי — ככל שנדרשים — מתואמים מול בעלי מקצוע מוסמכים, בהתאם להיקף הפרויקט ולתנאי ההתקשרות שנקבעו מראש ובכתב.</p>
@@ -1919,7 +1919,7 @@ class Component extends DCLogic {
             }; })(),
           tracks: T.map((x, i) => { const o = i === ti; return { title: x.title, body: x.body, items: x.items, full: !!x.full, exp: o ? 'true' : 'false',
             ic0: i === 0, ic1: i === 1, ic2: i === 2,
-            signRot: o ? '45deg' : '0deg', signBg: o ? '#211C16' : 'transparent', signFg: o ? '#F5F0E4' : '#211C16', signBc: o ? '#211C16' : 'rgba(33,28,22,0.28)',
+            signRot: '0deg', signMark: o ? '✓' : '', signBg: o ? '#211C16' : 'transparent', signFg: o ? '#F5F0E4' : '#211C16', signBc: o ? '#211C16' : 'rgba(33,28,22,0.28)',
             revealH: o ? '260px' : '0px', revealOp: o ? 1 : 0,
             onTap: () => this.setState(s => ({ trackTab: (s.trackTab ?? (this.state.narrow ? -1 : 2)) === i ? -1 : i })) }; }),
           trackTabs: T.map((x, i) => ({ label: x.label, sel: i === ti ? 'true' : 'false', bg: i === ti ? '#211C16' : 'transparent', fg: i === ti ? '#F5F0E4' : '#211C16', bc: i === ti ? '#211C16' : 'rgba(33,28,22,0.22)', pick: () => this.setState({ trackTab: i }) })),
@@ -2031,19 +2031,19 @@ class Component extends DCLogic {
       faqCardOrder: n ? '-1' : '0',
       fq0Open: (this.state.openFq ?? 0) === 0,
       fq0Exp: (this.state.openFq ?? 0) === 0 ? 'true' : 'false',
-      fq0Rot: (this.state.openFq ?? 0) === 0 ? '45deg' : '0deg',
+      fq0Rot: (this.state.openFq ?? 0) === 0 ? '180deg' : '0deg',
       fq0Toggle: () => this.setState(st => ({ openFq: (st.openFq ?? 0) === 0 ? -1 : 0 })),
       fq1Open: (this.state.openFq ?? 0) === 1,
       fq1Exp: (this.state.openFq ?? 0) === 1 ? 'true' : 'false',
-      fq1Rot: (this.state.openFq ?? 0) === 1 ? '45deg' : '0deg',
+      fq1Rot: (this.state.openFq ?? 0) === 1 ? '180deg' : '0deg',
       fq1Toggle: () => this.setState(st => ({ openFq: (st.openFq ?? 0) === 1 ? -1 : 1 })),
       fq2Open: (this.state.openFq ?? 0) === 2,
       fq2Exp: (this.state.openFq ?? 0) === 2 ? 'true' : 'false',
-      fq2Rot: (this.state.openFq ?? 0) === 2 ? '45deg' : '0deg',
+      fq2Rot: (this.state.openFq ?? 0) === 2 ? '180deg' : '0deg',
       fq2Toggle: () => this.setState(st => ({ openFq: (st.openFq ?? 0) === 2 ? -1 : 2 })),
       fq3Open: (this.state.openFq ?? 0) === 3,
       fq3Exp: (this.state.openFq ?? 0) === 3 ? 'true' : 'false',
-      fq3Rot: (this.state.openFq ?? 0) === 3 ? '45deg' : '0deg',
+      fq3Rot: (this.state.openFq ?? 0) === 3 ? '180deg' : '0deg',
       fq3Toggle: () => this.setState(st => ({ openFq: (st.openFq ?? 0) === 3 ? -1 : 3 })),
       scopeCols: n ? '1fr' : 'minmax(0,1.05fr) minmax(0,0.95fr)',
       scopeParts: this.scopeParts().map(label => {

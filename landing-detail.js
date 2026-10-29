@@ -145,7 +145,7 @@
         card.appendChild(b); card.appendChild(t);
       }
       var on = hp.getAttribute('aria-pressed') === 'true';
-      b.setAttribute('aria-pressed', on ? 'true' : 'false'); b.textContent = on ? '✓' : '+';
+      b.setAttribute('aria-pressed', on ? 'true' : 'false'); b.textContent = on ? '✓' : '';
     });
   }
   document.addEventListener('click', function (e) {
