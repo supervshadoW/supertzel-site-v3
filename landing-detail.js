@@ -5,6 +5,24 @@
   if (window.__stzDetail) return;
   window.__stzDetail = true;
   var root = null;
+  // Page title and description follow the ad group's topic (?s=...), so the page repeats the exact search wording of the ad that brought the visitor.
+  (function () {
+    var T = {
+      electric: ['פרגולה חשמלית למרפסת ולגינה בהתאמה אישית | סופר צל', 'פרגולה חשמלית בהתאמה אישית עם פרופילי הצללה מתכווננים: אור, צל ואוורור לפי הצורך. מדידה בשטח והתקנה מקצועית. תאמו שיחת ייעוץ.'],
+      alu: ['פרגולת אלומיניום בהתאמה אישית למרפסת ולגינה | סופר צל', 'פרגולת אלומיניום בהתאמה אישית למרפסת ולגינה, כולל גוון דמוי עץ. מדידה בשטח והתקנה מקצועית. תאמו שיחת ייעוץ.'],
+      wood: ['פרגולת עץ טבעי ופרגולות מיוחדות ומעוצבות | סופר צל', 'פרגולת עץ טבעי, אלומיניום בגוון דמוי עץ ושילובים מיוחדים. בהתאמה אישית למרפסת ולגינה. תאמו שיחת ייעוץ.'],
+      closure: ['סגירת חורף ומרפסת בזכוכית בהתאמה אישית | סופר צל', 'סגירת חורף למרפסת בזכוכית, מסכי גלילה וסגירה בשילוב פרגולה. מדידה בשטח והתקנה מקצועית. תאמו שיחת ייעוץ.'],
+      kitchen: ['מטבח חוץ ובר בהתאמה אישית | סופר צל', 'מטבח חוץ ובר אירוח מתוכננים יחד עם ההצללה שמעליהם, ודקים בהתאמה לבית. תאמו שיחת ייעוץ.'],
+      awning: ['סוככי זרועות חשמליים וידניים בהתאמה אישית | סופר צל', 'סוככי זרועות חשמליים וידניים למרפסות, חזיתות בתים וויטרינות עסקים. אריג וגוון לבחירה. תאמו שיחת ייעוץ.']
+    };
+    function apply() {
+      var m = (location.search.match(/[?&]s=(\w+)/) || [])[1], t = T[m];
+      if (!t) return;
+      document.title = t[0];
+      var d = document.querySelector('meta[name="description"]'); if (d) d.setAttribute('content', t[1]);
+    }
+    apply(); setTimeout(apply, 1200); setTimeout(apply, 3500);
+  })();
   function esc(t) { return String(t == null ? '' : t).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); }
   // Which projects belong to which card. Matching is done on the PROJECT TITLE only (descriptions mention shading everywhere, which put pergolas
   // under shade sails). Each rule: [card title, project title must match, project title must not match, allowed project categories].

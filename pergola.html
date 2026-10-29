@@ -145,7 +145,7 @@ main :is(p, li, h1, h2, h3) :is(p, li, h1, h2, h3) { zoom: 1; }
 <script src="/lead-modal.js?v=17"></script>
 <script src="/phone-cc.js?v=6" defer></script>
 <script src="/mobile-ux.js?v=16" defer></script>
-<script src="/landing-detail.js?v=4" defer></script>
+<script src="/landing-detail.js?v=5" defer></script>
 <script src="/landing-mode.js?v=4" defer></script>
 <script src="/landing-projects.js?v=16" defer></script>
 <script src="/landing-about.js?v=13" defer></script>
@@ -909,7 +909,7 @@ header nav a:hover { color: #E8C48C !important; }
 <script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1180},&quot;editPins&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:false,&quot;tsType&quot;:&quot;boolean&quot;,&quot;label&quot;:&quot;מצב סימון נקודות בהירו&quot;},&quot;contentMax&quot;:{&quot;editor&quot;:&quot;range&quot;,&quot;default&quot;:1180,&quot;min&quot;:1040,&quot;max&quot;:1440,&quot;step&quot;:20,&quot;unit&quot;:&quot;px&quot;,&quot;tsType&quot;:&quot;number&quot;,&quot;label&quot;:&quot;רוחב תוכן מקסימלי (מחשב)&quot;,&quot;section&quot;:&quot;רוחבים&quot;},&quot;sideDesk&quot;:{&quot;editor&quot;:&quot;range&quot;,&quot;default&quot;:92,&quot;min&quot;:84,&quot;max&quot;:98,&quot;step&quot;:1,&quot;unit&quot;:&quot;%&quot;,&quot;tsType&quot;:&quot;number&quot;,&quot;label&quot;:&quot;רוחב תוכן מהמסך (מחשב)&quot;,&quot;section&quot;:&quot;רוחבים&quot;},&quot;sideMob&quot;:{&quot;editor&quot;:&quot;range&quot;,&quot;default&quot;:92,&quot;min&quot;:86,&quot;max&quot;:98,&quot;step&quot;:1,&quot;unit&quot;:&quot;%&quot;,&quot;tsType&quot;:&quot;number&quot;,&quot;label&quot;:&quot;רוחב תוכן מהמסך (מובייל)&quot;,&quot;section&quot;:&quot;רוחבים&quot;},&quot;headDesk&quot;:{&quot;editor&quot;:&quot;range&quot;,&quot;default&quot;:1,&quot;min&quot;:0.8,&quot;max&quot;:1.3,&quot;step&quot;:0.05,&quot;tsType&quot;:&quot;number&quot;,&quot;label&quot;:&quot;גודל כותרות (מחשב)&quot;,&quot;section&quot;:&quot;גדלי טקסט&quot;},&quot;bodyDesk&quot;:{&quot;editor&quot;:&quot;range&quot;,&quot;default&quot;:1,&quot;min&quot;:0.9,&quot;max&quot;:1.25,&quot;step&quot;:0.05,&quot;tsType&quot;:&quot;number&quot;,&quot;label&quot;:&quot;גודל טקסט רץ (מחשב)&quot;,&quot;section&quot;:&quot;גדלי טקסט&quot;},&quot;headMob&quot;:{&quot;editor&quot;:&quot;range&quot;,&quot;default&quot;:1,&quot;min&quot;:0.75,&quot;max&quot;:1.25,&quot;step&quot;:0.05,&quot;tsType&quot;:&quot;number&quot;,&quot;label&quot;:&quot;גודל כותרות (מובייל)&quot;,&quot;section&quot;:&quot;גדלי טקסט&quot;},&quot;bodyMob&quot;:{&quot;editor&quot;:&quot;range&quot;,&quot;default&quot;:1,&quot;min&quot;:0.85,&quot;max&quot;:1.2,&quot;step&quot;:0.05,&quot;tsType&quot;:&quot;number&quot;,&quot;label&quot;:&quot;גודל טקסט רץ (מובייל)&quot;,&quot;section&quot;:&quot;גדלי טקסט&quot;}}">
 const GAL_TABS = [
   { id: 'shade', label: 'הצללה וקירוי', note: 'פרגולות, סוככים ורשתות צל — נבחרים לפי כיווני השמש, המפתח וקו הבית.' },
-  { id: 'glass', label: 'סגירות', note: 'סגירת זכוכית היא הפתרון שאנחנו ממליצים עליו כשרוצים חלל סגור ומואר, שמיש גם בחורף.' },
+  { id: 'glass', label: 'סגירות', note: 'סגירת חורף למרפסת בזכוכית היא הפתרון שאנחנו ממליצים עליו כשרוצים חלל סגור ומואר, שמיש גם בחורף.' },
   { id: 'kitchen', label: 'מטבחי חוץ ובר', note: 'מטבח חוץ ובר אירוח מתוכננים יחד עם ההצללה שמעליהם — כדי שהחלל ישמש בפועל.' },
   { id: 'deck', label: 'דקים וריצוף', note: 'הבסיס שעליו יושבת הפרגולה — דק, ריצוף וחיפוי בהתאמה לשפה החומרית של הבית.' }
 ];
@@ -1208,13 +1208,13 @@ class Component extends DCLogic {
 
   heroSlideData() {
     const S = [
-      { k: 1, word: 'וגם סגירות זכוכית למרפסת.', caption: 'סגירת זכוכית · הפתרון שאנחנו ממליצים עליו', src: '/img/fast/lp/pg-hero.webp', pos: '50% 50%', alt: 'מרפסת בסגירת זכוכית בפרופיל שחור',
+      { k: 1, word: 'סגירת חורף ומרפסת בזכוכית.', caption: 'סגירת זכוכית · הפתרון שאנחנו ממליצים עליו', src: '/img/fast/lp/pg-hero.webp', pos: '50% 50%', alt: 'מרפסת בסגירת זכוכית בפרופיל שחור',
         pins: [
           { label: 'קירוי עליון מעל הקורות', x: '27.7%', y: '8.6%' },
           { label: 'חלונות זכוכית בהזזה בפרופיל שחור', x: '21.7%', y: '47.4%' },
           { label: 'חלונות פנורמיים', x: '41.5%', y: '30.5%' }
         ] },
-      { k: 5, word: 'פרגולות עץ טבעי.', caption: 'פרויקט לדוגמה · פרגולת עץ גושני באווירה כפרית מודרנית', src: '/img/fast/projects/wood-pergola-rustic.webp', pos: '50% 35%', alt: 'פרגולת עץ טבעי בקורות גושניות מעל מרחב כניסה עם ריצוף מצויר וצמחייה',
+      { k: 5, word: 'פרגולת עץ טבעי בהתאמה אישית.', caption: 'פרויקט לדוגמה · פרגולת עץ גושני באווירה כפרית מודרנית', src: '/img/fast/projects/wood-pergola-rustic.webp', pos: '50% 35%', alt: 'פרגולת עץ טבעי בקורות גושניות מעל מרחב כניסה עם ריצוף מצויר וצמחייה',
         pins: [
           { label: 'עץ טבעי בחתך גושני', x: '84.2%', y: '2.0%' },
           { label: 'שלבי עץ צפופים להצללה', x: '20%', y: '8%' },
@@ -1228,7 +1228,7 @@ class Component extends DCLogic {
           { label: 'מטבח חוץ עם אחסון', x: '16.5%', y: '66.3%' },
           { label: 'שולחן בר וכסאות', x: '51.2%', y: '74.1%' }
         ] },
-      { k: 2, word: 'פרגולות תריס חשמליות.', caption: 'פרופילי הצללה מתכווננים · שליטה באור ובצל', src: '/img/fast/w/pg2-black-louver.webp', pos: '50% 45%', alt: 'פרגולה שחורה עם פרופילי הצללה מתכווננים',
+      { k: 2, word: 'פרגולה חשמלית למרפסת ולגינה.', caption: 'פרופילי הצללה מתכווננים · שליטה באור ובצל', src: '/img/fast/w/pg2-black-louver.webp', pos: '50% 45%', alt: 'פרגולה שחורה עם פרופילי הצללה מתכווננים',
         pins: [
           { label: 'קונסטרוקציה בגוון שחור', x: '89.5%', y: '7.0%' },
           { label: 'פרופילי הצללה מאלומיניום מתכווננים', x: '25.5%', y: '29.6%' },
@@ -1239,7 +1239,7 @@ class Component extends DCLogic {
           { label: 'שלבי עץ טבעי', x: '34.4%', y: '31.8%' },
           { label: 'רגל אלומיניום לבנה', x: '61.5%', y: '54.1%' }
         ] },
-      { k: 4, word: 'עם מאוורר ותאורה מוטמעים.', caption: 'פרגולת אלומיניום עם פרופילי הצללה · מאוורר ותאורת LED משולבים', src: '/img/fast/gallery/pergola-lighting-rishon.webp', pos: '50% 40%', alt: 'פרגולת אלומיניום לבנה עם פרופילי הצללה עם מאוורר תקרה ופס תאורת LED מוטמע',
+      { k: 4, word: 'פרגולת אלומיניום בהתאמה אישית.', caption: 'פרגולת אלומיניום עם פרופילי הצללה · מאוורר ותאורת LED משולבים', src: '/img/fast/gallery/pergola-lighting-rishon.webp', pos: '50% 40%', alt: 'פרגולת אלומיניום לבנה עם פרופילי הצללה עם מאוורר תקרה ופס תאורת LED מוטמע',
         pins: [
           { label: 'פרופילי הצללה מאלומיניום', x: '25.3%', y: '30.9%' },
           { label: 'פס תאורת LED מוטמע', x: '65.8%', y: '34.4%' },
@@ -1248,7 +1248,7 @@ class Component extends DCLogic {
     ];
     // Ad landing variants: ?s=awning opens on an awning slide (the awnings ad group links here); ?s=closure keeps the glass-closure slide first.
     const sv = (location.search.match(/[?&]s=(\w+)/) || [])[1];
-    if (sv === 'awning') S.unshift({ k: 6, word: 'סוככים וגגונים בהתאמה אישית.', caption: 'סוכך זרועות חשמלי · הפעלה בשלט', src: '/img/fast/gallery/new-61-1.webp', pos: '50% 40%', alt: 'סוככי זרועות חשמליים בגוון כחול על חזית בניין',
+    if (sv === 'awning') S.unshift({ k: 6, word: 'סוככי זרועות חשמליים בהתאמה אישית.', caption: 'סוכך זרועות חשמלי · הפעלה בשלט', src: '/img/fast/gallery/new-61-1.webp', pos: '50% 40%', alt: 'סוככי זרועות חשמליים בגוון כחול על חזית בניין',
       pins: [
         { label: 'סוכך זרועות חשמלי', x: '24%', y: '36%' },
         { label: 'זרועות אלומיניום מתקפלות', x: '68%', y: '33%' },
@@ -1410,7 +1410,7 @@ class Component extends DCLogic {
     const f = this.state.form;
     const types = [
       { num: '01', span: n ? 'span 1' : 'span 3', inner: '1fr', minH: n ? '250px' : '340px', titleSize: n ? '22px' : '27px', slotId: 'pg-1', src: '/img/fast/w/pg1-alu-louver.webp', title: 'פרגולות אלומיניום סטטיות עם תוספות', body: 'פרגולת אלומיניום סטטית בקונסטרוקציה קבועה, בהתאמה אישית למידות הבית והמרפסת. אפשר לבחור קירוי בסנטף BH, בפוליקרבונט או בקירוי קשיח, וגוון ופרופיל שמשתלבים בבית — כולל אלומיניום בגוון דמוי עץ.' },
-      { num: '02', span: n ? 'span 1' : 'span 3', inner: '1fr', minH: n ? '250px' : '340px', titleSize: n ? '22px' : '27px', slotId: 'pg-2', src: '/img/fast/w/pg2-black-louver.webp', title: 'פרגולות חשמליות בהתאמה אישית', body: 'פרופילי הצללה מתכווננים בשליטה חשמלית — אור, צל ואוורור משתנים לפי שעות היום והעונה.', hasProject: false, onOpen: () => this.setState({ project: MOSHAV_BAROSH, photo: 0 }) },
+      { num: '02', span: n ? 'span 1' : 'span 3', inner: '1fr', minH: n ? '250px' : '340px', titleSize: n ? '22px' : '27px', slotId: 'pg-2', src: '/img/fast/w/pg2-black-louver.webp', title: 'פרגולות חשמליות בהתאמה אישית', body: 'פרגולה חשמלית בהתאמה אישית, עם פרופילי הצללה מתכווננים בשליטה חשמלית — אור, צל ואוורור משתנים לפי שעות היום והעונה.', hasProject: false, onOpen: () => this.setState({ project: MOSHAV_BAROSH, photo: 0 }) },
       { num: '03', span: n ? 'span 1' : 'span 2', inner: '1fr', minH: n ? '240px' : '280px', titleSize: n ? '21px' : '22px', slotId: 'pg-3', src: '/img/fast/w/pergola-wood-slats.webp', title: 'פרגולות עץ וגוון דמוי עץ', body: 'פרגולת עץ טבעי, או אלומיניום בגוון דמוי עץ — מראה חם שמשתלב בבית ובגינה, עם אפשרויות גימור לפי הטעם והשימוש.' },
       { num: '04', span: n ? 'span 1' : 'span 2', inner: '1fr', minH: n ? '240px' : '280px', titleSize: n ? '21px' : '22px', slotId: 'pg-4', src: '/img/fast/w/pg4-wood-kitchen.webp', title: 'פרגולות מיוחדות ומעוצבות', body: 'פרגולות בעיצוב מיוחד: שילובי עץ ואלומיניום, במבוק, גוונים ופרופילים שונים — וגם סגירת זכוכית, מטבח חוץ, גדר או דק כחלק מאותו פרויקט.' },
       { num: '05', span: n ? 'span 1' : 'span 2', inner: '1fr', minH: n ? '240px' : '280px', titleSize: n ? '21px' : '22px', slotId: 'pg-5', src: '/img/fast/w/awning-leumi.webp', title: 'סוככי זרועות חשמליים וידניים', body: 'פתיחה וסגירה לפי הצורך — לחזיתות בתים, למרפסות ולויטרינות עסקים, באריגים וגוונים לבחירה.' },
