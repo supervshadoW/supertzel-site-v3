@@ -27,13 +27,15 @@
     if (!rendered(document.getElementById('why'))) return false;
     var css = document.getElementById('about-css') || document.createElement('style'); css.id = 'about-css';
     css.textContent =
-      '#about .ab-wrap{display:grid;grid-template-columns:1fr 1fr;gap:clamp(1.5rem,4vw,3.5rem);align-items:center}' +
-      '#about .ab-img{border-radius:20px;overflow:hidden;aspect-ratio:4/3;background:#ECE4D2}' +
+      '#about .ab-wrap{display:grid;grid-template-columns:.9fr 1.1fr;gap:clamp(1.25rem,3.5vw,3rem);align-items:center}' +
+      '#about .ab-img{position:relative;margin:0;border-radius:22px;overflow:hidden;aspect-ratio:16/11;background:#ECE4D2}' +
       '#about .ab-img img{display:block;width:100%;height:100%;object-fit:cover}' +
+      '#about .ab-img figcaption{position:absolute;inset-inline:0;bottom:0;padding:26px 16px 12px;color:#fff;font-size:13.5px;font-weight:500;background:linear-gradient(0deg,rgba(17,14,11,.7),rgba(17,14,11,0))}' +
+      '#about .ab-lead{margin:14px 0 0;color:#4B443A;font-size:clamp(17px,1.5vw,19px);line-height:1.55;max-width:34ch}' +
+      '#about .ab-cta{display:flex;flex-wrap:wrap;align-items:center;gap:8px 22px;margin-top:22px}' +
       '#about .ab-pts{display:grid;gap:10px;margin:22px 0 0;padding:0;list-style:none}' +
       '#about .ab-pts li{position:relative;padding:0 26px 0 0;color:#211C16;font-size:16px;font-weight:500;line-height:1.5}#about .ab-pts li::before{content:"";position:absolute;inset-inline-start:0;top:.55em;width:14px;height:1px;background:#B4813C}' +
-      '#about .ab-img-m{display:none}' +
-      '@media (max-width:860px){#about .ab-wrap{grid-template-columns:1fr}#about .ab-img{display:none}#about .ab-img-m{display:block;margin:18px 0 0;border-radius:18px;overflow:hidden;background:#ECE4D2}#about .ab-img-m img{display:block;width:100%;aspect-ratio:16/10;object-fit:cover}#about .ab-img-m span{display:block;padding:8px 12px;font-size:13px;color:#6E4D1E}}' +
+      '@media (max-width:860px){#about .ab-wrap{grid-template-columns:1fr}#about .ab-img{order:-1;aspect-ratio:16/10;border-radius:18px}#about .ab-lead{max-width:none}}' +
       '#about .ab-env{display:inline-flex;align-items:center;gap:8px;margin-top:18px;min-height:44px;padding:0;border:0;background:transparent;color:#6E4D1E;font:inherit;font-size:15.5px;font-weight:600;cursor:pointer;border-bottom:1px solid rgba(110,77,30,.4)}' +
       'html.stz-env-open{overflow:hidden}html.stz-env-open #envelope{display:block!important;position:fixed;top:5vh;bottom:0;inset-inline:0;margin-inline:auto;width:min(1100px,100%);z-index:540;overflow:auto;border-radius:24px 24px 0 0;border:0;animation:ab-sheet .42s cubic-bezier(.2,.7,.2,1) both}' +
       '#stz-env-bd{position:fixed;inset:0;z-index:539;background:rgba(17,14,11,.72);display:none}html.stz-env-open #stz-env-bd{display:block}' +
@@ -53,23 +55,16 @@
     var sec = document.createElement('section');
     sec.id = 'about';
     sec.style.cssText = 'padding-block:clamp(3rem,8vh,5.5rem)';
-    var G = '/img/fast/gallery/', PH = ['new-52-4', 'pergola-modern-lighting-1', 'new-55-1', 'project-deck-view', 'new-58-1', 'glass-1', 'new-60-1', 'awning-jaffa-1', 'new-46-3', 'pergola-white-wood'];
-    var strip = PH.concat(PH).map(function (k) { return '<img src="' + G + k + '.webp" alt="" loading="lazy" decoding="async">'; }).join('');
     sec.innerHTML =
-      '<div class="ab-strip" aria-hidden="true"><div class="ab-track">' + strip + '</div></div>' +
       '<div class="ab-in" style="width:min(var(--stz-side,92%),var(--stz-max,1180px));margin-inline:auto"><div class="ab-wrap">' +
-      '<div><div style="display:inline-flex;align-items:center;gap:10px;color:#B4813C;font-size:14.5px;font-weight:600;margin-bottom:18px;white-space:nowrap"><span style="display:block;width:24px;height:1px;background:#B4813C"></span>מי אנחנו · IL PROJECTS</div>' +
-      '<h2 style="font-size:clamp(28px,3.6vw,44px);letter-spacing:-0.02em;line-height:1.12">IL PROJECTS: בית אחד לכל מעטפת החוץ</h2>' +
-      '<p style="margin:16px 0 0;color:#4B443A;font-size:17px;line-height:1.6">IL PROJECTS היא מעטפת מקצועית לתכנון יישומי, ביצוע ותיאום של פרויקטי חוץ. הפעילות שלנו צמחה מתוך שנים של ניסיון מעשי בשטח — ממערכות קירוי, הצללה ואלומיניום, דרך ריצוף ודקים, ועד פיתוח נוף ובנייה קלה.</p>' +
-      '<div class="ab-img-m"><img src="/img/fast/hero/hero-pergola-kitchen-bar-wide.webp" alt="פרויקט לדוגמה: פרגולת אלומיניום עם פרופילי הצללה בגוון דמוי עץ מעל מטבח חוץ ושולחן בר" loading="lazy" decoding="async"><span>פרויקט לדוגמה · פרגולה, מטבח חוץ ובר</span></div>' +
-      '<p style="margin:14px 0 0;color:#4B443A;font-size:17px;line-height:1.6">מרחב חוץ הרמוני לא נבנה מחיבור מקרי של מוצרים וספקים נפרדים. לכן אנחנו קוראים תוכניות ופרטי גמר לעומק, מצמצמים כפילויות ופערי תיאום, ומסייעים בבניית רצף ביצוע מתואם לפי המפרט שסוכם בכתב — בשפה חומרית אחידה, מול נקודת קשר אחת.</p>' +
-      '<p style="margin:14px 0 0;color:#4B443A;font-size:17px;line-height:1.6">מעל עשור בתחום, עם ניסיון מקצועי בפרויקטים מורכבים ושילובים מיוחדים: פרגולה, גדר, שער חשמלי ועוד. אנחנו גורמים לחלום שלכם להתגשם במציאות.</p>' +
-      '<ul class="ab-pts"><li>מעל עשור בתחום, עם ניסיון מוכח בשטח</li><li>פרויקטים משולבים: פרגולה, גדר ושער חשמלי</li><li>נקודת קשר אחת מהמדידה ועד ההתקנה</li><li>מפרט בכתב, רכיב אחרי רכיב, כדי שתוכלו להשוות בין הצעות</li></ul>' +
-      '<button type="button" class="ab-env">ראו איך אפשר לשדרג את מרחב החוץ שלכם <span aria-hidden="true">←</span></button>' +
-      '<div style="margin-top:26px"><a href="#contact" style="display:inline-flex;align-items:center;min-height:48px;padding:0 26px;border-radius:100px;background:#B4813C;color:#1B1712;font-size:16px;font-weight:600">תאמו שיחת ייעוץ</a></div></div>' +
-      '<div class="ab-img"><img src="/img/fast/hero/hero-pergola-kitchen-bar-wide.webp" alt="פרויקט לדוגמה: פרגולת אלומיניום עם פרופילי הצללה בגוון דמוי עץ מעל מטבח חוץ ושולחן בר" loading="lazy" decoding="async"></div>' +
-      '</div></div>';
-    place(sec);
+      '<div class="ab-txt"><div style="display:inline-flex;align-items:center;gap:10px;color:#B4813C;font-size:14.5px;font-weight:600;margin-bottom:14px;white-space:nowrap"><span style="display:block;width:24px;height:1px;background:#B4813C"></span>מי אנחנו</div>' +
+      '<h2 style="font-size:clamp(28px,3.4vw,42px);letter-spacing:-0.02em;line-height:1.12">IL PROJECTS: בית אחד לכל מעטפת החוץ</h2>' +
+      '<p class="ab-lead">מעל עשור בתחום. פרגולה, גדר, שער חשמלי, סגירות ועוד, בפרויקט אחד ועם נקודת קשר אחת.</p>' +
+      '<ul class="ab-pts"><li>נקודת קשר אחת מהמדידה ועד ההתקנה</li><li>פרויקטים משולבים ומורכבים</li><li>התאמה אישית לבית ולמרחב</li></ul>' +
+      '<div class="ab-cta"><a href="#contact" style="display:inline-flex;align-items:center;min-height:48px;padding:0 26px;border-radius:100px;background:#B4813C;color:#1B1712;font-size:16px;font-weight:600">תאמו שיחת ייעוץ</a>' +
+      '<button type="button" class="ab-env" style="margin-top:0">ראו איך משדרגים מרחב חוץ <span aria-hidden="true">←</span></button></div></div>' +
+      '<figure class="ab-img"><img src="/img/fast/gallery/new-46-3.webp" alt="פרויקט משולב: פרגולת אלומיניום מעל שער חשמלי וגדר" loading="lazy" decoding="async"><figcaption>פרויקט משולב · פרגולה, גדר ושער חשמלי</figcaption></figure>' +
+      '</div></div>';    place(sec);
     realign();
     (function () {
       var root = document.documentElement;
