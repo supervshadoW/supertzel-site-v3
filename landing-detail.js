@@ -9,13 +9,13 @@
   // Which projects belong to which card. Matching is done on the PROJECT TITLE only (descriptions mention shading everywhere, which put pergolas
   // under shade sails). Each rule: [card title, project title must match, project title must not match, allowed project categories].
   var RULES = [
-    [/סטטיות/, /אלומיניום/, /חשמל|תריס|מתכוונ|עץ טבעי|במבוק|סוכך|מפרש|סנטף על פרגולת עץ/, ['shade']],
-    [/חשמל|תריס/, /תריס|מתכוונ/, /סוכך|זרועות|מפרש/, ['shade', 'glass']],
-    [/עץ/, /עץ/, /סגירת|מסכי/, ['shade', 'deck']],
-    [/שילוב|מעוצב/, /שילוב|מטבח|במבוק|תאורה|חיפוי|גדר|שער|דק /, /משרד|מחיצות/, ['shade', 'envelope']],
     [/זרוע/, /זרועות/, /(?!)/, ['shade']],
     [/גגון|קבועים/, /סוכך מעוצב|גגון|גלי/, /(?!)/, ['shade']],
-    [/רשת|מפרש/, /מפרש|רשת/, /(?!)/, ['shade']]
+    [/רשת|מפרש/, /מפרש|רשת/, /(?!)/, ['shade']],
+    [/סטטיות/, /אלומיניום/, /חשמל|תריס|מתכוונ|עץ טבעי|במבוק|סוכך|מפרש|בטון|סנטף על פרגולת עץ/, ['shade']],
+    [/חשמל|תריס/, /תריס|מתכוונ/, /סוכך|זרועות|מפרש/, ['shade', 'glass']],
+    [/עץ/, /עץ/, /סגירת|מסכי/, ['shade', 'deck']],
+    [/שילוב|מעוצב/, /שילוב|מטבח|במבוק|תאורה|חיפוי|גדר|שער|דק /, /משרד|מחיצות/, ['shade', 'envelope']]
   ];
   function tabInfo() {
     var t = document.querySelector('#catalog [role=tab][aria-selected=true]');
