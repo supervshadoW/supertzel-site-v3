@@ -56,14 +56,17 @@
       else ok = /מטבח|בר /.test(p.title);
       if (ok) scored.push({ p: p, s: 0 });
     });    var shots = [];
-    scored.slice(0, 5).forEach(function (x) {
-      // one caption per project (its own photo captions if it has them); a project's extra photos carry no repeated title
-      x.p.photos.slice(0, shots.length < 2 ? 3 : 1).forEach(function (src, j) {
-        if (shots.length >= 6 || shots.some(function (s) { return s.src === src; })) return;
-        shots.push({ src: src, cap: (x.p.captions && x.p.captions[j]) || (j === 0 ? x.p.title : '') });
-      });
+    // variety first: one photo per project (different projects), up to 6; extra photos of a project are used only when there are very few projects
+    scored.slice(0, 6).forEach(function (x) {
+      if (shots.length >= 6) return;
+      shots.push({ src: x.p.photos[0], cap: (x.p.captions && x.p.captions[0]) || x.p.title });
     });
-    return shots;
+    if (shots.length < 4) scored.forEach(function (x) {
+      x.p.photos.slice(1).forEach(function (src, j) {
+        if (shots.length >= 4 || shots.some(function (s) { return s.src === src; })) return;
+        shots.push({ src: src, cap: (x.p.captions && x.p.captions[j + 1]) || '' });
+      });
+    });    return shots;
   }
   function build() {
     if (root) return;
