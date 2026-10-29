@@ -8,4 +8,11 @@
   section div[style*="margin-bottom:clamp(1.75rem,4vh,2.5rem)"] { margin-bottom: 1rem !important; }
   section div[style*="margin-bottom:clamp(2rem,5vh,3.5rem)"], section div[style*="margin-bottom:clamp(2.5rem,6vh,4rem)"] { margin-bottom: 1.25rem !important; }
   section h2 { margin-bottom: 0; }
+}/* Catalog heading: two columns (heading | text + simulator strip) so the left side is not an empty hole */
+@media (min-width: 901px) {
+  #catalog > div > div:first-child { display: grid !important; grid-template-columns: 1.1fr .9fr; grid-template-areas: "h p" "h t"; column-gap: 3rem; row-gap: 1rem; align-items: center; flex-wrap: nowrap; margin-bottom: 1.25rem !important; }
+  #catalog > div > div:first-child > div:first-child { grid-area: h; }
+  #catalog > div > div:first-child > p { grid-area: p; max-width: none !important; margin: 0; }
+  #catalog > div > div:first-child > #sun-teaser { grid-area: t; width: 100%; margin: 0; padding: 0; }
+  #catalog > span { font-size: clamp(90px, 11vw, 170px) !important; top: -6px !important; opacity: .03 !important; }
 }

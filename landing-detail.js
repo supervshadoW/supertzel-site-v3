@@ -194,7 +194,7 @@
     '@media (max-width:520px){#sun-teaser .st-go{padding:0 12px;font-size:13.5px}#sun-teaser .st-t small{display:none}}';
   document.head.appendChild(scss);
   var st = 0;
-  (function placeTeaser() {
+  function placeTeaser() {
     var pr = document.getElementById('projects'), card = document.querySelector('#sun .stz-sun-card');
     if (pr && !pr.closest('x-dc') && card) {
       var tz = document.getElementById('sun-teaser');
@@ -203,8 +203,13 @@
         tz.innerHTML = '<button type="button" aria-label="פתחו את סימולטור השמש"><span class="st-dot" aria-hidden="true"></span><span class="st-t">איך השמש נופלת אצלכם בשטח?<small>שחקו עם כיוון, עונה ושעה, עם פרגולה ובלי</small></span><span class="st-go">נסו את הסימולטור</span></button>';
         tz.querySelector('button').addEventListener('click', function () { var c = document.querySelector('#sun .stz-sun-card'); if (c) c.click(); });
       }
-      if (pr.nextElementSibling !== tz) pr.parentNode.insertBefore(tz, pr.nextSibling);
+      // desktop: the strip fills the empty left side of the catalog heading; phones: under the projects
+      var hd = document.querySelector('#catalog > div > div:first-child');
+      if (window.innerWidth > 900 && hd && !hd.closest('x-dc')) { if (tz.parentNode !== hd) hd.appendChild(tz); }
+      else if (pr.nextElementSibling !== tz) pr.parentNode.insertBefore(tz, pr.nextSibling);
     }
     if (++st < 40) setTimeout(placeTeaser, st < 20 ? 500 : 1500);
-  })();
+  }
+  placeTeaser();
+  window.addEventListener('resize', function () { clearTimeout(window.__stzTz); window.__stzTz = setTimeout(function () { st = 38; placeTeaser(); }, 250); });
 })();
