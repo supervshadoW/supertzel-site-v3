@@ -15,11 +15,23 @@
       kitchen: ['מטבח חוץ ובר בהתאמה אישית | סופר צל', 'מטבח חוץ ובר אירוח מתוכננים יחד עם ההצללה שמעליהם, ודקים בהתאמה לבית. תאמו שיחת ייעוץ.'],
       awning: ['סוככי זרועות חשמליים וידניים בהתאמה אישית | סופר צל', 'סוככי זרועות חשמליים וידניים למרפסות, חזיתות בתים וויטרינות עסקים. אריג וגוון לבחירה. תאמו שיחת ייעוץ.']
     };
+    // the sentence under the headline follows the topic too (it used to say "פרגולות אלומיניום" on every entry)
+    var SUB = {
+      electric: 'פרגולות חשמליות בהתאמה אישית למרפסת ולגינה, עם פרופילי הצללה מתכווננים — מדידה, תכנון יישומי והתקנה במסגרת עבודה אחת.',
+      wood: 'פרגולות עץ טבעי ואלומיניום בגוון דמוי עץ, בהתאמה אישית — מדידה, תכנון יישומי והתקנה במסגרת עבודה אחת.',
+      closure: 'סגירת חורף ומרפסת בזכוכית בהתאמה אישית — מדידה, תכנון יישומי והתקנה במסגרת עבודה אחת.',
+      kitchen: 'מטבח חוץ ובר בהתאמה אישית, מתוכננים יחד עם ההצללה — מדידה, תכנון יישומי והתקנה במסגרת עבודה אחת.',
+      awning: 'סוככי זרועות חשמליים וידניים למרפסות, לחזיתות ולויטרינות — מדידה, תכנון יישומי והתקנה במסגרת עבודה אחת.'
+    };
     function apply() {
       var m = (location.search.match(/[?&]s=(\w+)/) || [])[1], t = T[m];
       if (!t) return;
       document.title = t[0];
       var d = document.querySelector('meta[name="description"]'); if (d) d.setAttribute('content', t[1]);
+      if (SUB[m]) {
+        var ps = document.querySelectorAll('#hero p');
+        for (var i = 0; i < ps.length; i++) if (/מדידה, תכנון יישומי והתקנה במסגרת עבודה אחת/.test(ps[i].textContent) && ps[i].textContent !== SUB[m]) { ps[i].textContent = SUB[m]; break; }
+      }
     }
     apply(); setTimeout(apply, 1200); setTimeout(apply, 3500);
   })();
