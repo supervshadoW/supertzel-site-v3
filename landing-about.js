@@ -32,7 +32,8 @@
       '#about .ab-img img{display:block;width:100%;height:100%;object-fit:cover}' +
       '#about .ab-pts{display:grid;gap:10px;margin:22px 0 0;padding:0;list-style:none}' +
       '#about .ab-pts li{position:relative;padding:0 26px 0 0;color:#211C16;font-size:16px;font-weight:500;line-height:1.5}#about .ab-pts li::before{content:"";position:absolute;inset-inline-start:0;top:.55em;width:14px;height:1px;background:#B4813C}' +
-      '@media (max-width:860px){#about .ab-wrap{grid-template-columns:1fr}#about .ab-img{display:none}}' +
+      '#about .ab-img-m{display:none}' +
+      '@media (max-width:860px){#about .ab-wrap{grid-template-columns:1fr}#about .ab-img{display:none}#about .ab-img-m{display:block;margin:18px 0 0;border-radius:18px;overflow:hidden;background:#ECE4D2}#about .ab-img-m img{display:block;width:100%;aspect-ratio:16/10;object-fit:cover}#about .ab-img-m span{display:block;padding:8px 12px;font-size:13px;color:#6E4D1E}}' +
       '#about .ab-env{display:inline-flex;align-items:center;gap:8px;margin-top:18px;min-height:44px;padding:0;border:0;background:transparent;color:#6E4D1E;font:inherit;font-size:15.5px;font-weight:600;cursor:pointer;border-bottom:1px solid rgba(110,77,30,.4)}' +
       'html.stz-env-open{overflow:hidden}html.stz-env-open #envelope{display:block!important;position:fixed;top:5vh;bottom:0;inset-inline:0;margin-inline:auto;width:min(1100px,100%);z-index:540;overflow:auto;border-radius:24px 24px 0 0;border:0;animation:ab-sheet .42s cubic-bezier(.2,.7,.2,1) both}' +
       '#stz-env-bd{position:fixed;inset:0;z-index:539;background:rgba(17,14,11,.72);display:none}html.stz-env-open #stz-env-bd{display:block}' +
@@ -57,13 +58,16 @@
     sec.innerHTML =
       '<div class="ab-strip" aria-hidden="true"><div class="ab-track">' + strip + '</div></div>' +
       '<div class="ab-in" style="width:min(var(--stz-side,92%),var(--stz-max,1180px));margin-inline:auto"><div class="ab-wrap">' +
-      '<div><div style="display:inline-flex;align-items:center;gap:10px;color:#B4813C;font-size:14.5px;font-weight:600;margin-bottom:18px;white-space:nowrap"><span style="display:block;width:24px;height:1px;background:#B4813C"></span>מי אנחנו</div>' +
-      '<h2 style="font-size:clamp(28px,3.6vw,44px);letter-spacing:-0.02em;line-height:1.12">בית אחד לכל מעטפת החוץ</h2>' +
-      '<p style="margin:16px 0 0;color:#4B443A;font-size:17px;line-height:1.6">שנים בתחום, עם ניסיון מקצועי בהתקנת פרויקטים מורכבים ושילובים מיוחדים: פרגולה, גדר, שער חשמלי ועוד. אנחנו גורמים לחלום שלכם להתגשם במציאות, בגימור ובהתאמה מדויקת לבית ולמרחב.</p>' +
+      '<div><div style="display:inline-flex;align-items:center;gap:10px;color:#B4813C;font-size:14.5px;font-weight:600;margin-bottom:18px;white-space:nowrap"><span style="display:block;width:24px;height:1px;background:#B4813C"></span>מי אנחנו · IL PROJECTS</div>' +
+      '<h2 style="font-size:clamp(28px,3.6vw,44px);letter-spacing:-0.02em;line-height:1.12">IL PROJECTS: בית אחד לכל מעטפת החוץ</h2>' +
+      '<p style="margin:16px 0 0;color:#4B443A;font-size:17px;line-height:1.6">IL PROJECTS היא מעטפת מקצועית לתכנון יישומי, ביצוע ותיאום של פרויקטי חוץ. הפעילות שלנו צמחה מתוך שנים של ניסיון מעשי בשטח — ממערכות קירוי, הצללה ואלומיניום, דרך ריצוף ודקים, ועד פיתוח נוף ובנייה קלה.</p>' +
+      '<div class="ab-img-m"><img src="/img/fast/hero/hero-pergola-kitchen-bar-wide.webp" alt="פרויקט לדוגמה: פרגולת אלומיניום עם פרופילי הצללה בגוון דמוי עץ מעל מטבח חוץ ושולחן בר" loading="lazy" decoding="async"><span>פרויקט לדוגמה · פרגולה, מטבח חוץ ובר</span></div>' +
+      '<p style="margin:14px 0 0;color:#4B443A;font-size:17px;line-height:1.6">מרחב חוץ הרמוני לא נבנה מחיבור מקרי של מוצרים וספקים נפרדים. לכן אנחנו קוראים תוכניות ופרטי גמר לעומק, מצמצמים כפילויות ופערי תיאום, ומסייעים בבניית רצף ביצוע מתואם לפי המפרט שסוכם בכתב — בשפה חומרית אחידה, מול נקודת קשר אחת.</p>' +
+      '<p style="margin:14px 0 0;color:#4B443A;font-size:17px;line-height:1.6">מעל עשור בתחום, עם ניסיון מקצועי בפרויקטים מורכבים ושילובים מיוחדים: פרגולה, גדר, שער חשמלי ועוד. אנחנו גורמים לחלום שלכם להתגשם במציאות.</p>' +
       '<ul class="ab-pts"><li>מעל עשור בתחום, עם ניסיון מוכח בשטח</li><li>פרויקטים משולבים: פרגולה, גדר ושער חשמלי</li><li>נקודת קשר אחת מהמדידה ועד ההתקנה</li><li>מפרט בכתב, רכיב אחרי רכיב, כדי שתוכלו להשוות בין הצעות</li></ul>' +
       '<button type="button" class="ab-env">ראו איך אפשר לשדרג את מרחב החוץ שלכם <span aria-hidden="true">←</span></button>' +
       '<div style="margin-top:26px"><a href="#contact" style="display:inline-flex;align-items:center;min-height:48px;padding:0 26px;border-radius:100px;background:#B4813C;color:#1B1712;font-size:16px;font-weight:600">תאמו שיחת ייעוץ</a></div></div>' +
-      '<div class="ab-img"><img src="/img/fast/gallery/new-46-2.webp" alt="פרויקט בכפר סבא: פרגולת אלומיניום עם תאורה שקועה" loading="lazy" decoding="async"></div>' +
+      '<div class="ab-img"><img src="/img/fast/hero/hero-pergola-kitchen-bar-wide.webp" alt="פרויקט לדוגמה: פרגולת אלומיניום עם פרופילי הצללה בגוון דמוי עץ מעל מטבח חוץ ושולחן בר" loading="lazy" decoding="async"></div>' +
       '</div></div>';
     place(sec);
     realign();
