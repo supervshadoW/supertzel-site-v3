@@ -149,5 +149,5 @@
     (function tick() { var had = !!document.getElementById('projects'); build(); if (tries < 28 && had) realign(); if (++tries > 80) return; setTimeout(tick, tries < 40 ? 250 : 1000); })();
   }
   if (window.STZ_PROJECTS) start();
-  else { var s = document.createElement('script'); s.src = '/projects-data.js?v=4'; s.onload = start; document.head.appendChild(s); }
+  else { var s = document.createElement('script'); s.src = '/projects-data.js?v=5'; s.onload = start; document.head.appendChild(s); }
 })();
