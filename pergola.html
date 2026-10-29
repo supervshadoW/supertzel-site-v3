@@ -1045,7 +1045,8 @@ class Component extends DCLogic {
     this.sbRecalc = [600, 1500, 3000, 6000].map(ms => setTimeout(() => { this.sbSeen = false; this.onScroll(); }, ms));
     this.onScroll();
     this.heroTimer = window.setInterval(() => {
-      if (this.state.heroHold || this.props.editPins) return;
+      // ad entries (?s=topic) keep the topic's headline and photo; only the default page rotates
+      if (this.state.heroHold || this.props.editPins || /[?&]s=(electric|alu|wood|closure|kitchen|awning)\b/.test(location.search)) return;
       const S = this.heroSlideData();
       this.setState(st => {
         const si = (st.heroSlide || 0) % S.length, pi = (st.heroPin || 0) + 1;
