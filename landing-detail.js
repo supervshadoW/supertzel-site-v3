@@ -6,41 +6,44 @@
   window.__stzDetail = true;
   var root = null;
   function esc(t) { return String(t == null ? '' : t).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); }
-  // which projects fit which card: keywords found in the card title -> keywords looked for in the project title / description
-  var KW = [
-    [/סטטיות|אלומיניום/, ['אלומיניום']],
-    [/חשמל|תריס/, ['חשמל', 'תריס', 'מתכווננ']],
-    [/עץ/, ['עץ']],
-    [/שילוב|מעוצב/, ['מטבח', 'זכוכית', 'גדר', 'דק', 'שער']],
-    [/זרוע/, ['זרוע', 'סוכך']],
-    [/גגון|סוככים/, ['גגון', 'סוכך']],
-    [/רשת|מפרש/, ['רשת', 'מפרש', 'צל']]
+  // Which projects belong to which card. Matching is done on the PROJECT TITLE only (descriptions mention shading everywhere, which put pergolas
+  // under shade sails). Each rule: [card title, project title must match, project title must not match, allowed project categories].
+  var RULES = [
+    [/סטטיות/, /אלומיניום/, /חשמל|תריס|מתכוונ|עץ טבעי|במבוק|סוכך|מפרש|סנטף על פרגולת עץ/, ['shade']],
+    [/חשמל|תריס/, /תריס|מתכוונ/, /סוכך|זרועות|מפרש/, ['shade', 'glass']],
+    [/עץ/, /עץ/, /סגירת|מסכי/, ['shade', 'deck']],
+    [/שילוב|מעוצב/, /שילוב|מטבח|במבוק|תאורה|חיפוי|גדר|שער|דק /, /משרד|מחיצות/, ['shade', 'envelope']],
+    [/זרוע/, /זרועות/, /(?!)/, ['shade']],
+    [/גגון|קבועים/, /סוכך מעוצב|גגון|גלי/, /(?!)/, ['shade']],
+    [/רשת|מפרש/, /מפרש|רשת/, /(?!)/, ['shade']]
   ];
   function tabInfo() {
     var t = document.querySelector('#catalog [role=tab][aria-selected=true]');
     var label = t ? t.textContent.replace(/\s+/g, ' ').replace(/\d+$/, '').trim() : '';
-    if (/סגירות/.test(label)) return { cat: 'glass', label: label };
-    if (/מטבח/.test(label)) return { cat: '', kw: ['מטבח', 'בר'], label: label };
-    if (/דק/.test(label)) return { cat: 'deck', label: label };
-    return { cat: 'shade', label: label };
+    if (/סגירות/.test(label)) return { tab: 'glass', label: label };
+    if (/מטבח/.test(label)) return { tab: 'kitchen', label: label };
+    if (/דק/.test(label)) return { tab: 'deck', label: label };
+    return { tab: 'shade', label: label };
   }
   function pick(title, info) {
-    var list = window.STZ_PROJECTS || [], kws = null, i;
-    for (i = 0; i < KW.length; i++) if (KW[i][0].test(title)) { kws = KW[i][1]; break; }
-    if (info.kw) kws = info.kw;
+    var list = window.STZ_PROJECTS || [], i, rule = null;
+    if (info.tab === 'shade') { for (i = 0; i < RULES.length; i++) if (RULES[i][0].test(title)) { rule = RULES[i]; break; } if (!rule) return []; }
     var scored = [];
     list.forEach(function (p) {
       if (!p.photos || !p.photos.length || /משרד|מחיצות|מפעל/.test(p.title)) return; // home-owner page: no office or factory partitions
-      if (info.cat && p.cat !== info.cat && !(info.cat === 'shade' && /שילוב|מעוצב/.test(title) && p.cat === 'envelope')) return;
-      var hay = (p.title + ' ' + (p.desc || '')), s = 0;
-      if (kws) kws.forEach(function (k) { if (hay.indexOf(k) > -1) s++; });
-      if (kws && !s) return;
-      scored.push({ p: p, s: s });
-    });
-    scored.sort(function (a, b) { return b.s - a.s; });
-    var shots = [];
+      var ok;
+      if (rule) ok = rule[3].indexOf(p.cat) > -1 && rule[1].test(p.title) && !rule[2].test(p.title);
+      else if (info.tab === 'glass') ok = p.cat === 'glass';
+      else if (info.tab === 'deck') ok = p.cat === 'deck';
+      else ok = /מטבח|בר /.test(p.title);
+      if (ok) scored.push({ p: p, s: 0 });
+    });    var shots = [];
     scored.slice(0, 5).forEach(function (x) {
-      x.p.photos.slice(0, shots.length < 2 ? 3 : 1).forEach(function (src, j) { if (shots.length < 6) shots.push({ src: src, cap: (x.p.captions && x.p.captions[j]) || x.p.title }); });
+      // one caption per project (its own photo captions if it has them); a project's extra photos carry no repeated title
+      x.p.photos.slice(0, shots.length < 2 ? 3 : 1).forEach(function (src, j) {
+        if (shots.length >= 6 || shots.some(function (s) { return s.src === src; })) return;
+        shots.push({ src: src, cap: (x.p.captions && x.p.captions[j]) || (j === 0 ? x.p.title : '') });
+      });
     });
     return shots;
   }
@@ -81,12 +84,12 @@
     var rest = (card.querySelector('.stz-gmore p') || {}).textContent || '';
     var img = card.querySelector('img'), info = tabInfo(), shots = pick(title, info);
     if (!shots.length && img) shots = [{ src: img.getAttribute('src'), cap: title }];
-    var catKey = info.cat || (info.kw ? 'envelope' : 'shade');
+    var catKey = { glass: 'glass', deck: 'deck', kitchen: 'envelope', shade: 'shade' }[info.tab] || 'shade';
     root.innerHTML =
       '<div class="dt-card"><button type="button" class="dt-x" aria-label="סגירה">&times;</button>' +
       '<div class="dt-eb">' + esc(ebT) + '</div><h3>' + esc(title) + '</h3>' +
       (sum ? '<p class="dt-p">' + esc(sum.trim()) + '</p>' : '') + (rest ? '<p class="dt-p">' + esc(rest.trim()) + '</p>' : '') +
-      (shots.length ? '<div class="dt-h">דוגמאות מפרויקטים שביצענו</div><div class="dt-row">' + shots.map(function (s) { return '<figure><img src="' + esc(s.src) + '" alt="' + esc(s.cap) + '" loading="lazy" decoding="async"><figcaption>' + esc(s.cap) + '</figcaption></figure>'; }).join('') + '</div>' : '') +
+      (shots.length ? '<div class="dt-h">דוגמאות מפרויקטים שביצענו</div><div class="dt-row">' + shots.map(function (s) { return '<figure><img src="' + esc(s.src) + '" alt="' + esc(s.cap || title) + '" loading="lazy" decoding="async">' + (s.cap ? '<figcaption>' + esc(s.cap) + '</figcaption>' : '') + '</figure>'; }).join('') + '</div>' : '') +
       '<div class="dt-cta"><button type="button" class="dt-btn" data-lead-open>לתיאום שיחת ייעוץ</button><a class="dt-lnk" href="/projects?cat=' + catKey + '">לכל הפרויקטים בקטגוריה ←</a></div></div>';
     root.querySelector('.dt-btn').addEventListener('click', function () { setTimeout(close, 0); });
     root.classList.add('on'); document.documentElement.classList.add('stz-dt-open');
