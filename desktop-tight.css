@@ -15,4 +15,10 @@
   #catalog > div > div:first-child > p { grid-area: p; max-width: none !important; margin: 0; }
   #catalog > div > div:first-child > #sun-teaser { grid-area: t; width: 100%; margin: 0; padding: 0; }
   #catalog > span { font-size: clamp(90px, 11vw, 170px) !important; top: -6px !important; opacity: .03 !important; }
+}/* Focus: when a catalog card is hovered or focused, the other cards soften so the chosen one stands out (desktop) */
+@media (min-width: 901px) and (hover: hover) {
+  #catalog .stz-carousel .stz-gcard { transition: filter .35s ease, opacity .35s ease, transform .35s ease; }
+  #catalog .stz-carousel:has(.stz-gcard:hover, .stz-gcard:focus-within) .stz-gcard:not(:hover):not(:focus-within) { filter: blur(2.5px) saturate(.7); opacity: .6; }
 }
+/* the detail sheet and the simulator blur the page behind them */
+#stz-dt, .stz-sun-wrap { backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px); }
