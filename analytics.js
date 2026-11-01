@@ -192,7 +192,7 @@
         // after the visitor scrolls on: a short banner above the floating WhatsApp / call / meeting buttons instead of over them
         '#stz-consent.stz-mini{bottom:84px!important;padding:10px 12px!important}#stz-consent.stz-mini>#stz-consent-t,#stz-consent.stz-mini>p{display:none!important}#stz-consent.stz-mini>#stz-cc-mini{display:block!important}}' +
         // desktop: the same short one-line banner (it used to be a big block over the page)
-        '@media (min-width:761px){#stz-consent.stz-mini{padding:10px 14px!important;max-width:520px!important;bottom:14px!important}#stz-consent.stz-mini>#stz-consent-t,#stz-consent.stz-mini>p{display:none!important}#stz-consent.stz-mini>#stz-cc-mini{display:block!important}#stz-consent.stz-mini #stz-cc-main{flex-wrap:nowrap!important}#stz-consent.stz-mini #stz-cc-main button{min-height:40px!important;font-size:13px!important}#stz-consent.stz-mini #stz-cc-main button[data-a=custom]{flex:0 0 auto!important;padding:0 10px!important}}';
+        '@media (min-width:761px){#stz-consent.stz-mini{padding:10px 14px!important;max-width:520px!important;bottom:96px!important}#stz-consent.stz-mini>#stz-consent-t,#stz-consent.stz-mini>p{display:none!important}#stz-consent.stz-mini>#stz-cc-mini{display:block!important}#stz-consent.stz-mini #stz-cc-main{flex-wrap:nowrap!important}#stz-consent.stz-mini #stz-cc-main button{min-height:40px!important;font-size:13px!important}#stz-consent.stz-mini #stz-cc-main button[data-a=custom]{flex:0 0 auto!important;padding:0 10px!important}}';
       document.head.appendChild(st);
     }
     d.setAttribute('role', 'dialog');
