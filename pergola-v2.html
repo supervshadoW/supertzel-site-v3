@@ -1066,10 +1066,18 @@ function stzLeadLabels() {
 }
 class Component extends DCLogic {
   revsFallback = [
-    { text: '…הבית שלנו משמש כמרכז תרבות ואנשים רבים מגיעים כך שהיה חשוב לי שיהיה חזק, יפה ומרחף…', meta: 'Tamar Melzer Krymolowski' },
-    { text: '…הפרגולה יצאה מושלמת… ממליץ על סופר צל בחום.', meta: 'ירון שלומי' },
-    { text: '…עבודה מקצועית והתוצאה הייתה בדיוק כמו שתיכננו. מומלץ בחום.', meta: 'Jack Mayer' },
-    { text: '…הגעתי ל-סופר צל והופתעתי לטובה! … עבודה מקצועית ושירות אדיב. הגגון הותקן במרפסת השירות בצורה מדויקת ואסתטית, תוך שימוש בחומרים איכותיים…', meta: 'leon vaisman' },
+    { text: 'התקינו לי 2 פרגולות במרפסת ובמרפסת שרות. בכל התהליך הצוות היה שרותי מאוד, הסביר וייעץ. עבודה מקצועית והתוצאה הייתה בדיוק כמו שתיכננו. מומלץ בחום.', meta: 'Jack Mayer' },
+    { text: 'עבודה מקצועית , צוות אדיב , עובדים יעיל ועומדים בזמנים שמציבים . רב תודות', meta: 'GalariSevenTTV' },
+    { text: '…התקינו בחצרי רשת צל וסככה. העבודה סופר מקצועית וגם נראית יפה. בנוסף, המחיר הוגן. ממליץ בחום!!!', meta: 'Chezi Liberman' },
+    { text: 'שירות מעולה ומהיר!! ממליץ!', meta: 'ארתור ארתורר' },
+    { text: 'התקינו לי פרגולת אלומניום, יצא מושלם! הצוות מיומן, מקצועי ואדיב. מחירים הוגנים ביחס לשוק, שירות ברמה גבוהה מאוד ושימוש בחומרים איכותיים. ממליץ בחום!! תודה רבה לכם', meta: 'Daniel Ohana' },
+    { text: 'אחלה עבודה, רמה גבוהה, מחירים הוגנים. ממליץ בחום', meta: 'דובי רביאל' },
+    { text: 'החבר\'ה האלה מקצוענים ביותר בתחומם, עבודה איכותית, מחיר סביר, אני ממליץ עליהם!', meta: 'Krystyna Hryhorenko · תורגם מרוסית' },
+    { text: 'ביקשתי גגון שיתאים למרפסת וגם יגן על חתולים שלי..לא האמנתי כמה יפה ומדוייק הגגון יצא לצרכים שלנו...תודה רבה על העבודה המדהימה ועל ההקשבה לצריכים שלנו אנחנו מאוהבים בגגון החדש😊😍🙏', meta: 'topaz askar' },
+    { text: 'לאחר שפניתי לכמה בעלי מקצוע שקיבלתי מהם הצעות מחיר מופרזות, הגעתי ל-סופר צל והופתעתי לטובה! הם הציעו לי מחיר הוגן, עבודה מקצועית ושירות אדיב. הגגון הותקן במרפסת השירות בצורה מדויקת ואסתטית, תוך שימוש בחומרים איכותיים. הכל בוצע במהירות וביעילות, והתוצאה פשוט מעולה. ממליץ בחום לכל מי שמחפש פתרון הצללה איכותי במחיר הוגן!', meta: 'leon vaisman' },
+    { text: 'איש מקצוע מעולה , נתן רעיונות מעולים לקיטוע חורף , ביצע עבודה מושלמת במחיר סביר.', meta: 'zeira leizerowitz' },
+    { text: 'בעל העסק איש מקצועי ביותר עם לב זהב ,ממליץ בחום!!!', meta: 'Vladimir Lukashov' },
+    { text: 'שירות חבל על הזמן ממליץ בחום', meta: 'Bar Ben ami' },
   ];
 
   get revs() {
@@ -1663,7 +1671,7 @@ class Component extends DCLogic {
       },
       galNote: stzGalNote((GAL_TABS.find(t => t.id === (this.state.galTab || 'shade')) || GAL_TABS[0]).note),
       glass: [
-        { num: '01', span: n ? 'span 1' : 'span 6', minH: n ? '280px' : '420px', titleSize: n ? '23px' : '30px', slotId: 'pg-g1', src: '/img/fast/lp/pg-g1.webp', title: 'סגירת זכוכית למרפסת', body: 'מערכות זכוכית בהזזה בפרופיל אלומיניום דק — המרפסת נשארת פתוחה לאור ולנוף, ומאפשרת שימוש נוח גם בחורף. הפתרון שאנחנו ממליצים עליו כשרוצים חלל סגור ומואר.' },
+        { num: '01', span: n ? 'span 1' : 'span 6', minH: n ? '280px' : '420px', titleSize: n ? '23px' : '30px', slotId: 'pg-g1', src: '/img/fast/lp/pg-g1.webp', title: 'סגירת זכוכית למרפסת', body: 'מערכות זכוכית בהזזה במסגרת אלומיניום צרה — המרפסת נשארת פתוחה לאור ולנוף, ומאפשרת שימוש נוח גם בחורף. הפתרון שאנחנו ממליצים עליו כשרוצים חלל סגור ומואר.' },
         { num: '02', span: n ? 'span 1' : 'span 3', minH: n ? '240px' : '280px', titleSize: n ? '21px' : '22px', slotId: 'pg-g2', src: '/img/fast/projects/light-sunroom-out.webp', title: 'בנייה קלה וחדרי שמש', body: 'קירות אלומיניום וזכוכית ליצירת חלל מואר וסגור למחצה, בהמשך לקו הבית הקיים. הצורך באישורים נבדק בנפרד לכל פרויקט.', hasProject: true, onOpen: () => this.setState({ project: LIGHT_SUNROOM, photo: 0 }) },
         { num: '03', span: n ? 'span 1' : 'span 3', minH: n ? '240px' : '280px', titleSize: n ? '21px' : '22px', slotId: 'pg-g3', src: '/img/fast/w/pg-g3-sliding.webp', title: 'מערכות חלונות הזזה', body: 'חלונות הזזה, ויטרינות ומערכות פנורמיות עם מסגור מינימלי.' },
         { num: '04', span: n ? 'span 1' : 'span 6', minH: n ? '280px' : '380px', titleSize: n ? '23px' : '28px', slotId: 'pg-g-sukkah', src: '/img/fast/gallery/project-sukkah-suite-pvc.webp', title: 'סוויטת אירוח במרפסת — פרגולת אלומיניום כשרה', body: 'פרגולת אלומיניום כשרה שמותאמת להנחת סכך לחג הסוכות, יחד עם דק עץ ומסכי מסילה שנפתחים בקיץ ונסגרים בחורף — מרפסת שמשמשת כסוויטת אירוח כל ימות השבוע, וכסוכה בחג.' },
@@ -1767,8 +1775,8 @@ class Component extends DCLogic {
       marqueeItems: stzVariant().marquee.map(m => ({ t: m })),
       hasRating: typeof this.state.rating === 'number' && this.state.rating > 0,
       ratingText: typeof this.state.rating === 'number' ? this.state.rating.toFixed(1) : '',
-      ratingCountText: this.state.ratingCount ? this.state.ratingCount + ' ביקורות בגוגל' : 'דירוג בגוגל',
-      ratingLabel: typeof this.state.rating === 'number' ? 'דירוג ' + this.state.rating.toFixed(1) + ' בגוגל' + (this.state.ratingCount ? ', ' + this.state.ratingCount + ' ביקורות' : '') : '',
+      ratingCountText: 'דירוג בגוגל',
+      ratingLabel: typeof this.state.rating === 'number' ? 'דירוג ' + this.state.rating.toFixed(1) + ' בגוגל' : '',
       proofH: stzVariant().proofH,
       proofTiles: [
         { n: '01', t: 'מדידה בשטח:', d: stzVariant().proofD1 },

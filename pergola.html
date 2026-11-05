@@ -8,6 +8,13 @@
 /* decorative big numerals stick out of the page edge: clip them instead of letting the whole page scroll sideways */
 html, body { overflow-x: clip; max-width: 100%; }
 .stz-hide, .stz-carousel.stz-hide { display: none !important; }
+/* mobile: the quick-scroll rail on the left edge covers the cards; hide it on phones */
+@media (max-width: 760px) { nav[aria-label="גלילה מהירה בין פרקים"] { display: none !important; } }
+@media (max-width: 760px) { html:not(.stz-landing) #hero { min-height: calc(100svh + 24vh) !important; } }
+@media (max-width: 760px) { #hero { padding-bottom: 58px !important; } #catalog { padding-top: 1.75rem !important; } #catalog > span:first-child { display: none !important; } }
+@keyframes stz-bob { 0%,100% { transform: translate(-50%,0) } 50% { transform: translate(-50%,7px) } }
+.stz-down { position: absolute; left: 50%; bottom: 12px; z-index: 3; width: 44px; height: 44px; display: grid; place-items: center; border-radius: 50%; border: 1px solid rgba(245,240,228,.55); background: rgba(27,23,18,.35); color: #F5F0E4; animation: stz-bob 1.8s ease-in-out infinite; }
+@media (prefers-reduced-motion: reduce) { .stz-down { animation: none; transform: translateX(-50%); } }
 @keyframes stz-sheet { from { transform: translateY(40px); opacity: 0 } to { transform: none; opacity: 1 } }
 .stz-sun-dlg { animation: stz-sheet .42s cubic-bezier(.2,.7,.2,1) both; }
 @media (max-width: 760px) {
@@ -140,15 +147,16 @@ main :is(p, li, h1, h2, h3) :is(p, li, h1, h2, h3) { zoom: 1; }
 <helmet>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>פתרונות הצללה מתקדמים בהתאמה אישית | IL Projects | סופר צל</title>
+<script>/* /glass-closures is served by this same page (vercel rewrite): open it on the glass-closure variant and mark it as the canonical address */(function(){try{if(location.pathname==='/glass-closures'){var q=location.search.replace(/^\?/,''),p=new URLSearchParams(q);if(!p.get('s'))p.set('s','closure');if(!p.get('t'))p.set('t','glass');history.replaceState(null,'','/glass-closures?'+p.toString()+location.hash);var l=document.createElement('link');l.rel='canonical';l.href='https://www.supertzel.co.il/glass-closures';document.head.appendChild(l);}}catch(e){}})();</script>
 <template id="__bundler_thumbnail"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200"><rect width="200" height="200" fill="#1B1712"></rect><rect x="40" y="76" width="120" height="12" rx="4" fill="#B4813C"></rect><rect x="52" y="96" width="8" height="52" fill="#B4813C"></rect><rect x="140" y="96" width="8" height="52" fill="#B4813C"></rect><rect x="40" y="52" width="120" height="8" rx="4" fill="#E8C48C"></rect></svg></template>
 <link rel="preload" as="image" href="/img/fast/lp/pg-hero.webp" fetchpriority="high">
 <script src="/lead.js?v=9"></script>
 <script src="/lead-modal.js?v=18"></script>
 <script src="/phone-cc.js?v=6" defer></script>
-<script src="/mobile-ux.js?v=16" defer></script>
-<script src="/landing-detail.js?v=12" defer></script>
+<script src="/mobile-ux.js?v=6" defer></script>
+<script src="/landing-detail.js?v=14" defer></script>
 <script src="/landing-mode.js?v=4" defer></script>
-<script src="/landing-projects.js?v=16" defer></script>
+<script src="/landing-projects.js?v=18" defer></script>
 <script src="/landing-about.js?v=16" defer></script>
 <script src="/ba-story.js?v=6" defer></script>
 <script src="/analytics.js?v=20"></script>
@@ -300,6 +308,7 @@ header nav a:hover { color: #E8C48C !important; }
           <img src="/img/fast/w/pergola-wood-slats.webp" alt="{{ sl.alt }}" loading="lazy" decoding="async" style="display:{{ sl.s3 }};width:100%;height:100%;object-fit:cover;object-position:{{ sl.pos }};animation:stz-kb 14s ease-in-out infinite alternate">
           <img src="/img/fast/gallery/pergola-lighting-rishon.webp" alt="{{ sl.alt }}" loading="lazy" decoding="async" style="display:{{ sl.s4 }};width:100%;height:100%;object-fit:cover;object-position:{{ sl.pos }};animation:stz-kb 14s ease-in-out infinite alternate">
           <img src="/img/fast/projects/wood-pergola-rustic.webp" alt="{{ sl.alt }}" loading="lazy" decoding="async" style="display:{{ sl.s5 }};width:100%;height:100%;object-fit:cover;object-position:{{ sl.pos }};animation:stz-kb 14s ease-in-out infinite alternate">
+<img src="{{ sl.src }}" alt="{{ sl.alt }}" loading="lazy" decoding="async" style="display:{{ sl.sg }};width:100%;height:100%;object-fit:cover;object-position:{{ sl.pos }};animation:stz-kb 14s ease-in-out infinite alternate">
           <sc-for list="{{ sl.pins }}" as="p" hint-placeholder-count="0">
             <button type="button" aria-label="{{ p.label }}" onPointerDown="{{ p.onDown }}" onMouseEnter="{{ p.onEnter }}" onFocus="{{ p.onEnter }}" onClick="{{ p.onEnter }}" style="position:absolute;left:{{ p.x }};top:{{ p.y }};z-index:{{ p.z }};transform:translate(-50%,-50%);background:transparent;border:0;padding:0;cursor:pointer;font:inherit;touch-action:none">
               <span style="display:grid;place-items:center;width:{{ pinSize }};height:{{ pinSize }};border-radius:50%;border:2px solid #FFFFFF;background:{{ p.bg }};color:#FFFFFF;font-size:14px;font-weight:600;box-shadow:0 2px 14px rgba(0,0,0,0.4);transform:scale({{ p.scale }});transition:transform 0.25s,background 0.25s">{{ p.n }}</span>
@@ -350,11 +359,12 @@ header nav a:hover { color: #E8C48C !important; }
         <p style="margin-top:-2px;font-size:13px;color:rgba(245,240,228,0.65)">✓ שיחת ייעוץ ומדידה ללא התחייבות · מרכז, שפלה ודרום</p>
       </div>
     </div>
-  </section>
+  <a href="#catalog" class="stz-down" aria-label="לגלול למטה"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></a>
+</section>
 
   <div data-trustbar="" style="background:#211C16;color:#F5F0E4;padding:18px 0">
     <div style="width:min(var(--stz-side,92%),var(--stz-max,1180px));margin-inline:auto;display:flex;align-items:center;justify-content:center;gap:14px;flex-wrap:wrap;text-align:center">
-      <span style="font-size:16px;color:rgba(245,240,228,0.82)">שנים של ניסיון מקצועי בביצוע פרויקטים למרחב החוץ</span>
+      <span style="font-size:16px;color:rgba(245,240,228,0.82)">ניסיון מוכח בשטח בביצוע פרויקטים למרחב החוץ</span>
       <span style="width:1px;height:18px;background:rgba(245,240,228,0.28)"></span>
       <div style="display:flex;align-items:center;gap:10px">
         <a href="{{ reviewsHref }}" target="_blank" rel="noopener" aria-label="ביקורות בגוגל" title="ביקורות בגוגל" style="display:flex;align-items:center;justify-content:center;width:40px;height:40px;border-radius:50%;border:1px solid rgba(245,240,228,0.4);color:#F5F0E4" style-hover="background:#F5F0E4;color:#1B1712;border-color:#F5F0E4"><svg viewBox="0 0 24 24" width="17" height="17" fill="currentColor" aria-hidden="true"><path d="M12.48 10.92v3.28h7.84c-.24 1.84-.85 3.18-1.79 4.13-1.15 1.15-2.94 2.4-6.05 2.4-4.83 0-8.6-3.89-8.6-8.72s3.77-8.72 8.6-8.72c2.6 0 4.51 1.03 5.91 2.35l2.31-2.31C18.75 1.44 16.13 0 12.48 0 5.87 0 .31 5.39.31 12s5.56 12 12.17 12c3.57 0 6.27-1.17 8.37-3.36 2.16-2.16 2.84-5.21 2.84-7.67 0-.76-.06-1.47-.17-2.05H12.48z"></path></svg></a>
@@ -478,7 +488,31 @@ header nav a:hover { color: #E8C48C !important; }
     </div>
   </section>
 
-  <section id="reviews" style="background:#211C16;color:#F5F0E4;padding-block:clamp(4rem,10vh,6.9rem)">
+  <section id="social" style="background:#F5F0E4;color:#211C16;padding-block:clamp(3rem,8vh,5.5rem)">
+<div style="width:min(var(--stz-side,92%),var(--stz-max,1180px));margin-inline:auto">
+<div style="display:flex;justify-content:space-between;align-items:flex-end;gap:16px 28px;flex-wrap:wrap;margin-bottom:clamp(1.25rem,3vh,2rem)">
+<div><div style="display:inline-flex;align-items:center;gap:10px;color:#80561E;font-size:14.5px;font-weight:600;margin-bottom:14px"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg><span dir="ltr">@super.tzel</span></div>
+<h2 style="font-size:clamp(28px,3.6vw,44px);line-height:1.12;letter-spacing:-0.02em">מהשטח, באינסטגרם.</h2>
+<p style="margin-top:10px;color:#4B443A;font-size:16.5px;line-height:1.6;max-width:44ch">עוד פרויקטים ותמונות מהשטח, בפרופיל שלנו באינסטגרם.</p></div>
+<div style="display:flex;gap:10px;align-items:center"><button type="button" aria-label="הקודם" onclick="document.getElementById('stz-igs').scrollBy({left:320,behavior:'smooth'})" style="width:48px;height:48px;border-radius:100px;border:1px solid rgba(33,28,22,.3);background:transparent;color:#211C16;font-size:20px;cursor:pointer">›</button><button type="button" aria-label="הבא" onclick="document.getElementById('stz-igs').scrollBy({left:-320,behavior:'smooth'})" style="width:48px;height:48px;border-radius:100px;border:1px solid rgba(33,28,22,.3);background:transparent;color:#211C16;font-size:20px;cursor:pointer">‹</button></div>
+</div>
+<div id="stz-igs" style="display:flex;gap:14px;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;padding-bottom:6px">
+<a href="https://www.instagram.com/super.tzel/" target="_blank" rel="noopener" aria-label="סגירת מרפסת בזכוכית — לפרופיל באינסטגרם" style="flex:0 0 clamp(220px,24vw,290px);scroll-snap-align:start;position:relative;display:block;aspect-ratio:4/5;border-radius:20px;overflow:hidden;background:#1B1712"><img src="/img/fast/projects/glass-sliding-cream.webp" alt="סגירת מרפסת בזכוכית" loading="lazy" decoding="async" style="width:100%;height:100%;object-fit:cover;display:block;transition:transform .5s ease"><span style="position:absolute;inset-inline:0;bottom:0;padding:34px 16px 14px;background:linear-gradient(0deg,rgba(17,14,11,.82),rgba(17,14,11,0));color:#F5F0E4;font-size:15px;font-weight:600">סגירת מרפסת בזכוכית</span></a>
+<a href="https://www.instagram.com/super.tzel/" target="_blank" rel="noopener" aria-label="סוכך קבוע בעיצוב גלי — לפרופיל באינסטגרם" style="flex:0 0 clamp(220px,24vw,290px);scroll-snap-align:start;position:relative;display:block;aspect-ratio:4/5;border-radius:20px;overflow:hidden;background:#1B1712"><img src="/img/fast/projects/fixed-awning-wave.webp" alt="סוכך קבוע בעיצוב גלי" loading="lazy" decoding="async" style="width:100%;height:100%;object-fit:cover;display:block;transition:transform .5s ease"><span style="position:absolute;inset-inline:0;bottom:0;padding:34px 16px 14px;background:linear-gradient(0deg,rgba(17,14,11,.82),rgba(17,14,11,0));color:#F5F0E4;font-size:15px;font-weight:600">סוכך קבוע בעיצוב גלי</span></a>
+<a href="https://www.instagram.com/super.tzel/" target="_blank" rel="noopener" aria-label="פרגולת עץ וסגירת לאטה — לפרופיל באינסטגרם" style="flex:0 0 clamp(220px,24vw,290px);scroll-snap-align:start;position:relative;display:block;aspect-ratio:4/5;border-radius:20px;overflow:hidden;background:#1B1712"><img src="/img/fast/projects/wood-lattice-balcony.webp" alt="פרגולת עץ וסגירת לאטה" loading="lazy" decoding="async" style="width:100%;height:100%;object-fit:cover;display:block;transition:transform .5s ease"><span style="position:absolute;inset-inline:0;bottom:0;padding:34px 16px 14px;background:linear-gradient(0deg,rgba(17,14,11,.82),rgba(17,14,11,0));color:#F5F0E4;font-size:15px;font-weight:600">פרגולת עץ וסגירת לאטה</span></a>
+<a href="https://www.instagram.com/super.tzel/" target="_blank" rel="noopener" aria-label="פרגולת אלומיניום עם תאורה — לפרופיל באינסטגרם" style="flex:0 0 clamp(220px,24vw,290px);scroll-snap-align:start;position:relative;display:block;aspect-ratio:4/5;border-radius:20px;overflow:hidden;background:#1B1712"><img src="/img/fast/gallery/pergola-lighting-rishon.webp" alt="פרגולת אלומיניום עם תאורה" loading="lazy" decoding="async" style="width:100%;height:100%;object-fit:cover;display:block;transition:transform .5s ease"><span style="position:absolute;inset-inline:0;bottom:0;padding:34px 16px 14px;background:linear-gradient(0deg,rgba(17,14,11,.82),rgba(17,14,11,0));color:#F5F0E4;font-size:15px;font-weight:600">פרגולת אלומיניום עם תאורה</span></a>
+<a href="https://www.instagram.com/super.tzel/" target="_blank" rel="noopener" aria-label="סגירת חורף לפינת ישיבה — לפרופיל באינסטגרם" style="flex:0 0 clamp(220px,24vw,290px);scroll-snap-align:start;position:relative;display:block;aspect-ratio:4/5;border-radius:20px;overflow:hidden;background:#1B1712"><img src="/img/fast/gallery/winter-1.webp" alt="סגירת חורף לפינת ישיבה" loading="lazy" decoding="async" style="width:100%;height:100%;object-fit:cover;display:block;transition:transform .5s ease"><span style="position:absolute;inset-inline:0;bottom:0;padding:34px 16px 14px;background:linear-gradient(0deg,rgba(17,14,11,.82),rgba(17,14,11,0));color:#F5F0E4;font-size:15px;font-weight:600">סגירת חורף לפינת ישיבה</span></a>
+<a href="https://www.instagram.com/super.tzel/" target="_blank" rel="noopener" aria-label="מטבח חוץ ובר אירוח — לפרופיל באינסטגרם" style="flex:0 0 clamp(220px,24vw,290px);scroll-snap-align:start;position:relative;display:block;aspect-ratio:4/5;border-radius:20px;overflow:hidden;background:#1B1712"><img src="/img/fast/gallery/kitchen-1.webp" alt="מטבח חוץ ובר אירוח" loading="lazy" decoding="async" style="width:100%;height:100%;object-fit:cover;display:block;transition:transform .5s ease"><span style="position:absolute;inset-inline:0;bottom:0;padding:34px 16px 14px;background:linear-gradient(0deg,rgba(17,14,11,.82),rgba(17,14,11,0));color:#F5F0E4;font-size:15px;font-weight:600">מטבח חוץ ובר אירוח</span></a>
+<a href="https://www.instagram.com/super.tzel/" target="_blank" rel="noopener" aria-label="פרגולה בגוון שמנת — לפרופיל באינסטגרם" style="flex:0 0 clamp(220px,24vw,290px);scroll-snap-align:start;position:relative;display:block;aspect-ratio:4/5;border-radius:20px;overflow:hidden;background:#1B1712"><img src="/img/fast/gallery/pergola-cream-louvers.webp" alt="פרגולה בגוון שמנת" loading="lazy" decoding="async" style="width:100%;height:100%;object-fit:cover;display:block;transition:transform .5s ease"><span style="position:absolute;inset-inline:0;bottom:0;padding:34px 16px 14px;background:linear-gradient(0deg,rgba(17,14,11,.82),rgba(17,14,11,0));color:#F5F0E4;font-size:15px;font-weight:600">פרגולה בגוון שמנת</span></a>
+<a href="https://www.instagram.com/super.tzel/" target="_blank" rel="noopener" aria-label="מרפסת נוף עם דק ופרגולת עץ — לפרופיל באינסטגרם" style="flex:0 0 clamp(220px,24vw,290px);scroll-snap-align:start;position:relative;display:block;aspect-ratio:4/5;border-radius:20px;overflow:hidden;background:#1B1712"><img src="/img/fast/gallery/project-deck-view.webp" alt="מרפסת נוף עם דק ופרגולת עץ" loading="lazy" decoding="async" style="width:100%;height:100%;object-fit:cover;display:block;transition:transform .5s ease"><span style="position:absolute;inset-inline:0;bottom:0;padding:34px 16px 14px;background:linear-gradient(0deg,rgba(17,14,11,.82),rgba(17,14,11,0));color:#F5F0E4;font-size:15px;font-weight:600">מרפסת נוף עם דק ופרגולת עץ</span></a>
+<a href="https://www.instagram.com/super.tzel/" target="_blank" rel="noopener" aria-label="פרגולת תריס חשמלי וחלון הזזה — לפרופיל באינסטגרם" style="flex:0 0 clamp(220px,24vw,290px);scroll-snap-align:start;position:relative;display:block;aspect-ratio:4/5;border-radius:20px;overflow:hidden;background:#1B1712"><img src="/img/fast/gallery/balcony-electric-pergola-window.webp" alt="פרגולת תריס חשמלי וחלון הזזה" loading="lazy" decoding="async" style="width:100%;height:100%;object-fit:cover;display:block;transition:transform .5s ease"><span style="position:absolute;inset-inline:0;bottom:0;padding:34px 16px 14px;background:linear-gradient(0deg,rgba(17,14,11,.82),rgba(17,14,11,0));color:#F5F0E4;font-size:15px;font-weight:600">פרגולת תריס חשמלי וחלון הזזה</span></a>
+<a href="https://www.instagram.com/super.tzel/" target="_blank" rel="noopener" aria-label="פרגולה לבנה בשילוב עץ — לפרופיל באינסטגרם" style="flex:0 0 clamp(220px,24vw,290px);scroll-snap-align:start;position:relative;display:block;aspect-ratio:4/5;border-radius:20px;overflow:hidden;background:#1B1712"><img src="/img/fast/gallery/pergola-white-wood.webp" alt="פרגולה לבנה בשילוב עץ" loading="lazy" decoding="async" style="width:100%;height:100%;object-fit:cover;display:block;transition:transform .5s ease"><span style="position:absolute;inset-inline:0;bottom:0;padding:34px 16px 14px;background:linear-gradient(0deg,rgba(17,14,11,.82),rgba(17,14,11,0));color:#F5F0E4;font-size:15px;font-weight:600">פרגולה לבנה בשילוב עץ</span></a>
+</div>
+<div style="display:flex;gap:12px;flex-wrap:wrap;margin-top:clamp(1.25rem,3vh,2rem)"><a href="https://www.instagram.com/super.tzel/" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:10px;min-height:52px;padding:0 26px;border-radius:100px;border:1px solid #211C16;color:#211C16;font-size:16px;font-weight:600"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg><span>לפרופיל <bdi dir="ltr">@super.tzel</bdi></span></a><a href="#lead" style="display:inline-flex;align-items:center;gap:10px;min-height:52px;padding:0 26px;border-radius:100px;background:#B4813C;color:#1B1712;font-size:16px;font-weight:600">תאמו שיחת ייעוץ</a></div>
+</div>
+</section>
+
+<section id="reviews" style="background:#211C16;color:#F5F0E4;padding-block:clamp(4rem,10vh,6.9rem)">
     <div style="width:min(var(--stz-side,92%),var(--stz-max,1180px));margin-inline:auto">
       <div style="display:flex;justify-content:space-between;align-items:flex-end;gap:clamp(1rem,4vw,2.5rem);flex-wrap:wrap;margin-bottom:clamp(2rem,5vh,3.2rem)">
         <div>
@@ -487,6 +521,7 @@ header nav a:hover { color: #E8C48C !important; }
         </div>
         <div style="display:flex;flex-direction:column;gap:14px;align-items:flex-start">
           <span style="font-size:15px;color:rgba(245,240,228,0.75)">מה הלקוחות מספרים עלינו</span>
+<a href="{{ reviewsHref }}" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:8px;font-size:14.5px;font-weight:600;color:#E8C48C;text-decoration:underline;text-underline-offset:4px"><span aria-hidden="true" style="letter-spacing:2px">★★★★★</span><span>{{ gRating }} בגוגל · לכל הביקורות</span></a>
           
         </div>
       </div>
@@ -908,10 +943,19 @@ header nav a:hover { color: #E8C48C !important; }
 const GAL_TABS = [
   { id: 'shade', label: 'הצללה וקירוי', note: 'פרגולות, סוככים ורשתות צל — נבחרים לפי כיווני השמש, המפתח וקו הבית.' },
   { id: 'glass', label: 'סגירות', note: 'סגירת חורף למרפסת בזכוכית היא הפתרון שאנחנו ממליצים עליו כשרוצים חלל סגור ומואר.' },
-  { id: 'kitchen', label: 'מטבחי חוץ ובר', note: 'מטבח חוץ ובר אירוח מתוכננים יחד עם ההצללה שמעליהם — כדי שהחלל ישמש בפועל.' },
+  { id: 'fabric', label: 'סגירות בד', note: 'יריעות בד עם חלונות שקופים ומסכי גלילה: סגירה גמישה שנפתחת ונסגרת לפי מזג האוויר.' },
+{ id: 'kitchen', label: 'מטבחי חוץ ובר', note: 'מטבח חוץ ובר אירוח מתוכננים יחד עם ההצללה שמעליהם — כדי שהחלל ישמש בפועל.' },
   { id: 'deck', label: 'דקים וריצוף', note: 'הבסיס שעליו יושבת הפרגולה — דק, ריצוף וחיפוי בהתאמה לשפה החומרית של הבית.' }
 ];
 const GAL_EXTRA = {
+fabric: [
+{ src: '/img/fast/gallery/winter-closure-roof.webp', title: 'סגירות בד — מרפסת וחורף', body: 'מה שמכונה לרוב "סגירת חורף": יריעות בד עם חלונות שקופים, שנפתחות ונסגרות לפי מזג האוויר.' },
+{ src: '/img/fast/gallery/winter-1.webp', title: 'סגירת בד לגינה', body: 'למי שרוצה להפוך פינת ישיבה לחלל סגור בחורף — ולפתוח אותה לגינה בקיץ.' },
+{ src: '/img/fast/gallery/new-49-1.webp', title: 'סגירת מרפסת בבד', body: 'סגירה בהתאמה למידות ולסגנון הבית. פתוחה בעונות הנעימות ומוגנת בימים הקרים.' },
+{ src: '/img/fast/gallery/roll-screen-carport.webp', title: 'מסך גלילה עם חלון שקוף', body: 'נגלל למטה כשצריך הגנה מהשמש והרוח, ונאסף למעלה כשלא.' },
+{ src: '/img/fast/gallery/roll-screen-patio.webp', title: 'מסך גלילה לפינת ישיבה', body: 'סוגרים את הצד בלי לאבד את המבט החוצה.' },
+{ src: '/img/fast/gallery/roller-screens-balcony.webp', title: 'מסכי גלילה למרפסת', body: 'מסכי גלילה להכנסת צל ופרטיות לפי שעות היום.' }
+],
   kitchen: [
     { src: '/img/fast/projects/pergola-kitchen-bar-side.webp', title: 'פרגולה שחורה, מטבח חוץ ושולחן בר', body: 'פרגולת אלומיניום שחורה עם פרופילי הצללה בגוון דמוי עץ וסנטף BH, ומתחתיה מטבח חוץ עם כיור וגריל.' },
     { src: '/img/fast/gallery/kitchen-1.webp', title: 'מטבח חוץ ובר אירוח בצמחייה', body: 'מטבח חוץ ובר אירוח תחת פרגולה מקורה בצמחייה.' }
@@ -941,6 +985,48 @@ const MOSHAV_BAROSH = {
   ]
 };
 
+const WAVE_AWNING = {
+  title: 'סוכך קבוע בעיצוב גלי',
+  meta: 'בית פרטי · סוכך קבוע',
+  lead: 'מוסיף אופי לחזית ומצל על הפתח שמתחתיו.',
+  photos: [
+    { src: '/img/fast/projects/fixed-awning-wave.webp', cap: 'מבט על החזית והפתח' }
+  ],
+  specs: [
+    'סוכך קבוע בעיצוב גלי.',
+    'מעל דלת ההזזה.',
+    'תאורה משולבת לשעות הערב.'
+  ]
+};
+
+const WOOD_LATTICE = {
+  title: 'פרגולת עץ וסגירת לאטה',
+  meta: 'מרפסת מקורה · פרגולת עץ',
+  lead: 'סורגי לאטה משני הצדדים יוצרים פרטיות וצל בלי לחסום את האוויר.',
+  photos: [
+    { src: '/img/fast/projects/wood-lattice-balcony.webp', cap: 'מבט מתוך המרפסת' }
+  ],
+  specs: [
+    'קירוי עץ בקורות ושלבים.',
+    'סורגי לאטה משני צדי המרפסת.',
+    'מעקה זכוכית שמשאיר את הנוף פתוח.'
+  ]
+};
+
+const GLASS_SLIDING = {
+  title: 'סגירת מרפסת בזכוכית',
+  meta: 'מרפסת מקורה · חלונות הזזה פנורמיים',
+  lead: 'גוון שמנת שנבחר בהתאמה לקרמיקה, לשפה עיצובית אחת ובהירה.',
+  photos: [
+    { src: '/img/fast/projects/glass-sliding-cream.webp', cap: 'מבט מתוך המרפסת' }
+  ],
+  specs: [
+    'לכל רוחב המרפסת.',
+    'פרופיל אלומיניום בגוון שמנת.',
+    'גוון בהתאמה לקרמיקה הקיימת.'
+  ]
+};
+
 const LIGHT_SUNROOM = {
   title: 'בנייה קלה וחדר שמש — הרחבת שטח החוץ',
   meta: 'לקוח פרטי · בנייה קלה, תוספות חוץ וחדרי שמש',
@@ -961,8 +1047,18 @@ const LIGHT_SUNROOM = {
 
 class Component extends DCLogic {
   revsFallback = [
-    { text: 'איוון התקין לי 2 פרגולות במרפסת ובמרפסת שרות בכל התהליך איוון היה שרותי מאוד, הסביר וייעץ. עבודה מקצועית והתוצאה הייתה בדיוק כמו שתיכננו. מומלץ בחום.', meta: 'Jack Mayer' },
+    { text: 'התקינו לי 2 פרגולות במרפסת ובמרפסת שרות. בכל התהליך הצוות היה שרותי מאוד, הסביר וייעץ. עבודה מקצועית והתוצאה הייתה בדיוק כמו שתיכננו. מומלץ בחום.', meta: 'Jack Mayer' },
     { text: 'עבודה מקצועית , צוות אדיב , עובדים יעיל ועומדים בזמנים שמציבים . רב תודות', meta: 'GalariSevenTTV' },
+    { text: '…התקינו בחצרי רשת צל וסככה. העבודה סופר מקצועית וגם נראית יפה. בנוסף, המחיר הוגן. ממליץ בחום!!!', meta: 'Chezi Liberman' },
+    { text: 'שירות מעולה ומהיר!! ממליץ!', meta: 'ארתור ארתורר' },
+    { text: 'התקינו לי פרגולת אלומניום, יצא מושלם! הצוות מיומן, מקצועי ואדיב. מחירים הוגנים ביחס לשוק, שירות ברמה גבוהה מאוד ושימוש בחומרים איכותיים. ממליץ בחום!! תודה רבה לכם', meta: 'Daniel Ohana' },
+    { text: 'אחלה עבודה, רמה גבוהה, מחירים הוגנים. ממליץ בחום', meta: 'דובי רביאל' },
+    { text: 'החבר\'ה האלה מקצוענים ביותר בתחומם, עבודה איכותית, מחיר סביר, אני ממליץ עליהם!', meta: 'Krystyna Hryhorenko · תורגם מרוסית' },
+    { text: 'ביקשתי גגון שיתאים למרפסת וגם יגן על חתולים שלי..לא האמנתי כמה יפה ומדוייק הגגון יצא לצרכים שלנו...תודה רבה על העבודה המדהימה ועל ההקשבה לצריכים שלנו אנחנו מאוהבים בגגון החדש😊😍🙏', meta: 'topaz askar' },
+    { text: 'לאחר שפניתי לכמה בעלי מקצוע שקיבלתי מהם הצעות מחיר מופרזות, הגעתי ל-סופר צל והופתעתי לטובה! הם הציעו לי מחיר הוגן, עבודה מקצועית ושירות אדיב. הגגון הותקן במרפסת השירות בצורה מדויקת ואסתטית, תוך שימוש בחומרים איכותיים. הכל בוצע במהירות וביעילות, והתוצאה פשוט מעולה. ממליץ בחום לכל מי שמחפש פתרון הצללה איכותי במחיר הוגן!', meta: 'leon vaisman' },
+    { text: 'איש מקצוע מעולה , נתן רעיונות מעולים לקיטוע חורף , ביצע עבודה מושלמת במחיר סביר.', meta: 'zeira leizerowitz' },
+    { text: 'בעל העסק איש מקצועי ביותר עם לב זהב ,ממליץ בחום!!!', meta: 'Vladimir Lukashov' },
+    { text: 'שירות חבל על הזמן ממליץ בחום', meta: 'Bar Ben ami' },
   ];
 
   get revs() {
@@ -1003,7 +1099,7 @@ class Component extends DCLogic {
     this.applyLook();
     this.onGalClick = e => { const a = e.target.closest && e.target.closest('[data-gal]'); if (a) this.setState({ galTab: a.getAttribute('data-gal') }); };
     document.addEventListener('click', this.onGalClick, true);
-    try { if (location.hash === '#glass' || new URLSearchParams(location.search).get('s') === 'glass') this.setState({ galTab: 'glass' }); const gt = new URLSearchParams(location.search).get('t'); if (['shade', 'glass', 'kitchen', 'deck'].indexOf(gt) > -1) this.setState({ galTab: gt }); } catch (e) {}
+    try { if (location.hash === '#glass' || new URLSearchParams(location.search).get('s') === 'glass') this.setState({ galTab: 'glass' }); const gt = new URLSearchParams(location.search).get('t'); if (['shade', 'glass', 'fabric', 'kitchen', 'deck'].indexOf(gt) > -1) this.setState({ galTab: gt }); } catch (e) {}
     setTimeout(() => {
       try {
         const q = new URLSearchParams(location.search).get('s') || location.hash.slice(1);
@@ -1046,7 +1142,7 @@ class Component extends DCLogic {
     this.onScroll();
     this.heroTimer = window.setInterval(() => {
       // ad entries (?s=topic) keep the topic's headline and photo; only the default page rotates
-      if (this.state.heroHold || this.props.editPins || /[?&]s=(electric|alu|wood|closure|kitchen|awning)\b/.test(location.search)) return;
+      if (this.state.heroHold || this.props.editPins || /[?&]s=(electric|alu|wood|kitchen|awning)\b/.test(location.search)) return;
       const S = this.heroSlideData();
       this.setState(st => {
         const si = (st.heroSlide || 0) % S.length, pi = (st.heroPin || 0) + 1;
@@ -1246,6 +1342,9 @@ class Component extends DCLogic {
     ];
     // Ad landing variants: ?s=awning opens on an awning slide (the awnings ad group links here); ?s=closure keeps the glass-closure slide first.
     const sv = (location.search.match(/[?&]s=(\w+)/) || [])[1];
+      if (sv === 'closure') { const g0 = S[0]; S.length = 0; S.push(g0, 
+        { k: 7, word: 'חלונות הזזה פנורמיים.', caption: 'סגירת מרפסת בזכוכית · בגוון שמנת', src: '/img/fast/projects/glass-sliding-cream.webp', pos: '50% 50%', alt: 'סגירת מרפסת בזכוכית עם חלונות הזזה פנורמיים בגוון שמנת', pins: [ { label: 'חלונות הזזה פנורמיים', x: '30%', y: '60%' }, { label: 'פרופיל אלומיניום בגוון שמנת', x: '53%', y: '45%' }, { label: 'מסילה עליונה', x: '62%', y: '16%' } ] },
+        { k: 8, word: 'זכוכית בפרופיל שחור.', caption: 'סגירת מרפסת בזכוכית · פרופיל שחור', src: '/img/fast/gallery/project-black-glass-balcony.webp', pos: '50% 50%', alt: 'מרפסת סגורה בזכוכית בפרופיל שחור לכל האורך', pins: [ { label: 'זכוכית בפרופיל שחור', x: '55%', y: '45%' }, { label: 'חלונות לכל אורך המרפסת', x: '30%', y: '55%' }, { label: 'נוף פתוח', x: '78%', y: '20%' } ] }); }
     if (sv === 'awning') S.unshift({ k: 6, word: 'סוככי זרועות חשמליים בהתאמה אישית.', caption: 'סוכך זרועות חשמלי · הפעלה בשלט', src: '/img/fast/gallery/new-61-1.webp', pos: '50% 40%', alt: 'סוככי זרועות חשמליים בגוון כחול על חזית בניין',
       pins: [
         { label: 'סוכך זרועות חשמלי', x: '24%', y: '36%' },
@@ -1374,14 +1473,14 @@ class Component extends DCLogic {
       pinSize: n ? '30px' : '36px',
       dotsTop: n ? '86px' : '96px', dotsBottom: 'auto',
       heroCaption: S[cs].caption,
-      heroCapShow: n ? 'סופר צל · פרגולות והצללה' : S[cs].caption,
+      heroCapShow: n ? (/[?&]s=closure\b/.test(location.search) ? ('\u2066' + '0' + (cs + 1) + ' / 0' + S.length + '\u2069 · סגירות זכוכית') : 'סופר צל · פרגולות והצללה') : S[cs].caption,
       heroWordEl: React.createElement('span', { key: 'hw' + cs, style: { display: 'inline-block', animation: 'stz-word 0.8s both' } }, S[cs].word),
       heroPinLeave: () => this.setState({ heroHold: false }),
       heroSlides: S.map((sl, si) => {
         const cur = si === cs;
         return {
           src: sl.src, alt: sl.alt, pos: sl.pos, prio: si === 0 ? 'high' : 'low', load: si === 0 ? 'eager' : 'lazy',
-          s0: sl.k === 0 ? 'block' : 'none', s1: sl.k === 1 ? 'block' : 'none', s2: sl.k === 2 ? 'block' : 'none', s3: sl.k === 3 ? 'block' : 'none', s4: sl.k === 4 ? 'block' : 'none', s5: sl.k === 5 ? 'block' : 'none',
+          s0: sl.k === 0 ? 'block' : 'none', s1: sl.k === 1 ? 'block' : 'none', s2: sl.k === 2 ? 'block' : 'none', s3: sl.k === 3 ? 'block' : 'none', s4: sl.k === 4 ? 'block' : 'none', s5: sl.k === 5 ? 'block' : 'none', sg: sl.k >= 6 ? 'block' : 'none',
           op: cur ? '1' : '0', pe: cur ? 'auto' : 'none', hidden: cur ? 'false' : 'true',
           pins: (n && !E) ? [] : sl.pins.map((p, i) => {
             const on = E ? !!(sel && sel.si === si && sel.i === i) : (cur && (this.state.heroPin || 0) === i);
@@ -1410,10 +1509,10 @@ class Component extends DCLogic {
     const types = [
       { num: '01', span: n ? 'span 1' : 'span 3', inner: '1fr', minH: n ? '250px' : '340px', titleSize: n ? '22px' : '27px', slotId: 'pg-1', src: '/img/fast/w/pg1-alu-louver.webp', title: 'פרגולות אלומיניום סטטיות עם תוספות', body: 'פרגולת אלומיניום סטטית בקונסטרוקציה קבועה, בהתאמה אישית למידות הבית והמרפסת. אפשר לבחור קירוי בסנטף BH, בפוליקרבונט או בקירוי קשיח, וגוון ופרופיל שמשתלבים בבית — כולל אלומיניום בגוון דמוי עץ.' },
       { num: '02', span: n ? 'span 1' : 'span 3', inner: '1fr', minH: n ? '250px' : '340px', titleSize: n ? '22px' : '27px', slotId: 'pg-2', src: '/img/fast/w/pg2-black-louver.webp', title: 'פרגולות חשמליות בהתאמה אישית', body: 'פרגולה חשמלית בהתאמה אישית, עם פרופילי הצללה מתכווננים בשליטה חשמלית — אור, צל ואוורור משתנים לפי שעות היום והעונה.', hasProject: false, onOpen: () => this.setState({ project: MOSHAV_BAROSH, photo: 0 }) },
-      { num: '03', span: n ? 'span 1' : 'span 2', inner: '1fr', minH: n ? '240px' : '280px', titleSize: n ? '21px' : '22px', slotId: 'pg-3', src: '/img/fast/w/pergola-wood-slats.webp', title: 'פרגולות עץ וגוון דמוי עץ', body: 'פרגולת עץ טבעי, או אלומיניום בגוון דמוי עץ — מראה חם שמשתלב בבית ובגינה, עם אפשרויות גימור לפי הטעם והשימוש.' },
+      { num: '03', span: n ? 'span 1' : 'span 2', inner: '1fr', minH: n ? '240px' : '280px', titleSize: n ? '21px' : '22px', slotId: 'pg-3', src: '/img/fast/w/pergola-wood-slats.webp', title: 'פרגולות עץ וגוון דמוי עץ', body: 'פרגולת עץ טבעי, או אלומיניום בגוון דמוי עץ — מראה חם שמשתלב בבית ובגינה, עם אפשרויות גימור לפי הטעם והשימוש.', hasProject: true, onOpen: () => this.setState({ project: WOOD_LATTICE, photo: 0 }) },
       { num: '04', span: n ? 'span 1' : 'span 2', inner: '1fr', minH: n ? '240px' : '280px', titleSize: n ? '21px' : '22px', slotId: 'pg-4', src: '/img/fast/w/pg4-wood-kitchen.webp', title: 'פרגולות מיוחדות ומעוצבות', body: 'פרגולות בעיצוב מיוחד: שילובי עץ ואלומיניום, במבוק, גוונים ופרופילים שונים — וגם סגירת זכוכית, מטבח חוץ, גדר או דק כחלק מאותו פרויקט.' },
       { num: '05', span: n ? 'span 1' : 'span 2', inner: '1fr', minH: n ? '240px' : '280px', titleSize: n ? '21px' : '22px', slotId: 'pg-5', src: '/img/fast/w/awning-leumi.webp', title: 'סוככי זרועות חשמליים וידניים', body: 'פתיחה וסגירה לפי הצורך — לחזיתות בתים, למרפסות ולויטרינות עסקים, באריגים וגוונים לבחירה.' },
-      { num: '06', span: n ? 'span 1' : 'span 3', inner: '1fr', minH: n ? '250px' : '340px', titleSize: n ? '22px' : '27px', slotId: 'pg-7', src: '/img/fast/w/pg7-wave-awning.webp', title: 'סוככים קבועים', body: 'סוככים גליים קבועים לפתחים, לחלונות ולכניסות — באריג או בקירוי קשיח, להפחתת חשיפה לשמש.' },
+      { num: '06', span: n ? 'span 1' : 'span 3', inner: '1fr', minH: n ? '250px' : '340px', titleSize: n ? '22px' : '27px', slotId: 'pg-7', src: '/img/fast/projects/fixed-awning-wave.webp', title: 'סוככים קבועים', body: 'סוככים גליים קבועים לפתחים, לחלונות ולכניסות — באריג או בקירוי קשיח, להפחתת חשיפה לשמש.', hasProject: true, onOpen: () => this.setState({ project: WAVE_AWNING, photo: 0 }) },
       { num: '07', span: n ? 'span 1' : 'span 3', inner: '1fr', minH: n ? '250px' : '340px', titleSize: n ? '22px' : '27px', slotId: 'pg-6', src: '/img/fast/lp/pg-6-hq.webp', title: 'רשתות צל ומפרשי צל', body: 'הצללה קלה ואוורירית למרחבים פתוחים — תכנון יישומי צורני לגינות, למרחבי חוץ ולשטחים ציבוריים.' }
     ];
     const galPick = this.state.galTab || 'shade';
@@ -1518,10 +1617,10 @@ class Component extends DCLogic {
       contactCols: n ? '1fr' : 'minmax(0,0.9fr) minmax(0,1.1fr)',
       types: types,
       sunPicks: ['צל בשעות הצהריים', 'הגנה מהשמש הנמוכה מהצד', 'שליטה באור ובאוורור', 'לשמור על אור בחורף'].map(l => this.pickItem(l)),
-      galLike: (() => { const M = { shade: 'קירוי והצללה', glass: 'סגירות זכוכית', kitchen: 'מטבח חוץ ובר', deck: 'דק וריצוף' }; const l = M[this.state.galTab || 'shade']; const it = this.pickItem(l); it.label = it.pressed === 'true' ? 'נוסף לפנייה: ' + l : 'מעניין אותי: ' + l; return it; })(),
+      galLike: (() => { const M = { shade: 'קירוי והצללה', glass: 'סגירות זכוכית', fabric: 'סגירות בד', kitchen: 'מטבח חוץ ובר', deck: 'דק וריצוף' }; const l = M[this.state.galTab || 'shade']; const it = this.pickItem(l); it.label = it.pressed === 'true' ? 'נוסף לפנייה: ' + l : 'מעניין אותי: ' + l; return it; })(),
       hasPicks: (this.state.envSel || []).length > 0,
       picksSum: 'מעניין אותי: ' + (this.state.envSel || []).join(' · '),
-      galTabs: GAL_TABS.map(t => { const on = (this.state.galTab || 'shade') === t.id; return { label: t.label, count: String(t.id === 'shade' ? types.length : t.id === 'glass' ? 7 : (GAL_EXTRA[t.id] || []).length), sel: on ? 'true' : 'false', bg: on ? '#211C16' : 'transparent', fg: on ? '#F5F0E4' : '#211C16', bd: on ? '#211C16' : 'rgba(33,28,22,0.24)', countFg: on ? '#E8C48C' : '#8F6326', onPick: () => this.setState({ galTab: t.id }) }; }),
+      galTabs: GAL_TABS.map(t => { const on = (this.state.galTab || 'shade') === t.id; return { label: t.label, count: String(t.id === 'shade' ? types.length : t.id === 'glass' ? 9 : (GAL_EXTRA[t.id] || []).length), sel: on ? 'true' : 'false', bg: on ? '#211C16' : 'transparent', fg: on ? '#F5F0E4' : '#211C16', bd: on ? '#211C16' : 'rgba(33,28,22,0.24)', countFg: on ? '#E8C48C' : '#8F6326', onPick: () => this.setState({ galTab: t.id }) }; }),
       galCols: n ? '1fr' : 'repeat(6,minmax(0,1fr))',
       galGap: n ? '12px' : '24px',
       galRad: n ? '20px' : '28px',
@@ -1538,17 +1637,18 @@ class Component extends DCLogic {
         const moreFor = t => { const m = MORE.find(x => x[0].test(t)); return m ? '/projects?' + m[1] : ''; };
         const galList = (galSrc ? galFix(galSrc) : galFix(this.glass)); return galList.map(g => { const more = moreFor(g.title); const parts = String(g.body || '').split(' — '); return Object.assign({}, g, { pk: PICK(g.title), more: more, hasMore: !!more, sum: parts[0], rest: parts.slice(1).join(' — '), hasRest: parts.length > 1, of: String(galList.length).padStart(2, '0') }); });
       },
-      galEb: ({ shade: 'הצללה וקירוי', glass: 'סגירות', kitchen: 'מטבחי חוץ', deck: 'דקים וריצוף' })[this.state.galTab || 'shade'] || '',
+      galEb: ({ shade: 'הצללה וקירוי', glass: 'סגירות', fabric: 'סגירות בד', kitchen: 'מטבחי חוץ', deck: 'דקים וריצוף' })[this.state.galTab || 'shade'] || '',
       galNote: (GAL_TABS.find(t => t.id === (this.state.galTab || 'shade')) || GAL_TABS[0]).note,
       glass: [
-        { num: '01', span: n ? 'span 1' : 'span 6', minH: n ? '280px' : '420px', titleSize: n ? '23px' : '30px', slotId: 'pg-g1', src: '/img/fast/lp/pg-g1.webp', title: 'סגירת זכוכית למרפסת', body: 'מערכות זכוכית בהזזה בפרופיל אלומיניום דק — המרפסת נשארת פתוחה לאור ולנוף, ומאפשרת שימוש נוח גם בחורף. הפתרון שאנחנו ממליצים עליו כשרוצים חלל סגור ומואר.' },
-        { num: '02', span: n ? 'span 1' : 'span 3', minH: n ? '240px' : '280px', titleSize: n ? '21px' : '22px', slotId: 'pg-g2', src: '/img/fast/projects/light-sunroom-out.webp', title: 'בנייה קלה וחדרי שמש', body: 'קירות אלומיניום וזכוכית ליצירת חלל מואר וסגור למחצה, בהמשך לקו הבית הקיים. הצורך באישורים נבדק בנפרד לכל פרויקט.', hasProject: true, onOpen: () => this.setState({ project: LIGHT_SUNROOM, photo: 0 }) },
-        { num: '03', span: n ? 'span 1' : 'span 3', minH: n ? '240px' : '280px', titleSize: n ? '21px' : '22px', slotId: 'pg-g3', src: '/img/fast/w/pg-g3-sliding.webp', title: 'מערכות חלונות הזזה', body: 'חלונות הזזה, ויטרינות ומערכות פנורמיות עם מסגור מינימלי.' },
-        { num: '04', span: n ? 'span 1' : 'span 6', minH: n ? '280px' : '380px', titleSize: n ? '23px' : '28px', slotId: 'pg-g-sukkah', src: '/img/fast/gallery/project-sukkah-suite-pvc.webp', title: 'סוויטת אירוח במרפסת — פרגולת אלומיניום כשרה', body: 'פרגולת אלומיניום כשרה שמותאמת להנחת סכך לחג הסוכות, יחד עם דק עץ ומסכי מסילה שנפתחים בקיץ ונסגרים בחורף — מרפסת שמשמשת כסוויטת אירוח כל ימות השבוע, וכסוכה בחג.' },
-        { num: '05', span: n ? 'span 1' : 'span 3', minH: n ? '240px' : '280px', titleSize: n ? '21px' : '22px', slotId: 'pg-g5', src: '/img/fast/w/project-balcony-lattice.webp', title: 'סגירות עץ ומסכים', body: 'רשתות עץ, מסכי הצללה ופרגולות צד לתיחום ולפרטיות.' },
-        { num: '06', span: n ? 'span 1' : 'span 3', minH: n ? '240px' : '280px', titleSize: n ? '21px' : '22px', slotId: 'pg-g4', src: '/img/fast/w/project-office-glass-partitions.webp', title: 'מחיצות זכוכית', body: 'לחלוקת חללים בעסקים, משרדים ומרחבי מגורים, כולל הפרדה אקוסטית.' },
-        { num: '07', span: n ? 'span 1' : 'span 3', minH: n ? '240px' : '280px', titleSize: n ? '21px' : '22px', slotId: 'pg-g2b', src: '/img/fast/gallery/winter-closure-roof.webp', title: 'סגירות בד — מרפסת וחורף', body: 'מה שמכונה לרוב "סגירת חורף": יריעות בד עם חלונות שקופים, שנפתחות ונסגרות לפי מזג האוויר.' },
-        { num: '08', span: n ? 'span 1' : 'span 3', minH: n ? '240px' : '280px', titleSize: n ? '21px' : '22px', slotId: 'pg-g2c', src: '/img/fast/gallery/winter-1.webp', title: 'סגירת בד לגינה', body: 'למי שרוצה להפוך פינת ישיבה לחלל סגור בחורף — ולפתוח אותה לגינה בקיץ.' }
+        { num: '01', span: n ? 'span 1' : 'span 6', minH: n ? '280px' : '420px', titleSize: n ? '23px' : '30px', slotId: 'pg-g1', src: '/img/fast/lp/pg-g1.webp', title: 'סגירת זכוכית למרפסת', body: 'מערכות זכוכית בהזזה במסגרת אלומיניום צרה — המרפסת נשארת פתוחה לאור ולנוף, ומאפשרת שימוש נוח גם בחורף. הפתרון שאנחנו ממליצים עליו כשרוצים חלל סגור ומואר.' },
+        { num: '02', span: n ? 'span 1' : 'span 6', minH: n ? '280px' : '420px', titleSize: n ? '23px' : '30px', slotId: 'pg-g-sliding', src: '/img/fast/projects/glass-sliding-cream.webp', title: 'סגירת מרפסת בזכוכית — חלונות הזזה פנורמיים', body: 'מערכת חלונות הזזה פנורמית מאלומיניום בגוון שמנת, שנבחר בהתאמה לקרמיקה הקיימת — שפה עיצובית אחת ובהירה.', hasProject: true, onOpen: () => this.setState({ project: GLASS_SLIDING, photo: 0 }) },
+        { num: '03', span: n ? 'span 1' : 'span 3', minH: n ? '240px' : '280px', titleSize: n ? '21px' : '22px', slotId: 'pg-g2', src: '/img/fast/projects/light-sunroom-out.webp', title: 'בנייה קלה וחדרי שמש', body: 'קירות אלומיניום וזכוכית ליצירת חלל מואר וסגור למחצה, בהמשך לקו הבית הקיים. הצורך באישורים נבדק בנפרד לכל פרויקט.', hasProject: true, onOpen: () => this.setState({ project: LIGHT_SUNROOM, photo: 0 }) },
+        { num: '04', span: n ? 'span 1' : 'span 3', minH: n ? '240px' : '280px', titleSize: n ? '21px' : '22px', slotId: 'pg-g3', src: '/img/fast/w/pg-g3-sliding.webp', title: 'מערכות חלונות הזזה', body: 'חלונות הזזה, ויטרינות ומערכות פנורמיות עם מסגור מינימלי.' },
+        { num: '05', span: n ? 'span 1' : 'span 6', minH: n ? '280px' : '380px', titleSize: n ? '23px' : '28px', slotId: 'pg-g-sukkah', src: '/img/fast/gallery/project-sukkah-suite-pvc.webp', title: 'סוויטת אירוח במרפסת — פרגולת אלומיניום כשרה', body: 'פרגולת אלומיניום כשרה שמותאמת להנחת סכך לחג הסוכות, יחד עם דק עץ ומסכי מסילה שנפתחים בקיץ ונסגרים בחורף — מרפסת שמשמשת כסוויטת אירוח כל ימות השבוע, וכסוכה בחג.' },
+        { num: '06', span: n ? 'span 1' : 'span 3', minH: n ? '240px' : '280px', titleSize: n ? '21px' : '22px', slotId: 'pg-g5', src: '/img/fast/projects/wood-lattice-balcony.webp', title: 'סגירת מרפסת בעץ — סורגי לאטה', body: 'קירוי עץ וסורגי לאטה משני צדי המרפסת, לפרטיות ולצל בלי לחסום את האוויר.', hasProject: true, onOpen: () => this.setState({ project: WOOD_LATTICE, photo: 0 }) },
+        { num: '07', span: n ? 'span 1' : 'span 3', minH: n ? '240px' : '280px', titleSize: n ? '21px' : '22px', slotId: 'pg-g4', src: '/img/fast/w/project-office-glass-partitions.webp', title: 'מחיצות זכוכית', body: 'לחלוקת חללים בעסקים, משרדים ומרחבי מגורים, כולל הפרדה אקוסטית.' },
+        { num: '08', span: n ? 'span 1' : 'span 3', minH: n ? '240px' : '280px', titleSize: n ? '21px' : '22px', slotId: 'pg-g-x3', src: '/img/fast/gallery/project-balcony-glass-louver.webp', title: 'סגירת מרפסת עם פרגולת שלבים', body: 'סגירת מרפסת בזכוכית בשילוב פרגולת שלבים מתכווננת, לשליטה בצל ובאוורור.' },
+        { num: '09', span: n ? 'span 1' : 'span 3', minH: n ? '240px' : '280px', titleSize: n ? '21px' : '22px', slotId: 'pg-g-x9', src: '/img/fast/gallery/project-black-glass-balcony.webp', title: 'חדר שמש בסגירת זכוכית בפרופיל שחור', body: 'סגירת זכוכית בפרופיל שחור לכל אורך המרפסת, בקירוי סנטף BH שקוף. המרחב נשאר מואר ופתוח לנוף.' },
       ],
       envelope: [
         { idx: '1', title: 'פרגולה והצללה', body: 'תריס, אלומיניום או עץ, לפי המפתח וקו הבית.' },

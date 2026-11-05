@@ -50,6 +50,7 @@
   function tabInfo() {
     var t = document.querySelector('#catalog [role=tab][aria-selected=true]');
     var label = t ? t.textContent.replace(/\s+/g, ' ').replace(/\d+$/, '').trim() : '';
+    if (/סגירות בד/.test(label)) return { tab: 'fabric', label: label };
     if (/סגירות/.test(label)) return { tab: 'glass', label: label };
     if (/מטבח/.test(label)) return { tab: 'kitchen', label: label };
     if (/דק/.test(label)) return { tab: 'deck', label: label };
@@ -63,7 +64,8 @@
       if (!p.photos || !p.photos.length || /משרד|מחיצות|מפעל/.test(p.title)) return; // home-owner page: no office or factory partitions
       var ok;
       if (rule) ok = rule[3].indexOf(p.cat) > -1 && rule[1].test(p.title) && !rule[2].test(p.title);
-      else if (info.tab === 'glass') ok = p.cat === 'glass';
+      else if (info.tab === 'glass') ok = p.cat === 'glass' && !p.fabric;
+      else if (info.tab === 'fabric') ok = !!p.fabric;
       else if (info.tab === 'deck') ok = p.cat === 'deck';
       else ok = /מטבח|בר /.test(p.title);
       if (ok) scored.push({ p: p, s: 0 });

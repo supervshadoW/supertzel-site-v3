@@ -54,6 +54,7 @@
                                 ]
                     }
                 ],
+    "rewrites":  [ { "source": "/glass-closures", "destination": "/pergola" } ],
     "redirects":  [
                       {
                           "destination":  "/legal#privacy",

@@ -59,12 +59,15 @@
     dots.setAttribute('aria-hidden', 'true');
     dots.__stzFor = car;
     dots.style.cssText = 'display:flex;justify-content:center;gap:7px;margin:2px 0 6px';
+    var many = cards.length > 8, counter = null;
+    if (many) dots.style.cssText = 'display:flex;justify-content:center;align-items:center;margin:2px 0 6px;font-size:13px;color:rgba(33,28,22,.62)';
     var dotEls = cards.map(function () {
       var d = document.createElement('span');
       d.style.cssText = 'width:7px;height:7px;border-radius:50%;background:rgba(33,28,22,.22);transition:background .25s,width .25s';
-      dots.appendChild(d);
+      if (!many) dots.appendChild(d);
       return d;
     });
+    if (many) { counter = document.createElement('span'); counter.dir = 'ltr'; dots.appendChild(counter); }
     car.parentNode.insertBefore(dots, car.nextSibling);
 
     function current() {
@@ -78,6 +81,7 @@
     }
     function paint() {
       var i = current();
+      if (counter) counter.textContent = (i + 1) + ' / ' + cards.length;
       dotEls.forEach(function (d, k) {
         d.style.background = k === i ? '#B4813C' : 'rgba(33,28,22,.22)';
         d.style.width = k === i ? '20px' : '7px';
@@ -89,7 +93,7 @@
     paint();
 
     // a touch pauses the auto-advance for a few seconds, then it carries on (customers rarely swipe on their own)
-    var stopped = reduce || car.classList.contains('stz-noauto'), paused = false, resumeT = null, timer = null, visible = false;
+    var stopped = reduce || many || car.classList.contains('stz-noauto'), paused = false, resumeT = null, timer = null, visible = false;
     function pause() { paused = true; clearTimeout(resumeT); resumeT = setTimeout(function () { paused = false; }, 6000); }
     ['pointerdown', 'touchstart', 'wheel', 'keydown'].forEach(function (ev) { car.addEventListener(ev, pause, { passive: true }); });
     function tick() {
