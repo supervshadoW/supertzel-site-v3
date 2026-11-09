@@ -28,25 +28,27 @@ H = '/img/fast/hero/'
 PAGES = {
     'balcony': dict(
         title='סגירת מרפסת ופנטהאוז | IL Projects',
-        h1a='סגירת מרפסת,',
-        sub='סגירות זכוכית, סגירות חורף, פרגולות חשמליות ודקים למרפסת ולפנטהאוז. מהמדידה ועד המסירה, עם נקודת קשר אחת לאורך כל הדרך.',
-        why_h2='סגירה, קירוי ודק — <br>בתכנון אחד.',
-        why_p='במרפסת ובפנטהאוז כל רכיב משפיע על האחר: הסגירה, הקירוי, הדק והחיבור לבית. אצלנו הם מתוכננים יחד, בשפה חומרית אחת — מהמדידה ועד המסירה.',
+        h1a='מרפסת לשימוש כל השנה,',
+        sub='סגירת זכוכית, סגירת חורף, פרגולה חשמלית ודק למרפסת או לפנטהאוז. מהמדידה ועד המסירה, עם נקודת קשר אחת.',
+        why_h2='בפרויקט אחד. <br>מעטפת אחת - פרויקט חוץ שלם.',
+        why_p='',
         # slot k4 is the eager, preloaded photo; the other slots are lazy
         slots={4: H + 'hero-glass-balcony.webp', 0: H + 'hero-panoramic-balcony.webp', 1: '/img/fast/gallery/project-lake-terrace.webp',
                2: '/img/fast/gallery/project-deck-view.webp', 3: '/img/fast/gallery/project-black-glass-balcony.webp'},
         slides=[
-            dict(k=4, word='לשימוש כל השנה', caption='סגירת מרפסת וקירוי', alt='מרפסת בסגירת זכוכית עם קירוי שקוף מעל הקורות',
+            dict(k=4, word='בסגירת זכוכית', caption='סגירת מרפסת וקירוי', alt='מרפסת בסגירת זכוכית עם קירוי שקוף מעל הקורות',
                  pins=[('סגירת זכוכית בהזזה', '70%', '24%'), ('קירוי עליון — סנטף BH', '30%', '8%'), ('חלון בקצה המרפסת', '27%', '40%')]),
-            dict(k=0, word='ופרגולה חשמלית', caption='סגירת מרפסת ופרגולת תריס', alt='מרפסת בסגירת זכוכית עם פרגולת תריס חשמלית ונוף פתוח',
+            dict(k=0, word='עם פרגולת תריס חשמלית', caption='סגירת מרפסת ופרגולת תריס', alt='מרפסת בסגירת זכוכית עם פרגולת תריס חשמלית ונוף פתוח',
                  pins=[('פרגולת תריס חשמלית', '45%', '10%'), ('סגירת זכוכית בהזזה', '32%', '40%'), ('מעקה זכוכית לנוף פנורמי', '40%', '72%'), ('דלתות הזזה ליציאה למרפסת', '74%', '45%')]),
-            dict(k=3, word='בזכוכית בהזזה', caption='סגירת זכוכית בפרופיל שחור', alt='מרפסת בסגירת זכוכית בהזזה בפרופיל אלומיניום שחור',
+            dict(k=3, word='בפרופיל אלומיניום שחור', caption='סגירת זכוכית בפרופיל שחור', alt='מרפסת בסגירת זכוכית בהזזה בפרופיל אלומיניום שחור',
                  pins=[('פרופיל אלומיניום שחור', '46%', '28%'), ('סגירת זכוכית בהזזה', '62%', '62%')]),
-            dict(k=2, word='דק ופרגולה', caption='מרפסת נוף עם דק', alt='מרפסת נוף עם דק, פרגולה בגמר עץ ופינת ישיבה',
+            dict(k=2, word='עם דק ופרגולה', caption='מרפסת נוף עם דק', alt='מרפסת נוף עם דק, פרגולה בגמר עץ ופינת ישיבה',
                  pins=[('פרגולה בגמר עץ', '55%', '8%'), ('דק', '30%', '84%'), ('מעקה לנוף פתוח', '78%', '47%')]),
-            dict(k=1, word='גם לפנטהאוז', caption='מרפסת נוף עם דק ומעקה זכוכית', alt='מרפסת נוף גדולה עם דק עץ ומעקה זכוכית',
+            dict(k=1, word='גם בפנטהאוז', caption='מרפסת נוף עם דק ומעקה זכוכית', alt='מרפסת נוף גדולה עם דק עץ ומעקה זכוכית',
                  pins=[('דק', '40%', '45%'), ('מעקה זכוכית', '62%', '33%')]),
         ],
+        env_opt='מעטפת מלאה למרפסת', env_back='סגירת זכוכית למרפסת',   # chosen full-envelope track fills this option; leaving it restores the fallback
+        style=3,   # white and minimal: has the glass closure pin
         path='add',
         proj_order=[6, 10, 4, 3, 2, 9, 1],
         proj_line='סגירות זכוכית, סגירות חורף, פרגולות ודקים במרפסות.',
@@ -56,26 +58,28 @@ PAGES = {
         wa='היי, הגעתי מדף סגירות המרפסת באתר',
     ),
     'garden': dict(
-        title='החצר של הבית הפרטי | IL Projects',
-        h1a='החצר של הבית הפרטי,',
-        sub='מטבח חוץ, פרגולה לגינה, דק וריצוף, שער וגדר, חיפוי חזית וחדר שמש. תכנון אחד לכל החצר, מהמדידה ועד המסירה, עם נקודת קשר אחת.',
-        why_h2='כל החצר — <br>בתכנון אחד.',
-        why_p='מטבח חוץ, פרגולה, דק, גדר וחזית אפשר לבנות בשלבים, אבל כדאי לתכנן אותם יחד. כך החומרים, הגבהים והגוונים ממשיכים זה את זה — מהמדידה ועד המסירה.',
+        title='הגינה של הבית הפרטי | IL Projects',
+        h1a='הגינה של הבית הפרטי,',
+        sub='מטבח חוץ, פרגולה, דק, שער וגדר, חיפוי חזית וחדר שמש. הכול בפרויקט אחד, מהמדידה ועד המסירה, עם נקודת קשר אחת.',
+        why_h2='בפרויקט אחד. <br>מעטפת אחת - פרויקט חוץ שלם.',
+        why_p='',
         slots={4: H + 'hero-pergola-kitchen-bar.webp', 3: H + 'hero-deck-wood.webp', 0: '/img/fast/gallery/fence-grey-aluminum.webp',
                1: H + 'hero-sunroom.webp', 2: '/img/fast/gallery/project-black-louvered-pergola.webp'},
         slides=[
             dict(k=4, word='מתוכננת כפרויקט אחד', caption='פרויקט לדוגמה · פרגולה, מטבח חוץ, שולחן בר וכסאות',
                  alt='פרגולת אלומיניום שחורה עם פרופילי הצללה בגוון דמוי עץ וסנטף BH, מעל מטבח חוץ, שולחן בר וכסאות בגינה',
                  pins=[('פרופילי הצללה בגוון דמוי עץ · סנטף BH שקוף של פלרם', '34%', '18%'), ('קורות אלומיניום שחורות', '14%', '42%'), ('מטבח חוץ', '29%', '68%'), ('שולחן בר וכסאות', '53%', '64%')]),
-            dict(k=3, word='דק, פרגולה וחיפוי עץ', caption='פיתוח חוץ בעץ', alt='דק עץ בגינה עם פרגולת תריס, חיפוי עץ וגדר',
+            dict(k=3, word='עם דק, פרגולה וחיפוי עץ', caption='פיתוח חוץ בעץ', alt='דק עץ בגינה עם פרגולת תריס, חיפוי עץ וגדר',
                  pins=[('פרגולה צפה', '40%', '16%'), ('דק עץ', '50%', '72%'), ('חיפוי עץ לקיר', '82%', '55%'), ('גדר ותיחום', '42%', '34%'), ('צמחייה ופיתוח גינה', '52%', '49%')]),
-            dict(k=0, word='שער וגדר אלומיניום', caption='גדר אלומיניום לבית פרטי', alt='גדר אלומיניום אפורה בפסים אופקיים בחזית בית פרטי',
+            dict(k=0, word='עם שער וגדר אלומיניום', caption='גדר אלומיניום לבית פרטי', alt='גדר אלומיניום אפורה בפסים אופקיים בחזית בית פרטי',
                  pins=[('גדר אלומיניום בפסים אופקיים', '62%', '50%')]),
-            dict(k=1, word='חדר שמש ובנייה קלה', caption='תוספת חוץ בגינה', alt='חדר שמש בבנייה קלה עם דלתות הזזה לגינה',
+            dict(k=1, word='עם חדר שמש בבנייה קלה', caption='תוספת חוץ בגינה', alt='חדר שמש בבנייה קלה עם דלתות הזזה לגינה',
                  pins=[('מבנה פאנל מבודד', '36%', '9%'), ('חלונות פנורמיים אל הגינה', '62%', '30%'), ('מערכת דלתות הזזה', '42%', '48%'), ('ריצוף קרמיקה ברצף אחד עם הבית', '50%', '64%')]),
-            dict(k=2, word='ופרגולה לגינה', caption='פרגולת אלומיניום שחורה בגינה', alt='פרגולת אלומיניום שחורה עם רפפות מעל גינה של בית פרטי',
+            dict(k=2, word='עם פרגולת אלומיניום', caption='פרגולת אלומיניום שחורה בגינה', alt='פרגולת אלומיניום שחורה עם רפפות מעל גינה של בית פרטי',
                  pins=[('רפפות אלומיניום', '45%', '22%')]),
         ],
+        env_opt='מעטפת חוץ מלאה לבית', env_back='',   # chosen full-envelope track fills this option; leaving it restores the fallback
+        style=1,   # grey stone: kitchen, fence, deck pins
         path='full',
         proj_order=[1, 5, 11, 2, 0, 9, 12],
         proj_line='מטבחי חוץ, פרגולות, דקים וגדרות בבתים פרטיים.',
@@ -83,7 +87,7 @@ PAGES = {
         opts=['מעטפת חוץ מלאה לבית', 'מטבח חוץ ופינת אירוח', 'פרגולה לגינה', 'שער וגדר', 'דק, ריצוף וחיפוי', 'חדר שמש ותוספת בנייה', 'עדיין בודקים אפשרויות'],
         pick_map={'מטבח חוץ ואירוח': 'מטבח חוץ ופינת אירוח', 'הצללה וקירוי': 'פרגולה לגינה', 'דק, ריצוף וחיפוי': 'דק, ריצוף וחיפוי', 'בנייה קלה / חדר שמש': 'חדר שמש ותוספת בנייה'},
         pick_default='מעטפת חוץ מלאה לבית',
-        wa='היי, הגעתי מדף החצר והגינה באתר',
+        wa='היי, הגעתי מדף הגינה והבית הפרטי באתר',
     ),
 }
 
@@ -136,7 +140,10 @@ def build(key, P):
 
     # --- first section ----------------------------------------------------------------------------------------------------
     rep('text-wrap:balance">פרויקט חוץ שלם — <br>נקודת קשר אחת.</h2>', 'text-wrap:balance">' + P['why_h2'] + '</h2>', 'first section headline')
-    rep('מרחב חוץ אחד נבנה מכמה שכבות. אצלנו כולן מתוכננות יחד, בשפה חומרית אחת — מהקונספט ועד המסירה.', P['why_p'], 'first section text')
+    if P['why_p']:
+        rep('מרחב חוץ אחד נבנה מכמה שכבות. אצלנו כולן מתוכננות יחד, בשפה חומרית אחת — מהקונספט ועד המסירה.', P['why_p'], 'first section text')
+    else:
+        rep('<p style="margin:0;flex:1 1 320px;color:#4B443A;font-size:18px;max-width:38ch">מרחב חוץ אחד נבנה מכמה שכבות. אצלנו כולן מתוכננות יחד, בשפה חומרית אחת — מהקונספט ועד המסירה.</p>', '', 'first section text removed')
 
     # --- path picker: opens on the ad group's path; that path shows the ad group's projects first -----------------------------
     rep("p = ['full', 'add', 'focus'].indexOf(q) > -1 ? q : sessionStorage.getItem('stz-path');",
@@ -183,6 +190,117 @@ def build(key, P):
     rep('white-space:nowrap">המבוקש ביותר</span>', 'white-space:nowrap">מומלץ לפרויקט שלם</span>', 'badge')
     rep("'סוככי זרועות, רשתות וגגונים'", "'גגונים וקירוי בהתאמה לקו הבית'", 'components list')
 
+    # --- first card: the numbered envelope illustration (AI render, "הדמיה") with pins and a legend, instead of the generic photo -----------------
+    old_img = '<div style="border-radius:14px;overflow:hidden;aspect-ratio:21/9;background:#ECE4D2;margin-bottom:16px" data-ab0img=""><img src="/img/fast/slots/ab-hero.webp" alt="מרחב חוץ גמור של IL Projects" loading="lazy" decoding="async" style="display:block;width:100%;height:100%;object-fit:cover"></div>'
+    new_img = ('<div style="display:flex;flex-direction:column;flex:1 1 auto;margin-bottom:16px" data-envfig="">'
+        '<div style="position:relative;border-radius:14px;overflow:hidden;aspect-ratio:16/9;flex:none;background:#2A241D">'
+        '<img src="{{ styleSrc }}" alt="{{ styleAlt }}" loading="lazy" decoding="async" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover">'
+        '<sc-for list="{{ worldPins }}" as="w" hint-placeholder-count="5">'
+        '<button type="button" aria-label="{{ w.aria }}" aria-pressed="{{ w.pressed }}" title="{{ w.aria }}" onPointerDown="{{ stopEv }}" onClick="{{ w.onTap }}" style="pointer-events:auto;position:absolute;left:{{ w.x }};top:{{ w.y }};transform:translate(-50%,-50%) scale({{ w.scale }});display:flex;align-items:center;justify-content:center;width:44px;height:44px;padding:0;border:0;background:transparent;cursor:pointer;transition:transform 0.2s">'
+        '<span style="display:flex;align-items:center;justify-content:center;width:{{ pinSz }};height:{{ pinSz }};border-radius:50%;border:2px solid #FFFFFF;background:{{ w.bg }};color:{{ w.fg }};font-size:13px;font-weight:700;box-shadow:0 2px 12px rgba(0,0,0,0.4)">{{ w.mark }}</span></button></sc-for>'
+        '<span style="position:absolute;bottom:8px;right:12px;color:#F2C230;font-size:12.5px;font-weight:500;letter-spacing:0.04em;text-shadow:0 1px 3px rgba(0,0,0,0.6);pointer-events:none">הדמיה</span></div>'
+        '<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,230px),1fr));grid-auto-rows:minmax(46px,1fr);flex:1 1 auto;gap:0 22px;margin-top:6px">'
+        '<sc-for list="{{ legendL }}" as="g" hint-placeholder-count="5">'
+        '<button type="button" aria-pressed="{{ g.pressed }}" onPointerDown="{{ stopEv }}" onClick="{{ g.onTap }}" style="font:inherit;color:inherit;text-align:start;width:100%;display:flex;align-items:center;gap:10px;min-height:44px;padding:6px 0;background:transparent;border:0;border-bottom:1px solid rgba(33,28,22,0.1);font-size:14.5px;cursor:pointer">'
+        '<span style="flex:0 0 auto;display:flex;align-items:center;justify-content:center;width:24px;height:24px;border-radius:50%;background:{{ g.dot }};color:{{ g.fg }};font-size:11.5px;font-weight:700;border:2px solid #FFFFFF;box-shadow:0 0 0 1px #B4813C">{{ g.mark }}</span>'
+        '<span style="flex:1">{{ g.label }}</span><span style="font-size:12.5px;font-weight:600;color:#8A5F24">{{ g.cta }}</span></button></sc-for></div></div>')
+    rep(old_img, new_img, 'about image to numbered illustration')
+    rep("const sty = this.styles()[this.state.style ?? 0];", "const sty = this.styles()[this.state.style ?? " + str(P['style']) + "];", 'default legend style')
+    rep("const si = this.state.style ?? 0, S = STY[si], P = S.P;", "const si = this.state.style ?? " + str(P['style']) + ", S = STY[si], P = S.P;", 'default illustration style')
+    # --- catalogue page 2: choosing a service track also selects the same track in the next section ("איזה מרחב חוץ אתם מתכננים?") ---------------
+    rep("onTap: () => this.setState(s => ({ trackTab: (s.trackTab ?? (this.state.narrow ? -1 : 2)) === i ? -1 : i })) }; }),",
+        "onTap: () => { const wasOpen = (this.state.trackTab ?? (this.state.narrow ? -1 : 2)) === i; this.setState(s => ({ trackTab: wasOpen ? -1 : i })); { const pk = ['focus', 'add', 'full'][i]; this.setState({ path: pk, openFq: 0 }); this.syncCat(pk); try { sessionStorage.setItem('stz-path', pk); } catch (e) {} try { window.stzTrack && window.stzTrack('select_scope', { scope: pk }); } catch (e) {} } } }; }),",
+        'track click selects the matching path')
+    # --- the opened track offers "להשאיר פנייה" right away, to catch a visitor who just chose a track --------------------------------------------
+    cta = ('</ul><div style="padding:2px 0 18px"><a href="#quick" style="display:inline-flex;align-items:center;gap:10px;min-height:46px;padding:0 24px;border-radius:100px;background:#B4813C;color:#1B1712;font-size:15.5px;font-weight:600;white-space:nowrap" '
+           'style-hover="background:#C99752;color:#1B1712">להשאיר פנייה <span aria-hidden="true">←</span></a></div>')
+    t, n = re.subn(r'(color:#211C16;font-size:14\.5px">(?:(?!</ul>).){0,260}?\{\{ it \}\}</span></li>\s*</sc-for>\s*)</ul>', lambda m: m.group(1) + cta, t, count=1, flags=re.S)
+    if n != 1:
+        problems.append(f'{key}: "leave an inquiry button": not found')
+    rep("revealH: o ? '260px' : '0px'", "revealH: o ? '330px' : '0px'", 'track reveal height')
+    # --- the long form follows the chosen track: "מעטפת מלאה" fills the envelope option, the visitor can still change it ----------------------------
+    sync = ("  syncCat(pk) { const ENV = " + js(P['env_opt']) + ", DEF = " + js(P['env_back']) + "; this.setState(s => { const c = s.form.category; const n = pk === 'full' ? ENV : (c === ENV ? DEF : c); return n === c ? null : { form: Object.assign({}, s.form, { category: n }) }; }); }\n"
+            "  initPath() {")
+    rep("  initPath() {", sync, 'syncCat method')
+    rep("    if (['full', 'add', 'focus'].indexOf(p) > -1) this.setState({ path: p });", "    if (['full', 'add', 'focus'].indexOf(p) > -1) { this.setState({ path: p, trackTab: ['focus', 'add', 'full'].indexOf(p) }); this.syncCat(p); }", 'syncCat on arrival')
+    rep("    this.setState({ path: k, openFq: 0 });", "    this.setState({ path: k, openFq: 0 }); this.syncCat(k);", 'syncCat on card pick')
+    # lead-modal.js opens the contact window for any button whose text has "תיאום"; the full-envelope track must select itself like the other two
+    rep("body: 'פרויקט שלם תחת מסגרת שירות אחת ותיאום מלא.'", "body: 'פרויקט שלם תחת מסגרת שירות אחת, מהמדידה ועד המסירה.'", 'full track text without the contact trigger word')
+    # --- no book flipping: three cards in one view (illustration | text + steps | tracks), stacked on phones ---------------------------------------
+    m = re.search(r'(<h3 style="font-size:clamp\(22px,2\.4vw,28px\)[^>]*>בית אחד לכל מעטפת החוץ</h3>.*?</p>)(\s*)(<button type="button" aria-label="לעמוד הבא" onClick="\{\{ bookNext \}\}" data-flip-anim)', t, flags=re.S)
+    ms = re.search(r'(<div style="margin-top:18px;display:flex;flex-direction:column;gap:10px">.*?</div>\s*</div>)(?=\s*</div>\s*</div>\s*<div data-bkctl)', t, flags=re.S)
+    hdr = '<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;color:#8A5F24;font-size:12.5px;font-weight:600;letter-spacing:0.08em"><span>מסלולי שירות · איך אנחנו עוזרים</span><span>02</span></div>'
+    p2 = '<div data-bkpage="" data-bkp2=""'
+    if not m or not ms or t.count(hdr) != 1 or t.count(p2) != 1:
+        problems.append(f'{key}: "split about card": markers not found')
+    else:
+        text_html, steps_html = m.group(1), ms.group(1)
+        # take the steps out first (they come later in the file), then the text block
+        t = t[:ms.start()] + t[ms.end():]
+        m = re.search(r'(<h3 style="font-size:clamp\(22px,2\.4vw,28px\)[^>]*>בית אחד לכל מעטפת החוץ</h3>.*?</p>)(\s*)(<button type="button" aria-label="לעמוד הבא" onClick="\{\{ bookNext \}\}" data-flip-anim)', t, flags=re.S)
+        t = t[:m.start()] + m.group(2) + m.group(3) + t[m.end():]
+        head2 = '<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;color:#8A5F24;font-size:12.5px;font-weight:600;letter-spacing:0.08em"><span>בית אחד · איך זה עובד</span><span>02</span></div>'
+        card = ('<div data-bkcard="" style="background:#FBF7EE;border-radius:20px;box-shadow:0 1px 0 rgba(33,28,22,0.06),0 18px 40px rgba(33,28,22,0.12);padding:clamp(1.25rem,3vw,2.25rem);box-sizing:border-box">'
+                + head2 + text_html + steps_html.replace('margin-top:18px', 'margin-top:8px', 1) + '</div>\n        ')
+        t = t.replace(p2, card + p2, 1)
+        t = t.replace(hdr, hdr.replace('<span>02</span>', '<span>03</span>'), 1)
+        rep('aria-hidden="{{ bookP0Hidden }}"', 'aria-hidden="false"', 'page 1 visible to readers')
+        rep('aria-hidden="{{ bookP2Hidden }}"', 'aria-hidden="false"', 'page 3 visible to readers')
+        PG = 'html body [data-bkwrap] > [data-bkpage], html body [data-bkwrap] > [data-bkpage]:first-child, html body [data-bkwrap] > [data-bkpage]:last-child, html body [data-bkwrap] > [data-bkpage]:nth-child(n)'
+        CSS = ('<style id="stz-nobook">html body [data-bkwrap]{display:grid !important;grid-template-columns:minmax(0,1fr) !important;gap:18px !important;perspective:none !important;align-items:stretch !important}'
+               + PG + '{grid-area:auto !important;position:relative !important;top:auto !important;inset-inline:auto !important;height:auto !important;transform:none !important;transition:none !important;opacity:1 !important;overflow:visible !important;border-radius:20px !important;box-shadow:0 1px 0 rgba(33,28,22,0.06),0 18px 40px rgba(33,28,22,0.12) !important}'
+               'html body [data-bkwrap] [data-flip-anim],html body [data-bkctl]{display:none !important}'
+               'html body [data-bkwrap] > [data-bkpage][data-ab0]{padding-bottom:clamp(1.25rem,3vw,2.25rem) !important}'
+               'html body [data-bkcard] [data-stepsl]{display:grid !important;grid-template-columns:minmax(0,1fr) !important;gap:6px !important}html body [data-bkcard] [data-stepsl] > div{display:flex !important;flex-direction:row !important;align-items:baseline !important;width:auto !important;height:auto !important;min-height:0 !important;padding:9px 14px !important;border-radius:12px !important}html body [data-bkcard] [data-stepsl] p{display:none !important}html body [data-bkcard] [data-stepsl] h4{font-size:16px !important}html body [data-bkcard] [data-stepsl] > div::after,html body [data-bkcard] [data-stepsl] > div::before{display:none !important}'
+               '@media (min-width:1000px){html body [data-bkwrap]{grid-template-columns:repeat(3,minmax(0,1fr)) !important}}</style>')
+        rep('</head>', CSS + '</head>', 'no-book css')
+        SLIDE_CSS = ('<style id="stz-slide">html body [data-bkwrap].stz-slide{display:grid !important;grid-template-columns:minmax(0,1fr) !important}'
+                     'html body [data-bkwrap].stz-slide > [data-bkpage]:nth-child(n),html body [data-bkwrap].stz-slide > [data-bkcard]{grid-area:1 / 1 !important;opacity:0 !important;visibility:hidden !important;transition:opacity .55s ease,visibility .55s !important}'
+                     'html body [data-bkwrap].stz-slide > .stz-on{opacity:1 !important;visibility:visible !important}'
+                     '.stz-pgbar{display:none;justify-content:center;align-items:center;gap:14px;margin-top:14px}'
+                     '.stz-pgbar button{font:inherit;cursor:pointer}'
+                     '.stz-pgbar [data-prev],.stz-pgbar [data-next]{width:44px;height:44px;border-radius:50%;border:1px solid #211C16;background:#211C16;color:#F5F0E4;font-size:17px}'
+                     '.stz-pgbar [data-dot]{width:10px;height:10px;padding:0;border-radius:50%;border:0;background:rgba(33,28,22,0.25);margin:0 4px;transition:background .3s,width .3s}'
+                     '.stz-pgbar [data-dot][aria-current="true"]{background:#B4813C;width:26px;border-radius:6px}'
+                     '.stz-pgbar [data-dots]{display:flex;align-items:center;min-height:44px}</style>')
+        SLIDE_JS = r"""<script>/* stz-slide: on narrow screens the three catalogue pages turn by themselves; touch, tap or focus stops it */
+(function(){
+  var mq = window.matchMedia('(max-width:999px)'), rm = window.matchMedia('(prefers-reduced-motion: reduce)');
+  var tries = 0;
+  function init(){
+    var wrap = document.querySelector('[data-bkwrap]');
+    var pages = wrap ? [].filter.call(wrap.children, function(c){ return c.hasAttribute('data-bkpage') || c.hasAttribute('data-bkcard'); }) : [];
+    if (pages.length < 3) { if (tries++ < 40) setTimeout(init, 300); return; }
+    var i = 0, timer = null, stopped = false, seen = true;
+    var bar = document.createElement('div'); bar.className = 'stz-pgbar';
+    bar.innerHTML = '<button type="button" data-prev aria-label="לעמוד הקודם">→</button><span data-dots></span><button type="button" data-next aria-label="לעמוד הבא">←</button>';
+    var dots = bar.querySelector('[data-dots]');
+    pages.forEach(function(p, k){ var d = document.createElement('button'); d.type = 'button'; d.setAttribute('data-dot', ''); d.setAttribute('aria-label', 'עמוד ' + (k + 1)); d.addEventListener('click', function(){ stop(); show(k); }); dots.appendChild(d); });
+    wrap.parentNode.insertBefore(bar, wrap.nextSibling);
+    function show(n){
+      i = (n + pages.length) % pages.length;
+      pages.forEach(function(p, k){ p.classList.toggle('stz-on', k === i); if (mq.matches) p.setAttribute('aria-hidden', k === i ? 'false' : 'true'); });
+      [].forEach.call(dots.children, function(d, k){ d.setAttribute('aria-current', k === i ? 'true' : 'false'); });
+    }
+    function stop(){ stopped = true; if (timer) { clearInterval(timer); timer = null; } }
+    function start(){ if (timer || stopped || rm.matches || !mq.matches) return; timer = setInterval(function(){ if (seen) show(i + 1); }, 6500); }
+    function apply(){
+      var on = mq.matches;
+      wrap.classList.toggle('stz-slide', on); bar.style.display = on ? 'flex' : 'none';
+      if (on) { show(i); start(); } else { if (timer) { clearInterval(timer); timer = null; } pages.forEach(function(p){ p.classList.remove('stz-on'); p.setAttribute('aria-hidden', 'false'); }); }
+    }
+    bar.querySelector('[data-prev]').addEventListener('click', function(){ stop(); show(i - 1); });
+    bar.querySelector('[data-next]').addEventListener('click', function(){ stop(); show(i + 1); });
+    ['pointerdown', 'focusin', 'touchstart'].forEach(function(ev){ wrap.addEventListener(ev, stop, { passive: true }); });
+    if ('IntersectionObserver' in window) new IntersectionObserver(function(es){ seen = es[0].isIntersecting; }, { threshold: 0.4 }).observe(wrap);
+    (mq.addEventListener ? mq.addEventListener('change', apply) : mq.addListener(apply));
+    apply();
+  }
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init); else init();
+})();
+</script>"""
+        rep('</head>', SLIDE_CSS + '</head>', 'slider css')
+        rep('</body>', SLIDE_JS + '</body>', 'slider script')
     # hero slides (done last: plain string surgery between two fixed markers)
     a = t.find('  heroSlideData() {\n    return [\n')
     b = t.find('\n    ].map((s, i) => { const ov', a)
