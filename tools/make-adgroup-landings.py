@@ -79,7 +79,7 @@ PAGES = {
                  pins=[('רפפות אלומיניום', '45%', '22%')]),
         ],
         env_opt='מעטפת חוץ מלאה לבית', env_back='',   # chosen full-envelope track fills this option; leaving it restores the fallback
-        style=1,   # grey stone: kitchen, fence, deck pins
+        style=3,   # same illustration and legend as /balcony so "who we are" is identical on both pages
         path='full',
         proj_order=[1, 5, 11, 2, 0, 9, 12],
         proj_line='מטבחי חוץ, פרגולות, דקים וגדרות בבתים פרטיים.',
@@ -256,7 +256,8 @@ def build(key, P):
         rep('</head>', CSS + '</head>', 'no-book css')
         SLIDE_CSS = ('<style id="stz-slide">html body [data-bkwrap].stz-slide{display:grid !important;grid-template-columns:minmax(0,1fr) !important}'
                      'html body [data-bkwrap].stz-slide > [data-bkpage]:nth-child(n),html body [data-bkwrap].stz-slide > [data-bkcard]{grid-area:1 / 1 !important;opacity:0 !important;visibility:hidden !important;transition:opacity .55s ease,visibility .55s !important}'
-                     'html body [data-bkwrap].stz-slide > .stz-on{opacity:1 !important;visibility:visible !important}'
+                     'html body [data-bkwrap].stz-slide > .stz-on.stz-on:nth-child(n){opacity:1 !important;visibility:visible !important}'
+                     'html body [data-bkwrap].stz-slide > [data-ab0]{display:flex !important;flex-direction:column !important;justify-content:center !important}'
                      '.stz-pgbar{display:none;justify-content:center;align-items:center;gap:14px;margin-top:14px}'
                      '.stz-pgbar button{font:inherit;cursor:pointer}'
                      '.stz-pgbar [data-prev],.stz-pgbar [data-next]{width:44px;height:44px;border-radius:50%;border:1px solid #211C16;background:#211C16;color:#F5F0E4;font-size:17px}'
