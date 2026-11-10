@@ -263,7 +263,10 @@ def build(key, P):
                      '.stz-pgbar [data-prev],.stz-pgbar [data-next]{width:44px;height:44px;border-radius:50%;border:1px solid #211C16;background:#211C16;color:#F5F0E4;font-size:17px}'
                      '.stz-pgbar [data-dot]{width:10px;height:10px;padding:0;border-radius:50%;border:0;background:rgba(33,28,22,0.25);margin:0 4px;transition:background .3s,width .3s}'
                      '.stz-pgbar [data-dot][aria-current="true"]{background:#B4813C;width:26px;border-radius:6px}'
-                     '.stz-pgbar [data-dots]{display:flex;align-items:center;min-height:44px}</style>')
+                     '.stz-pgbar [data-dots]{display:flex;align-items:center;min-height:44px}'
+                     '@media (min-width:1700px){html body main > section:not(:first-of-type){zoom:1.3}}'
+                     '@media (min-width:2200px){html body main > section:not(:first-of-type){zoom:1.7}}'
+                     '@media (min-width:3000px){html body main > section:not(:first-of-type){zoom:2.3}}</style>')
         SLIDE_JS = r"""<script>/* stz-slide: on narrow screens the three catalogue pages turn by themselves; touch, tap or focus stops it */
 (function(){
   var mq = window.matchMedia('(max-width:999px)'), rm = window.matchMedia('(prefers-reduced-motion: reduce)');
