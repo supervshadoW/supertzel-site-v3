@@ -271,6 +271,8 @@ def build(key, P):
                                                      (2200, 'min(82vw,1960px)', '1.3', '1.25'), (2800, 'min(82vw,2480px)', '1.6', '1.5'),
                                                      (3400, 'min(82vw,3000px)', '1.9', '1.75'), (4000, 'min(82vw,3500px)', '2.2', '2.0')))
                      + '@media (min-width:1500px){html body #tracks{max-width:none !important}}'
+                     # hero gold line was washed out over bright photos: lighter gold, heavier weight, dark halo
+                     + 'html body #hero h1 > span{color:#EBBF72 !important;font-weight:500 !important;text-shadow:0 2px 16px rgba(14,11,8,.92),0 0 3px rgba(14,11,8,.75),0 1px 1px rgba(14,11,8,.6) !important}'
                      + '</style>')
         SLIDE_JS = r"""<script>/* stz-slide: on narrow screens the three catalogue pages turn by themselves; touch, tap or focus stops it */
 (function(){
