@@ -264,9 +264,14 @@ def build(key, P):
                      '.stz-pgbar [data-dot]{width:10px;height:10px;padding:0;border-radius:50%;border:0;background:rgba(33,28,22,0.25);margin:0 4px;transition:background .3s,width .3s}'
                      '.stz-pgbar [data-dot][aria-current="true"]{background:#B4813C;width:26px;border-radius:6px}'
                      '.stz-pgbar [data-dots]{display:flex;align-items:center;min-height:44px}'
-                     '@media (min-width:1700px){html body main > section:not(:first-of-type){zoom:1.3}}'
-                     '@media (min-width:2200px){html body main > section:not(:first-of-type){zoom:1.7}}'
-                     '@media (min-width:3000px){html body main > section:not(:first-of-type){zoom:2.3}}</style>')
+                     # desktop: the page already reads --stz-max (container) and --stz-hz/--stz-bz (text scale): widen the container with the screen
+                     # instead of scaling a mobile column (no zoom hack)
+                     + ''.join('@media (min-width:%dpx){:root{--stz-max:%s !important;--stz-hz:%s;--stz-bz:%s}}' % (w, mx, hz, bz)
+                               for w, mx, hz, bz in ((1500, 'min(86vw,1440px)', '1.05', '1.05'), (1800, 'min(84vw,1640px)', '1.12', '1.1'),
+                                                     (2200, 'min(82vw,1960px)', '1.3', '1.25'), (2800, 'min(82vw,2480px)', '1.6', '1.5'),
+                                                     (3400, 'min(82vw,3000px)', '1.9', '1.75'), (4000, 'min(82vw,3500px)', '2.2', '2.0')))
+                     + '@media (min-width:1500px){html body #tracks{max-width:none !important}}'
+                     + '</style>')
         SLIDE_JS = r"""<script>/* stz-slide: on narrow screens the three catalogue pages turn by themselves; touch, tap or focus stops it */
 (function(){
   var mq = window.matchMedia('(max-width:999px)'), rm = window.matchMedia('(prefers-reduced-motion: reduce)');
