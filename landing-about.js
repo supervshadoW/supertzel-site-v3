@@ -57,9 +57,9 @@
     sec.style.cssText = 'padding-block:clamp(3rem,8vh,5.5rem)';
     sec.innerHTML =
       '<div class="ab-in" style="width:min(var(--stz-side,92%),var(--stz-max,1180px));margin-inline:auto"><div class="ab-wrap">' +
-      '<div class="ab-txt"><div style="display:inline-flex;align-items:center;gap:10px;color:#B4813C;font-size:14.5px;font-weight:600;margin-bottom:14px;white-space:nowrap"><span style="display:block;width:24px;height:1px;background:#B4813C"></span>מי אנחנו · סופר צל | IL Projects</div>' +
-      '<h2 style="font-size:clamp(28px,3.4vw,42px);letter-spacing:-0.02em;line-height:1.12">פרויקט חוץ שלם — נקודת קשר אחת.</h2>' +
-      '<p class="ab-lead">מרחב חוץ אחד נבנה מכמה שכבות. אצלנו כולן מתוכננות יחד, בשפה חומרית אחת — מהקונספט ועד המסירה.</p>' +
+      '<div class="ab-txt"><div style="display:inline-flex;align-items:center;gap:10px;color:#B4813C;font-size:14.5px;font-weight:600;margin-bottom:14px;white-space:nowrap"><span style="display:block;width:24px;height:1px;background:#B4813C"></span>מי אנחנו · IL Projects</div>' +
+      '<h2 style="font-size:clamp(28px,3.4vw,42px);letter-spacing:-0.02em;line-height:1.12">פרויקט חוץ שלם, מעטפת אחת.</h2>' +
+      '<p class="ab-lead">מרחב החוץ שלכם, מתוכנן כמו הבית עצמו. שפה עיצובית אחת, קו נקי ונקודת קשר אחת, מהפגישה הראשונה ועד המסירה.</p>' +
       '<ul class="ab-pts"><li>פתרונות חוץ מלאים לבית ולעסק</li><li>מהמדידה ועד המסירה</li><li>שיחת ייעוץ ומדידה ללא התחייבות</li></ul>' +
       '<div class="ab-cta"><a href="#contact" style="display:inline-flex;align-items:center;min-height:48px;padding:0 26px;border-radius:100px;background:#B4813C;color:#1B1712;font-size:16px;font-weight:600">תאמו שיחת ייעוץ</a>' +
       '<a href="#projects" style="color:#6E4D1E;font-size:15.5px;font-weight:600;border-bottom:1px solid rgba(110,77,30,.4);min-height:44px;display:inline-flex;align-items:center">לפרויקטים שביצענו <span aria-hidden="true" style="margin-inline-start:8px">←</span></a></div></div>' +
