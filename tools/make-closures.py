@@ -45,7 +45,7 @@ hero = ('<section id="chero" style="position:relative;background:#1B1712;color:#
         '<div style="position:relative;' + W + ';padding-block:clamp(6.5rem,17vh,9.5rem) clamp(2.25rem,6vh,3.75rem)">'
         '<div style="display:inline-flex;align-items:center;gap:12px;color:#E8C48C;font-size:15px;font-weight:600;margin-bottom:18px;text-shadow:0 1px 12px rgba(14,11,8,.8)"><span style="display:block;width:34px;height:1px;background:#C99752"></span>סגירות זכוכית ומערכות הזזה</div>'
         '<h1 style="font-size:clamp(34px,5vw,64px);line-height:1.08;font-weight:600;letter-spacing:-0.03em;color:#F5F0E4;max-width:16ch;text-shadow:0 2px 24px rgba(14,11,8,.6)">מרפסת לשימוש כל השנה.</h1>'
-        '<p style="margin-top:16px;color:rgba(245,240,228,.9);font-size:clamp(17px,1.6vw,20px);max-width:40ch;line-height:1.55">סגירות זכוכית ומערכות הזזה בהתאמה אישית למידות המרפסת. האור והנוף נשארים, והמרחב נשאר שלכם.</p>'
+        '<p style="margin-top:16px;color:rgba(245,240,228,.9);font-size:clamp(17px,1.6vw,20px);max-width:40ch;line-height:1.55">סגירות זכוכית ומערכות הזזה בהתאמה אישית למידות המרפסת. האור והנוף נשארים והמרחב נשאר שלכם.</p>'
         '<div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:26px">'
         '<a href="#quick" style="display:inline-flex;align-items:center;justify-content:center;min-height:54px;padding:0 34px;border-radius:100px;background:#B4813C;color:#1B1712;font-size:16.5px;font-weight:600;white-space:nowrap">לתיאום שיחת ייעוץ</a>'
         '<a href="' + esc(WA) + '" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;justify-content:center;min-height:54px;padding:0 28px;border-radius:100px;border:1px solid rgba(245,240,228,.5);color:#F5F0E4;font-size:16.5px;white-space:nowrap;backdrop-filter:blur(6px)">שיחת וואטסאפ מהירה</a>'
@@ -58,7 +58,7 @@ article = ('<section id="cart" style="background:#F5F0E4;color:#211C16;padding-b
            '<div style="color:#4B443A;font-size:17px;line-height:1.75;max-width:56ch">'
            '<p style="margin-bottom:14px">מרפסת היא החלק הפתוח של הבית. סגירה מוקפדת לא סוגרת אותה, אלא מרחיבה את השימוש בה: אור טבעי, נוף פתוח וחלל שאפשר לשבת בו לאורך השנה.</p>'
            '<p style="margin-bottom:14px">אנחנו מבצעים סגירות זכוכית ומערכות הזזה, כולל פנורמיות, ויטרינות וחלונות הזזה. מסגרת האלומיניום נבחרת בגוון ובפרופיל שמשתלבים בקו של הבניין.</p>'
-           '<p>לפני שבוחרים בודקים כיווני שמש, רוח, מידות והאופן שבו משתמשים במרפסת. לכן כל פרויקט מתחיל בפגישה במקום ובמדידה, וההצעה נכתבת אחריהן. אישורים וליווי הנדסי, ככל שנדרשים, מתואמים מול בעלי מקצוע מוסמכים.</p>'
+           '<p>לפני שבוחרים בודקים כיווני שמש, רוח, מידות והאופן שבו משתמשים במרפסת. לכן כל פרויקט מתחיל בפגישה במקום ובמדידה. ההצעה נכתבת אחריהן. אישורים וליווי הנדסי, ככל שנדרשים, מתואמים מול בעלי מקצוע מוסמכים.</p>'
            '</div></div></div></section>\n')
 
 cards = [
@@ -130,9 +130,9 @@ more = ('<section id="cmore" style="background:#F5F0E4;color:#211C16;padding-blo
         '<div style="margin-top:clamp(1.5rem,4vh,2.5rem)"><a href="/projects" style="display:inline-flex;align-items:center;gap:10px;min-height:50px;padding:0 26px;border-radius:100px;border:1px solid #211C16;color:#211C16;font-size:16px;font-weight:600">לכל הפרויקטים <span aria-hidden="true">←</span></a></div>'
         '</div></section>\n')
 
-steps = [('01', 'פגישה במקום ומדידה', 'מדידה, כיווני שמש וצורת השימוש.'), ('02', 'תכנון יישומי והצעה', 'חומרים, גוונים והיקף, בכתב.'), ('03', 'ייצור והתקנה', 'לפי המידות של המקום, ומסירה מסודרת.')]
+steps = [('01', 'פגישה במקום ומדידה', 'מדידה, כיווני שמש וצורת השימוש.'), ('02', 'תכנון יישומי והצעה', 'חומרים, גוונים והיקף, בכתב.'), ('03', 'ייצור והתקנה', 'לפי המידות של המקום ומסירה מסודרת.')]
 stephtml = ''.join('<div style="display:flex;gap:16px;align-items:baseline;border-top:1px solid rgba(33,28,22,.16);padding-block:18px"><span style="font-size:26px;font-weight:300;color:#B4813C;line-height:1;flex:none">%s</span><div><h3 style="font-size:19px;font-weight:600">%s</h3><p style="margin-top:4px;color:#4B443A;font-size:16px">%s</p></div></div>' % s for s in steps)
-faq = [('האם סגירת זכוכית דורשת היתר או אישורים?', 'זה תלוי בפרויקט ובמצב המבנה. בודקים זאת בכל פרויקט לגופו, ואישורים וליווי הנדסי, ככל שנדרשים, מתואמים מול בעלי מקצוע מוסמכים.'),
+faq = [('האם סגירת זכוכית דורשת היתר או אישורים?', 'זה תלוי בפרויקט ובמצב המבנה. בודקים זאת בכל פרויקט לגופו. אישורים וליווי הנדסי, ככל שנדרשים, מתואמים מול בעלי מקצוע מוסמכים.'),
        ('אפשר לשלב פרגולה עם הסגירה?', 'כן. סגירת זכוכית ופרגולה יכולות להיות פרויקט אחד, באותה שפה עיצובית ועם נקודת קשר אחת.'),
        ('מה בודקים בפגישה במקום?', 'כיווני שמש, רוח, מידות המרפסת והאופן שבו אתם משתמשים בה. על בסיס זה נכתבת ההצעה.')]
 faqhtml = ''.join('<details style="border-top:1px solid rgba(33,28,22,.16);padding:16px 0"><summary style="cursor:pointer;font-size:18px;font-weight:600;list-style:none">%s</summary><p style="margin-top:10px;color:#4B443A;font-size:16.5px;line-height:1.7;max-width:62ch">%s</p></details>' % (esc(q), esc(a)) for q, a in faq)
