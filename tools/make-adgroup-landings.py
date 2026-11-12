@@ -183,10 +183,6 @@ def build(key, P):
     rep("'היי, הגעתי מהאתר ואשמח לתאם שיחת ייעוץ.',", "'" + P['wa'] + " ואשמח לתאם שיחת ייעוץ.',", 'long lead text')
 
     # --- copy that breaks the ad rules (same fixes as /envelope) -------------------------------------------------------------------
-    rep('<span>מי אנחנו · IL Projects | סופר צל</span>', '<span>מי אנחנו · IL Projects</span>', 'about eyebrow')
-    rep('alt="מרחב חוץ גמור של סופר צל"', 'alt="מרחב חוץ גמור של IL Projects"', 'about photo alt')
-    rep('IL Projects, הידועה גם כסופר צל, מרכזת', 'IL Projects מרכזת', 'about text')
-    rep('בפרויקטים הכוללים כמה תחומי שירות, סופר צל מסייעת', 'בפרויקטים הכוללים כמה תחומי שירות, IL Projects מסייעת', 'disclosure')
     rep('white-space:nowrap">המבוקש ביותר</span>', 'white-space:nowrap">מומלץ לפרויקט שלם</span>', 'badge')
     rep("'סוככי זרועות, רשתות וגגונים'", "'גגונים וקירוי בהתאמה לקו הבית'", 'components list')
 

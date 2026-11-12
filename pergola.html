@@ -481,7 +481,7 @@ header nav a:hover { color: #E8C48C !important; }
 
   <section id="why" style="padding-block:clamp(1.5rem,4vh,2.5rem) clamp(4rem,10vh,6.9rem)">
     <div style="width:min(var(--stz-side,92%),var(--stz-max,1180px));margin-inline:auto">
-      <div style="display:inline-flex;align-items:center;gap:10px;color:#B4813C;font-size:14.5px;font-weight:600;margin-bottom:24px;white-space:nowrap"><span style="display:block;width:24px;height:1px;background:#B4813C"></span>למה סופר צל</div>
+      <div style="display:inline-flex;align-items:center;gap:10px;color:#B4813C;font-size:14.5px;font-weight:600;margin-bottom:24px;white-space:nowrap"><span style="display:block;width:24px;height:1px;background:#B4813C"></span>למה IL Projects</div>
       <h2 style="font-size:clamp(32px,4.4vw,56px);max-width:18ch">למה זה נראה אחרת <span style="font-weight:300;color:#8F6326">כשהעבודה מסתיימת</span></h2>
       <div class="stz-carousel" style="display:grid;grid-template-columns:{{ threeCols }};gap:clamp(1.25rem,3vw,1.5rem);margin-top:clamp(2.25rem,6vh,3.4rem)">
         <sc-for list="{{ reasons }}" as="r" hint-placeholder-count="3">
@@ -681,7 +681,7 @@ header nav a:hover { color: #E8C48C !important; }
               <span aria-hidden="true" style="display:grid;place-items:center;width:28px;height:28px;border-radius:50%;border:1px solid rgba(33,28,22,0.2);font-size:17px;line-height:1;color:#8F6326;transform:rotate({{ q1Rot }});transition:transform 0.25s">▾</span>
             </button>
             <sc-if value="{{ q1Open }}" hint-placeholder-val="{{ false }}">
-              <p style="color:#4B443A;font-size:15.5px;line-height:1.6;padding:0 50px 20px 0;max-width:58ch">מתקין רגיל מספק פתרון נקודתי, לרוב מוצר קיים שהוא מנסה להתאים לשטח. בסופר צל הפתרון מותאם לפרויקט ולא להפך. אנחנו מלווים את מרחב החוץ כמעטפת אחת — מהצללה ועד סגירות זכוכית — תחת מסגרת שירות אחת ונקודת קשר אחת, בלי פיצול מתסכל בין ספקים שונים.</p>
+              <p style="color:#4B443A;font-size:15.5px;line-height:1.6;padding:0 50px 20px 0;max-width:58ch">ב-IL Projects הפתרון מותאם לבית ולא להפך. אנחנו מלווים את מרחב החוץ כמעטפת אחת, מהצללה ועד סגירות זכוכית, עם נקודת קשר אחת לאורך כל הדרך.</p>
             </sc-if>
           </div>
           <div style="border-top:1px solid rgba(33,28,22,0.14)">
@@ -908,7 +908,7 @@ header nav a:hover { color: #E8C48C !important; }
 </div>
 </div>
 
-<div style="width:min(var(--stz-side,92%),var(--stz-max,1180px));margin:0 auto;padding:8px 0 28px;font-size:13.5px;line-height:1.75;color:#4B443A;text-align:center">בפרויקטים הכוללים כמה תחומי שירות, סופר צל מסייעת בבניית רצף ביצוע מתואם ובחיבור בין מרכיבי הפרויקט. שירותים מקצועיים ייעודיים, אישורים, תשתיות וליווי הנדסי — ככל שנדרשים — מתואמים מול בעלי מקצוע מוסמכים, בהתאם להיקף הפרויקט ולתנאי ההתקשרות שנקבעו מראש ובכתב.</div>
+<div style="width:min(var(--stz-side,92%),var(--stz-max,1180px));margin:0 auto;padding:8px 0 28px;font-size:13.5px;line-height:1.75;color:#4B443A;text-align:center">בפרויקטים הכוללים כמה תחומי שירות, IL Projects מסייעת בבניית רצף ביצוע מתואם ובחיבור בין מרכיבי הפרויקט. שירותים מקצועיים ייעודיים, אישורים, תשתיות וליווי הנדסי — ככל שנדרשים — מתואמים מול בעלי מקצוע מוסמכים, בהתאם להיקף הפרויקט ולתנאי ההתקשרות שנקבעו מראש ובכתב.</div>
 
 <footer style="padding:32px 0 {{ footPad }};text-align:center;font-size:14px;color:#4B443A;border-top:1px solid rgba(33,28,22,0.14)">
   <div style="width:min(var(--stz-side,92%),var(--stz-max,1180px));margin-inline:auto;display:flex;justify-content:center;gap:1.25rem;flex-wrap:wrap">
@@ -1457,7 +1457,7 @@ class Component extends DCLogic {
       pinSize: n ? '30px' : '36px',
       dotsTop: n ? '86px' : '96px', dotsBottom: 'auto',
       heroCaption: S[cs].caption,
-      heroCapShow: n ? (/[?&]s=closure\b/.test(location.search) ? ('\u2066' + '0' + (cs + 1) + ' / 0' + S.length + '\u2069 · סגירות זכוכית') : 'סופר צל · פרגולות והצללה') : S[cs].caption,
+      heroCapShow: n ? (/[?&]s=closure\b/.test(location.search) ? ('\u2066' + '0' + (cs + 1) + ' / 0' + S.length + '\u2069 · סגירות זכוכית') : 'IL Projects · פרגולות והצללה') : S[cs].caption,
       heroWordEl: React.createElement('span', { key: 'hw' + cs, style: { display: 'inline-block', animation: 'stz-word 0.8s both' } }, S[cs].word),
       heroPinLeave: () => this.setState({ heroHold: false }),
       heroSlides: S.map((sl, si) => {
@@ -1516,7 +1516,7 @@ class Component extends DCLogic {
       { q: 'הפרגולה תגן גם בגשם?', a: 'לכל פתרון יש את המפרט והייעוד שלו. פרגולה עם קירוי מלא נותנת מענה טוב מפני שמש וגשם ישיר, אך במרחב פתוח – ובמיוחד ברוחות חזקות ובגשם אלכסוני – אין אפשרות להבטיח אטימות. למי שמחפש מעטפת היקפית רחבה יותר, אפשר לשלב סגירת זכוכית למרפסת, שמרחיבה את השימוש בחלל גם בעונות המעבר ובחורף. בתכנון היישומי של כל פרויקט אנחנו מתייחסים לשיפועים ולפתרונות הניקוז, ומלווים אתכם לאורך כל הדרך.' },
       { q: 'למה אין לכם מחירון או חבילות?', a: 'כי שתי מרפסות באותו גודל הן שני פרויקטים שונים לגמרי — מפתח, סוג קירוי, נגישות לשטח, סוג העיגון והגמר משנים את הפרויקט מהיסוד. מחירון אחיד היה או מייקר לכם את הפרויקט או מחייב אותנו להוריד באיכות. התמחור נקבע לפי אופי ומורכבות הפרויקט, אחרי שיחת ייעוץ.' },
       { q: 'צריך היתר?', a: 'דרישה לקבלת היתר או דיווח פטור משתנה בהתאם למאפייני הפרויקט, להנחיות הרשות המקומית ולסוג המבנה (בבית משותף, למשל, עשויה להידרש גם הסכמת הדיירים לפי החוק). אנו מקפידים על התנהלות אחראית ולעולם איננו קובעים מראש שאין צורך באישור. כל מקרה נבחן לגופו וככל שנדרשים אישורים סטטוטוריים או ליווי הנדסי הם מתואמים ומאושרים על ידי גורמי מקצוע מוסמכים בלבד.' },
-      { q: 'מי מבצע בפועל, ומי מתאם בין בעלי המקצוע?', a: 'הפרויקט מבוצע על ידי צוותי ביצוע מנוסים לכל תחום. סופר צל מנהלת את רצף הפרויקט ומשמשת עבורכם כתובת אחת, כך שאין צורך לתאם בעצמכם בין ספקים שונים. כשהפרויקט דורש אישורים, תשתיות או ליווי הנדסי, הם מתואמים מול בעלי מקצוע מוסמכים, בהתאם להיקף הפרויקט ולתנאי ההתקשרות שנקבעו מראש ובכתב.' },
+      { q: 'מי מבצע בפועל, ומי מתאם בין בעלי המקצוע?', a: 'הפרויקט מבוצע על ידי צוותי ביצוע מנוסים לכל תחום. IL Projects משמשת עבורכם נקודת קשר אחת ומסייעת בתיאום בין שלבי הפרויקט. כשהפרויקט דורש אישורים, תשתיות או ליווי הנדסי, הם מתואמים מול בעלי מקצוע מוסמכים, בהתאם להיקף הפרויקט ולתנאי ההתקשרות שנקבעו מראש ובכתב.' },
       { q: 'כמה זמן זה לוקח מהרגע שסוגרים?', a: 'תלוי בהיקף ובמערכות שנבחרו: לוקחים מידות, מייצרים בהתאמה ואז מתקינים. לוח הזמנים נקבע ונרשם מראש בהצעה, לפני שמתחילים.' },
       { q: 'מה צריך לתחזק לאורך השנים?', a: 'בפרופילי אלומיניום התחזוקה היא בעיקר ניקוי; עץ דורש טיפול תקופתי; אריגי סוככים ורשתות צל מתיישנים עם הזמן וניתנים להחלפה בלי לפרק את הקונסטרוקציה. תנאי ההתקשרות נקבעים מראש ובכתב.' }
     ]; */

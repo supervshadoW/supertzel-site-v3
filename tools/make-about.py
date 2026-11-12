@@ -90,9 +90,6 @@ CSS = ('<style id="stz-about">html body #hero,html body #projects,html body #soc
        'html body #why > span:first-child{display:none !important}'
        'html body header{background:rgba(27,23,18,0.94) !important;border-bottom-color:rgba(245,240,228,0.14) !important}'
        'html body div[style*="z-index: 900"],html body div[style*="z-index:900"]{display:none !important}</style>')
-rep('<span>מי אנחנו · IL Projects | סופר צל</span>', '<span>מי אנחנו · IL Projects</span>', 'about eyebrow')
-rep('alt="מרחב חוץ גמור של סופר צל"', 'alt="מרחב חוץ גמור של IL Projects"', 'about photo alt')
-rep('IL Projects, הידועה גם כסופר צל, מרכזת', 'IL Projects מרכזת', 'about text')
 rep('</head>', CSS + '</head>', 'css')
 
 if problems:

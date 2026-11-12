@@ -29,9 +29,6 @@ def esc(x):
 
 rep('<meta charset="utf-8">', '<meta charset="utf-8">\n<meta name="robots" content="noindex, nofollow">', 'noindex')
 rep('<title>IL Projects | סופר צל — מעטפת מקצועית לבית ולמרחב החוץ</title>', '<title>סגירות זכוכית ומערכות הזזה | IL Projects</title>', 'title')
-rep('<span>מי אנחנו · IL Projects | סופר צל</span>', '<span>מי אנחנו · IL Projects</span>', 'eyebrow')
-rep('alt="מרחב חוץ גמור של סופר צל"', 'alt="מרחב חוץ גמור של IL Projects"', 'alt')
-rep('IL Projects, הידועה גם כסופר צל, מרכזת', 'IL Projects מרכזת', 'brand text')
 
 WA = 'https://wa.me/972559958231?text=' + 'היי, הגעתי מדף סגירות המרפסת באתר ואשמח לתאם שיחת ייעוץ'
 GOLD = '#C99752'
