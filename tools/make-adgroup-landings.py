@@ -30,7 +30,7 @@ PAGES = {
         title='סגירת מרפסת ופנטהאוז | IL Projects',
         h1a='מרפסת לשימוש כל השנה,',
         sub='סגירת זכוכית, סגירת חורף, פרגולה חשמלית ודק למרפסת או לפנטהאוז. מהמדידה ועד המסירה, עם נקודת קשר אחת.',
-        why_h2='בפרויקט אחד. <br>מעטפת אחת - פרויקט חוץ שלם.',
+        why_h2='פרויקט חוץ שלם,<br>מעטפת אחת.',
         why_p='',
         # slot k4 is the eager, preloaded photo; the other slots are lazy
         slots={4: H + 'hero-glass-balcony.webp', 0: H + 'hero-panoramic-balcony.webp', 1: '/img/fast/gallery/project-lake-terrace.webp',
@@ -61,7 +61,7 @@ PAGES = {
         title='הגינה של הבית הפרטי | IL Projects',
         h1a='הגינה של הבית הפרטי,',
         sub='מטבח חוץ, פרגולה, דק, שער וגדר, חיפוי חזית וחדר שמש. הכול בפרויקט אחד, מהמדידה ועד המסירה, עם נקודת קשר אחת.',
-        why_h2='בפרויקט אחד. <br>מעטפת אחת - פרויקט חוץ שלם.',
+        why_h2='פרויקט חוץ שלם,<br>מעטפת אחת.',
         why_p='',
         slots={4: H + 'hero-pergola-kitchen-bar.webp', 3: H + 'hero-deck-wood.webp', 0: '/img/fast/gallery/fence-grey-aluminum.webp',
                1: H + 'hero-sunroom.webp', 2: '/img/fast/gallery/project-black-louvered-pergola.webp'},
@@ -128,9 +128,9 @@ def build(key, P):
         slot(k, src)
 
     # --- hero text --------------------------------------------------------------------------------------------------------
-    rep('letter-spacing:-0.03em;text-shadow:0 2px 30px rgba(14,11,8,0.45);animation:stz-up 1.1s 0.35s both">מרחב חוץ שלם,<br>',
-        'letter-spacing:-0.03em;text-shadow:0 2px 30px rgba(14,11,8,0.45);animation:stz-up 1.1s 0.35s both">' + P['h1a'] + '<br>', 'hero headline')
-    rep('פתרונות חוץ מלאים לבית ולעסק — מהמדידה ועד המסירה, עם נקודת קשר אחת לאורך כל הדרך.', P['sub'], 'hero sub line')
+    rep('letter-spacing:-0.03em;text-shadow:0 2px 30px rgba(14,11,8,0.45);animation:stz-up 1.1s 0.35s both">כשמדויק,<br><span style="display:block;min-height:1.1em;color:#C99752;font-weight:300">זה מרגיש אחרת.</span></h1>',
+        'letter-spacing:-0.03em;text-shadow:0 2px 30px rgba(14,11,8,0.45);animation:stz-up 1.1s 0.35s both">' + P['h1a'] + '<br><span style="display:block;min-height:1.1em;color:#C99752;font-weight:300">{{ heroRotEl }}</span></h1>', 'hero headline')
+    rep('מרחב חוץ שמתוכנן סביב החיים שלכם בבית. שפה עיצובית אחת ונקודת קשר אחת, מהמדידה ועד ההתקנה.', P['sub'], 'hero sub line')
     slides = ',\n      '.join(
         '{ k: %d, word: %s, caption: %s, src: %s, alt: %s,\n        pins: [%s] }' % (
             s['k'], js(s['word']), js(s['caption']), js(P['slots'][s['k']]), js(s['alt']),
@@ -139,16 +139,16 @@ def build(key, P):
     rep("pinKey = 'stz-home-hero-pins-v1';", "pinKey = 'stz-" + key + "-hero-pins-v1';", 'pin storage key')
 
     # --- first section ----------------------------------------------------------------------------------------------------
-    rep('text-wrap:balance">פרויקט חוץ שלם — <br>נקודת קשר אחת.</h2>', 'text-wrap:balance">' + P['why_h2'] + '</h2>', 'first section headline')
+    rep('text-wrap:balance">פרויקט חוץ שלם,<br>מעטפת אחת.</h2>', 'text-wrap:balance">' + P['why_h2'] + '</h2>', 'first section headline')
     if P['why_p']:
-        rep('מרחב חוץ אחד נבנה מכמה שכבות. אצלנו כולן מתוכננות יחד, בשפה חומרית אחת — מהקונספט ועד המסירה.', P['why_p'], 'first section text')
+        rep('מרחב החוץ שלכם, מתוכנן כמו הבית עצמו. שפה עיצובית אחת, קו נקי ונקודת קשר אחת, מהפגישה הראשונה ועד המסירה.', P['why_p'], 'first section text')
     else:
-        rep('<p style="margin:0;flex:1 1 320px;color:#4B443A;font-size:18px;max-width:38ch">מרחב חוץ אחד נבנה מכמה שכבות. אצלנו כולן מתוכננות יחד, בשפה חומרית אחת — מהקונספט ועד המסירה.</p>', '', 'first section text removed')
+        rep('<p style="margin:0;flex:1 1 320px;color:#4B443A;font-size:18px;max-width:38ch">מרחב החוץ שלכם, מתוכנן כמו הבית עצמו. שפה עיצובית אחת, קו נקי ונקודת קשר אחת, מהפגישה הראשונה ועד המסירה.</p>', '', 'first section text removed')
 
     # --- path picker: opens on the ad group's path; that path shows the ad group's projects first -----------------------------
     rep("p = ['full', 'add', 'focus'].indexOf(q) > -1 ? q : sessionStorage.getItem('stz-path');",
         "p = ['full', 'add', 'focus'].indexOf(q) > -1 ? q : '" + P['path'] + "';", 'default path')
-    old_orders = {'full': "proj: 'מרחבי חוץ שלמים, מכמה רכיבים שתוכננו יחד.', order: [0, 1, 3, 5, 4, 6, 2] }",
+    old_orders = {'full': "proj: 'פרויקטים שבהם כל המרחב תוכנן יחד, בשפה עיצובית אחת.', order: [0, 1, 3, 5, 4, 6, 2] }",
                   'add': "proj: 'תוספות לבית קיים: חדרי שמש, סגירות ומרפסות.', order: [2, 7, 4, 6, 11, 1, 8] }"}
     rep(old_orders[P['path']], "proj: " + js(P['proj_line']).replace('"', "'") + ", order: [" + ', '.join(map(str, P['proj_order'])) + "] }", 'projects order')
 
@@ -221,7 +221,12 @@ def build(key, P):
     rep("    if (['full', 'add', 'focus'].indexOf(p) > -1) this.setState({ path: p });", "    if (['full', 'add', 'focus'].indexOf(p) > -1) { this.setState({ path: p, trackTab: ['focus', 'add', 'full'].indexOf(p) }); this.syncCat(p); }", 'syncCat on arrival')
     rep("    this.setState({ path: k, openFq: 0 });", "    this.setState({ path: k, openFq: 0 }); this.syncCat(k);", 'syncCat on card pick')
     # lead-modal.js opens the contact window for any button whose text has "תיאום"; the full-envelope track must select itself like the other two
-    rep("body: 'פרויקט שלם תחת מסגרת שירות אחת ותיאום מלא.'", "body: 'פרויקט שלם תחת מסגרת שירות אחת, מהמדידה ועד המסירה.'", 'full track text without the contact trigger word')
+    # the home page hides the who-we-are pages behind a link to /about and shows an Instagram strip; a landing page keeps them open and has no outbound strip
+    t, n_more = re.subn(r'<div data-more-row="".*?</div>\s*', '', t, count=1, flags=re.S)
+    if n_more != 1:
+        problems.append(f'{key}: "more row": not found')
+    rep('<div id="tracks" data-reveal=""', '<div id="tracks" class="stz-open" data-reveal=""', 'tracks open')
+    rep('</head>', '<style id="stz-lp-nosocial">html body #social{display:none !important}</style></head>', 'no social strip')
     # --- no book flipping: three cards in one view (illustration | text + steps | tracks), stacked on phones ---------------------------------------
     m = re.search(r'(<h3 style="font-size:clamp\(22px,2\.4vw,28px\)[^>]*>בית אחד לכל מעטפת החוץ</h3>.*?</p>)(\s*)(<button type="button" aria-label="לעמוד הבא" onClick="\{\{ bookNext \}\}" data-flip-anim)', t, flags=re.S)
     ms = re.search(r'(<div style="margin-top:18px;display:flex;flex-direction:column;gap:10px">.*?</div>\s*</div>)(?=\s*</div>\s*</div>\s*<div data-bkctl)', t, flags=re.S)

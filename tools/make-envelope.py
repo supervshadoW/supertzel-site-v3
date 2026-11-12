@@ -68,6 +68,13 @@ rep("'היי, הגעתי מהאתר ואשמח לתאם שיחת ייעוץ.',",
 rep('white-space:nowrap">המבוקש ביותר</span>', 'white-space:nowrap">מומלץ לפרויקט שלם</span>', 'badge')
 rep("'סוככי זרועות, רשתות וגגונים'", "'גגונים וקירוי בהתאמה לקו הבית'", 'components list')
 
+import re as _re
+t, _n = _re.subn(r'<div data-more-row="".*?</div>\s*', '', t, count=1, flags=_re.S)
+if _n != 1:
+    problems.append('"more row": not found')
+rep('<div id="tracks" data-reveal=""', '<div id="tracks" class="stz-open" data-reveal=""', 'tracks open')
+rep('</head>', '<style id="stz-lp-nosocial">html body #social{display:none !important}</style></head>', 'no social strip')
+
 if problems:
     print('envelope.html NOT written:\n  ' + '\n  '.join(problems))
     sys.exit(1)
