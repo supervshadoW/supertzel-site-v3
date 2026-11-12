@@ -95,7 +95,7 @@ button,input,select{font-family:inherit}
   <div style="position:sticky;top:70px;z-index:90;background:rgba(245,240,228,0.94);backdrop-filter:blur(10px);border-block:1px solid rgba(33,28,22,0.1)">
     <div role="tablist" aria-label="סינון לפי תחום" style="width:min(var(--stz-side,92%),var(--stz-max,1180px));margin-inline:auto;display:flex;gap:8px;padding-block:12px;overflow-x:auto;scrollbar-width:none">
       <sc-for list="{{ chips }}" as="c" hint-placeholder-count="6">
-        <button type="button" role="tab" aria-selected="{{ c.sel }}" onClick="{{ c.pick }}" style="flex:0 0 auto;display:inline-flex;align-items:center;gap:8px;min-height:44px;padding:0 18px;border-radius:100px;border:1px solid {{ c.bc }};background:{{ c.bg }};color:{{ c.fg }};font-size:15px;font-weight:500;cursor:pointer;white-space:nowrap;transition:background 0.2s,color 0.2s">{{ c.label }}<span style="font-size:12.5px;opacity:0.7">{{ c.n }}</span></button>
+        <button type="button" role="tab" aria-selected="{{ c.sel }}" onClick="{{ c.pick }}" style="flex:0 0 auto;display:inline-flex;align-items:center;gap:8px;min-height:44px;padding:0 18px;border-radius:100px;border:1px solid {{ c.bc }};background:{{ c.bg }};color:{{ c.fg }};font-size:15px;font-weight:500;cursor:pointer;white-space:nowrap;transition:background 0.2s,color 0.2s">{{ c.label }}</button>
       </sc-for>
     </div>
   </div>
@@ -374,7 +374,7 @@ class Component extends DCLogic {
       formErr: this.state.formErr,
       scopeOpts: ['רכיב אחד', 'כמה רכיבים יחד', 'מרחב חוץ שלם', 'עוד לא יודעים'].map(t => { const on = f.scope === t; return { label: t, sel: on ? 'true' : 'false', bg: on ? '#B4813C' : 'transparent', fg: on ? '#1B1712' : '#F5F0E4', bd: on ? '#B4813C' : 'rgba(245,240,228,0.25)', pick: () => this.setF('scope', on ? '' : t) }; }),
       pageBottomPad: n ? '72px' : '0',
-      countLabel: all.length + ' פרויקטים מהשטח',
+      countLabel: 'מהשטח',
       chips: chips,
       cards: cards,
       gridCols: n ? '1fr' : (m ? 'repeat(2,minmax(0,1fr))' : 'repeat(3,minmax(0,1fr))'),
