@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Builds closures.html: category page "סגירות מרפסת ומערכות הזזה" (glass only), generated from index.html. index.html is only read.
+"""Builds closures.html: category page "סגירות זכוכית ומערכות הזזה" (glass only), generated from index.html. index.html is only read.
 
 Same technique as make-about.py: the home page's header, "למי זה מתאים" card (rotating sentence + quick form) and contact form stay,
 everything else is hidden by CSS and replaced by: hero, an article, the catalogue, numbered pins on real projects, the process and FAQ.
@@ -28,7 +28,7 @@ def esc(x):
 
 
 rep('<meta charset="utf-8">', '<meta charset="utf-8">\n<meta name="robots" content="noindex, nofollow">', 'noindex')
-rep('<title>IL Projects | סופר צל — מעטפת מקצועית לבית ולמרחב החוץ</title>', '<title>סגירות מרפסת ומערכות הזזה | IL Projects</title>', 'title')
+rep('<title>IL Projects | סופר צל — מעטפת מקצועית לבית ולמרחב החוץ</title>', '<title>סגירות זכוכית ומערכות הזזה | IL Projects</title>', 'title')
 rep('<span>מי אנחנו · IL Projects | סופר צל</span>', '<span>מי אנחנו · IL Projects</span>', 'eyebrow')
 rep('alt="מרחב חוץ גמור של סופר צל"', 'alt="מרחב חוץ גמור של IL Projects"', 'alt')
 rep('IL Projects, הידועה גם כסופר צל, מרכזת', 'IL Projects מרכזת', 'brand text')
@@ -43,7 +43,7 @@ hero = ('<section id="chero" style="position:relative;background:#1B1712;color:#
         '<img src="/img/fast/hero/hero-glass-balcony.webp" alt="מרפסת בסגירת זכוכית עם קירוי שקוף מעל הקורות" fetchpriority="high" decoding="async" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover">'
         '<span aria-hidden="true" style="position:absolute;inset:0;background:linear-gradient(0deg,rgba(14,11,8,.92) 0%,rgba(14,11,8,.6) 45%,rgba(14,11,8,.25) 100%)"></span>'
         '<div style="position:relative;' + W + ';padding-block:clamp(6.5rem,17vh,9.5rem) clamp(2.25rem,6vh,3.75rem)">'
-        '<div style="display:inline-flex;align-items:center;gap:12px;color:#E8C48C;font-size:15px;font-weight:600;margin-bottom:18px;text-shadow:0 1px 12px rgba(14,11,8,.8)"><span style="display:block;width:34px;height:1px;background:#C99752"></span>סגירות מרפסת ומערכות הזזה</div>'
+        '<div style="display:inline-flex;align-items:center;gap:12px;color:#E8C48C;font-size:15px;font-weight:600;margin-bottom:18px;text-shadow:0 1px 12px rgba(14,11,8,.8)"><span style="display:block;width:34px;height:1px;background:#C99752"></span>סגירות זכוכית ומערכות הזזה</div>'
         '<h1 style="font-size:clamp(34px,5vw,64px);line-height:1.08;font-weight:600;letter-spacing:-0.03em;color:#F5F0E4;max-width:16ch;text-shadow:0 2px 24px rgba(14,11,8,.6)">מרפסת לשימוש כל השנה.</h1>'
         '<p style="margin-top:16px;color:rgba(245,240,228,.9);font-size:clamp(17px,1.6vw,20px);max-width:40ch;line-height:1.55">סגירות זכוכית ומערכות הזזה בהתאמה אישית למידות המרפסת. האור והנוף נשארים, והמרחב נשאר שלכם.</p>'
         '<div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:26px">'
@@ -77,6 +77,7 @@ catalog = ('<section id="ccat" style="background:#ECE4D2;color:#211C16;padding-b
            '<h2 style="' + H2 + ';max-width:20ch;margin-bottom:clamp(1.5rem,4vh,2.5rem)">קו נקי, ביצוע מדויק.</h2>'
            '<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:16px">' + cardhtml + '</div>'
            '<p style="margin-top:22px;color:#4B443A;font-size:16.5px;max-width:60ch">וגם ויטרינות, חלונות הזזה, זכוכית מתקפלת ומחיצות זכוכית. הגוון, הפרופיל והחלוקה נקבעים לפי הבית והשימוש.</p>'
+           '<p style="margin-top:14px;padding:16px 20px;border-radius:14px;background:rgba(33,28,22,.06);color:#4B443A;font-size:16px;line-height:1.65;max-width:60ch">דף זה עוסק בסגירות זכוכית. סגירות בד ו-PVC, כמו סגירת חורף, הן פתרון נפרד עם חומר ומערכת אחרים. נסביר את ההבדל בשיחת ייעוץ.</p>'
            '</div></section>\n')
 
 # numbered pins on two real glass projects
@@ -131,7 +132,7 @@ more = ('<section id="cmore" style="background:#F5F0E4;color:#211C16;padding-blo
 
 steps = [('01', 'פגישה במקום ומדידה', 'מדידה, כיווני שמש וצורת השימוש.'), ('02', 'תכנון יישומי והצעה', 'חומרים, גוונים והיקף, בכתב.'), ('03', 'ייצור והתקנה', 'לפי המידות של המקום, ומסירה מסודרת.')]
 stephtml = ''.join('<div style="display:flex;gap:16px;align-items:baseline;border-top:1px solid rgba(33,28,22,.16);padding-block:18px"><span style="font-size:26px;font-weight:300;color:#B4813C;line-height:1;flex:none">%s</span><div><h3 style="font-size:19px;font-weight:600">%s</h3><p style="margin-top:4px;color:#4B443A;font-size:16px">%s</p></div></div>' % s for s in steps)
-faq = [('האם סגירת מרפסת דורשת היתר או אישורים?', 'זה תלוי בפרויקט ובמצב המבנה. בודקים זאת בכל פרויקט לגופו, ואישורים וליווי הנדסי, ככל שנדרשים, מתואמים מול בעלי מקצוע מוסמכים.'),
+faq = [('האם סגירת זכוכית דורשת היתר או אישורים?', 'זה תלוי בפרויקט ובמצב המבנה. בודקים זאת בכל פרויקט לגופו, ואישורים וליווי הנדסי, ככל שנדרשים, מתואמים מול בעלי מקצוע מוסמכים.'),
        ('אפשר לשלב פרגולה עם הסגירה?', 'כן. סגירת זכוכית ופרגולה יכולות להיות פרויקט אחד, באותה שפה עיצובית ועם נקודת קשר אחת.'),
        ('מה בודקים בפגישה במקום?', 'כיווני שמש, רוח, מידות המרפסת והאופן שבו אתם משתמשים בה. על בסיס זה נכתבת ההצעה.')]
 faqhtml = ''.join('<details style="border-top:1px solid rgba(33,28,22,.16);padding:16px 0"><summary style="cursor:pointer;font-size:18px;font-weight:600;list-style:none">%s</summary><p style="margin-top:10px;color:#4B443A;font-size:16.5px;line-height:1.7;max-width:62ch">%s</p></details>' % (esc(q), esc(a)) for q, a in faq)
