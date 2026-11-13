@@ -200,10 +200,11 @@
     d.dir = 'rtl';
     d.style.cssText = 'position:fixed;inset-inline:12px;bottom:12px;z-index:2147483000;max-width:560px;margin-inline:auto;background:#1B1712;color:#F5F0E4;border:1px solid rgba(201,151,82,.45);border-radius:18px;padding:18px 20px;box-shadow:0 18px 50px rgba(0,0,0,.45);font:14px/1.6 inherit;font-family:inherit';
     d.innerHTML =
-      '<div id="stz-consent-t" style="font-weight:700;font-size:16px;margin-bottom:6px">אנחנו מכבדים את הפרטיות שלך</div>' +
-      '<p style="margin:0 0 14px;opacity:.9">האתר משתמש בעוגיות (Cookies) כדי לתפעל שירותים בסיסיים, וכן — אם תסכים/י — כדי לנתח ביקורים באמצעות Google Analytics. ללא הסכמה לא נשמרות עוגיות כאלה, ונשלחים רק נתוני מדידה מוגבלים, כמפורט במדיניות. חלק מהמידע מעובד בשרתי ספקים בחו״ל. באפשרותך לקבל, לדחות או להתאים אישית. <a href="/legal#privacy" style="color:#C99752;white-space:nowrap">למידע מלא — מדיניות הפרטיות</a></p>' +
-      '<div id="stz-cc-mini" style="display:none;margin:0 0 8px;font-size:12.5px;opacity:.9">האתר משתמש בעוגיות לניתוח ולמדידת פרסום. אפשר לקבל, לדחות או להתאים אישית. <a href="/legal#privacy" style="color:#C99752">מדיניות הפרטיות</a></div>' +
+      '<div id="stz-consent-t" style="font-weight:700;font-size:16px;margin-bottom:6px">עזרו לנו להשתפר</div>' +
+      '<p style="margin:0 0 14px;opacity:.9">עוגיות עוזרות לנו ללמוד מה עובד באתר ולמדוד פרסום. בלי הסכמה לא נשמרות עוגיות כאלה. ההחלטה שלכם: לאשר, לדחות או להתאים אישית. <a href="/legal#privacy" style="color:#C99752;white-space:nowrap">מדיניות הפרטיות</a></p>' +
+      '<div id="stz-cc-mini" style="display:none;margin:0 0 8px;font-size:12.5px;opacity:.9">עזרו לנו להשתפר: עוגיות מאפשרות לנו ללמוד מהביקורים ולמדוד פרסום. אפשר לאשר, לדחות או להתאים אישית. <a href="/legal#privacy" style="color:#C99752">מדיניות הפרטיות</a></div>' +
       '<div id="stz-cc-custom" style="display:none;margin:0 0 14px;gap:10px;flex-direction:column">' +
+      '<p style="margin:0;opacity:.85;font-size:13px">הניתוח והמדידה נעשים באמצעות Google ו-Microsoft. חלק מהמידע מעובד בשרתי הספקים בחו״ל.</p>' +
       '<label style="display:flex;gap:10px;align-items:flex-start"><input type="checkbox" id="stz-cc-an" style="margin-top:5px"><span><strong>ניתוח ביקורים</strong><br><span style="opacity:.8;font-size:13px">Google Analytics ו-Microsoft Clarity: סטטיסטיקה, מפות חום והקלטות גלישה.</span></span></label>' +
       '<label style="display:flex;gap:10px;align-items:flex-start"><input type="checkbox" id="stz-cc-ad" style="margin-top:5px"><span><strong>פרסום ומדידת קמפיינים</strong><br><span style="opacity:.8;font-size:13px">Google Ads: מדידת פניות שהגיעו ממודעות.</span></span></label>' +
       '<button type="button" data-a="save" style="min-height:44px;border:0;border-radius:100px;background:#B4813C;color:#1B1712;font:inherit;font-weight:700;cursor:pointer">שמירת הבחירה</button>' +
