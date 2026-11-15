@@ -578,7 +578,7 @@ footer a,footer button{display:inline-flex;align-items:center;min-height:32px}
             <sc-for list="{{ pzDet.items }}" as="it" hint-placeholder-count="3"><li style="display:flex;gap:10px;align-items:baseline;font-size:14.5px"><span style="display:block;width:6px;height:6px;border-radius:50%;background:#B4813C;flex:none;transform:translateY(-2px)"></span><span>{{ it }}</span></li></sc-for>
           </ul>
           <button type="button" onClick="{{ buildOpen }}" style="display:inline-flex;align-items:center;gap:8px;margin-top:14px;min-height:44px;padding:0 20px;border:0;border-radius:100px;background:#211C16;color:#F5F0E4;font:inherit;font-size:14.5px;font-weight:600;cursor:pointer">השראה עיצובית ←</button>
-          <sc-if value="{{ pzDet.hasLp }}" hint-placeholder-val="{{ false }}"><a href="{{ pzDet.lp }}" style="display:inline-flex;margin-top:12px;font-size:14.5px;font-weight:600;color:#6E4D1E;border-bottom:1px solid rgba(110,77,30,0.4);padding-bottom:2px">לדף הפרגולות וההצללה ←</a></sc-if></div>
+          <sc-if value="{{ pzDet.hasLp }}" hint-placeholder-val="{{ false }}"><a href="{{ pzDet.lp }}" style="display:inline-flex;margin-top:12px;font-size:14.5px;font-weight:600;color:#6E4D1E;border-bottom:1px solid rgba(110,77,30,0.4);padding-bottom:2px">לדף התחום ←</a></sc-if></div>
         </div>
       </sc-if>
     </div>
@@ -1807,7 +1807,7 @@ class Component extends DCLogic {
           pzGap: done ? (ph ? '6px' : '6px') : (ph ? '8px' : '12px'), pzRad: done ? '10px' : '16px',
           pzCount: sel.length ? 'בחרתם ' + sel.length + ' · נצרף לפנייה' : (done ? '' : 'המעטפת מתחברת · ' + placed + '/7'),
           pzSel: sel, pzHasDet: !!dc, pzDetCols: ph ? '1fr' : 'minmax(0,1.2fr) minmax(0,1fr)',
-          pzDet: dc ? { num: dc.num, title: dc.title, body: dc.body, items: dc.items || [], hasLp: !!dc.hasLp || li === 0, lp: dc.lp || '/pergola' } : { num: '', title: '', body: '', items: [], hasLp: false, lp: '' }
+          pzDet: dc ? { num: dc.num, title: dc.title, body: dc.body, items: dc.items || [], hasLp: li != null, lp: ['/shade', '/closures', '/light-build', '/kitchens', '/fences', '/decks', '/landscape'][li] || '/shade' } : { num: '', title: '', body: '', items: [], hasLp: false, lp: '' }
         }; })(),
       audChipCols: (n && !t) ? 'repeat(2,minmax(0,1fr))' : 'repeat(3,minmax(0,1fr))',
       audChips: ['בית פרטי', 'דירת גן', 'מרפסת או פנטהאוז', 'עסק או בית קפה', 'פרויקט של אדריכל או מעצב', 'ועד בית או מוסד'].map(label => { const on = (this.state.aud || []).includes(label); return {

@@ -141,9 +141,9 @@ def build(key, P):
     # --- first section ----------------------------------------------------------------------------------------------------
     rep('text-wrap:balance">פרויקט חוץ שלם,<br>מעטפת אחת.</h2>', 'text-wrap:balance">' + P['why_h2'] + '</h2>', 'first section headline')
     if P['why_p']:
-        rep('מרחב החוץ שלכם, מתוכנן כמו הבית עצמו. שפה עיצובית אחת, קו נקי ונקודת קשר אחת, מהפגישה הראשונה ועד המסירה.', P['why_p'], 'first section text')
+        rep('מרחב החוץ הופך לחלק מהבית, בשפה עיצובית אחת ובקו נקי. נקודת קשר אחת מלווה אתכם מהפגישה הראשונה ועד המסירה.', P['why_p'], 'first section text')
     else:
-        rep('<p style="margin:0;flex:1 1 320px;color:#4B443A;font-size:18px;max-width:38ch">מרחב החוץ שלכם, מתוכנן כמו הבית עצמו. שפה עיצובית אחת, קו נקי ונקודת קשר אחת, מהפגישה הראשונה ועד המסירה.</p>', '', 'first section text removed')
+        rep('<p style="margin:0;flex:1 1 320px;color:#4B443A;font-size:18px;max-width:38ch">מרחב החוץ הופך לחלק מהבית, בשפה עיצובית אחת ובקו נקי. נקודת קשר אחת מלווה אתכם מהפגישה הראשונה ועד המסירה.</p>', '', 'first section text removed')
 
     # --- path picker: opens on the ad group's path; that path shows the ad group's projects first -----------------------------
     rep("p = ['full', 'add', 'focus'].indexOf(q) > -1 ? q : sessionStorage.getItem('stz-path');",
@@ -162,7 +162,7 @@ def build(key, P):
     rep("const W7 = " + js(W7).replace('"', "'").replace("', '", "','") + ";", "const W7 = " + js([W7[j] for j in ORD]).replace('"', "'").replace("', '", "','") + ";", 'puzzle labels')
     rep("const c = chapters[p.ch];", "const c = chapters[__ORD.indexOf(p.ch)];", 'anatomy pins chapter')
     rep("openCh: p.ch", "openCh: __ORD.indexOf(p.ch)", 'anatomy pins open chapter')
-    rep("hasLp: !!dc.hasLp || li === 0", "hasLp: !!dc.hasLp || dc.slotId === 'lp-cat-1'", 'pergola link stays on the shade tile')
+    rep("hasLp: li != null, lp: ['/shade', '/closures', '/light-build', '/kitchens', '/fences', '/decks', '/landscape'][li] || '/shade' }", "hasLp: dc.slotId === 'lp-cat-1', lp: '/shade' }", 'category link stays on the shade tile')
 
     # --- long form ----------------------------------------------------------------------------------------------------------
     rep("const cats = ['הצללה, קירוי וחיפויים', 'הקמת גינה ופיתוח נוף', 'פתרונות אלומיניום ועץ בהתאמה אישית', 'בנייה קלה, תוספות חוץ וחדרי שמש'];",
