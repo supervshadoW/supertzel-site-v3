@@ -174,7 +174,7 @@ HERO_FORM = '''<div class="stz-hrow" style="display:flex;gap:10px;flex-wrap:wrap
                 <div class="stz-hphone"><input type="tel" aria-label="טלפון" placeholder="טלפון" autocomplete="tel" inputmode="tel" value="{{ fPhone }}" onChange="{{ onPhone }}"></div>
                 <sc-if value="{{ pgErr }}" hint-placeholder-val="{{ false }}"><span role="alert" style="display:block;font-size:13.5px;color:#E8C48C;text-align:center">נא למלא שם ומספר טלפון תקין</span></sc-if>
                 <button type="button" onClick="{{ onQuickSubmit }}">תאמו שיחת ייעוץ</button>
-                <small>השארת פרטים מהווה הסכמה ליצירת קשר לצורך טיפול בפנייה זו בלבד. <a href="/legal#privacy" style="color:#E8C48C;text-decoration:underline">מדיניות פרטיות</a></small>
+                <small>השארת פרטים מהווה הסכמה ליצירת קשר לצורך טיפול בפנייה זו בלבד. <a href="/legal#terms" style="color:#E8C48C;text-decoration:underline">תנאי השימוש</a> · <a href="/legal#privacy" style="color:#E8C48C;text-decoration:underline">מדיניות פרטיות</a></small>
               </div>
             </sc-if>
           </div>'''
@@ -185,9 +185,9 @@ HERO_TAIL = '''וואטסאפ</a>
         </div>
         <div style="display:grid;gap:8px">
           <div class="stz-hrate-slot"><sc-if value="{{ hasRating }}" hint-placeholder-val="{{ false }}"><a class="stz-hrate" href="{{ reviewsHref }}" target="_blank" rel="noopener" aria-label="{{ ratingLabel }}"><b aria-hidden="true">★</b><span>{{ ratingText }} · {{ ratingCountText }}</span></a></sc-if></div>
-          <ul class="stz-hchecks"><sc-for list="{{ heroChecks }}" as="c" hint-placeholder-count="3"><li>✓ {{ c.t }}</li></sc-for></ul>
+          <ul class="stz-hchecks"><sc-for list="{{ heroChecks }}" as="c" hint-placeholder-count="3"><li>• {{ c.t }}</li></sc-for></ul>
         </div>'''
-rep('שיחת וואטסאפ מהירה</a>\n        </div>\n        <p style="margin-top:-2px;font-size:13px;color:rgba(245,240,228,0.65)">✓ שיחת ייעוץ ומדידה ללא התחייבות · מרכז, שפלה ודרום</p>',
+rep('שיחת וואטסאפ מהירה</a>\n        </div>\n        <p style="margin-top:-2px;font-size:13px;color:rgba(245,240,228,0.65)">שיחת ייעוץ ומדידה ללא התחייבות · מרכז, שפלה ודרום</p>',
     HERO_TAIL, 'hero actions, rating and checks')
 
 # --- scrolling band per variant, proof block, product gallery before the long explanation ----------------------------------

@@ -105,7 +105,7 @@ main :is(p, li, h1, h2, h3) :is(p, li, h1, h2, h3) { zoom: 1; }
 <helmet>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>סגירת מרפסת ופנטהאוז | IL Projects</title>
-<meta name="description" content="הצללה וקירוי, סגירות זכוכית, מטבחי חוץ, דקים, גידור ובנייה קלה — בהתאמה אישית, עם נקודת קשר אחת מהמדידה ועד המסירה. מרכז, שפלה ודרום. תאמו שיחת ייעוץ.">
+<meta name="description" content="סגירת מרפסת זכוכית ופרגולה חשמלית לפנטהאוז: פרגולות אלומיניום חשמליות, סגירת חורף למרפסת ודק. מדידה בשטח ותכנון יישומי מותאם אישית.">
 <meta property="og:type" content="website">
 <meta property="og:locale" content="he_IL">
 <meta property="og:site_name" content="IL Projects | סופר צל">
@@ -116,7 +116,7 @@ main :is(p, li, h1, h2, h3) :is(p, li, h1, h2, h3) { zoom: 1; }
 <meta name="theme-color" content="#1B1712">
 <link rel="preload" as="image" href="/img/fast/hero/hero-glass-balcony.webp" fetchpriority="high">
 <script src="/lead.js?v=9"></script>
-<script src="/lead-modal.js?v=18"></script>
+<script src="/lead-modal.js?v=20"></script>
 <script src="/phone-cc.js?v=6" defer></script>
 <script src="/ba-story.js?v=5" defer></script>
 <script src="/analytics.js?v=22"></script>
@@ -153,6 +153,7 @@ button,input,select,textarea{font-family:inherit}
 @media (prefers-reduced-motion:reduce){[data-reveal]{opacity:1;transform:none;transition:none}}
 @media (max-width:640px){body{font-size:15px}p,li{line-height:1.7}[style*="font-size: 18px"],[style*="font-size: 17.5px"]{font-size:15.5px!important}[style*="font-size: 17px"]{font-size:15px!important}[style*="font-size: 16.5px"],[style*="font-size: 16px"],[style*="font-size: 15.5px"]{font-size:14.5px!important}[style*="font-size: 15px"]{font-size:14px!important}h1{font-size:29px!important;line-height:1.12!important}h2{font-size:24px!important;line-height:1.2!important;letter-spacing:-0.02em!important}h3[style*="font-size: 2"]{font-size:19px!important;line-height:1.25!important}h3[style*="font-size: 1"]{font-size:17px!important}}
 </style>
+<style id="stz-type">#faq button[aria-expanded]{padding-block:12px!important}#faq div[style*="margin-top: 22px"]{display:none!important}#faq h2{font-size:clamp(24px,2.4vw,30px)!important}#faq section,#faq{padding-block:clamp(2rem,5vh,3.25rem)!important}@media (min-width:820px){#faq>div{grid-template-columns:minmax(0,1.45fr) minmax(0,1fr)!important}#faq>div>div:nth-child(1){order:2!important}#faq>div>div:nth-child(2){order:0!important;position:sticky!important;top:110px!important}}#trust p{text-wrap:pretty}@media (max-width:640px){#trust h2{font-size:28px!important;line-height:1.18!important}#trust p[style*="font-size"]{font-size:16.5px!important;line-height:1.75!important}#trust li{font-size:16px!important;line-height:1.55!important}}</style>
 <style id="stz-ux">
 /* hero slide dots are 6px tall: give them a roomier touch area (the dots look the same) */
 [data-hdot]{position:relative}
@@ -249,7 +250,7 @@ footer a,footer button{display:inline-flex;align-items:center;min-height:32px}
 <div role="dialog" aria-label="תפריט ניווט" style="position:fixed;inset:0;z-index:300;background:#1B1712;color:#F5F0E4;display:flex;flex-direction:column;padding:16px 6% 28px;overflow-y:auto">
   <div style="display:flex;align-items:center;justify-content:space-between;min-height:48px">
     <img src="/img/logo-il-dark-bg.png" alt="IL Projects | סופר צל" style="height:38px;width:auto">
-    <button type="button" aria-label="סגירת התפריט" onClick="{{ menuClose }}" style="width:44px;height:44px;border-radius:100px;border:1px solid rgba(245,240,228,0.4);background:transparent;color:#F5F0E4;font-size:24px;font-weight:300;line-height:1;cursor:pointer">×</button>
+    <button type="button" aria-label="סגירת התפריט" onClick="{{ menuClose }}" style="min-width:44px;height:44px;padding:0 16px;border-radius:100px;border:1px solid rgba(245,240,228,0.4);background:transparent;color:#F5F0E4;font-size:14.5px;font-weight:500;line-height:1;cursor:pointer">סגירה</button>
   </div>
   <nav style="display:flex;flex-direction:column;margin-top:28px">
     <a href="#why" onClick="{{ menuClose }}" style="display:flex;align-items:center;justify-content:space-between;min-height:54px;border-bottom:1px solid rgba(245,240,228,0.14);font-size:20px;font-weight:500;color:#F5F0E4">מעטפת מקצועית לחלל החוץ <span style="color:#C99752;font-size:13px;letter-spacing:0.14em">01</span></a>
@@ -341,12 +342,12 @@ footer a,footer button{display:inline-flex;align-items:center;min-height:32px}
           <h1 style="font-size:clamp(34px,4.8vw,66px);line-height:1.06;font-weight:600;color:#F5F0E4;letter-spacing:-0.03em;text-shadow:0 2px 30px rgba(14,11,8,0.45);animation:stz-up 1.1s 0.35s both">מרפסת לשימוש כל השנה,<br><span style="display:block;min-height:1.1em;color:#C99752;font-weight:300">{{ heroRotEl }}</span></h1>
         </div>
         <div style="min-width:0;animation:stz-up 1.1s 0.5s both">
-          <p class="stz-h-more" style="display:{{ heroPDisplay }};color:rgba(245,240,228,0.86);font-size:clamp(16px,1.5vw,18px);max-width:40ch;margin-bottom:22px">סגירת זכוכית, סגירת חורף, פרגולה חשמלית ודק למרפסת או לפנטהאוז. מהמדידה ועד המסירה, עם נקודת קשר אחת.</p>
+          <p class="stz-h-more" style="display:{{ heroPDisplay }};color:rgba(245,240,228,0.86);font-size:clamp(16px,1.5vw,18px);max-width:40ch;margin-bottom:22px">{{ heroDesc }}</p>
           <div style="display:flex;gap:10px;flex-wrap:wrap;width:{{ heroBtnWrapW }}">
             <a href="#quick" style="display:inline-flex;align-items:center;justify-content:center;flex:{{ heroBtnFlex }};background:#B4813C;color:#1B1712;padding:17px 38px;font-size:16.5px;font-weight:600;border-radius:100px;white-space:nowrap;box-shadow:0 10px 30px rgba(180,129,60,0.28);transition:background 0.2s ease,transform 0.18s ease,box-shadow 0.25s ease;animation:stz-cta-pulse 2.6s ease-in-out infinite" style-hover="background:#C99752;color:#1B1712;box-shadow:0 14px 40px rgba(201,151,82,0.42);animation:none" style-active="transform:scale(0.97)">תאמו שיחת ייעוץ</a>
             <a href="{{ waHref }}" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;justify-content:center;gap:10px;flex:{{ heroBtnFlex }};color:#F5F0E4;padding:17px 30px;font-size:16.5px;border:1px solid rgba(245,240,228,0.45);border-radius:100px;white-space:nowrap;backdrop-filter:blur(6px);transition:background 0.2s ease,transform 0.18s ease" style-hover="background:rgba(245,240,228,0.12);border-color:#F5F0E4;color:#F5F0E4" style-active="transform:scale(0.97)"><svg viewBox="0 0 24 24" width="20" height="20" fill="#25D366" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.46 1.32 4.96L2 22l5.25-1.38a9.9 9.9 0 0 0 4.79 1.22h.01c5.46 0 9.91-4.45 9.91-9.91C21.96 6.45 17.5 2 12.04 2zm5.8 14.02c-.24.68-1.42 1.3-1.96 1.35-.5.05-1.13.07-1.83-.12-.42-.13-.96-.31-1.65-.61-2.9-1.25-4.8-4.17-4.94-4.37-.15-.19-1.18-1.57-1.18-2.99s.74-2.12 1.01-2.41c.26-.29.58-.36.77-.36h.56c.18 0 .42-.07.65.5.24.58.82 2 .89 2.15.07.15.12.32.02.51-.1.19-.15.32-.29.49-.15.17-.31.38-.44.51-.15.15-.3.31-.13.6.17.29.76 1.25 1.62 2.03 1.12 1 2.07 1.31 2.36 1.46.29.15.46.12.63-.07.17-.19.73-.85.93-1.15.19-.29.39-.24.65-.15.26.1 1.69.8 1.98.94.29.15.48.22.56.34.07.12.07.7-.17 1.38z"></path></svg>שיחת וואטסאפ מהירה</a>
           </div>
-          <p class="stz-h-more" style="display:{{ heroPDisplay }};margin-top:16px;font-size:13px;color:rgba(245,240,228,0.65);animation:stz-up 1.1s 0.75s both">✓ שיחת ייעוץ ומדידה ללא התחייבות · מרכז, שפלה ודרום</p>
+          <p class="stz-h-more" style="display:{{ heroPDisplay }};margin-top:16px;font-size:13px;color:rgba(245,240,228,0.65);animation:stz-up 1.1s 0.75s both">שיחת ייעוץ ומדידה ללא התחייבות · מרכז, שפלה ודרום</p>
         </div>
       </div>
     </div>
@@ -380,7 +381,7 @@ footer a,footer button{display:inline-flex;align-items:center;min-height:32px}
                     <button type="button" aria-label="לעמוד הבא" onClick="{{ bookNext }}" data-flip-anim="" style="position:absolute;left:0;bottom:0;z-index:5;width:76px;height:76px;transform-origin:left bottom;animation:stzPeel 3.2s ease-in-out infinite;border:0;padding:0;cursor:pointer;border-bottom-left-radius:20px;background:linear-gradient(45deg,#E8DCC4 0%,#F2EADB 48%,rgba(33,28,22,0.22) 50%,transparent 54%);filter:drop-shadow(2px -2px 4px rgba(0,0,0,0.18))"></button><span aria-hidden="true" data-flip-anim="" style="position:absolute;left:72px;bottom:20px;z-index:4;display:{{ bookHint }};align-items:center;gap:6px;padding:7px 14px;border-radius:100px;background:#211C16;color:#F5F0E4;font-size:13.5px;font-weight:600;pointer-events:none;white-space:nowrap;box-shadow:0 6px 18px rgba(0,0,0,0.25);animation:stzNudge 1.4s ease-in-out infinite">דפדפו לעמוד הבא <span>←</span></span>
         </div>
         <div data-bkcard="" style="background:#FBF7EE;border-radius:20px;box-shadow:0 1px 0 rgba(33,28,22,0.06),0 18px 40px rgba(33,28,22,0.12);padding:clamp(1.25rem,3vw,2.25rem);box-sizing:border-box"><div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;color:#8A5F24;font-size:12.5px;font-weight:600;letter-spacing:0.08em"><span>בית אחד · איך זה עובד</span><span>02</span></div><h3 style="font-size:clamp(22px,2.4vw,28px);line-height:1.2;letter-spacing:-0.02em;margin-bottom:10px">בית אחד לכל מעטפת החוץ</h3>
-          <p style="color:#4B443A;font-size:15.5px;line-height:1.65;max-width:60ch;margin-bottom:10px">פרגולה, סגירת זכוכית, מטבח חוץ, דק וגינה, בשפה עיצובית אחת. כך מתחם החוץ נראה כחלק מהבית ולא כתוספת.</p><p style="color:#4B443A;font-size:15.5px;line-height:1.65;max-width:60ch;margin-bottom:10px">IL Projects מרכזת הצללה, קירוי, אלומיניום, דקים, ריצוף ופיתוח נוף בתכנון יישומי אחד. הכול מתוכנן יחד מההתחלה, מול נקודת קשר אחת.</p><p style="color:#4B443A;font-size:15.5px;line-height:1.65;max-width:60ch;margin-bottom:10px">כל פרויקט מתחיל בפגישה בשטח ובהבנה איך אתם רוצים לחיות במקום. משם ממשיכים לביצוע מדויק, לפי מה שסוכם בכתב.</p><div style="margin-top:8px;display:flex;flex-direction:column;gap:10px">
+          <p style="color:#4B443A;font-size:15.5px;line-height:1.65;max-width:60ch;margin-bottom:10px">מרחב חוץ טוב לא מתחיל במוצר. הוא מתחיל בשאלה איך אתם רוצים לחיות בבית: איפה יושבים בערב, איפה מארחים, מאיפה נכנסת השמש.</p><p style="color:#4B443A;font-size:15.5px;line-height:1.65;max-width:60ch;margin-bottom:10px">אחרי פגישה ומדידה בשטח, התשובות הופכות לתכנון יישומי אחד, שבו כל רכיב במרחב נבחר לפי הקו של הבית ולפי השימוש האמיתי בו. ניסיון מוכח בשטח, בפרויקטים שאפשר לראות ולגעת בהם.</p><p style="color:#4B443A;font-size:15.5px;line-height:1.65;max-width:60ch;margin-bottom:10px">לאורך כל הדרך יש לכם נקודת קשר אחת: מהפגישה הראשונה ועד המסירה, לפי מה שסוכם בכתב. כך אתם יודעים בכל שלב מה קורה ומה הצעד הבא.</p><div style="margin-top:8px;display:flex;flex-direction:column;gap:10px">
             <div style="color:#8A5F24;font-size:12.5px;font-weight:600;letter-spacing:0.08em">איך זה עובד · תהליך מסודר, פתרון מדויק</div>
             <div data-stepsl="" data-stepscream="" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,230px),1fr));gap:0 28px">
               <div style="display:flex;gap:14px;align-items:baseline;border-top:1px solid rgba(33,28,22,0.14);padding-block:14px"><span style="font-size:22px;font-weight:300;color:#B4813C;line-height:1;flex:none">01</span><div><h4 style="font-size:17.5px;font-weight:600">פגישת ייעוץ ומדידה</h4><p style="margin-top:4px;color:#4B443A;font-size:14.5px">מדידה, כיווני שמש וצורת השימוש.</p></div></div>
@@ -592,7 +593,7 @@ footer a,footer button{display:inline-flex;align-items:center;min-height:32px}
 
   <section id="build" data-state="{{ buildState }}" role="dialog" aria-label="השראה עיצובית" style="position:relative;background:#1B1712;color:#F5F0E4;padding-block:clamp(3rem,9vh,6rem)">
     <div style="width:min(var(--stz-side,92%),var(--stz-max,1180px));margin-inline:auto">
-      <div style="position:sticky;top:0;z-index:5;display:flex;justify-content:flex-end"><button type="button" aria-label="סגירה" onClick="{{ buildClose }}" style="width:44px;height:44px;border-radius:50%;border:1px solid rgba(245,240,228,0.4);background:#1B1712;color:#F5F0E4;font-size:22px;line-height:1;cursor:pointer">×</button></div>
+      <div style="position:sticky;top:0;z-index:5;display:flex;justify-content:flex-end"><button type="button" aria-label="סגירה" onClick="{{ buildClose }}" style="min-width:44px;height:44px;padding:0 16px;border-radius:100px;border:1px solid rgba(245,240,228,0.4);background:#1B1712;color:#F5F0E4;font-size:14.5px;font-weight:500;line-height:1;cursor:pointer">סגירה</button></div>
       <div style="margin-top:clamp(1.75rem,4vh,2.5rem)">
         <div style="display:inline-flex;align-items:center;gap:10px;color:#B4813C;font-size:14px;font-weight:600;margin-bottom:4px;white-space:nowrap"><span style="display:block;width:20px;height:1px;background:#B4813C"></span>03 · איך זה מתחבר</div>
         <div id="build-wiz" style="margin-top:10px;padding:clamp(1rem,2.5vw,1.6rem);border-radius:22px;background:#FBF7EE;color:#211C16;max-width:1080px;scroll-margin-top:90px">
@@ -672,13 +673,9 @@ footer a,footer button{display:inline-flex;align-items:center;min-height:32px}
           <div data-b2txt="">
       <div>
         <div style="display:inline-flex;align-items:center;gap:10px;color:#C99752;font-size:14.5px;font-weight:600;margin-bottom:16px"><span style="display:block;width:24px;height:1px;background:#C99752"></span>03 · למי זה מתאים</div>
-        <h2 style="font-size:{{ b2H2 }};letter-spacing:-0.03em;color:#F5F0E4;max-width:18ch">מעטפת אחת,<br><span style="display:block;min-height:1.1em;color:#C99752;font-weight:300">{{ rotEl }}</span></h2>
-        <p style="margin-top:14px;color:rgba(245,240,228,0.75);font-size:17px;max-width:38ch">מבית פרטי ועד עסק: כל פתרון מותאם לאופי המקום ולקו של הבית.</p>
+        <h2 style="font-size:{{ b2H2 }};letter-spacing:-0.03em;color:#F5F0E4;max-width:18ch">לכל סוג פרויקט,<br><span style="display:block;min-height:1.1em;color:#C99752;font-weight:300">הגישה הנכונה.</span></h2>
+        <p style="margin-top:14px;color:rgba(245,240,228,0.75);font-size:17px;max-width:38ch">בית פרטי, דירת גן, עסק או ועד בית — כל פרויקט מתוכנן לפי המקום והשימוש בו.</p>
       </div>
-          </div>
-          <div data-b2field="" style="display:none">
-            <div style="display:flex;align-items:center;gap:12px;margin-bottom:12px"><span aria-hidden="true" style="display:block;width:26px;height:1px;background:#C99752;flex:0 0 auto"></span><h3 style="font-size:22px;font-weight:500;color:#F5F0E4;line-height:1.25">מבצעים בשטח, <span style="font-weight:300;color:#C99752">רואים את התמונה המלאה</span></h3></div>
-            <p style="color:rgba(245,240,228,0.8);font-size:16px;line-height:1.75;max-width:52ch">אנחנו מבצעים בשטח ומלווים את הפרויקט כנקודת קשר אחת. בפרויקטים הדורשים זאת, הביצוע מתואם מול אדריכלים, מעצבים ובעלי מקצוע מוסמכים — בהתאם לאופי הפרויקט, למורכבותו ולתנאי ההתקשרות שנקבעו מראש ובכתב.</p>
           </div>
           <div data-b2form="" style="margin-top:18px;padding-top:16px;border-top:1px solid rgba(245,240,228,0.14)">
             <div style="display:flex;flex-direction:column;gap:3px;margin-bottom:12px"><span style="font-size:12.5px;font-weight:600;letter-spacing:0.08em;color:#C99752">נכיר את הפרויקט</span><h3 style="font-size:21px;font-weight:600;line-height:1.3;color:#F5F0E4">מה סוג הפרויקט?</h3><span style="font-size:13.5px;color:rgba(245,240,228,0.6)">לא חובה — עוזר לנו להתכונן לשיחה</span></div>
@@ -859,7 +856,7 @@ footer a,footer button{display:inline-flex;align-items:center;min-height:32px}
             <a href="mailto:ilprojects.israel@gmail.com" style="font-size:17px;color:#F5F0E4" style-hover="color:#C99752">ilprojects.israel@gmail.com</a>
           </div>
         </div>
-        <p style="font-size:13px;color:rgba(245,240,228,0.55);line-height:1.75;max-width:44ch">בפרויקטים הכוללים כמה תחומי שירות, IL Projects מסייעת בבניית רצף ביצוע מתואם ובחיבור בין מרכיבי הפרויקט. שירותים מקצועיים ייעודיים, אישורים, תשתיות וליווי הנדסי — ככל שנדרשים — מתואמים מול בעלי מקצוע מוסמכים, בהתאם להיקף הפרויקט ולתנאי ההתקשרות שנקבעו מראש ובכתב.</p>
+        <p style="font-size:14.5px;color:rgba(245,240,228,0.74);line-height:1.8;max-width:62ch">בפרויקטים הכוללים כמה תחומי שירות, IL Projects מסייעת בבניית רצף ביצוע מתואם ובחיבור בין מרכיבי הפרויקט. שירותים מקצועיים ייעודיים, אישורים, תשתיות וליווי הנדסי — ככל שנדרשים — מתואמים מול בעלי מקצוע מוסמכים, בהתאם להיקף הפרויקט ולתנאי ההתקשרות שנקבעו מראש ובכתב.</p>
       </div>
       <div style="background:rgba(245,240,228,0.04);border:1px solid rgba(245,240,228,0.18);border-radius:26px;padding:clamp(1.5rem,3vw,2.75rem)">
         <sc-if value="{{ sent }}" hint-placeholder-val="{{ false }}">
@@ -959,7 +956,7 @@ footer a,footer button{display:inline-flex;align-items:center;min-height:32px}
             </sc-if>
           </div>
 
-          <p style="font-size:13px;color:rgba(245,240,228,0.62);text-align:center;line-height:1.6">השארת פרטים מהווה הסכמה ליצירת קשר לצורך טיפול בפנייה זו בלבד.</p>
+          <p style="font-size:13px;color:rgba(245,240,228,0.62);text-align:center;line-height:1.6">השארת פרטים מהווה הסכמה ליצירת קשר לצורך טיפול בפנייה זו בלבד. <a href="/legal#terms" style="color:#C99752;text-decoration:underline">תנאי השימוש</a> · <a href="/legal#privacy" style="color:#C99752;text-decoration:underline">מדיניות הפרטיות</a></p>
         </div>
         </sc-if>
       </div>
@@ -973,7 +970,7 @@ footer a,footer button{display:inline-flex;align-items:center;min-height:32px}
     <span style="position: relative; color: rgba(245,240,228,0.78)">סופר צל · IL Projects — מעטפת מקצועית לבית ולמרחב החוץ</span>
     <a href="tel:0553100154" style="color: #F5F0E4" style-hover="color:#C99752">055-310-0154</a>
     <a href="mailto:ilprojects.israel@gmail.com" style="color: #F5F0E4" style-hover="color:#C99752">ilprojects.israel@gmail.com</a>
-    <a href="/legal#privacy" style="color: #F5F0E4" style-hover="color:#C99752">תקנון ומדיניות פרטיות</a>
+    <a href="/legal#terms" style="color: #F5F0E4" style-hover="color:#C99752">תקנון ותנאי שימוש</a> · <a href="/legal#privacy" style="color: #F5F0E4" style-hover="color:#C99752">מדיניות פרטיות</a>
     <button onClick="{{ a11yOpen }}" style="background: transparent; border: 0; padding: 0; font: inherit; color: #F5F0E4; text-decoration: underline; text-underline-offset: 3px; cursor: pointer" style-hover="color:#C99752">הצהרת נגישות</button>
   </div>
 </footer>
@@ -1004,7 +1001,7 @@ footer a,footer button{display:inline-flex;align-items:center;min-height:32px}
   <div style="position:relative;z-index:1;width:min(100%,340px);max-height:88vh;overflow:auto;background:#F5F0E4;border:1px solid rgba(33,28,22,0.18);border-radius:24px;padding:22px;box-shadow:0 18px 48px rgba(27,23,18,0.35)">
     <div style="display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:18px">
       <h2 style="font-size:20px">תפריט נגישות</h2>
-      <button onClick="{{ a11yClose }}" aria-label="סגירת תפריט נגישות" style="width:36px;height:36px;border-radius:100px;border:1px solid rgba(33,28,22,0.2);background:transparent;color:#211C16;font-size:18px;line-height:1;cursor:pointer" style-hover="background:rgba(33,28,22,0.06);color:#211C16">✕</button>
+      <button onClick="{{ a11yClose }}" aria-label="סגירת תפריט נגישות" style="min-width:36px;height:36px;padding:0 16px;border-radius:100px;border:1px solid rgba(33,28,22,0.2);background:transparent;color:#211C16;font-size:14.5px;font-weight:500;line-height:1;cursor:pointer" style-hover="background:rgba(33,28,22,0.06);color:#211C16">סגירה</button>
     </div>
     <div style="display:grid;gap:10px">
       <span style="font-size:13.5px;font-weight:600;color:#4B443A">גודל טקסט · {{ a11yFontLabel }}</span>
@@ -1043,14 +1040,14 @@ class Component extends DCLogic {
       full: { label: 'מעטפת מלאה', num: '01', title: 'מעטפת מלאה', line: 'מרחב חוץ שלם, בשפה עיצובית אחת.', ex: 'הצללה · מטבח חוץ · דק · גינה · תאורה', src: '/img/fast/hero/hero-pergola-kitchen-bar.webp',
         head: 'פרויקט שלם: תכנון יישומי אחד, נקודת קשר אחת.', cta: 'בואו נתכנן את המרחב שלכם', lp: false,
         points: ['תכנון יישומי של כל המרחב יחד, לפי מידות הבית', 'ביצוע מסודר, שלב אחרי שלב', 'הצעה מפורטת בכתב, לפני שמתחילים'],
-        proj: 'פרויקטים שבהם כל המרחב תוכנן יחד, בשפה עיצובית אחת.', order: [0, 1, 3, 5, 4, 6, 2] },
+        proj: 'סגירות זכוכית, סגירות חורף, פרגולות ודקים. מרחב החוץ כולו אצלנו. לכם נשאר שקט תפעולי.', order: [0, 1, 3, 5, 4, 6, 2] },
       add: { label: 'הרחבה ותוספות', num: '02', title: 'הרחבה ותוספות', line: 'תוספת שנראית כאילו תמיד הייתה חלק מהבית.', ex: 'חדר שמש · סגירת זכוכית · הרחבת מרפסת', src: '/img/fast/projects/light-sunroom-out.webp',
         head: 'תוספת שנראית כחלק מהבית.', cta: 'תאמו שיחת ייעוץ', lp: false,
         points: ['התאמה לגבהים, לריצוף ולגוונים הקיימים', 'חדרי שמש, סגירות זכוכית, דקים והרחבות', 'אישורים, תשתיות וליווי הנדסי, ככל שנדרשים, מתואמים מול בעלי מקצוע מוסמכים'],
         proj: 'סגירות זכוכית, סגירות חורף, פרגולות ודקים במרפסות.', order: [6, 10, 4, 3, 2, 9, 1] },
       focus: { label: 'פתרון ממוקד', num: '03', title: 'פתרון ממוקד', line: 'פתרון אחד, מדויק לבית ולאופן שבו אתם חיים בו.', ex: 'פרגולה · הצללה · חיפוי · גידור', src: '/img/fast/gallery/project-black-louvered-pergola.webp',
         head: 'פתרון אחד, מדויק לבית שלכם.', cta: 'יש לכם שאלה? דברו איתנו', lp: true,
-        points: ['מדידה ובדיקת כיווני שמש לפני כל המלצה', 'פרגולות, הצללה, חיפויים וגידור', 'אפשר להרחיב בהמשך. התכנון לוקח זאת בחשבון'],
+        points: ['מדידה ובדיקת כיווני שמש לפני כל המלצה', 'פרגולות, הצללה, חיפויים וגידור', 'אפשר להרחיב בהמשך. התכנון היישומי לוקח זאת בחשבון'],
         proj: 'פרגולות, הצללה, חיפויים וגידור.', order: [10, 13, 7, 12, 9, 11, 5] }
     };
   }
@@ -1116,8 +1113,8 @@ class Component extends DCLogic {
       pthCards: ['full', 'add', 'focus'].map(key => { const d = D[key], on = key === k; return {
         num: d.num, title: d.title, line: d.line, ex: d.ex, src: d.src, on: on ? 'true' : 'false',
         bc: on ? '#B4813C' : 'transparent', sh: on ? '0 18px 44px rgba(33,28,22,0.28)' : '0 10px 26px rgba(33,28,22,0.14)',
-        dotBg: on ? '#B4813C' : 'rgba(245,240,228,0.85)', mark: on ? '✓' : '',
-        cta: on ? 'המסלול שלכם ✓' : 'בחירה במסלול ←', ctaBg: on ? '#B4813C' : 'rgba(245,240,228,0.08)', ctaFg: on ? '#1B1712' : '#F5F0E4', ctaBc: on ? '#B4813C' : 'rgba(245,240,228,0.55)', onTap: () => this.pickPath(key) }; }),
+        dotBg: on ? '#B4813C' : 'rgba(245,240,228,0.85)', mark: on ? '●' : '',
+        cta: on ? 'המסלול שלכם' : 'בחירה במסלול ←', ctaBg: on ? '#B4813C' : 'rgba(245,240,228,0.08)', ctaFg: on ? '#1B1712' : '#F5F0E4', ctaBc: on ? '#B4813C' : 'rgba(245,240,228,0.55)', onTap: () => this.pickPath(key) }; }),
       pthLabel: cur.label, pthTitle: cur.head, pthCta: cur.cta, pthHasLp: cur.lp, pthPoints: cur.points,
       pthBarShow: !!this.state.pastScope, pthBarTop: n ? '72px' : '86px',
       pthSwap: () => { const el = document.getElementById('scope'); if (el) window.scrollTo({ top: el.getBoundingClientRect().top + window.scrollY - 70, behavior: 'smooth' }); },
@@ -1468,15 +1465,15 @@ class Component extends DCLogic {
 
   heroSlideData() {
     return [
-      { k: 4, word: "בסגירת זכוכית", caption: "סגירת מרפסת וקירוי", src: "/img/fast/hero/hero-glass-balcony.webp", alt: "מרפסת בסגירת זכוכית עם קירוי שקוף מעל הקורות",
+      { k: 4, word: "בסגירת זכוכית", caption: "סגירת מרפסת וקירוי", src: "/img/fast/hero/hero-glass-balcony.webp", alt: "מרפסת בסגירת זכוכית עם קירוי שקוף מעל הקורות", desc: "מרפסת שיושבים בה כל השנה גם כשיורד גשם בחוץ, בזכות מדידה מדויקת וסגירה שמתאימה בדיוק למרפסת שלכם.",
         pins: [{ label: "סגירת זכוכית בהזזה", x: "70%", y: "24%" }, { label: "קירוי עליון — סנטף BH", x: "30%", y: "8%" }, { label: "חלון בקצה המרפסת", x: "27%", y: "40%" }] },
-      { k: 0, word: "עם פרגולת תריס חשמלית", caption: "סגירת מרפסת ופרגולת תריס", src: "/img/fast/hero/hero-panoramic-balcony.webp", alt: "מרפסת בסגירת זכוכית עם פרגולת תריס חשמלית ונוף פתוח",
+      { k: 0, word: "עם פרגולת תריס חשמלית", caption: "סגירת מרפסת ופרגולת תריס", src: "/img/fast/hero/hero-panoramic-balcony.webp", alt: "מרפסת בסגירת זכוכית עם פרגולת תריס חשמלית ונוף פתוח", desc: "פרגולת תריס חשמלית שנפתחת וסוגרת בלחיצה אחת, לנוף פתוח שנשאר שלכם לאורך כל השנה.",
         pins: [{ label: "פרגולת תריס חשמלית", x: "45%", y: "10%" }, { label: "סגירת זכוכית בהזזה", x: "32%", y: "40%" }, { label: "מעקה זכוכית לנוף פנורמי", x: "40%", y: "72%" }, { label: "דלתות הזזה ליציאה למרפסת", x: "74%", y: "45%" }] },
-      { k: 3, word: "בפרופיל אלומיניום שחור", caption: "סגירת זכוכית בפרופיל שחור", src: "/img/fast/gallery/project-black-glass-balcony.webp", alt: "מרפסת בסגירת זכוכית בהזזה בפרופיל אלומיניום שחור",
+      { k: 3, word: "בפרופיל אלומיניום שחור", caption: "סגירת זכוכית בפרופיל שחור", src: "/img/fast/gallery/project-black-glass-balcony.webp", alt: "מרפסת בסגירת זכוכית בהזזה בפרופיל אלומיניום שחור", desc: "קווים נקיים בפרופיל שחור וסגירת זכוכית שמחברת בין הבית לנוף, בלי להרגיש שיש שם קיר.",
         pins: [{ label: "פרופיל אלומיניום שחור", x: "46%", y: "28%" }, { label: "סגירת זכוכית בהזזה", x: "62%", y: "62%" }] },
-      { k: 2, word: "עם דק ופרגולה", caption: "מרפסת נוף עם דק", src: "/img/fast/gallery/project-deck-view.webp", alt: "מרפסת נוף עם דק, פרגולה בגמר עץ ופינת ישיבה",
+      { k: 2, word: "עם דק ופרגולה", caption: "מרפסת נוף עם דק", src: "/img/fast/gallery/project-deck-view.webp", alt: "מרפסת נוף עם דק, פרגולה בגמר עץ ופינת ישיבה", desc: "דק עץ ופרגולה שהופכים את המרפסת לפינת ישיבה שרוצים להישאר בה עד הערב.",
         pins: [{ label: "פרגולה בגמר עץ", x: "55%", y: "8%" }, { label: "דק", x: "30%", y: "84%" }, { label: "מעקה לנוף פתוח", x: "78%", y: "47%" }] },
-      { k: 1, word: "גם בפנטהאוז", caption: "מרפסת נוף עם דק ומעקה זכוכית", src: "/img/fast/gallery/project-lake-terrace.webp", alt: "מרפסת נוף גדולה עם דק עץ ומעקה זכוכית",
+      { k: 1, word: "גם בפנטהאוז", caption: "מרפסת נוף עם דק ומעקה זכוכית", src: "/img/fast/gallery/project-lake-terrace.webp", alt: "מרפסת נוף גדולה עם דק עץ ומעקה זכוכית", desc: "גם במרפסת פנטהאוז גדולה, כל פרט נבחר כך שהנוף נשאר הכוכב — לא המעקה ולא הקירוי.",
         pins: [{ label: "דק", x: "40%", y: "45%" }, { label: "מעקה זכוכית", x: "62%", y: "33%" }] }
     ].map((s, i) => { const ov = (this.state && this.state.pinOv) || {}; return ov[i] ? Object.assign({}, s, { pins: ov[i] }) : s; });
   }
@@ -1641,12 +1638,13 @@ class Component extends DCLogic {
           prevSlide: () => this.setState({ heroSlide: (cs - 1 + S.length) % S.length, pinSel: null }),
           nextSlide: () => this.setState({ heroSlide: (cs + 1) % S.length, pinSel: null }),
           resetSlide: () => { const ov = Object.assign({}, this.state.pinOv || {}); delete ov[cs]; this.savePins(ov); this.setState({ pinSel: null }); },
-          copyPinsLabel: this.state.pinsCopied ? 'הועתק ✓' : 'העתקת הנקודות',
+          copyPinsLabel: this.state.pinsCopied ? 'הועתק' : 'העתקת הנקודות',
           copyPins: () => { const txt = JSON.stringify(S.map(s => ({ slide: s.word, pins: s.pins })), null, 2); try { navigator.clipboard.writeText(txt); } catch (e) {} this.setState({ pinsCopied: true }); setTimeout(() => this.setState({ pinsCopied: false }), 1800); }
         };
       })(),
       heroPinLeave: () => this.setState({ heroHold: false }),
       heroCaption: this.heroSlideData()[(this.state.heroSlide || 0) % this.heroSlideData().length].caption,
+      heroDesc: this.heroSlideData()[(this.state.heroSlide || 0) % this.heroSlideData().length].desc || 'מרחב חוץ שמתוכנן סביב החיים שלכם בבית. שפה עיצובית אחת ונקודת קשר אחת, מהמדידה ועד ההתקנה.',
       heroRotEl: (() => {
         const S = this.heroSlideData();
         const i = (this.state.heroSlide || 0) % S.length;
@@ -1722,7 +1720,7 @@ class Component extends DCLogic {
         const W7 = [['01','קירוי והצללה','/img/fast/projects/pergola-louver-detail.webp'],['02','סגירות זכוכית','/img/fast/projects/glass-sunroom-interior.webp'],['03','בנייה קלה ותוספות','/img/fast/lp/home-lp-cat-6.webp'],['04','מטבחי חוץ ואירוח','/img/fast/projects/pergola-kitchen-bar-close.webp'],['05','גידור ושערים','/img/fast/lp/home-lp-cat-3.webp'],['06','דקים, ריצוף וחיפויים','/img/fast/lp/home-lp-cat-7.webp'],['07','פיתוח חוץ וגינה','/img/fast/lp/home-lp-cat-4.webp']];
         const sel = this.state.worlds || [];
         const tap = (label) => () => this.setState(st => { const A = st.worlds || []; const N = A.includes(label) ? A.filter(x => x !== label) : A.concat(label); this.syncLeadNote((st.aud || []), N); return { worlds: N }; });
-        const rows = W7.map(([num, label, src]) => { const on = sel.includes(label); return { num, label, src, on, pressed: on ? 'true' : 'false', mark: on ? '✓' : String(+num), onTap: tap(label) }; });
+        const rows = W7.map(([num, label, src]) => { const on = sel.includes(label); return { num, label, src, on, pressed: on ? 'true' : 'false', mark: String(+num), onTap: tap(label) }; });
         return {
           styleSrc: S.src, styleAlt: S.alt,
           styleOpts: STY.map((o, i) => { const on = i === si; return { label: o.label, thumb: o.src, pressed: on ? 'true' : 'false', bg: on ? '#211C16' : 'transparent', fg: on ? '#F5F0E4' : '#211C16', bc: on ? '#211C16' : 'rgba(33,28,22,0.28)',
@@ -1749,16 +1747,16 @@ class Component extends DCLogic {
         fNext: () => this.setState(s => ({ fStep: Math.min(3, Math.max(1, s.fStep || 0) + 1), styleTouched: true })),
         fBack: () => { const cur = this.state.fStep || 0; if (cur <= 1) { this.setState({ fStep: 0 }); const el = document.getElementById('fit'); if (el) window.scrollTo({ top: el.getBoundingClientRect().top + window.scrollY - 70, behavior: 'smooth' }); } else this.setState({ fStep: cur - 1 }); },
         fGo1: () => { this.setState(s => ({ fStep: Math.max(1, s.fStep || 0) })); setTimeout(() => { const el = document.getElementById('build'); if (el) window.scrollTo({ top: el.getBoundingClientRect().top + window.scrollY - 70, behavior: 'smooth' }); }, 30); },
-        audD: AL.map(label => { const on = A.includes(label); return { label, pressed: on ? 'true' : 'false', mark: on ? '✓' : '', bg: on ? 'rgba(201,151,82,0.18)' : 'rgba(245,240,228,0.04)', bc: on ? '#C99752' : 'rgba(245,240,228,0.2)', boxBg: on ? '#C99752' : 'transparent', boxBc: on ? '#C99752' : 'rgba(245,240,228,0.45)', onTap: togA(label) }; }),
+        audD: AL.map(label => { const on = A.includes(label); return { label, pressed: on ? 'true' : 'false', mark: on ? '●' : '', bg: on ? 'rgba(201,151,82,0.18)' : 'rgba(245,240,228,0.04)', bc: on ? '#C99752' : 'rgba(245,240,228,0.2)', boxBg: on ? '#C99752' : 'transparent', boxBc: on ? '#C99752' : 'rgba(245,240,228,0.45)', onTap: togA(label) }; }),
         s1Cols: (n && !t) ? '1fr' : 'minmax(0,1.6fr) minmax(0,1fr)',
-        legendL: WL.filter(([num]) => sty.P[num]).map(([num, label]) => { const on = W.includes(label); return { num, label, pressed: on ? 'true' : 'false', mark: on ? '✓' : num, dot: on ? '#F5F0E4' : '#B4813C', fg: on ? '#8A5F24' : '#FFFFFF', cta: on ? 'נוסף לפנייה' : '+ הוסיפו', onTap: togW(label) }; }),
+        legendL: WL.filter(([num]) => sty.P[num]).map(([num, label]) => { const on = W.includes(label); return { num, label, pressed: on ? 'true' : 'false', mark: num, dot: on ? '#F5F0E4' : '#B4813C', fg: on ? '#8A5F24' : '#FFFFFF', cta: on ? 'נוסף לפנייה' : 'הוסיפו', onTap: togW(label) }; }),
         likeStyles: this.styles().map((o, i) => { const on = (this.state.likedS || []).includes(i); return { label: o.label, thumb: o.src, pressed: on ? 'true' : 'false', heart: on ? '♥' : '♡', hc: on ? '#C99752' : 'rgba(245,240,228,0.5)', bg: on ? 'rgba(201,151,82,0.2)' : 'transparent', bc: on ? '#C99752' : 'rgba(245,240,228,0.25)', onTap: () => this.setState(s => { const X = s.likedS || []; const N = X.includes(i) ? X.filter(x => x !== i) : X.concat(i); return { likedS: N }; }, () => this.syncLeadNote(this.state.aud || [], this.state.worlds || [])) }; }),
-        likeWorlds: WL.map(([num, label, src]) => { const on = W.includes(label); return { label, src, pressed: on ? 'true' : 'false', mark: on ? '✓' : num, bg: on ? 'rgba(201,151,82,0.18)' : 'rgba(245,240,228,0.04)', bc: on ? '#C99752' : 'rgba(245,240,228,0.2)', boxBg: on ? '#C99752' : 'rgba(27,23,18,0.75)', numFg: on ? '#1B1712' : '#F5F0E4', onTap: togW(label) }; }),
+        likeWorlds: WL.map(([num, label, src]) => { const on = W.includes(label); return { label, src, pressed: on ? 'true' : 'false', mark: num, bg: on ? 'rgba(201,151,82,0.18)' : 'rgba(245,240,228,0.04)', bc: on ? '#C99752' : 'rgba(245,240,228,0.2)', boxBg: on ? '#C99752' : 'rgba(27,23,18,0.75)', numFg: on ? '#1B1712' : '#F5F0E4', onTap: togW(label) }; }),
         likeSum: (() => { const L = (this.state.likedS || []).length; const parts = []; if (L) parts.push(L + ' סגנונות'); if (W.length) parts.push(W.length + ' רכיבים'); return parts.length ? 'סימנתם · ' + parts.join(' · ') : 'סמנו מה אהבתם — ונכין לשיחה רעיונות שמתאימים לכם'; })(),
-        wPicL: WL.filter(([num]) => sty.P[num]).map(([num, label]) => { const on = W.includes(label); return { label, pressed: on ? 'true' : 'false', mark: on ? '✓' : num, bg: on ? 'rgba(180,129,60,0.14)' : '#FFFFFF', bc: on ? '#B4813C' : 'rgba(33,28,22,0.16)', boxBg: on ? '#F5F0E4' : '#B4813C', numFg: on ? '#8A5F24' : '#FFFFFF', onTap: togW(label) }; }),
-        wExtraL: WL.filter(([num]) => !sty.P[num]).map(([num, label, src]) => { const on = W.includes(label); return { label, src, pressed: on ? 'true' : 'false', mark: on ? '✓' : num, bg: on ? 'rgba(180,129,60,0.14)' : '#FFFFFF', bc: on ? '#B4813C' : 'rgba(33,28,22,0.16)', boxBg: on ? '#B4813C' : 'rgba(27,23,18,0.72)', numFg: on ? '#1B1712' : '#F5F0E4', onTap: togW(label) }; }),
-        wTilesL: WL.map(([num, label, src]) => { const on = W.includes(label); return { label, src, pressed: on ? 'true' : 'false', mark: on ? '✓' : num, bg: on ? 'rgba(180,129,60,0.14)' : '#FFFFFF', bc: on ? '#B4813C' : 'rgba(33,28,22,0.16)', boxBg: on ? '#B4813C' : 'rgba(27,23,18,0.72)', numFg: on ? '#1B1712' : '#F5F0E4', onTap: togW(label) }; }),
-        audL: AL.map(label => { const on = A.includes(label); return { label, pressed: on ? 'true' : 'false', mark: on ? '✓' : '', bg: on ? 'rgba(180,129,60,0.14)' : '#FFFFFF', bc: on ? '#B4813C' : 'rgba(33,28,22,0.16)', boxBg: on ? '#B4813C' : 'transparent', boxBc: on ? '#B4813C' : 'rgba(33,28,22,0.35)', onTap: togA(label) }; }),
+        wPicL: WL.filter(([num]) => sty.P[num]).map(([num, label]) => { const on = W.includes(label); return { label, pressed: on ? 'true' : 'false', mark: num, bg: on ? 'rgba(180,129,60,0.14)' : '#FFFFFF', bc: on ? '#B4813C' : 'rgba(33,28,22,0.16)', boxBg: on ? '#F5F0E4' : '#B4813C', numFg: on ? '#8A5F24' : '#FFFFFF', onTap: togW(label) }; }),
+        wExtraL: WL.filter(([num]) => !sty.P[num]).map(([num, label, src]) => { const on = W.includes(label); return { label, src, pressed: on ? 'true' : 'false', mark: num, bg: on ? 'rgba(180,129,60,0.14)' : '#FFFFFF', bc: on ? '#B4813C' : 'rgba(33,28,22,0.16)', boxBg: on ? '#B4813C' : 'rgba(27,23,18,0.72)', numFg: on ? '#1B1712' : '#F5F0E4', onTap: togW(label) }; }),
+        wTilesL: WL.map(([num, label, src]) => { const on = W.includes(label); return { label, src, pressed: on ? 'true' : 'false', mark: num, bg: on ? 'rgba(180,129,60,0.14)' : '#FFFFFF', bc: on ? '#B4813C' : 'rgba(33,28,22,0.16)', boxBg: on ? '#B4813C' : 'rgba(27,23,18,0.72)', numFg: on ? '#1B1712' : '#F5F0E4', onTap: togW(label) }; }),
+        audL: AL.map(label => { const on = A.includes(label); return { label, pressed: on ? 'true' : 'false', mark: on ? '●' : '', bg: on ? 'rgba(180,129,60,0.14)' : '#FFFFFF', bc: on ? '#B4813C' : 'rgba(33,28,22,0.16)', boxBg: on ? '#B4813C' : 'transparent', boxBc: on ? '#B4813C' : 'rgba(33,28,22,0.35)', onTap: togA(label) }; }),
         fSumRows: [{ k: 'סגנון', v: [sty.label] }, { k: 'מעניין אתכם', v: W.length ? W : ['נבחר בשיחה'] }, { k: 'סוג הפרויקט', v: A.length ? A : ['לא צוין'] }]
       }; })(),
       ...(() => {
@@ -1771,7 +1769,7 @@ class Component extends DCLogic {
         const sc = ph ? [[0,40,0],[-30,40,-5],[30,40,5],[-30,40,-4],[30,40,4],[-30,40,-5],[30,40,5]] : [[-60,-40,-7],[50,-60,9],[110,-30,13],[70,40,-10],[120,60,8],[-80,60,10],[60,90,-12]];
         const CH = chapters;
         const tiles = CH.map((c, i) => { const lbl = W7[i] || c.title; const k = ease((p - i * ST) / WIN); const on = sel.includes(lbl); const [sx, sy, sr] = sc[i];
-          return { col: cl[i].c, row: cl[i].r, src: c.src, title: c.title, label: lbl, aria: c.num + ' ' + lbl, pressed: on ? 'true' : 'false', mark: on ? '✓' : c.num,
+          return { col: cl[i].c, row: cl[i].r, src: c.src, title: c.title, label: lbl, aria: c.num + ' ' + lbl, pressed: on ? 'true' : 'false', mark: c.num,
             bg: on ? '#B4813C' : 'rgba(27,23,18,0.7)', bc: on ? '#B4813C' : 'rgba(245,240,228,0.7)', fg: on ? '#1B1712' : '#F5F0E4', fs: i === 0 ? (ph ? '18px' : '24px') : (i < 4 ? (ph ? '14.5px' : '17px') : (ph ? '12.5px' : '15px')),
             ol: on ? '3px solid #C99752' : '3px solid transparent', sh: k > 0.97 ? 'none' : '0 12px 26px rgba(33,28,22,0.28)',
             tf: k > 0.999 ? 'none' : 'translate(' + ((1 - k) * sx) + 'px,' + ((1 - k) * sy) + 'px) rotate(' + ((1 - k) * sr) + 'deg) scale(' + (0.86 + 0.14 * k) + ')', op: String(0.15 + 0.85 * k),
@@ -1790,7 +1788,7 @@ class Component extends DCLogic {
         }; })(),
       audChipCols: (n && !t) ? 'repeat(2,minmax(0,1fr))' : 'repeat(3,minmax(0,1fr))',
       audChips: ['בית פרטי', 'דירת גן', 'מרפסת או פנטהאוז', 'עסק או בית קפה', 'פרויקט של אדריכל או מעצב', 'ועד בית או מוסד'].map(label => { const on = (this.state.aud || []).includes(label); return {
-        label, pressed: on ? 'true' : 'false', mark: on ? '✓' : '',
+        label, pressed: on ? 'true' : 'false', mark: on ? '●' : '',
         bg: on ? 'rgba(201,151,82,0.18)' : 'rgba(245,240,228,0.04)', bc: on ? '#C99752' : 'rgba(245,240,228,0.2)', fg: '#F5F0E4',
         boxBg: on ? '#C99752' : 'transparent', boxBc: on ? '#C99752' : 'rgba(245,240,228,0.45)',
         onTap: () => this.setState(s => { const A = s.aud || []; const N = A.includes(label) ? A.filter(x => x !== label) : A.concat(label); this.syncLeadNote(N, s.worlds || []); return { aud: N }; })
@@ -1806,7 +1804,7 @@ class Component extends DCLogic {
       audFont: n ? '15px' : '17px',
       ...(() => { const C2 = this.chapList().filter(c => c.n); const ci = C2.findIndex(c => c.id === (this.state.chap || 'hero')); const on = !!this.state.pastHero && ci >= 0;
         return { stripOp: on ? '1' : '0', stripY: on ? '0' : '-8px',
-          stripLabel: ci >= 0 ? (C2[ci].n + ' · ' + C2[ci].label + (ci < C2.length - 1 ? '  ·  עוד ' + (C2.length - 1 - ci) : '  ·  הגעתם לסוף ✓')) : '',
+          stripLabel: ci >= 0 ? (C2[ci].n + ' · ' + C2[ci].label + (ci < C2.length - 1 ? '  ·  עוד ' + (C2.length - 1 - ci) : '  ·  הגעתם לסוף')) : '',
           stripSegs: C2.map((c, i) => ({ fill: i <= ci ? '100%' : '0%', glow: i === ci ? '0 0 8px rgba(201,151,82,0.8)' : 'none' })) }; })(),
       fabBottom: n ? '16px' : '24px', a11yBottom: n ? '22px' : '24px', soundDisp: n ? 'none' : 'inline-flex', a11ySize: n ? '44px' : '46px',
       fabOp: this.state.showFab ? '1' : '0',
@@ -1917,7 +1915,7 @@ class Component extends DCLogic {
             }; })(),
           tracks: T.map((x, i) => { const o = i === ti; return { title: x.title, body: x.body, items: x.items, full: !!x.full, exp: o ? 'true' : 'false',
             ic0: i === 0, ic1: i === 1, ic2: i === 2,
-            signRot: '0deg', signMark: o ? '✓' : '', signBg: o ? '#211C16' : 'transparent', signFg: o ? '#F5F0E4' : '#211C16', signBc: o ? '#211C16' : 'rgba(33,28,22,0.28)',
+            signRot: '0deg', signMark: o ? '●' : '', signBg: o ? '#211C16' : 'transparent', signFg: o ? '#F5F0E4' : '#211C16', signBc: o ? '#211C16' : 'rgba(33,28,22,0.28)',
             revealH: o ? '330px' : '0px', revealOp: o ? 1 : 0,
             onTap: () => { const wasOpen = (this.state.trackTab ?? (this.state.narrow ? -1 : 2)) === i; this.setState(s => ({ trackTab: wasOpen ? -1 : i })); { const pk = ['focus', 'add', 'full'][i]; this.setState({ path: pk, openFq: 0 }); this.syncCat(pk); try { sessionStorage.setItem('stz-path', pk); } catch (e) {} try { window.stzTrack && window.stzTrack('select_scope', { scope: pk }); } catch (e) {} } } }; }),
           trackTabs: T.map((x, i) => ({ label: x.label, sel: i === ti ? 'true' : 'false', bg: i === ti ? '#211C16' : 'transparent', fg: i === ti ? '#F5F0E4' : '#211C16', bc: i === ti ? '#211C16' : 'rgba(33,28,22,0.22)', pick: () => this.setState({ trackTab: i }) })),
@@ -1942,7 +1940,7 @@ class Component extends DCLogic {
               ...(() => { const ci = Math.max(0, C.findIndex(c => c.id === ac)); const nx = C[ci + 1]; const left = C.length - 1 - ci; return {
                 stripShow: false,
                 stripNum: curC.n, stripLabel: curC.label,
-                stripNext: left > 0 ? 'עוד ' + left + ' פרקים ←' : 'הגעתם לסוף ✓',
+                stripNext: left > 0 ? 'עוד ' + left + ' פרקים ←' : 'הגעתם לסוף',
                 stripNextHref: nx ? '#' + nx.id : '#quick',
                 chapStrip: C.map((c, i) => ({ fill: i <= ci ? '100%' : '0%', c: i < ci ? '#B4813C' : '#E8C48C', glow: i === ci ? '0 0 8px rgba(232,196,140,0.8)' : 'none' }))
               }; })(),
@@ -2167,7 +2165,7 @@ class Component extends DCLogic {
 document.addEventListener('click',function(e){var b=e.target.closest&&e.target.closest('[data-more]');if(!b)return;
 var t=document.getElementById(b.getAttribute('data-more'));if(!t)return;var open=!t.classList.contains('stz-open');
 t.classList.toggle('stz-open',open);var sec=t.closest('section');if(sec)sec.classList.toggle('stz-open-sec',open);
-b.setAttribute('aria-expanded',open?'true':'false');var sg=b.querySelector('[data-more-sign]');if(sg)sg.textContent=open?'\u2212':'+';
+b.setAttribute('aria-expanded',open?'true':'false');var sg=b.querySelector('[data-more-sign]');if(sg)sg.textContent=open?'▴':'▾';
 window.dispatchEvent(new Event('resize'));
 if(window.stzTrack){try{window.stzTrack('expand_section',{section:b.getAttribute('data-more'),open:open});}catch(_){}}});
 if(/#(tracks|process)$/.test(location.hash)){var t=document.getElementById('tracks');if(t){t.classList.add('stz-open');var s=t.closest('section');if(s)s.classList.add('stz-open-sec');}}

@@ -61,7 +61,7 @@
       '#lp-box .lb-txt p{color:#4B443A;font-size:15.5px;line-height:1.6;margin:0}' +
       '#lp-box .lb-txt ul{margin:0;padding-inline-start:18px;color:#4B443A;font-size:14.5px;line-height:1.55}' +
       '#lp-box .lb-cta{align-self:flex-start;margin-top:6px;display:inline-flex;align-items:center;min-height:48px;padding:0 24px;border-radius:100px;background:#B4813C;color:#1B1712;font-size:15.5px;font-weight:600;text-decoration:none}' +
-      '#lp-box .lb-x{position:absolute;top:12px;inset-inline-end:12px;z-index:2;width:44px;height:44px;border-radius:50%;border:0;background:rgba(27,23,18,.75);color:#F5F0E4;font-size:22px;cursor:pointer}' +
+      '#lp-box .lb-x{position:absolute;top:12px;inset-inline-end:12px;z-index:2;min-width:44px;height:44px;padding:0 16px;border-radius:100px;border:0;background:rgba(27,23,18,.75);color:#F5F0E4;font-size:14.5px;cursor:pointer}' +
       '@media (max-width:760px){#lp-box{padding:0;align-items:flex-end}#lp-box .lb-card{grid-template-columns:1fr;border-radius:20px 20px 0 0;max-height:94vh}#lp-box .lb-ph{min-height:0;aspect-ratio:4/3}#lp-box .lb-txt{padding:20px 18px 26px}}';
     if (!css.parentNode) document.head.appendChild(css);
     var sec = document.createElement('section');
@@ -89,7 +89,7 @@
       var CAT = { shade: 'הצללה וקירוי', glass: 'סגירות', envelope: 'בנייה קלה ומעטפת חוץ', deck: 'דקים ופיתוח', fence: 'גידור וחיפויים' };
       var meta = [p.place, p.client ? 'לקוח ' + p.client : '', CAT[p.cat]].filter(Boolean).join(' · ');
       var box = document.createElement('div'); box.id = 'lp-box'; box.setAttribute('role', 'dialog'); box.setAttribute('aria-modal', 'true'); box.setAttribute('aria-label', p.title);
-      box.innerHTML = '<div class="lb-card"><button type="button" class="lb-x" aria-label="סגירה">×</button>' +
+      box.innerHTML = '<div class="lb-card"><button type="button" class="lb-x" aria-label="סגירה">סגירה</button>' +
         '<div class="lb-ph"><img alt="' + esc(p.title) + '">' +
         (ph.length > 1 ? '<button type="button" class="lb-nav" data-d="-1" aria-label="התמונה הקודמת" style="inset-inline-start:10px">›</button><button type="button" class="lb-nav" data-d="1" aria-label="התמונה הבאה" style="inset-inline-end:10px">‹</button><span class="lb-count"></span>' : '') +
         '</div><div class="lb-txt"><h3 style="font-size:22px;line-height:1.25;margin:0">' + esc(p.title) + '</h3>' +

@@ -59,7 +59,7 @@
   var S = {
     back: 'position:fixed;inset:0;z-index:2147483000;background:rgba(17,14,11,0.72);backdrop-filter:blur(4px);-webkit-backdrop-filter:blur(4px);display:none;align-items:center;justify-content:center;padding:20px;font-family:Rubik,system-ui,sans-serif;direction:rtl',
     card: 'position:relative;width:min(100%,440px);max-height:92vh;overflow:auto;background:#211C16;color:#F5F0E4;border:1px solid rgba(245,240,228,0.2);border-radius:26px;padding:clamp(1.5rem,4vw,2.1rem);box-shadow:0 30px 80px rgba(0,0,0,0.5);display:grid;gap:14px',
-    x: 'position:absolute;top:14px;left:14px;width:40px;height:40px;border-radius:50%;border:1px solid rgba(245,240,228,0.25);background:transparent;color:#F5F0E4;font-size:20px;line-height:1;cursor:pointer;display:grid;place-items:center',
+    x: 'position:absolute;top:14px;left:14px;min-width:40px;height:40px;padding:0 16px;border-radius:100px;border:1px solid rgba(245,240,228,0.25);background:transparent;color:#F5F0E4;font-size:14.5px;font-weight:500;line-height:1;cursor:pointer;display:grid;place-items:center',
     lab: 'display:grid;gap:6px;font-size:13.5px;color:rgba(245,240,228,0.72)',
     inp: 'width:100%;box-sizing:border-box;min-height:52px;padding:0 18px;border:1px solid rgba(245,240,228,0.26);background:rgba(245,240,228,0.06);border-radius:14px;color:#F5F0E4;font:inherit;font-size:16px;outline:none',
     sel: 'flex:0 0 auto;max-width:46%;min-height:52px;padding:0 10px;border:1px solid rgba(245,240,228,0.26);background:#2A241D;border-radius:14px;color:#F5F0E4;font:inherit;font-size:15px;direction:rtl',
@@ -90,7 +90,7 @@
   function build() {
     root = el('div', S.back); root.id = 'stz-lead-root'; root.setAttribute('role', 'dialog'); root.setAttribute('aria-modal', 'true'); root.setAttribute('aria-label', 'תיאום שיחת ייעוץ');
     var card = el('div', S.card);
-    var x = el('button', S.x, '&times;'); x.type = 'button'; x.setAttribute('aria-label', 'סגירה'); x.onclick = close;
+    var x = el('button', S.x, 'סגירה'); x.type = 'button'; x.setAttribute('aria-label', 'סגירה'); x.onclick = close;
     form = el('form', 'display:grid;gap:14px'); form.noValidate = true;
     hHead = el('div', 'display:grid;gap:8px;padding-left:44px',
       '<span data-h="k" style="font-size:13.5px;font-weight:600;color:#C99752">שיחת ייעוץ ללא התחייבות</span>' +
@@ -153,7 +153,7 @@
       document.head.appendChild(cs);
     }
     form.appendChild(l1); form.appendChild(l2); form.appendChild(whenW); form.appendChild(callW); form.appendChild(noteW); form.appendChild(scopeW); form.appendChild(err); form.appendChild(btn);
-    form.appendChild(el('p', 'margin:0;font-size:12.5px;color:rgba(245,240,228,0.6);text-align:center;line-height:1.5', 'השארת פרטים מהווה הסכמה ליצירת קשר לצורך טיפול בפנייה זו בלבד. <a href="/legal#privacy" target="_blank" rel="noopener" style="color:#C99752">מדיניות הפרטיות</a>'));
+    form.appendChild(el('p', 'margin:0;font-size:12.5px;color:rgba(245,240,228,0.6);text-align:center;line-height:1.5', 'השארת פרטים מהווה הסכמה ליצירת קשר לצורך טיפול בפנייה זו בלבד. <a href="/legal#terms" target="_blank" rel="noopener" style="color:#C99752">תנאי השימוש</a> · <a href="/legal#privacy" target="_blank" rel="noopener" style="color:#C99752">מדיניות הפרטיות</a>'));
     form.onsubmit = submit;
     done = el('div', 'display:none;gap:10px;text-align:center;padding:12px 0',
       '<h3 style="margin:0;font-size:22px;color:#F5F0E4">תודה, קיבלנו</h3><p style="margin:0;font-size:15.5px;color:rgba(245,240,228,0.78)">נחזור אליכם בהקדם לתיאום שיחת ייעוץ.</p>');

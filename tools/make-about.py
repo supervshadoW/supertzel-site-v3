@@ -27,6 +27,7 @@ def rep(old, new, label):
 
 rep('<meta charset="utf-8">', '<meta charset="utf-8">\n<meta name="robots" content="noindex, nofollow">', 'noindex')
 rep('<title>IL Projects | סופר צל — מעטפת מקצועית לבית ולמרחב החוץ</title>', '<title>מי אנחנו ואיך זה עובד | IL Projects</title>', 'title')
+rep('<meta name="description" content="הצללה וקירוי, סגירות זכוכית, מטבחי חוץ, דקים, גידור ובנייה קלה — בהתאמה אישית, עם נקודת קשר אחת מהמדידה ועד המסירה. מרכז, שפלה ודרום. תאמו שיחת ייעוץ.">', '<meta name="description" content="פרויקט חוץ שלם, מעטפת מקצועית אחת. הקמת מרחב חוץ מא\' ועד ת\', מהפגישה הראשונה ועד המסירה. ניסיון מוכח בשטח.">', 'description')
 
 # the explanation opens by default, no expand row, top of page clears the fixed header
 rep('<div data-more-row=""', '<div data-more-row="" hidden style="display:none"', 'hide more row') if False else None
@@ -85,7 +86,7 @@ JS = ('<script>/* about.html: numbered pins on real projects */\n(function(){\n'
 rep('<section id="fit"', SECTION + '<section id="fit"', 'insert pins section')
 rep('</body>', JS + '</body>', 'js')
 
-CSS = ('<style id="stz-about">html body #hero,html body #projects,html body #social,html body #scope,html body #services,html body #build,html body #reviews{display:none !important}'
+CSS = ('<style id="stz-about">html body #hero,html body #projects,html body #social,html body #scope,html body #services,html body #build,html body #reviews,html body #trust{display:none !important}'
        'html body #why{margin-top:0 !important;border-radius:0 !important;box-shadow:none !important;padding-top:clamp(5.5rem,14vh,8rem) !important}'
        'html body #why > span:first-child{display:none !important}'
        'html body header{background:rgba(27,23,18,0.94) !important;border-bottom-color:rgba(245,240,228,0.14) !important}'

@@ -89,7 +89,7 @@
       '#stz-dt{position:fixed;inset:0;z-index:520;display:none;align-items:center;justify-content:center;background:rgba(17,14,11,.78);padding:clamp(10px,3vw,32px)}' +
       '#stz-dt.on{display:flex}html.stz-dt-open{overflow:hidden}' +
       '#stz-dt .dt-card{position:relative;width:min(100%,760px);max-height:92vh;overflow:auto;background:#F5F0E4;color:#211C16;border-radius:26px;padding:clamp(1.1rem,2.4vw,1.8rem);animation:dt-in .38s cubic-bezier(.2,.7,.2,1) both}' +
-      '#stz-dt .dt-x{position:sticky;top:0;float:inline-end;z-index:3;width:44px;height:44px;border-radius:50%;border:1px solid rgba(33,28,22,.3);background:#F5F0E4;color:#211C16;font-size:22px;line-height:1;cursor:pointer}' +
+      '#stz-dt .dt-x{position:sticky;top:0;float:inline-end;z-index:3;min-width:44px;height:44px;padding:0 16px;border-radius:100px;border:1px solid rgba(33,28,22,.3);background:#F5F0E4;color:#211C16;font-size:14.5px;font-weight:500;line-height:1;cursor:pointer}' +
       '#stz-dt .dt-eb{color:#8A5F24;font-size:13.5px;font-weight:600;letter-spacing:.3px}' +
       '#stz-dt h3{margin:6px 0 0;font-size:clamp(22px,3vw,30px);line-height:1.2}' +
       '#stz-dt .dt-p{margin:12px 0 0;color:#4B443A;font-size:16.5px;line-height:1.6}' +
@@ -124,7 +124,7 @@
     var catKey = { glass: 'glass', deck: 'deck', kitchen: 'envelope', shade: 'shade' }[info.tab] || 'shade';
     window.__stzLastItem = title;
     root.innerHTML =
-      '<div class="dt-card"><button type="button" class="dt-x" aria-label="סגירה">&times;</button>' +
+      '<div class="dt-card"><button type="button" class="dt-x" aria-label="סגירה">סגירה</button>' +
       '<div class="dt-eb">' + esc(ebT) + '</div><h3>' + esc(title) + '</h3>' +
       (sum ? '<p class="dt-p">' + esc(sum.trim()) + '</p>' : '') + (rest ? '<p class="dt-p">' + esc(rest.trim()) + '</p>' : '') +
       (shots.length ? '<div class="dt-h">דוגמאות מפרויקטים שביצענו</div><div class="dt-row">' + shots.map(function (s) { return '<figure><img src="' + esc(s.src) + '" alt="' + esc(s.cap || title) + '" loading="lazy" decoding="async">' + (s.cap ? '<figcaption>' + esc(s.cap) + '</figcaption>' : '') + '</figure>'; }).join('') + '</div>' : '') +
@@ -181,7 +181,7 @@
         card.appendChild(b); card.appendChild(t);
       }
       var on = hp.getAttribute('aria-pressed') === 'true';
-      b.setAttribute('aria-pressed', on ? 'true' : 'false'); b.textContent = on ? '✓' : '';
+      b.setAttribute('aria-pressed', on ? 'true' : 'false'); b.textContent = on ? '●' : '';
     });
   }
   document.addEventListener('click', function (e) {

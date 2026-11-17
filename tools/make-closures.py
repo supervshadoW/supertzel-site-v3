@@ -7,6 +7,8 @@ Copy follows the IL voice (short, quiet, no emoji), the category name is the off
 Not indexed until the owner approves. Run from the repository root:  python tools/make-closures.py
 """
 import os, re, sys
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+import ds
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SRC, DST = os.path.join(ROOT, 'index.html'), os.path.join(ROOT, 'closures.html')
@@ -29,6 +31,7 @@ def esc(x):
 
 rep('<meta charset="utf-8">', '<meta charset="utf-8">\n<meta name="robots" content="noindex, nofollow">', 'noindex')
 rep('<title>IL Projects | סופר צל — מעטפת מקצועית לבית ולמרחב החוץ</title>', '<title>סגירות זכוכית ומערכות הזזה | IL Projects</title>', 'title')
+rep('<meta name="description" content="הצללה וקירוי, סגירות זכוכית, מטבחי חוץ, דקים, גידור ובנייה קלה — בהתאמה אישית, עם נקודת קשר אחת מהמדידה ועד המסירה. מרכז, שפלה ודרום. תאמו שיחת ייעוץ.">', '<meta name="description" content="סגירת מרפסת מלאה: מערכות זכוכית פנורמיות, חדרי שמש ותוספות בהתאמה אישית לבית שלכם.">', 'description')
 
 WA = 'https://wa.me/972559958231?text=' + 'היי, הגעתי מדף סגירות המרפסת באתר ואשמח לתאם שיחת ייעוץ'
 GOLD = '#C99752'
@@ -41,22 +44,21 @@ hero = ('<section id="chero" style="position:relative;background:#1B1712;color:#
         '<span aria-hidden="true" style="position:absolute;inset:0;background:linear-gradient(0deg,rgba(14,11,8,.92) 0%,rgba(14,11,8,.6) 45%,rgba(14,11,8,.25) 100%)"></span>'
         '<div style="position:relative;' + W + ';padding-block:clamp(6.5rem,17vh,9.5rem) clamp(2.25rem,6vh,3.75rem)">'
         '<div style="display:inline-flex;align-items:center;gap:12px;color:#E8C48C;font-size:15px;font-weight:600;margin-bottom:18px;text-shadow:0 1px 12px rgba(14,11,8,.8)"><span style="display:block;width:34px;height:1px;background:#C99752"></span>סגירות זכוכית ומערכות הזזה</div>'
-        '<h1 style="font-size:clamp(34px,5vw,64px);line-height:1.08;font-weight:600;letter-spacing:-0.03em;color:#F5F0E4;max-width:16ch;text-shadow:0 2px 24px rgba(14,11,8,.6)">מרפסת לשימוש כל השנה.</h1>'
-        '<p style="margin-top:16px;color:rgba(245,240,228,.9);font-size:clamp(17px,1.6vw,20px);max-width:40ch;line-height:1.55">סגירות זכוכית ומערכות הזזה בהתאמה אישית למידות המרפסת. האור והנוף נשארים והמרחב נשאר שלכם.</p>'
+        '<h1 style="font-size:clamp(34px,5vw,64px);line-height:1.08;font-weight:600;letter-spacing:-0.03em;color:#F5F0E4;max-width:16ch;text-shadow:0 2px 24px rgba(14,11,8,.6)">לכל מרפסת יש אור משלה.</h1>'
+        '<p style="margin-top:16px;color:rgba(245,240,228,.9);font-size:clamp(17px,1.6vw,20px);max-width:40ch;line-height:1.55">כיווני האור והצל, הנוף ואורח החיים שונים בכל בית. סגירה נכונה מתחילה מהכרות עם המרפסת שלכם.</p>'
         '<div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:26px">'
         '<a href="#quick" style="display:inline-flex;align-items:center;justify-content:center;min-height:54px;padding:0 34px;border-radius:100px;background:#B4813C;color:#1B1712;font-size:16.5px;font-weight:600;white-space:nowrap">לתיאום שיחת ייעוץ</a>'
         '<a href="' + esc(WA) + '" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;justify-content:center;min-height:54px;padding:0 28px;border-radius:100px;border:1px solid rgba(245,240,228,.5);color:#F5F0E4;font-size:16.5px;white-space:nowrap;backdrop-filter:blur(6px)">שיחת וואטסאפ מהירה</a>'
         '</div></div></section>\n')
 
 article = ('<section id="cart" style="background:#F5F0E4;color:#211C16;padding-block:clamp(3rem,9vh,6rem)"><div style="' + W + '">'
-           '<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,320px),1fr));gap:clamp(1.5rem,4vw,3.5rem);align-items:start">'
-           '<div><div style="' + LBL % '#80561E' + '"><span style="display:block;width:24px;height:1px;background:#B4813C"></span>על הסגירה</div>'
-           '<h2 style="' + H2 + ';max-width:14ch">לא כל סגירה אותו דבר.</h2></div>'
-           '<div style="color:#4B443A;font-size:17px;line-height:1.75;max-width:56ch">'
-           '<p style="margin-bottom:14px">מרפסת היא החלק הפתוח של הבית. סגירה מוקפדת לא סוגרת אותה, אלא מרחיבה את השימוש בה: אור טבעי, נוף פתוח וחלל שאפשר לשבת בו לאורך השנה.</p>'
-           '<p style="margin-bottom:14px">אנחנו מבצעים סגירות זכוכית ומערכות הזזה, כולל פנורמיות, ויטרינות וחלונות הזזה. מסגרת האלומיניום נבחרת בגוון ובפרופיל שמשתלבים בקו של הבניין.</p>'
-           '<p>לפני שבוחרים בודקים כיווני שמש, רוח, מידות והאופן שבו משתמשים במרפסת. לכן כל פרויקט מתחיל בפגישה במקום ובמדידה. ההצעה נכתבת אחריהן. אישורים וליווי הנדסי, ככל שנדרשים, מתואמים מול בעלי מקצוע מוסמכים.</p>'
-           '</div></div></div></section>\n')
+           '<div style="' + LBL % '#80561E' + '"><span style="display:block;width:24px;height:1px;background:#B4813C"></span>על הסגירה</div>'
+           '<h2 style="' + H2 + ';max-width:20ch">לא כל סגירה אותו דבר.</h2>'
+           '<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,280px),1fr));gap:clamp(1.25rem,3vw,2.5rem);margin-top:clamp(1.25rem,3vh,2rem)">'
+           '<p style="margin:0;border-top:1px solid rgba(33,28,22,.18);padding-top:16px;color:#4B443A;font-size:17px;line-height:1.75">כל מרפסת נראית אחרת. האור נכנס מכיוון אחר, הצל נופל בשעה אחרת והנוף פונה למקום אחר. גם לכל משפחה יש אורח חיים משלה: מי שפותח את הבוקר עם קפה, מי שמארח בערב ומי שמחפש פינה שקטה.</p>'
+           '<p style="margin:0;border-top:1px solid rgba(33,28,22,.18);padding-top:16px;color:#4B443A;font-size:17px;line-height:1.75">לפני שבוחרים סגירה, מסתכלים גם על הבית שסביבה: הקו, הגוונים והחומרים שכבר קיימים. כך הסגירה נראית כחלק מהמקום ולא כתוספת שהגיעה אחר כך.</p>'
+           '<p style="margin:0;border-top:1px solid rgba(33,28,22,.18);padding-top:16px;color:#4B443A;font-size:17px;line-height:1.75">משם מתחילה ההתאמה: מערכת הזזה, פנורמית או ויטרינה, בגוון ובפרופיל שמתאימים לבית ולהעדפה העיצובית שלכם. כל פרויקט מתחיל בפגישה במקום ובמדידה. ההצעה נכתבת אחריהן.</p>'
+           '</div></div></section>\n')
 
 cards = [
     ('01', 'סגירת זכוכית בהזזה', 'מערכת הזזה בזכוכית, בגוון ובפרופיל שנבחרים לפי הבית.', '/img/fast/hero/hero-glass-balcony.webp', 'מרפסת בסגירת זכוכית בהזזה'),
@@ -74,7 +76,7 @@ catalog = ('<section id="ccat" style="background:#ECE4D2;color:#211C16;padding-b
            '<h2 style="' + H2 + ';max-width:20ch;margin-bottom:clamp(1.5rem,4vh,2.5rem)">קו נקי, ביצוע מדויק.</h2>'
            '<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:16px">' + cardhtml + '</div>'
            '<p style="margin-top:22px;color:#4B443A;font-size:16.5px;max-width:60ch">וגם ויטרינות, חלונות הזזה, זכוכית מתקפלת ומחיצות זכוכית. הגוון, הפרופיל והחלוקה נקבעים לפי הבית והשימוש.</p>'
-           '<p style="margin-top:14px;padding:16px 20px;border-radius:14px;background:rgba(33,28,22,.06);color:#4B443A;font-size:16px;line-height:1.65;max-width:60ch">דף זה עוסק בסגירות זכוכית. סגירות בד ו-PVC, כמו סגירת חורף, הן פתרון נפרד עם חומר ומערכת אחרים. נסביר את ההבדל בשיחת ייעוץ.</p>'
+           '<div style="margin-top:18px;padding:18px 22px;border-radius:16px;background:rgba(33,28,22,.06);display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:12px 20px"><p style="margin:0;color:#4B443A;font-size:16px;line-height:1.65;max-width:56ch">מחפשים סגירת חורף מבד או PVC, או מסכי גלילה? זה פתרון אחר, עם חומר ומערכת אחרים. יש לו דף משלו.</p><a href="/winter" style="display:inline-flex;align-items:center;gap:10px;min-height:46px;padding:0 22px;border-radius:100px;border:1px solid #211C16;color:#211C16;font-size:15.5px;font-weight:600;white-space:nowrap">לסגירות חורף ומסכי גלילה <span aria-hidden="true">\u2190</span></a></div>'
            '</div></section>\n')
 
 # numbered pins on two real glass projects
@@ -90,10 +92,10 @@ panels = ''
 for i, (name, src, alt, pins) in enumerate(PINS):
     dots = ''.join('<button type="button" data-pin="%d" aria-label="%s" style="position:absolute;left:%d%%;top:%d%%;transform:translate(-50%%,-50%%);width:34px;height:34px;border-radius:50%%;border:2px solid #fff;background:#B4813C;color:#fff;font:inherit;font-size:14px;font-weight:700;cursor:pointer;box-shadow:0 2px 14px rgba(0,0,0,.45)">%d</button>' % (k, esc(l), x, y, k + 1) for k, (l, x, y) in enumerate(pins))
     items = ''.join('<li data-item="%d" style="display:flex;gap:14px;align-items:center;padding:13px 0;border-top:1px solid rgba(245,240,228,.14);font-size:16.5px;line-height:1.4;color:rgba(245,240,228,.92)"><span style="flex:none;display:grid;place-items:center;width:30px;height:30px;border-radius:50%%;background:#B4813C;color:#1B1712;font-size:14px;font-weight:700">%d</span><span>%s</span></li>' % (k, k + 1, esc(l)) for k, (l, x, y) in enumerate(pins))
-    panels += ('<div data-pjp="%d" role="tabpanel" style="display:%s;grid-template-columns:repeat(auto-fit,minmax(min(100%%,340px),1fr));gap:clamp(1.25rem,3vw,2.5rem);align-items:center">'
+    panels += ('<div data-pjp="%d" role="tabpanel" data-fill="" style="--b:340px;display:%s;flex-wrap:wrap;gap:clamp(1.25rem,3vw,2.5rem);align-items:center">'
                '<div style="position:relative;border-radius:20px;overflow:hidden;aspect-ratio:2064/960;min-height:230px;background:#1B1712"><img src="%s" alt="%s" loading="lazy" decoding="async" style="position:absolute;inset:0;width:100%%;height:100%%;object-fit:cover">%s</div>'
                '<div><h3 style="font-size:clamp(22px,2.4vw,30px);line-height:1.25;color:#F5F0E4;margin-bottom:8px">מה ביצענו בפרויקט</h3><ul style="list-style:none;margin:0;padding:0">%s</ul></div></div>'
-               % (i, 'grid' if i == 0 else 'none', src, esc(alt), dots, items))
+               % (i, 'flex' if i == 0 else 'none', src, esc(alt), dots, items))
 done = ('<section id="cdone" style="position:relative;z-index:2;background:#1B1712;color:#F5F0E4;padding-block:clamp(3rem,9vh,6rem)"><div style="' + W + '">'
         '<div style="' + LBL % GOLD + '"><span style="display:block;width:24px;height:1px;background:#C99752"></span>מהשטח</div>'
         '<h2 style="' + H2 + ';color:#F5F0E4;max-width:20ch">אמון מקצועי נבנה דרך תוצאות.</h2>'
@@ -117,9 +119,13 @@ if not glass:
     problems.append('no glass projects parsed from projects-data.js')
 glass.sort(key=lambda g: g[3] == 'עסקי')
 pcards = ''.join(
-    '<div style="border-radius:18px;overflow:hidden;background:#FBF7EE;box-shadow:0 1px 0 rgba(33,28,22,.06),0 14px 32px rgba(33,28,22,.1);display:flex;flex-direction:column"><div style="aspect-ratio:4/3;background:#ECE4D2"><img src="%s" alt="%s" loading="lazy" decoding="async" style="display:block;width:100%%;height:100%%;object-fit:cover"></div>'
-    '<div style="padding:18px 20px 22px"><span style="font-size:12.5px;font-weight:600;color:#80561E;letter-spacing:.04em">%s</span><h3 style="margin:6px 0 8px;font-size:19px;line-height:1.3">%s</h3><p style="font-size:15.5px;line-height:1.6;color:#4B443A">%s</p></div></div>'
-    % (img, esc(ti), esc(cl), esc(ti), esc(de)) for ti, de, img, cl in glass)
+    '<div style="position:relative;border-radius:20px;overflow:hidden;aspect-ratio:4/3;background:#1B1712;color:#F5F0E4"><img src="%s" alt="%s" loading="lazy" decoding="async" style="position:absolute;inset:0;width:100%%;height:100%%;object-fit:cover">'
+    '<span aria-hidden="true" style="position:absolute;inset:0;background:linear-gradient(0deg,rgba(17,14,11,.92) 0%%,rgba(17,14,11,.5) 42%%,rgba(17,14,11,0) 72%%)"></span>'
+    '<div style="position:absolute;inset-inline:0;bottom:0;padding:18px 20px;display:flex;flex-direction:column;align-items:flex-start;gap:6px"><span style="font-size:12.5px;font-weight:600;color:#E8C48C;letter-spacing:.04em">%s</span><h3 style="margin:0;font-size:19px;line-height:1.3;color:#fff;text-wrap:balance">%s</h3>'
+    '<button type="button" data-pc-open="1" style="font:inherit;cursor:pointer;margin-top:4px;min-height:40px;padding:0 18px;border-radius:100px;border:1px solid rgba(245,240,228,.55);background:rgba(27,23,18,.35);color:#F5F0E4;font-size:14.5px;font-weight:600;backdrop-filter:blur(4px)">לפרטי הפרויקט <span aria-hidden="true">\u2190</span></button></div>'
+    '<div data-pc-detail="1" style="position:absolute;inset:0;background:#14110D;padding:20px;overflow:auto"><h3 style="margin:0;font-size:19px;line-height:1.3;color:#fff">%s</h3><p style="margin:0;font-size:15.5px;line-height:1.65;color:rgba(245,240,228,.9)">%s</p>'
+    '<button type="button" data-pc-close="1" style="font:inherit;cursor:pointer;align-self:flex-start;min-height:40px;padding:0 18px;border-radius:100px;border:1px solid rgba(245,240,228,.45);background:transparent;color:#F5F0E4;font-size:14.5px">סגירה</button></div></div>'
+    % (img, esc(ti), esc(cl), esc(ti), esc(ti), esc(de)) for ti, de, img, cl in glass)
 more = ('<section id="cmore" style="background:#F5F0E4;color:#211C16;padding-block:clamp(3rem,9vh,6rem)"><div style="' + W + '">'
         '<div style="' + LBL % '#80561E' + '"><span style="display:block;width:24px;height:1px;background:#B4813C"></span>פרויקטים שביצענו</div>'
         '<h2 style="' + H2 + ';max-width:20ch;margin-bottom:clamp(1.5rem,4vh,2.5rem)">סגירות זכוכית ומערכות הזזה.</h2>'
@@ -133,7 +139,7 @@ faq = [('האם סגירת זכוכית דורשת היתר או אישורים?
        ('אפשר לשלב פרגולה עם הסגירה?', 'כן. סגירת זכוכית ופרגולה יכולות להיות פרויקט אחד, באותה שפה עיצובית ועם נקודת קשר אחת.'),
        ('מה בודקים בפגישה במקום?', 'כיווני שמש, רוח, מידות המרפסת והאופן שבו אתם משתמשים בה. על בסיס זה נכתבת ההצעה.')]
 faqhtml = ''.join('<details style="border-top:1px solid rgba(33,28,22,.16);padding:16px 0"><summary style="cursor:pointer;font-size:18px;font-weight:600;list-style:none">%s</summary><p style="margin-top:10px;color:#4B443A;font-size:16.5px;line-height:1.7;max-width:62ch">%s</p></details>' % (esc(q), esc(a)) for q, a in faq)
-process = ('<section id="cproc" style="background:#F5F0E4;color:#211C16;padding-block:clamp(3rem,9vh,6rem)"><div style="' + W + '">'
+process = ('<section id="cproc" style="background:#ECE4D2;color:#211C16;padding-block:clamp(3rem,9vh,6rem)"><div style="' + W + '">'
            '<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,340px),1fr));gap:clamp(2rem,5vw,4rem)">'
            '<div><div style="' + LBL % '#80561E' + '"><span style="display:block;width:24px;height:1px;background:#B4813C"></span>איך זה עובד</div>'
            '<h2 style="' + H2 + ';margin-bottom:18px">נקודת קשר אחת, מהמדידה ועד ההתקנה.</h2>' + stephtml + '</div>'
@@ -145,13 +151,14 @@ JS = ('<script>/* closures.html: numbered pins on real projects */\n(function(){
       'function sel(root,i){root.querySelectorAll("[data-pin]").forEach(function(b){var on=+b.getAttribute("data-pin")===i;b.style.background=on?"#fff":"#B4813C";b.style.color=on?"#1B1712":"#fff";b.style.transform="translate(-50%,-50%) scale("+(on?1.18:1)+")"});'
       'root.querySelectorAll("[data-item]").forEach(function(li){li.style.background=+li.getAttribute("data-item")===i?"rgba(201,151,82,0.14)":"transparent"})}\n'
       'document.addEventListener("click",function(e){var tb=e.target.closest&&e.target.closest("[data-pj]");if(tb){var n=tb.getAttribute("data-pj");document.querySelectorAll("[data-pj]").forEach(function(b){var on=b===tb;b.setAttribute("aria-selected",on);b.style.background=on?"#C99752":"transparent";b.style.color=on?"#1B1712":"#F5F0E4"});'
-      'document.querySelectorAll("[data-pjp]").forEach(function(p){p.style.display=p.getAttribute("data-pjp")===n?"grid":"none"});return}'
+      'document.querySelectorAll("[data-pjp]").forEach(function(p){p.style.display=p.getAttribute("data-pjp")===n?"flex":"none"});return}'
       'var pb=e.target.closest&&e.target.closest("[data-pin]");if(pb){sel(pb.closest("[data-pjp]"),+pb.getAttribute("data-pin"))}});\n'
       '})();</script>')
 
-rep('<section id="why"', hero + article + catalog + done + more + process + '<section id="why"', 'insert sections')
-rep('</body>', JS + '</body>', 'js')
-CSS = ('<style id="stz-closures">html body #hero,html body #why,html body #projects,html body #social,html body #scope,html body #services,html body #build,html body #reviews,html body #faq{display:none !important}'
+rep('<section id="why"', hero + ds.apply([('cart', article), ('ccat', catalog), ('cdone', done), ('cmore', more), ('cproc', process)]) + '<section id="why"', 'insert sections')
+PCJS = ('<style>[data-pc-detail]{display:none}[data-pc-detail].on{display:flex;flex-direction:column;gap:10px}</style><script>/* project cards: more about the project, on the image */(function(){document.addEventListener("click",function(e){var o=e.target.closest&&e.target.closest("[data-pc-open]"),c=e.target.closest&&e.target.closest("[data-pc-close]");if(!o&&!c)return;var card=(o||c).closest("div[style*=aspect-ratio]");var d=card.querySelector("[data-pc-detail]");if(d)d.classList.toggle("on",!!o)});})();</script>')
+rep('</body>', JS + PCJS + '</body>', 'js')
+CSS = ('<style id="stz-type-cat">#cart p,#cproc p,#ctech p,#cmore p,#ccat p,#chero p{text-wrap:pretty}#cart h2,#ccat h2,#ctech h2,#cdone h2,#cmore h2,#cproc h2,#chero h1{text-wrap:balance}@media (max-width:640px){#cart h2,#ccat h2,#ctech h2,#cdone h2,#cmore h2,#cproc h2{font-size:28px!important;line-height:1.18!important}#chero h1{font-size:34px!important;line-height:1.1!important}#chero p{font-size:17px!important;line-height:1.6!important}#cart p,#ctech>div>p:first-of-type{font-size:16.5px!important;line-height:1.75!important}#ccat p[style*="font-size"],#ctech div p[style*="font-size: 15.5px"]{font-size:15.5px!important;line-height:1.55!important}#ccat h3,#ctech h3{font-size:20px!important;line-height:1.25!important}#cmore h3{font-size:19px!important;line-height:1.3!important}#cmore [data-pc-detail] p{font-size:15.5px!important;line-height:1.65!important}#cdone li{font-size:16px!important;line-height:1.45!important}#cdone p[style*="font-size"]{font-size:16.5px!important;line-height:1.7!important}#cproc h3{font-size:18px!important}#cproc summary{font-size:17px!important;line-height:1.4!important}#cproc details p{font-size:16px!important;line-height:1.7!important}#cproc div>p{font-size:15.5px!important}}</style><style id="stz-closures">html body #hero,html body #why,html body #projects,html body #social,html body #scope,html body #services,html body #build,html body #reviews,html body #faq{display:none !important}'
        'html body header{background:rgba(27,23,18,0.94) !important;border-bottom-color:rgba(245,240,228,0.14) !important}'
        'html body div[style*="z-index: 900"],html body div[style*="z-index:900"]{display:none !important}'
        'summary::-webkit-details-marker{display:none}</style>')

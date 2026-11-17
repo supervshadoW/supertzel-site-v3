@@ -37,14 +37,19 @@ PAGES = {
                2: '/img/fast/gallery/project-deck-view.webp', 3: '/img/fast/gallery/project-black-glass-balcony.webp'},
         slides=[
             dict(k=4, word='בסגירת זכוכית', caption='סגירת מרפסת וקירוי', alt='מרפסת בסגירת זכוכית עם קירוי שקוף מעל הקורות',
+                 desc='מרפסת שיושבים בה כל השנה גם כשיורד גשם בחוץ, בזכות מדידה מדויקת וסגירה שמתאימה בדיוק למרפסת שלכם.',
                  pins=[('סגירת זכוכית בהזזה', '70%', '24%'), ('קירוי עליון — סנטף BH', '30%', '8%'), ('חלון בקצה המרפסת', '27%', '40%')]),
             dict(k=0, word='עם פרגולת תריס חשמלית', caption='סגירת מרפסת ופרגולת תריס', alt='מרפסת בסגירת זכוכית עם פרגולת תריס חשמלית ונוף פתוח',
+                 desc='פרגולת תריס חשמלית שנפתחת וסוגרת בלחיצה אחת, לנוף פתוח שנשאר שלכם לאורך כל השנה.',
                  pins=[('פרגולת תריס חשמלית', '45%', '10%'), ('סגירת זכוכית בהזזה', '32%', '40%'), ('מעקה זכוכית לנוף פנורמי', '40%', '72%'), ('דלתות הזזה ליציאה למרפסת', '74%', '45%')]),
             dict(k=3, word='בפרופיל אלומיניום שחור', caption='סגירת זכוכית בפרופיל שחור', alt='מרפסת בסגירת זכוכית בהזזה בפרופיל אלומיניום שחור',
+                 desc='קווים נקיים בפרופיל שחור וסגירת זכוכית שמחברת בין הבית לנוף, בלי להרגיש שיש שם קיר.',
                  pins=[('פרופיל אלומיניום שחור', '46%', '28%'), ('סגירת זכוכית בהזזה', '62%', '62%')]),
             dict(k=2, word='עם דק ופרגולה', caption='מרפסת נוף עם דק', alt='מרפסת נוף עם דק, פרגולה בגמר עץ ופינת ישיבה',
+                 desc='דק עץ ופרגולה שהופכים את המרפסת לפינת ישיבה שרוצים להישאר בה עד הערב.',
                  pins=[('פרגולה בגמר עץ', '55%', '8%'), ('דק', '30%', '84%'), ('מעקה לנוף פתוח', '78%', '47%')]),
             dict(k=1, word='גם בפנטהאוז', caption='מרפסת נוף עם דק ומעקה זכוכית', alt='מרפסת נוף גדולה עם דק עץ ומעקה זכוכית',
+                 desc='גם במרפסת פנטהאוז גדולה, כל פרט נבחר כך שהנוף נשאר הכוכב — לא המעקה ולא הקירוי.',
                  pins=[('דק', '40%', '45%'), ('מעקה זכוכית', '62%', '33%')]),
         ],
         env_opt='מעטפת מלאה למרפסת', env_back='סגירת זכוכית למרפסת',   # chosen full-envelope track fills this option; leaving it restores the fallback
@@ -55,27 +60,33 @@ PAGES = {
         ch_order=[1, 0, 5, 2, 3, 4, 6],   # glass, shade, deck, light building | kitchens, fences, garden
         opts=['סגירת זכוכית למרפסת', 'סגירת חורף', 'פרגולה חשמלית למרפסת', 'סגירת פרגולה קיימת', 'מעטפת מלאה למרפסת', 'עדיין בודקים אפשרויות'],
         pick_map={'סגירת זכוכית': 'סגירת זכוכית למרפסת', 'הצללה וקירוי': 'פרגולה חשמלית למרפסת'}, pick_default='מעטפת מלאה למרפסת',
+        desc='סגירת מרפסת זכוכית ופרגולה חשמלית לפנטהאוז: פרגולות אלומיניום חשמליות, סגירת חורף למרפסת ודק. מדידה בשטח ותכנון יישומי מותאם אישית.',
         wa='היי, הגעתי מדף סגירות המרפסת באתר',
     ),
     'garden': dict(
-        title='הגינה של הבית הפרטי | IL Projects',
-        h1a='הגינה של הבית הפרטי,',
+        title='גינה ופיתוח חוץ לבית פרטי | IL Projects',
+        h1a='הגינה שלכם,',
         sub='מטבח חוץ, פרגולה, דק, שער וגדר, חיפוי חזית וחדר שמש. הכול בפרויקט אחד, מהמדידה ועד המסירה, עם נקודת קשר אחת.',
         why_h2='פרויקט חוץ שלם,<br>מעטפת אחת.',
         why_p='',
         slots={4: H + 'hero-pergola-kitchen-bar.webp', 3: H + 'hero-deck-wood.webp', 0: '/img/fast/gallery/fence-grey-aluminum.webp',
                1: H + 'hero-sunroom.webp', 2: '/img/fast/gallery/project-black-louvered-pergola.webp'},
         slides=[
-            dict(k=4, word='מתוכננת כפרויקט אחד', caption='פרויקט לדוגמה · פרגולה, מטבח חוץ, שולחן בר וכסאות',
+            dict(k=4, word='עם מטבח חוץ ופרגולה', caption='פרויקט לדוגמה · פרגולה, מטבח חוץ, שולחן בר וכסאות',
                  alt='פרגולת אלומיניום שחורה עם פרופילי הצללה בגוון דמוי עץ וסנטף BH, מעל מטבח חוץ, שולחן בר וכסאות בגינה',
+                 desc='מטבח חוץ, פינת בר וישיבה שמאפשרים לבשל ולשבת באותו מקום — בלי לחזור לבית באמצע הארוחה.',
                  pins=[('פרופילי הצללה בגוון דמוי עץ · סנטף BH שקוף של פלרם', '34%', '18%'), ('קורות אלומיניום שחורות', '14%', '42%'), ('מטבח חוץ', '29%', '68%'), ('שולחן בר וכסאות', '53%', '64%')]),
-            dict(k=3, word='עם דק, פרגולה וחיפוי עץ', caption='פיתוח חוץ בעץ', alt='דק עץ בגינה עם פרגולת תריס, חיפוי עץ וגדר',
+            dict(k=3, word='עם דק וחיפוי עץ', caption='פיתוח חוץ בעץ', alt='דק עץ בגינה עם פרגולת תריס, חיפוי עץ וגדר',
+                 desc='דק עץ וחיפוי שמביאים חמימות לגינה ועומדים בשמש ובשימוש היומיומי לאורך שנים.',
                  pins=[('פרגולה צפה', '40%', '16%'), ('דק עץ', '50%', '72%'), ('חיפוי עץ לקיר', '82%', '55%'), ('גדר ותיחום', '42%', '34%'), ('צמחייה ופיתוח גינה', '52%', '49%')]),
             dict(k=0, word='עם שער וגדר אלומיניום', caption='גדר אלומיניום לבית פרטי', alt='גדר אלומיניום אפורה בפסים אופקיים בחזית בית פרטי',
+                 desc='שער וגדר אלומיניום שנותנים לבית קו אחיד ופרטיות אמיתית, מהכניסה ועד הגינה.',
                  pins=[('גדר אלומיניום בפסים אופקיים', '62%', '50%')]),
-            dict(k=1, word='עם חדר שמש בבנייה קלה', caption='תוספת חוץ בגינה', alt='חדר שמש בבנייה קלה עם דלתות הזזה לגינה',
+            dict(k=1, word='עם חדר שמש', caption='תוספת חוץ בגינה', alt='חדר שמש בבנייה קלה עם דלתות הזזה לגינה',
+                 desc='חדר שמש שמחבר את הגינה לבית לאורך כל השנה, עם אור טבעי שלא מוותרים עליו.',
                  pins=[('מבנה פאנל מבודד', '36%', '9%'), ('חלונות פנורמיים אל הגינה', '62%', '30%'), ('מערכת דלתות הזזה', '42%', '48%'), ('ריצוף קרמיקה ברצף אחד עם הבית', '50%', '64%')]),
             dict(k=2, word='עם פרגולת אלומיניום', caption='פרגולת אלומיניום שחורה בגינה', alt='פרגולת אלומיניום שחורה עם רפפות מעל גינה של בית פרטי',
+                 desc='פרגולת אלומיניום שיוצרת צל מדויק בדיוק איפה שצריך ונשארת יפה גם כשהיא סגורה.',
                  pins=[('רפפות אלומיניום', '45%', '22%')]),
         ],
         env_opt='מעטפת חוץ מלאה לבית', env_back='',   # chosen full-envelope track fills this option; leaving it restores the fallback
@@ -87,6 +98,7 @@ PAGES = {
         opts=['מעטפת חוץ מלאה לבית', 'מטבח חוץ ופינת אירוח', 'פרגולה לגינה', 'שער וגדר', 'דק, ריצוף וחיפוי', 'חדר שמש ותוספת בנייה', 'עדיין בודקים אפשרויות'],
         pick_map={'מטבח חוץ ואירוח': 'מטבח חוץ ופינת אירוח', 'הצללה וקירוי': 'פרגולה לגינה', 'דק, ריצוף וחיפוי': 'דק, ריצוף וחיפוי', 'בנייה קלה / חדר שמש': 'חדר שמש ותוספת בנייה'},
         pick_default='מעטפת חוץ מלאה לבית',
+        desc='מטבח חוץ, פרגולה אלומיניום, גדר ושער, דק וחיפוי עץ לבית פרטי: פרויקט חוץ אחד, בתכנון יישומי ובביצוע של IL Projects.',
         wa='היי, הגעתי מדף הגינה והבית הפרטי באתר',
     ),
 }
@@ -120,6 +132,7 @@ def build(key, P):
                "var q=location.search?location.search+'&landing=1':'?landing=1';history.replaceState(history.state,'',location.pathname+q+location.hash);}}catch(e){}})();</script>")
     rep('<meta charset="utf-8">', '<meta charset="utf-8">\n<meta name="robots" content="noindex, nofollow">\n' + LANDING, 'noindex + landing')
     rep('<title>IL Projects | סופר צל — מעטפת מקצועית לבית ולמרחב החוץ</title>', '<title>' + P['title'] + '</title>', 'title')
+    rep('<meta name="description" content="הצללה וקירוי, סגירות זכוכית, מטבחי חוץ, דקים, גידור ובנייה קלה — בהתאמה אישית, עם נקודת קשר אחת מהמדידה ועד המסירה. מרכז, שפלה ודרום. תאמו שיחת ייעוץ.">', '<meta name="description" content="' + P['desc'] + '">', 'description')
     rep('<link rel="preload" as="image" href="/img/fast/hero/hero-pergola-kitchen-bar.webp" fetchpriority="high">',
         '<link rel="preload" as="image" href="' + P['slots'][4] + '" fetchpriority="high">', 'hero preload')
 
@@ -128,27 +141,26 @@ def build(key, P):
         slot(k, src)
 
     # --- hero text --------------------------------------------------------------------------------------------------------
-    rep('letter-spacing:-0.03em;text-shadow:0 2px 30px rgba(14,11,8,0.45);animation:stz-up 1.1s 0.35s both">כשמדויק,<br><span style="display:block;min-height:1.1em;color:#C99752;font-weight:300">זה מרגיש אחרת.</span></h1>',
+    rep('letter-spacing:-0.03em;text-shadow:0 2px 30px rgba(14,11,8,0.45);animation:stz-up 1.1s 0.35s both">פרויקט חוץ שלם,<br><span style="display:block;min-height:1.1em;color:#C99752;font-weight:300">מעטפת אחת.</span></h1>',
         'letter-spacing:-0.03em;text-shadow:0 2px 30px rgba(14,11,8,0.45);animation:stz-up 1.1s 0.35s both">' + P['h1a'] + '<br><span style="display:block;min-height:1.1em;color:#C99752;font-weight:300">{{ heroRotEl }}</span></h1>', 'hero headline')
-    rep('מרחב חוץ שמתוכנן סביב החיים שלכם בבית. שפה עיצובית אחת ונקודת קשר אחת, מהמדידה ועד ההתקנה.', P['sub'], 'hero sub line')
     slides = ',\n      '.join(
-        '{ k: %d, word: %s, caption: %s, src: %s, alt: %s,\n        pins: [%s] }' % (
-            s['k'], js(s['word']), js(s['caption']), js(P['slots'][s['k']]), js(s['alt']),
+        '{ k: %d, word: %s, caption: %s, src: %s, alt: %s, desc: %s,\n        pins: [%s] }' % (
+            s['k'], js(s['word']), js(s['caption']), js(P['slots'][s['k']]), js(s['alt']), js(s.get('desc', P['sub'])),
             ', '.join('{ label: %s, x: %s, y: %s }' % (js(a), js(x), js(y)) for a, x, y in s['pins']))
         for s in P['slides'])
     rep("pinKey = 'stz-home-hero-pins-v1';", "pinKey = 'stz-" + key + "-hero-pins-v1';", 'pin storage key')
 
     # --- first section ----------------------------------------------------------------------------------------------------
-    rep('text-wrap:balance">פרויקט חוץ שלם,<br>מעטפת אחת.</h2>', 'text-wrap:balance">' + P['why_h2'] + '</h2>', 'first section headline')
+    rep('text-wrap:balance">הכול במקום אחד.</h2>', 'text-wrap:balance">' + P['why_h2'] + '</h2>', 'first section headline')
     if P['why_p']:
-        rep('מרחב החוץ הופך לחלק מהבית, בשפה עיצובית אחת ובקו נקי. נקודת קשר אחת מלווה אתכם מהפגישה הראשונה ועד המסירה.', P['why_p'], 'first section text')
+        rep('פרגולות, סגירות, דקים וגינה במקום אחד, עם נקודת קשר אחת מהמדידה ועד ההתקנה.', P['why_p'], 'first section text')
     else:
-        rep('<p style="margin:0;flex:1 1 320px;color:#4B443A;font-size:18px;max-width:38ch">מרחב החוץ הופך לחלק מהבית, בשפה עיצובית אחת ובקו נקי. נקודת קשר אחת מלווה אתכם מהפגישה הראשונה ועד המסירה.</p>', '', 'first section text removed')
+        rep('<p style="margin:0;flex:1 1 320px;color:#4B443A;font-size:18px;max-width:38ch">פרגולות, סגירות, דקים וגינה במקום אחד, עם נקודת קשר אחת מהמדידה ועד ההתקנה.</p>', '', 'first section text removed')
 
     # --- path picker: opens on the ad group's path; that path shows the ad group's projects first -----------------------------
     rep("p = ['full', 'add', 'focus'].indexOf(q) > -1 ? q : sessionStorage.getItem('stz-path');",
         "p = ['full', 'add', 'focus'].indexOf(q) > -1 ? q : '" + P['path'] + "';", 'default path')
-    old_orders = {'full': "proj: 'פרויקטים שבהם כל המרחב תוכנן יחד, בשפה עיצובית אחת.', order: [0, 1, 3, 5, 4, 6, 2] }",
+    old_orders = {'full': "proj: 'סגירות זכוכית, סגירות חורף, פרגולות ודקים. מרחב החוץ כולו אצלנו. לכם נשאר שקט תפעולי.', order: [0, 1, 3, 5, 4, 6, 2] }",
                   'add': "proj: 'תוספות לבית קיים: חדרי שמש, סגירות ומרפסות.', order: [2, 7, 4, 6, 11, 1, 8] }"}
     rep(old_orders[P['path']], "proj: " + js(P['proj_line']).replace('"', "'") + ", order: [" + ', '.join(map(str, P['proj_order'])) + "] }", 'projects order')
 
@@ -226,7 +238,7 @@ def build(key, P):
     if n_more != 1:
         problems.append(f'{key}: "more row": not found')
     rep('<div id="tracks" data-reveal=""', '<div id="tracks" class="stz-open" data-reveal=""', 'tracks open')
-    rep('</head>', '<style id="stz-lp-nosocial">html body #social{display:none !important}</style></head>', 'no social strip')
+    rep('</head>', '<style id="stz-lp-nosocial">html body #social{display:none !important}' + ('html body #trust{display:none !important}' if key == 'garden' else '') + '</style></head>', 'no social strip')
     # --- no book flipping: three cards in one view (illustration | text + steps | tracks), stacked on phones ---------------------------------------
     m = re.search(r'(<h3 style="font-size:clamp\(22px,2\.4vw,28px\)[^>]*>בית אחד לכל מעטפת החוץ</h3>.*?</p>)(\s*)(<button type="button" aria-label="לעמוד הבא" onClick="\{\{ bookNext \}\}" data-flip-anim)', t, flags=re.S)
     ms = re.search(r'(<div style="margin-top:18px;display:flex;flex-direction:column;gap:10px">.*?</div>\s*</div>)(?=\s*</div>\s*</div>\s*<div data-bkctl)', t, flags=re.S)

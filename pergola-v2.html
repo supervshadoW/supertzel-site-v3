@@ -142,12 +142,12 @@ html[data-stz-v="glass"] .stz-ba-wrap, html[data-stz-v="glass"] .stz-proc-box, h
 <template id="__bundler_thumbnail"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200"><rect width="200" height="200" fill="#1B1712"></rect><rect x="40" y="76" width="120" height="12" rx="4" fill="#B4813C"></rect><rect x="52" y="96" width="8" height="52" fill="#B4813C"></rect><rect x="140" y="96" width="8" height="52" fill="#B4813C"></rect><rect x="40" y="52" width="120" height="8" rx="4" fill="#E8C48C"></rect></svg></template>
 <script>(function(){try{var m=/[?&]s=(\w+)/.exec(location.search),k=m&&m[1],P={glass:'/img/fast/lp/pg-hero.webp',closure:'/img/fast/lp/pg-hero.webp',deck:'/img/fast/lp/pg-hero-deck.webp',awning:'/img/fast/gallery/new-61-1.webp'},T={glass:'סגירות זכוכית למרפסת בהתאמה אישית | סופר צל',closure:'סגירות זכוכית למרפסת בהתאמה אישית | סופר צל',deck:'דקים וריצוף חוץ בהתאמה אישית | סופר צל',awning:'סוככים וגגונים בהתאמה אישית | סופר צל'},l=document.createElement('link');l.rel='preload';l.as='image';l.href=P[k]||'/img/fast/w/pg2-black-louver.webp';l.setAttribute('fetchpriority','high');document.head.appendChild(l);if(T[k])document.title=T[k];var K={"glass":["glass-1","balcony-electric-pergola-window","project-balcony-glass-louver","new-49-1","roller-screens-balcony","light-sunroom-out"],"deck":["project-deck-view","project-deck-wood-pergola","project-deck-black-frame","project-lake-terrace","project-sukkah-suite-pvc","new-55-1"],"awning":["awning-jaffa-1","awning-leumi","designer-wave-awning","new-56-1","new-61-1","new-47-1"],"closure":["glass-1","balcony-electric-pergola-window","project-balcony-glass-louver","new-49-1","roller-screens-balcony","light-sunroom-out"]}[k];if(K){window.STZ_PICK=K;window.STZ_PROJ_SUB={"glass":"סגירות זכוכית, חדרי שמש ופתרונות למרפסת מפרויקטים שבוצעו.","deck":"דקים, פרגולות ומרחבי חוץ מפרויקטים שבוצעו.","awning":"סוככים, מפרשי צל ופתרונות הצללה מפרויקטים שבוצעו.","closure":"סגירות זכוכית, חדרי שמש ופתרונות למרפסת מפרויקטים שבוצעו."}[k];}document.documentElement.setAttribute('data-stz-v',k==='closure'?'glass':(P[k]?k:'pergola'));}catch(e){}})();</script>
 <script src="/lead.js?v=9"></script>
-<script src="/lead-modal.js?v=12"></script>
+<script src="/lead-modal.js?v=14"></script>
 <script src="/phone-cc.js?v=6" defer></script>
 <script src="/mobile-ux.js?v=16" defer></script>
 <script src="/landing-mode.js?v=2" defer></script>
 <script src="/landing-projects-v2.js?v=a4d23a20" defer></script>
-<script src="/landing-about.js?v=8" defer></script>
+<script src="/landing-about.js?v=9" defer></script>
 <script src="/ba-story.js?v=5?v=1" defer></script>
 <script src="/analytics.js?v=22"></script>
 <style>
@@ -359,7 +359,7 @@ header nav a:hover { color: #E8C48C !important; }
                 <div class="stz-hphone"><input type="tel" aria-label="טלפון" placeholder="טלפון" autocomplete="tel" inputmode="tel" value="{{ fPhone }}" onChange="{{ onPhone }}"></div>
                 <sc-if value="{{ pgErr }}" hint-placeholder-val="{{ false }}"><span role="alert" style="display:block;font-size:13.5px;color:#E8C48C;text-align:center">נא למלא שם ומספר טלפון תקין</span></sc-if>
                 <button type="button" onClick="{{ onQuickSubmit }}">תאמו שיחת ייעוץ</button>
-                <small>השארת פרטים מהווה הסכמה ליצירת קשר לצורך טיפול בפנייה זו בלבד. <a href="/legal#privacy" style="color:#E8C48C;text-decoration:underline">מדיניות פרטיות</a></small>
+                <small>השארת פרטים מהווה הסכמה ליצירת קשר לצורך טיפול בפנייה זו בלבד. <a href="/legal#terms" style="color:#E8C48C;text-decoration:underline">תנאי השימוש</a> · <a href="/legal#privacy" style="color:#E8C48C;text-decoration:underline">מדיניות פרטיות</a></small>
               </div>
             </sc-if>
           </div>
@@ -824,7 +824,7 @@ header nav a:hover { color: #E8C48C !important; }
           <sc-if value="{{ hasPicks }}" hint-placeholder-val="{{ false }}"><p style="font-size:14px;line-height:1.5;color:#C99752">✓ {{ picksSum }}</p></sc-if>
           <sc-if value="{{ pgErr }}" hint-placeholder-val="{{ false }}"><p role="alert" style="font-size:13.5px;color:#E8C48C;text-align:center">נא למלא שם ומספר טלפון תקין</p></sc-if>
           <button onClick="{{ onSubmit }}" style="width:100%;background:#B4813C;color:#1B1712;border:0;padding:17px;font-size:17px;font-weight:600;border-radius:100px;cursor:pointer" style-hover="background:#C99752">לשיחת ייעוץ והתאמה מהירה</button>
-          <p style="font-size:13px;color:rgba(245,240,228,0.66);text-align:center">השארת פרטים מהווה הסכמה ליצירת קשר לצורך טיפול בפנייה זו בלבד. <a href="/legal#privacy" style="color:#C99752;text-decoration:underline">מדיניות הפרטיות</a></p>
+          <p style="font-size:13px;color:rgba(245,240,228,0.66);text-align:center">השארת פרטים מהווה הסכמה ליצירת קשר לצורך טיפול בפנייה זו בלבד. <a href="/legal#terms" style="color:#C99752;text-decoration:underline">תנאי השימוש</a> · <a href="/legal#privacy" style="color:#C99752;text-decoration:underline">מדיניות הפרטיות</a></p>
         </div>
         </sc-if>
       </div>
@@ -957,7 +957,7 @@ header nav a:hover { color: #E8C48C !important; }
     <a href="/projects">פרויקטים שביצענו</a>
     <a href="tel:0553100154">055-310-0154</a>
     <a href="mailto:ilprojects.israel@gmail.com">ilprojects.israel@gmail.com</a>
-    <a href="/legal#privacy">תקנון ומדיניות פרטיות</a>
+    <a href="/legal#terms">תקנון ותנאי שימוש</a> · <a href="/legal#privacy">מדיניות פרטיות</a>
   </div>
 </footer>
 

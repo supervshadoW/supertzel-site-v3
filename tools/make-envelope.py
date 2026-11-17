@@ -40,6 +40,7 @@ LANDING = ("<script>/* envelope.html: campaign landing page. analytics.js counts
            "var q=location.search?location.search+'&landing=1':'?landing=1';history.replaceState(history.state,'',location.pathname+q+location.hash);}}catch(e){}})();</script>")
 rep('<meta charset="utf-8">', '<meta charset="utf-8">\n<meta name="robots" content="noindex, nofollow">\n' + LANDING, 'noindex + landing')
 rep('<title>IL Projects | סופר צל — מעטפת מקצועית לבית ולמרחב החוץ</title>', '<title>מעטפת חוץ שלמה לבית | IL Projects</title>', 'title')
+rep('<meta name="description" content="הצללה וקירוי, סגירות זכוכית, מטבחי חוץ, דקים, גידור ובנייה קלה — בהתאמה אישית, עם נקודת קשר אחת מהמדידה ועד המסירה. מרכז, שפלה ודרום. תאמו שיחת ייעוץ.">', '<meta name="description" content="מעטפת חוץ שלמה לבית: פרגולה, סגירת זכוכית, מטבח חוץ ודק \u2014 פרויקט אחד, מעטפת אחת.">', 'description')
 
 # --- opens on the full-envelope path -----------------------------------------------------------------------------------------
 rep("p = ['full', 'add', 'focus'].indexOf(q) > -1 ? q : sessionStorage.getItem('stz-path');",

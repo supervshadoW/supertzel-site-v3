@@ -7,6 +7,8 @@ Copy rules: IL voice, no comma before 'ו', "תכנון יישומי", approvals
 Run from the repository root after any change to index.html:  python tools/make-categories.py
 """
 import os, re, sys
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+import ds
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 BASE = open(os.path.join(ROOT, 'index.html'), encoding='utf-8', newline='').read()
@@ -23,7 +25,7 @@ PIN_SUN = ('תוספת חוץ בגינה', HE + 'hero-sunroom.webp', 'חדר ש�
 
 PAGES = {
     'shade': dict(
-        name='פתרונות קירוי והצללה בהתאמה אישית', hero=G + 'project-black-louvered-pergola.webp', hero_alt='פרגולת אלומיניום שחורה עם פרופילי הצללה בגינה',
+        name='פתרונות קירוי והצללה בהתאמה אישית', desc='פרגולות אלומיניום, פרגולות חשמליות, פרגולות עץ וסוככים בהתאמה אישית. מדידה בשטח ותכנון יישומי לכל בית.', hero=G + 'project-black-louvered-pergola.webp', hero_alt='פרגולת אלומיניום שחורה עם פרופילי הצללה בגינה',
         h1='כל מרחב והפתרון שמותאם לו.', sub='הצללה שמתוכננת לפי המידות, השמש והקו של הבית שלכם. כך היא מתאימה בדיוק לשימוש ולמראה.',
         art_h='לא כל פתרון זהה.',
         art=['פתרון טוב מתחיל בהתאמה מדויקת לשטח, לכיווני השמש, לאופי השימוש ולקו של הבית. אחרי בדיקה במקום אנחנו מתאימים את הפתרון שנכון לכם.',
@@ -38,7 +40,7 @@ PAGES = {
              ('אפשר לשלב תאורה או מאוורר?', 'כן. משלבים אותם כבר בשלב התכנון היישומי. הכנות החשמל מתואמות מול בעלי מקצוע מוסמכים.'),
              ('האם נדרש היתר?', PERMIT)]),
     'decks': dict(
-        name='ריצוף, דקים וחיפויים', hero=HE + 'hero-deck-wood.webp', hero_alt='דק עץ בגינה עם חיפוי עץ וצמחייה',
+        name='ריצוף, דקים וחיפויים', desc='דקים מעץ טבעי וסינתטי, ריצוף חוץ וחיפויי קיר — מרחב חוץ שלם, בשפה עיצובית אחת.', hero=HE + 'hero-deck-wood.webp', hero_alt='דק עץ בגינה עם חיפוי עץ וצמחייה',
         h1='דק חמים, בקו אחד עם הבית.', sub='דקים, ריצוף חוץ וחיפויים שמתוכננים לפי המקום. כך המרחב כולו נראה כהמשך של הבית.',
         art_h='המשטח קובע את התחושה.',
         art=['המשטח הוא הדבר הראשון שמרגישים במרחב החוץ. החומר, הגוון והכיוון שלו קובעים את האופי של המקום כולו.',
@@ -53,7 +55,7 @@ PAGES = {
              ('אפשר להתאים את הדק לריצוף הקיים?', 'כן. בתכנון היישומי בודקים גבהים וגוונים כדי ליצור רצף אחד עם הבית.'),
              ('מה בודקים בפגישה במקום?', 'מפלסים, ניקוז, מידות והאופן שבו אתם משתמשים במקום.')]),
     'landscape': dict(
-        name='גינה ופיתוח נוף', hero=G + 'kitchen-1.webp', hero_alt='פרגולה מקורה בצמחייה מטפסת בגינה',
+        name='גינה ופיתוח נוף', desc='פיתוח גינה ונוף כחלק ממעטפת חוץ שלמה: שבילים, השקיה ותאורת גינה, מתוכננים יחד עם שאר הפרויקט.', hero=G + 'kitchen-1.webp', hero_alt='פרגולה מקורה בצמחייה מטפסת בגינה',
         h1='גינה שמשלימה את הבית.', sub='צמחייה, שבילים ותאורה שמתוכננים יחד עם שאר מרחב החוץ. כך הכול מתחבר לשפה עיצובית אחת.',
         art_h='הגינה היא חלק מהתמונה.',
         art=['גינה טובה מתוכננת יחד עם הפרגולה, הדק והתאורה. כך כל פרט מוצא את מקומו.',
@@ -67,7 +69,7 @@ PAGES = {
              ('איך בוחרים צמחייה?', 'לפי כיווני האור, גודל המקום והתחזוקה שמתאימה לכם.'),
              ('מה כולל התכנון היישומי?', 'צמחייה, שבילים, השקיה ותאורה, לפי המקום.')]),
     'fences': dict(
-        name='גידור ותיחום', hero=G + 'fence-grey-aluminum.webp', hero_alt='גדר אלומיניום בגוון אפור כהה בחזית בית',
+        name='גידור ותיחום', desc='גדרות אלומיניום ושערי כניסה וחניה, בגוון ובפרופיל שמתאימים לחזית הבית.', hero=G + 'fence-grey-aluminum.webp', hero_alt='גדר אלומיניום בגוון אפור כהה בחזית בית',
         h1='פרטיות, בקו של הבית.', sub='גדרות, שערים ומעקות שמתוכננים כחלק מחזית הבית. הגוון והפרופיל נבחרים לפי הקו שלו.',
         art_h='התיחום הוא חלק מהחזית.',
         art=['גדר ושער הם הדבר הראשון שרואים מהרחוב. כשהם מתוכננים בקו של הבית, הם משלימים אותו.',
@@ -82,7 +84,7 @@ PAGES = {
              ('שער ידני או חשמלי?', 'שתי האפשרויות קיימות. הכנות החשמל מתואמות מול בעלי מקצוע מוסמכים.'),
              ('מה לגבי מעקות?', 'מעקות נבדקים בכל פרויקט לגופו, בהתאם לדרישות שחלות עליו.')]),
     'kitchens': dict(
-        name='מטבחי חוץ ונגרות', hero=HE + 'hero-pergola-kitchen-bar.webp', hero_alt='מטבח חוץ ושולחן בר תחת פרגולת אלומיניום שחורה',
+        name='מטבחי חוץ ונגרות', desc='מטבחי חוץ, דלפקי בר ונגרות חוץ בהתאמה אישית. מתוכננים יחד עם הפרגולה או הסגירה שלכם.', hero=HE + 'hero-pergola-kitchen-bar.webp', hero_alt='מטבח חוץ ושולחן בר תחת פרגולת אלומיניום שחורה',
         h1='לארח בחוץ, כמו בבית.', sub='מטבח חוץ, בר ופינת ישיבה שמתוכננים יחד עם ההצללה. כך האירוח זורם בין בישול לישיבה.',
         art_h='מטבח חוץ הוא לב האירוח.',
         art=['מטבח חוץ טוב מתוכנן סביב הדרך שבה אתם מארחים. המיקום, הגובה ומשטחי העבודה נקבעים לפי המקום.',
@@ -96,7 +98,7 @@ PAGES = {
              ('מי מטפל בהכנות למים, לחשמל ולגז?', 'ההכנות מתואמות מול בעלי מקצוע מוסמכים, בהתאם להיקף הפרויקט.'),
              ('מה בודקים בפגישה במקום?', 'מיקום, מידות, כיווני שמש והאופן שבו אתם מארחים.')]),
     'light-build': dict(
-        name='בנייה קלה ותוספות חוץ', hero=HE + 'hero-sunroom.webp', hero_alt='חדר שמש בבנייה קלה עם דלתות הזזה לגינה',
+        name='בנייה קלה ותוספות חוץ', desc='תוספות בנייה קלה: חדרי שמש, משרדי חוץ וחדרי אירוח, בתכנון יישומי שממשיך את קו הבית.', hero=HE + 'hero-sunroom.webp', hero_alt='חדר שמש בבנייה קלה עם דלתות הזזה לגינה',
         h1='תוספת שנראית כאילו תמיד הייתה חלק מהבית.', sub='משרד, קליניקה או חדר אירוח בגינה, בתכנון יישומי שממשיך את הקו של הבית.',
         art_h='עוד חדר, באותה שפה.',
         art=['תוספת טובה ממשיכה את הבית. הגבהים, הריצוף והגוונים נבחרים כך שהמעבר ירגיש טבעי.',
@@ -109,6 +111,21 @@ PAGES = {
         faq=[('האם תוספת כזו דורשת היתר?', PERMIT),
              ('איך התוספת מתחברת לבית הקיים?', 'בתכנון היישומי בודקים גבהים, ריצוף וגוונים. כך התוספת ממשיכה את הבית.'),
              ('למה משמשת תוספת כזו?', 'משרד, קליניקה, חדר אירוח או חדר שמש, לפי הצורך שלכם.')]),
+    'winter': dict(
+        name='סגירות חורף ומסכי גלילה', fabric_ok=True, desc='סגירות חורף מבד עם חלון שקוף ומסכי גלילה למרפסת ולגינה. פתרון שנפתח וסוגר לפי העונה.', hero=G + 'winter-1.webp', hero_alt='פינת ישיבה בגינה עם סגירת חורף מבד וחלון שקוף',
+        h1='פינה שנפתחת וסוגרת לפי העונה.', sub='סגירת חורף מבד עם חלון שקוף ומסכי גלילה לצל ולפרטיות. הפתרון נבנה לפי המקום והשימוש.',
+        art_h='סגירה שזזה עם העונות.',
+        art=['מרפסת או פינת ישיבה בגינה לא נראות אותו דבר בכל חודש. יש ימים שרוצים את האור והאוויר. יש ימים שרוצים להתכסות.',
+             'סגירת חורף מבד עם חלון שקוף נסגרת כשצריך ונפתחת כשהמזג נעים. מסכי גלילה מוסיפים צל ופרטיות לפי שעות היום, גם מעל סגירת זכוכית.',
+             'המידות והמיקום של החלון נקבעים לפי המקום ולפי הבית שסביבו. כל פרויקט מתחיל בפגישה במקום ובמדידה.'],
+        cards=[('סגירת חורף', 'סגירה מבד עם חלון שקוף. נסגרת בעונה הקרירה ונפתחת שוב כשנעים.', G + 'winter-1.webp'),
+               ('מסכי גלילה', 'נגללים למטה לצל ולהגנה מהרוח ונאספים למעלה כשלא צריך.', G + 'roll-screen-carport.webp'),
+               ('מסכים מעל סגירת זכוכית', 'צל ופרטיות לפי שעות היום.', G + 'roller-screens-balcony.webp')],
+        more='', cross=('מעדיפים סגירה קבועה מזכוכית? יש לה דף משלה.', 'לסגירות זכוכית', '/closures'), pins=None,
+        projects=['winter-1.webp', 'winter-closure-roof.webp', 'roll-screen-carport.webp', 'roll-screen-patio.webp', 'roller-screens-balcony.webp', 'new-49-1.webp'],
+        faq=[('מה ההבדל בין סגירת בד לסגירת זכוכית?', 'סגירת בד נפתחת ונסגרת לפי העונה. סגירת זכוכית קבועה יותר ונראית כחלק מהבית. בשיחה נראה לכם דוגמאות ונבחר לפי המקום.'),
+             ('אפשר לפתוח אותה בקיץ?', 'כן. סגירת חורף נפתחת שוב כשמזג האוויר נעים.'),
+             ('מה בודקים בפגישה במקום?', 'מידות, כיווני רוח ושמש והאופן שבו אתם משתמשים במקום.')]),
 }
 
 LBL = 'display:inline-flex;align-items:center;gap:10px;color:%s;font-size:14.5px;font-weight:600;margin-bottom:16px'
@@ -121,11 +138,11 @@ def esc(x):
     return x.replace('&', '&amp;').replace('"', '&quot;').replace('<', '&lt;')
 
 
-def project(photo):
+def project(photo, fabric_ok=False):
     for m in re.finditer(r"\{ title: '([^']+)',[^{}]*?\}", DATA, re.S):
         b = m.group(0)
         ph = re.search(r"photos: \[(A|P) \+ '([^']+)'", b)
-        if ph and ph.group(2) == photo and 'fabric: true' not in b:
+        if ph and ph.group(2) == photo and (fabric_ok or 'fabric: true' not in b):
             d = re.search(r"desc: '([^']+)'", b)
             c = re.search(r"client: '([^']+)'", b)
             return m.group(1), (d.group(1) if d else ''), (G if ph.group(1) == 'A' else PR) + photo, (c.group(1) if c else '')
@@ -149,6 +166,7 @@ def build(slug, P):
 
     rep('<meta charset="utf-8">', '<meta charset="utf-8">\n<meta name="robots" content="noindex, nofollow">', 'noindex')
     rep('<title>IL Projects | סופר צל — מעטפת מקצועית לבית ולמרחב החוץ</title>', '<title>' + P['name'] + ' | IL Projects</title>', 'title')
+    rep('<meta name="description" content="הצללה וקירוי, סגירות זכוכית, מטבחי חוץ, דקים, גידור ובנייה קלה — בהתאמה אישית, עם נקודת קשר אחת מהמדידה ועד המסירה. מרכז, שפלה ודרום. תאמו שיחת ייעוץ.">', '<meta name="description" content="' + P['desc'] + '">', 'description')
     wa = 'https://wa.me/972559958231?text=' + 'היי, הגעתי מדף ' + P['name'] + ' באתר ואשמח לתאם שיחת ייעוץ'
 
     hero = ('<section id="chero" style="position:relative;background:#1B1712;color:#F5F0E4;overflow:hidden;display:flex;align-items:flex-end;min-height:min(80vh,680px)">'
@@ -163,11 +181,10 @@ def build(slug, P):
             '<a href="' + esc(wa) + '" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;justify-content:center;min-height:54px;padding:0 28px;border-radius:100px;border:1px solid rgba(245,240,228,.5);color:#F5F0E4;font-size:16.5px;white-space:nowrap;backdrop-filter:blur(6px)">שיחת וואטסאפ מהירה</a>'
             '</div></div></section>\n')
 
-    paras = ''.join('<p style="margin-bottom:14px">%s</p>' % esc(x) for x in P['art'])
+    paras = ''.join('<p style="margin:0;border-top:1px solid rgba(33,28,22,.18);padding-top:16px;color:#4B443A;font-size:17px;line-height:1.75">%s</p>' % esc(x) for x in P['art'])
     article = ('<section id="cart" style="background:#F5F0E4;color:#211C16;padding-block:clamp(3rem,9vh,6rem)"><div style="' + W + '">'
-               '<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,320px),1fr));gap:clamp(1.5rem,4vw,3.5rem);align-items:start">'
-               '<div><div style="' + LBL % '#80561E' + '">' + BAR % '#B4813C' + 'על התחום</div><h2 style="' + H2 + ';max-width:14ch">' + esc(P['art_h']) + '</h2></div>'
-               '<div style="color:#4B443A;font-size:17px;line-height:1.75;max-width:56ch">' + paras + '</div></div></div></section>\n')
+               '<div style="' + LBL % '#80561E' + '">' + BAR % '#B4813C' + 'על התחום</div><h2 style="' + H2 + ';max-width:20ch">' + esc(P['art_h']) + '</h2>'
+               '<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,280px),1fr));gap:clamp(1.25rem,3vw,2.5rem);margin-top:clamp(1.25rem,3vh,2rem)">' + paras + '</div></div></section>\n')
 
     def card(i, ti, tx, img):
         pic = ('<img src="%s" alt="%s" loading="lazy" decoding="async" style="position:absolute;inset:0;width:100%%;height:100%%;object-fit:cover">'
@@ -178,6 +195,8 @@ def build(slug, P):
                 '<span style="font-size:13px;font-weight:600;color:#E8C48C;letter-spacing:.06em">0%d</span><h3 style="margin:6px 0;font-size:clamp(21px,2vw,25px);line-height:1.2;color:#fff">%s</h3>'
                 '<p style="font-size:15.5px;line-height:1.5;color:rgba(245,240,228,.92)">%s</p></div></div>' % (ar, pic, pos, i + 1, esc(ti), esc(tx)))
     more = ('<p style="margin-top:22px;color:#4B443A;font-size:16.5px;max-width:60ch">' + esc(P['more']) + '</p>') if P['more'] else ''
+    if P.get('cross'):
+        more += ('<div style="margin-top:20px;padding:18px 22px;border-radius:16px;background:rgba(33,28,22,.06);display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:12px 20px"><p style="margin:0;color:#4B443A;font-size:16px;line-height:1.65;max-width:56ch">' + esc(P['cross'][0]) + '</p><a href="' + P['cross'][2] + '" style="display:inline-flex;align-items:center;gap:10px;min-height:46px;padding:0 22px;border-radius:100px;border:1px solid #211C16;color:#211C16;font-size:15.5px;font-weight:600;white-space:nowrap">' + esc(P['cross'][1]) + ' <span aria-hidden="true">\u2190</span></a></div>')
     catalog = ('<section id="ccat" style="background:#ECE4D2;color:#211C16;padding-block:clamp(3rem,9vh,6rem)"><div style="' + W + '">'
                '<div style="' + LBL % '#80561E' + '">' + BAR % '#B4813C' + 'סוגי פתרונות</div>'
                '<h2 style="' + H2 + ';max-width:20ch;margin-bottom:clamp(1.5rem,4vh,2.5rem)">קו נקי, ביצוע מדויק.</h2>'
@@ -199,16 +218,20 @@ def build(slug, P):
     more_sec = ''
     found = []
     for ph in P['projects']:
-        pr = project(ph)
+        pr = project(ph, P.get('fabric_ok', False))
         if pr is None:
             problems.append('%s: project photo not in projects-data.js: %s' % (slug, ph))
         else:
             found.append(pr)
     if found:
         pcards = ''.join(
-            '<div style="border-radius:18px;overflow:hidden;background:#FBF7EE;box-shadow:0 1px 0 rgba(33,28,22,.06),0 14px 32px rgba(33,28,22,.1);display:flex;flex-direction:column"><div style="aspect-ratio:4/3;background:#ECE4D2"><img src="%s" alt="%s" loading="lazy" decoding="async" style="display:block;width:100%%;height:100%%;object-fit:cover"></div>'
-            '<div style="padding:18px 20px 22px"><span style="font-size:12.5px;font-weight:600;color:#80561E;letter-spacing:.04em">%s</span><h3 style="margin:6px 0 8px;font-size:19px;line-height:1.3">%s</h3><p style="font-size:15.5px;line-height:1.6;color:#4B443A">%s</p></div></div>'
-            % (img, esc(ti), esc(cl), esc(ti), esc(de)) for ti, de, img, cl in found)
+            '<div style="position:relative;border-radius:20px;overflow:hidden;aspect-ratio:4/3;background:#1B1712;color:#F5F0E4"><img src="%s" alt="%s" loading="lazy" decoding="async" style="position:absolute;inset:0;width:100%%;height:100%%;object-fit:cover">'
+    '<span aria-hidden="true" style="position:absolute;inset:0;background:linear-gradient(0deg,rgba(17,14,11,.92) 0%%,rgba(17,14,11,.5) 42%%,rgba(17,14,11,0) 72%%)"></span>'
+            '<div style="position:absolute;inset-inline:0;bottom:0;padding:18px 20px;display:flex;flex-direction:column;align-items:flex-start;gap:6px"><span style="font-size:12.5px;font-weight:600;color:#E8C48C;letter-spacing:.04em">%s</span><h3 style="margin:0;font-size:19px;line-height:1.3;color:#fff;text-wrap:balance">%s</h3>'
+    '<button type="button" data-pc-open="1" style="font:inherit;cursor:pointer;margin-top:4px;min-height:40px;padding:0 18px;border-radius:100px;border:1px solid rgba(245,240,228,.55);background:rgba(27,23,18,.35);color:#F5F0E4;font-size:14.5px;font-weight:600;backdrop-filter:blur(4px)">לפרטי הפרויקט <span aria-hidden="true">\u2190</span></button></div>'
+    '<div data-pc-detail="1" style="position:absolute;inset:0;background:#14110D;padding:20px;overflow:auto"><h3 style="margin:0;font-size:19px;line-height:1.3;color:#fff">%s</h3><p style="margin:0;font-size:15.5px;line-height:1.65;color:rgba(245,240,228,.9)">%s</p>'
+    '<button type="button" data-pc-close="1" style="font:inherit;cursor:pointer;align-self:flex-start;min-height:40px;padding:0 18px;border-radius:100px;border:1px solid rgba(245,240,228,.45);background:transparent;color:#F5F0E4;font-size:14.5px">סגירה</button></div></div>'
+            % (img, esc(ti), esc(cl), esc(ti), esc(ti), esc(de)) for ti, de, img, cl in found)
         more_sec = ('<section id="cmore" style="background:#F5F0E4;color:#211C16;padding-block:clamp(3rem,9vh,6rem)"><div style="' + W + '">'
                     '<div style="' + LBL % '#80561E' + '">' + BAR % '#B4813C' + 'פרויקטים שביצענו</div>'
                     '<h2 style="' + H2 + ';max-width:22ch;margin-bottom:clamp(1.5rem,4vh,2.5rem)">' + esc(P['name']) + '.</h2>'
@@ -228,9 +251,37 @@ def build(slug, P):
     js = ('<script>/* category page: numbered pins */\n(function(){document.addEventListener("click",function(e){var pb=e.target.closest&&e.target.closest("[data-pin]");if(!pb)return;var root=pb.closest("[data-pjp]"),i=+pb.getAttribute("data-pin");'
           'root.querySelectorAll("[data-pin]").forEach(function(b){var on=+b.getAttribute("data-pin")===i;b.style.background=on?"#fff":"#B4813C";b.style.color=on?"#1B1712":"#fff";b.style.transform="translate(-50%,-50%) scale("+(on?1.18:1)+")"});'
           'root.querySelectorAll("[data-item]").forEach(function(li){li.style.background=+li.getAttribute("data-item")===i?"rgba(201,151,82,0.14)":"transparent"})});})();</script>')
-    rep('<section id="why"', hero + article + catalog + done + more_sec + process + '<section id="why"', 'insert sections')
-    rep('</body>', js + '</body>', 'js')
-    css = ('<style id="stz-category">html body #hero,html body #why,html body #projects,html body #social,html body #scope,html body #services,html body #build,html body #reviews,html body #faq{display:none !important}'
+    extra_sec = ''
+    if slug == 'shade':
+        # roofing guide from Palram's own customer table (owner confirmed we may use it): light transmission, thermal insulation and
+        # where each board fits. Price level and required slope are left out on purpose (no price positioning, no engineering claims).
+        TECH = [
+            ('סנטף מלבני', 'לוח גלי בצבעים לא שקופים, שקופים למחצה ושקופים.', '0%-90%', 1, 'פרגולות · סככות ומחסנים'),
+            ('פלרוף מלבני', 'לוח גלי בלבן לא שקוף.', 'לא שקוף', 1, 'פרגולות · סככות ומחסנים'),
+            ('סנטף BH', 'לוח מיוחד במגוון צבעים וברמות העברת אור שונות.', '20%-87%', 2, 'פרגולות · קירוי וזיגוג פרימיום · סככות ומחסנים'),
+            ('איזי גלייז', 'לוח מיוחד במראה דמוי זכוכית, במגוון צבעים.', '20%-90%', 2, 'פרגולות · קירוי וזיגוג פרימיום'),
+            ('סנטף זיגזג BH', 'לוח מיוחד במגוון צבעים וברמות העברת אור שונות.', '20%-87%', 2, 'פרגולות · קירוי וזיגוג פרימיום · סככות ומחסנים'),
+            ('סנפל', 'מערכת אדריכלית במגוון צבעים וברמות העברת אור שונות.', '4%-65%', 3, 'פרגולות · קירוי וזיגוג פרימיום'),
+            ('סנגלייז', 'מערכת אדריכלית במגוון צבעים וברמות העברת אור שונות.', '20%-90%', 3, 'פרגולות · קירוי וזיגוג פרימיום'),
+        ]
+        chip = 'display:inline-flex;align-items:center;gap:6px;padding:5px 12px;border-radius:100px;background:rgba(33,28,22,.07);font-size:13.5px;color:#4B443A'
+        tcards = ''.join(
+            '<div style="background:#FBF7EE;border-radius:18px;padding:20px 22px;box-shadow:0 1px 0 rgba(33,28,22,.06),0 14px 32px rgba(33,28,22,.08);display:flex;flex-direction:column;gap:10px">'
+            '<h3 style="font-size:20px;line-height:1.25">%s</h3><p style="font-size:15.5px;line-height:1.55;color:#4B443A">%s</p>'
+            '<div style="display:flex;flex-wrap:wrap;gap:8px"><span style="%s">העברת אור %s</span><span style="%s">בידוד תרמי %s</span></div>'
+            '<p style="font-size:14px;color:#6E4D1E;font-weight:600">מתאים ל: %s</p></div>'
+            % (esc(n), esc(d), chip, esc(l), chip, '★' * s + '☆' * (3 - s), esc(u)) for n, d, l, s, u in TECH)
+        extra_sec = ('<section id="ctech" style="background:#F5F0E4;color:#211C16;padding-block:clamp(3rem,9vh,6rem)"><div style="' + W + '">'
+                     '<div style="' + LBL % '#80561E' + '">' + BAR % '#B4813C' + 'בחירת קירוי</div>'
+                     '<h2 style="' + H2 + ';max-width:20ch">איזה קירוי מתאים לפרגולה שלכם?</h2>'
+                     '<p style="margin:14px 0 clamp(1.5rem,4vh,2.5rem);color:#4B443A;font-size:17px;max-width:56ch;line-height:1.7">מוצרים מקוריים של פלרם. הנתונים לפי טבלת היצרן. בפגישה במקום נבחר יחד את הלוח שמתאים לשמש, לשימוש ולקו של הבית.</p>'
+                     '<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:16px">' + tcards + '</div>'
+                     '<p style="margin-top:22px;color:#6B6256;font-size:14px;max-width:70ch">העברת האור והבידוד התרמי הם נתוני פלרם לפי סוג הלוח. הבחירה הסופית והפרטים הטכניים נקבעים בתכנון יישומי לכל פרויקט.</p>'
+                     '</div></section>\n')
+    rep('<section id="why"', hero + ds.apply([('cart', article), ('ccat', catalog), ('ctech', extra_sec), ('cdone', done), ('cmore', more_sec), ('cproc', process)]) + '<section id="why"', 'insert sections')
+    PCJS = ('<style>[data-pc-detail]{display:none}[data-pc-detail].on{display:flex;flex-direction:column;gap:10px}</style><script>/* project cards: more about the project, on the image */(function(){document.addEventListener("click",function(e){var o=e.target.closest&&e.target.closest("[data-pc-open]"),c=e.target.closest&&e.target.closest("[data-pc-close]");if(!o&&!c)return;var card=(o||c).closest("div[style*=aspect-ratio]");var d=card.querySelector("[data-pc-detail]");if(d)d.classList.toggle("on",!!o)});})();</script>')
+    rep('</body>', js + PCJS + '</body>', 'js')
+    css = ('<style id="stz-type-cat">#cart p,#cproc p,#ctech p,#cmore p,#ccat p,#chero p{text-wrap:pretty}#cart h2,#ccat h2,#ctech h2,#cdone h2,#cmore h2,#cproc h2,#chero h1{text-wrap:balance}@media (max-width:640px){#cart h2,#ccat h2,#ctech h2,#cdone h2,#cmore h2,#cproc h2{font-size:28px!important;line-height:1.18!important}#chero h1{font-size:34px!important;line-height:1.1!important}#chero p{font-size:17px!important;line-height:1.6!important}#cart p,#ctech>div>p:first-of-type{font-size:16.5px!important;line-height:1.75!important}#ccat p[style*="font-size"],#ctech div p[style*="font-size: 15.5px"]{font-size:15.5px!important;line-height:1.55!important}#ccat h3,#ctech h3{font-size:20px!important;line-height:1.25!important}#cmore h3{font-size:19px!important;line-height:1.3!important}#cmore [data-pc-detail] p{font-size:15.5px!important;line-height:1.65!important}#cdone li{font-size:16px!important;line-height:1.45!important}#cdone p[style*="font-size"]{font-size:16.5px!important;line-height:1.7!important}#cproc h3{font-size:18px!important}#cproc summary{font-size:17px!important;line-height:1.4!important}#cproc details p{font-size:16px!important;line-height:1.7!important}#cproc div>p{font-size:15.5px!important}}</style><style id="stz-category">html body #hero,html body #why,html body #projects,html body #social,html body #scope,html body #services,html body #build,html body #reviews,html body #faq{display:none !important}' + ('' if slug == 'shade' else 'html body #trust{display:none !important}') +
            'html body header{background:rgba(27,23,18,0.94) !important;border-bottom-color:rgba(245,240,228,0.14) !important}'
            'html body div[style*="z-index: 900"],html body div[style*="z-index:900"]{display:none !important}summary::-webkit-details-marker{display:none}</style>')
     rep('</head>', css + '</head>', 'css')

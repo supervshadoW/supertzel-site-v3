@@ -39,7 +39,7 @@
       '#about .ab-env{display:inline-flex;align-items:center;gap:8px;margin-top:18px;min-height:44px;padding:0;border:0;background:transparent;color:#6E4D1E;font:inherit;font-size:15.5px;font-weight:600;cursor:pointer;border-bottom:1px solid rgba(110,77,30,.4)}' +
       'html.stz-env-open{overflow:hidden}html.stz-env-open #envelope{display:block!important;position:fixed;top:5vh;bottom:0;inset-inline:0;margin-inline:auto;width:min(1100px,100%);z-index:540;overflow:auto;border-radius:24px 24px 0 0;border:0;animation:ab-sheet .42s cubic-bezier(.2,.7,.2,1) both}' +
       '#stz-env-bd{position:fixed;inset:0;z-index:539;background:rgba(17,14,11,.72);display:none}html.stz-env-open #stz-env-bd{display:block}' +
-      '#stz-env-x{position:sticky;top:10px;float:inline-end;z-index:5;margin:10px 12px 0;width:44px;height:44px;border-radius:50%;border:1px solid rgba(33,28,22,.3);background:#F5F0E4;color:#211C16;font-size:22px;line-height:1;cursor:pointer}' +
+      '#stz-env-x{position:sticky;top:10px;float:inline-end;z-index:5;margin:10px 12px 0;min-width:44px;height:44px;padding:0 16px;border-radius:100px;border:1px solid rgba(33,28,22,.3);background:#F5F0E4;color:#211C16;font-size:14.5px;font-weight:500;line-height:1;cursor:pointer}' +
       '@keyframes ab-sheet{from{transform:translateY(40px);opacity:0}to{transform:none;opacity:1}}' +
       // slow strip of project photos drifting behind the text
       '#about{position:relative;overflow:hidden}#about>.ab-in{position:relative;z-index:1}' +
@@ -59,7 +59,7 @@
       '<div class="ab-in" style="width:min(var(--stz-side,92%),var(--stz-max,1180px));margin-inline:auto"><div class="ab-wrap">' +
       '<div class="ab-txt"><div style="display:inline-flex;align-items:center;gap:10px;color:#B4813C;font-size:14.5px;font-weight:600;margin-bottom:14px;white-space:nowrap"><span style="display:block;width:24px;height:1px;background:#B4813C"></span>מי אנחנו · IL Projects</div>' +
       '<h2 style="font-size:clamp(28px,3.4vw,42px);letter-spacing:-0.02em;line-height:1.12">פרויקט חוץ שלם, מעטפת אחת.</h2>' +
-      '<p class="ab-lead">מרחב החוץ הופך לחלק מהבית, בשפה עיצובית אחת ובקו נקי. נקודת קשר אחת מלווה אתכם מהפגישה הראשונה ועד המסירה.</p>' +
+      '<p class="ab-lead">פרגולות, סגירות, דקים וגינה במקום אחד, עם נקודת קשר אחת מהמדידה ועד ההתקנה.</p>' +
       '<ul class="ab-pts"><li>פתרונות חוץ מלאים לבית ולעסק</li><li>מהמדידה ועד המסירה</li><li>שיחת ייעוץ ומדידה ללא התחייבות</li></ul>' +
       '<div class="ab-cta"><a href="#contact" style="display:inline-flex;align-items:center;min-height:48px;padding:0 26px;border-radius:100px;background:#B4813C;color:#1B1712;font-size:16px;font-weight:600">תאמו שיחת ייעוץ</a>' +
       '<a href="#projects" style="color:#6E4D1E;font-size:15.5px;font-weight:600;border-bottom:1px solid rgba(110,77,30,.4);min-height:44px;display:inline-flex;align-items:center">לפרויקטים שביצענו <span aria-hidden="true" style="margin-inline-start:8px">←</span></a></div></div>' +
@@ -73,7 +73,7 @@
       function openEnv() {
         var e = envEl(); if (!e) return;
         if (!document.getElementById('stz-env-bd')) { var bd = document.createElement('div'); bd.id = 'stz-env-bd'; bd.onclick = closeEnv; document.body.appendChild(bd); }
-        if (!document.getElementById('stz-env-x')) { var x = document.createElement('button'); x.id = 'stz-env-x'; x.type = 'button'; x.setAttribute('aria-label', 'סגירה'); x.innerHTML = '&times;'; x.onclick = closeEnv; e.insertBefore(x, e.firstChild); }
+        if (!document.getElementById('stz-env-x')) { var x = document.createElement('button'); x.id = 'stz-env-x'; x.type = 'button'; x.setAttribute('aria-label', 'סגירה'); x.innerHTML = 'סגירה'; x.onclick = closeEnv; e.insertBefore(x, e.firstChild); }
         e.scrollTop = 0; root.classList.add('stz-env-open');
       }
       sec.querySelector('.ab-env').addEventListener('click', openEnv);
