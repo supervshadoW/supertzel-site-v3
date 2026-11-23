@@ -181,7 +181,7 @@
     var dd = mount.getAttribute('data-door'), door = (dd === 'garden' || dd === 'envelope') ? dd : 'balcony';
     var CFG = DATA[door], TYPES = CFG.types, MULTI = TYPES.length > 1, OFF = MULTI ? 0 : 1, TOTAL = MULTI ? 4 : 3;
     var DRY = /^(localhost|127\.0\.0\.1)$/.test(location.hostname) || /[?&]pmdry=1/.test(location.search);
-    var st = { step: OFF, type: MULTI ? null : 0, on: {}, stage: null, hot: null, sent: false, note: '' };
+    var st = { step: OFF, type: MULTI ? null : 0, on: {}, stage: null, hot: null, sent: false, note: '', est: false };
     var COMP = [], pins = [];
 
     mount.innerHTML =
@@ -214,7 +214,7 @@
     function summary() {
       var p = picked();
       return 'מפת פרויקט | סגנון: ' + TYPES[st.type].name + ' | רכיבים: ' + p.map(function (c, i) { return (i + 1) + ') ' + c.t; }).join(', ') +
-        ' | שלב: ' + STAGES[st.stage].t + ' | ספקים משוער: ' + nSuppliers() + (estimate() ? ' | הערכה שהוצגה: ' + fmtN(estimate().lo) + ' עד ' + fmtN(estimate().hi) + ' ש"ח' : '') + (st.note.trim() ? ' | הערה: ' + st.note.trim() : '');
+        ' | שלב: ' + STAGES[st.stage].t + ' | ספקים משוער: ' + nSuppliers() + (estimate() && st.est ? ' | הערכה שהוצגה: ' + fmtN(estimate().lo) + ' עד ' + fmtN(estimate().hi) + ' ש"ח' : '') + (st.note.trim() ? ' | הערה: ' + st.note.trim() : '');
     }
     function sync() {
       var p = picked();
@@ -268,7 +268,9 @@
           (T.other && !p.length ? '' : '<div class="pm-sup"><span class="n">' + n + '</span><div><b>בפרויקט כזה עובדים בערך ' + n + ' ספקים.</b><span class="s">אצלכם: תוכנית אחת ונקודת קשר אחת, מדידה אחת והובלה אחת. כשהפרויקט מנוהל במקום אחד יש פוטנציאל לחיסכון בעלויות לעומת הזמנה נפרדת מכל ספק, בהתאם לפרויקט ולהצעה בכתב. <a href="#' + (document.getElementById('one') ? 'one' : 'why') + '">מה זה נותן לכם ←</a></span></div></div>');
         var E = estimate();
         if (!E && TYPES[st.type].noEst) h += '<div class="pm-note">פרויקטים עסקיים ומוסדיים מתומחרים לפי מדידה והיקף. נחזור אליכם עם הצעה.</div>';
-        if (E) h += '<div class="pm-price"><span class="pm-price-l">הערכה כללית לפרויקט כזה</span><b class="pm-price-n">בערך ' + esc(fmtN(E.lo)) + ' עד ' + esc(fmtN(E.hi)) + ' ש"ח</b>' +
+        if (E && !st.est) h += '<div class="pm-opt"><div><b>רוצים גם הערכה כללית לפרויקט?</b><span>סימולטור לא מחייב: טווח כללי כדי להתכונן לשיחה, לא הצעת מחיר.</span></div><button type="button" class="pm-chip" id="pm-est" aria-pressed="false">להציג הערכה</button></div>';
+        if (E && st.est) h += '<div class="pm-price"><span class="pm-price-l">הערכה כללית, לא מחייבת</span><b class="pm-price-n">בערך ' + esc(fmtN(E.lo)) + ' עד ' + esc(fmtN(E.hi)) + ' ש"ח</b>' +
+          '<span class="pm-price-s">סימולטור להתרשמות בלבד, בגודל טיפוסי לכל רכיב ועם התקנה. הגודל, החומרים והגימור משנים אותו, והמחיר נקבע רק אחרי מדידה בשטח, בהצעה מפורטת בכתב.' + (E.lo < 40000 ? ' פרויקטים שלמים אצלנו מתחילים בדרך כלל בכ-40,000 ש"ח.' : '') + '</span></div>';
           '<span class="pm-price-s">טווח כללי, בגודל טיפוסי לכל רכיב ועם התקנה. הגודל, החומרים והגימור משנים אותו, והמחיר נקבע רק אחרי מדידה בשטח, בהצעה מפורטת בכתב.' + (E.lo < 40000 ? ' פרויקטים שלמים אצלנו מתחילים בדרך כלל בכ-40,000 ש"ח.' : '') + '</span></div>';
         if (!st.sent) {
           h += '<p class="pm-hint">השאירו מספר טלפון ונשלח לכם את המפה המלאה: סדר בנייה, שלבים ומה מתואם עם מה. נחזור אליכם לשיחה קצרה.</p>' +
@@ -293,6 +295,7 @@
       var ni = document.getElementById('pm-note-in'); if (ni) ni.oninput = function () { st.note = ni.value; var n2 = document.getElementById('pm-next'); if (n2) n2.disabled = !(picked().length || st.note.trim()); };
       var nx = document.getElementById('pm-next'); if (nx) nx.onclick = function () { st.step++; track('pm_step', { step: st.step }); render(); };
       var bk = document.getElementById('pm-back'); if (bk) bk.onclick = function () { st.sent = false; st.step = st.step === 3 ? 1 : st.step - 1; render(); };
+      var es = document.getElementById('pm-est'); if (es) es.onclick = function () { st.est = true; track('pm_estimate', {}); render(); };
       var fm = document.getElementById('pm-form'); if (fm) fm.onsubmit = submit;
       sync();
     }
