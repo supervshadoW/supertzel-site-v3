@@ -56,6 +56,9 @@
                 ],
     "rewrites":  [ { "source": "/glass-closures", "destination": "/pergola" } ],
     "redirects":  [
+                      { "source": "/(.*)\\.md", "destination": "/", "permanent": false },
+                      { "source": "/tools/(.*)", "destination": "/", "permanent": false },
+                      { "source": "/(.*)\\.py", "destination": "/", "permanent": false },
                       {
                           "destination":  "/legal#privacy",
                           "permanent":  false,
