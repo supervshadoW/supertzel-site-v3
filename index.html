@@ -527,7 +527,7 @@ footer a,footer button{display:inline-flex;align-items:center;min-height:32px}
     </div>
   </section>
 
-  <section id="bld-cats" class="bl-sec" style="padding-top:clamp(1rem,3vh,2rem)">
+  <section id="bld-step2" class="bl-sec" style="padding-top:clamp(1rem,3vh,2rem)">
     <div class="bl-wrap">
       <div class="bl-head">
         <div>
@@ -694,7 +694,7 @@ footer a,footer button{display:inline-flex;align-items:center;min-height:32px}
     }
     document.addEventListener('click',function(e){
       var t=e.target;if(!t.closest)return;var b;
-      if(b=t.closest('[data-path]')){var inSum=!!t.closest('.bl-sum');S.path=b.getAttribute('data-path');if(S._sug!==S.path){S.cats=SUGGEST[S.path].slice();S._sug=S.path}render();if(!inSum)setTimeout(function(){scrollTo('bld-cats')},180);return}
+      if(b=t.closest('[data-path]')){var inSum=!!t.closest('.bl-sum');S.path=b.getAttribute('data-path');if(S._sug!==S.path){S.cats=SUGGEST[S.path].slice();S._sug=S.path}render();if(!inSum)setTimeout(function(){scrollTo('bld-step2')},180);return}
       if(b=t.closest('[data-cat]')){var i=+b.getAttribute('data-cat'),k=S.cats.indexOf(i);k>-1?S.cats.splice(k,1):S.cats.push(i);S.note=k>-1?-1:i;render();return}
       if(b=t.closest('[data-flt]')){S.flt=+b.getAttribute('data-flt');S.shown=8;render();return}
       if(b=t.closest('[data-pic]')){var j=+b.getAttribute('data-pic'),q=S.liked.indexOf(j);q>-1?S.liked.splice(q,1):S.liked.push(j);b.setAttribute('aria-pressed',q>-1?'false':'true');$('#bld-pc').textContent=S.liked.length?'סימנתם '+S.liked.length:'';summary();return}
@@ -704,7 +704,12 @@ footer a,footer button{display:inline-flex;align-items:center;min-height:32px}
       if(b=t.closest('[data-go]')){scrollTo(b.getAttribute('data-go'));return}
       if(t.closest('#bld-send')){send();return}
     });
-    function start(){render()}
+    var IDS=['bld-gal','bld-cats','bld-fig','bld-sp','bld-sc','bld-aud','bld-when','bld-flt'];
+    function stale(){return IDS.some(function(id){var e=document.getElementById(id);return e&&!e.getAttribute('data-r')})}
+    function mark(){IDS.forEach(function(id){var e=document.getElementById(id);if(e)e.setAttribute('data-r','1')})}
+    var busy=false;
+    function sync(){if(busy)return;busy=true;requestAnimationFrame(function(){busy=false;if(stale()){render();mark()}})}
+    function start(){render();mark();try{new MutationObserver(sync).observe(document.body,{childList:true,subtree:true})}catch(e){}window.addEventListener('load',sync);setInterval(sync,1500)}
     if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',start);else start();
   })();
   </script>
@@ -1256,7 +1261,7 @@ class Component extends DCLogic {
         dotBg: on ? '#B4813C' : 'rgba(245,240,228,0.85)', mark: on ? '●' : '',
         cta: on ? 'המסלול שלכם' : 'בחירה במסלול ←', ctaBg: on ? '#B4813C' : 'rgba(245,240,228,0.08)', ctaFg: on ? '#1B1712' : '#F5F0E4', ctaBc: on ? '#B4813C' : 'rgba(245,240,228,0.55)', onTap: () => this.pickPath(key) }; }),
       pthLabel: cur.label, pthTitle: cur.head, pthCta: cur.cta, pthHasLp: cur.lp, pthPoints: cur.points,
-      pthBarShow: !!this.state.pastScope, pthBarTop: n ? '72px' : '86px',
+      pthBarShow: false, pthBarTop: n ? '72px' : '86px',
       pthSwap: () => { const el = document.getElementById('scope'); if (el) window.scrollTo({ top: el.getBoundingClientRect().top + window.scrollY - 70, behavior: 'smooth' }); },
       projSub: cur.proj,
       pthPickCount: (() => { const c = (this.state.worlds || []).length + (this.state.aud || []).length + (this.state.likedS || []).length; return c ? ' · ' + c + ' סימונים' : ''; })(),
