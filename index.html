@@ -434,121 +434,178 @@ footer a,footer button{display:inline-flex;align-items:center;min-height:32px}
   </section>
 
   <style id="stz-builder">
-    #scope .bl-card{border:1px solid rgba(33,28,22,0.14);background:#FBF7EE;border-radius:28px;box-shadow:0 18px 40px rgba(33,28,22,0.12);padding:clamp(1.25rem,3vw,2.25rem)}
-    #scope .bl-bar{display:flex;align-items:center;justify-content:space-between;gap:12px;font-size:13px;font-weight:600;color:#80561E;margin-bottom:10px}
-    #scope .bl-track{height:3px;border-radius:100px;background:rgba(33,28,22,0.12);overflow:hidden;margin-bottom:clamp(1.25rem,3vh,2rem)}
-    #scope .bl-fill{height:100%;background:#B4813C;border-radius:100px;transition:width .4s ease}
-    #scope .bl-h{font-size:clamp(22px,2.6vw,30px);letter-spacing:-0.02em;line-height:1.2;margin-bottom:6px}
-    #scope .bl-sub{color:#4B443A;font-size:16px;margin-bottom:clamp(1rem,3vh,1.5rem)}
-    #scope .bl-step[hidden]{display:none}
-    #scope .bl-paths{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(12px,1.8vw,20px)}
-    #scope .bl-path{position:relative;display:flex;flex-direction:column;justify-content:flex-end;min-height:min(56vh,440px);border-radius:22px;overflow:hidden;color:#F5F0E4;border:2px solid transparent;padding:0;cursor:pointer;font:inherit;text-align:right;isolation:isolate;background:#1B1712;transition:translate .35s cubic-bezier(.2,.7,.2,1),box-shadow .35s}
-    #scope .bl-path:hover{translate:0 -6px;box-shadow:0 26px 50px rgba(33,28,22,0.28)}
-    #scope .bl-path img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-2}
-    #scope .bl-path::before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(to top,rgba(20,17,13,0.92) 0%,rgba(20,17,13,0.5) 50%,rgba(20,17,13,0) 80%)}
-    #scope .bl-path[aria-pressed="true"]{border-color:#C99752;box-shadow:0 0 0 3px rgba(201,151,82,0.35),0 26px 50px rgba(33,28,22,0.28)}
-    #scope .bl-tick{position:absolute;top:14px;inset-inline-start:14px;width:34px;height:34px;border-radius:50%;border:1.5px solid rgba(245,240,228,0.7);display:grid;place-items:center;font-size:17px;font-weight:700;color:transparent;background:rgba(20,17,13,0.35)}
-    #scope [aria-pressed="true"] > .bl-tick{background:#B4813C;border-color:#B4813C;color:#1B1712}
-    #scope .bl-pb{padding:clamp(18px,2vw,26px);display:flex;flex-direction:column;gap:8px}
-    #scope .bl-pn{color:#C99752;font-size:13px;font-weight:600;letter-spacing:.08em}
-    #scope .bl-pe{font-size:clamp(21px,2vw,26px);line-height:1.2;font-weight:500;letter-spacing:-0.02em}
-    #scope .bl-pl{font-size:15px;line-height:1.5;color:rgba(245,240,228,0.82)}
-    #scope .bl-chips{display:flex;flex-wrap:wrap;gap:10px}
-    #scope .bl-chip{display:inline-flex;align-items:center;gap:10px;min-height:48px;padding:0 20px;border-radius:100px;border:1px solid rgba(33,28,22,0.25);background:transparent;color:#211C16;font:inherit;font-size:15.5px;font-weight:500;cursor:pointer;transition:background .2s,border-color .2s}
-    #scope .bl-chip:hover{border-color:#B4813C}
-    #scope .bl-chip[aria-pressed="true"]{background:#211C16;border-color:#211C16;color:#F5F0E4}
-    #scope .bl-chip[aria-pressed="true"]::before{content:"✓";color:#C99752;font-weight:700}
-    #scope .bl-gal{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:clamp(10px,1.4vw,16px)}
-    #scope .bl-ph{position:relative;aspect-ratio:4/5;border-radius:16px;overflow:hidden;border:2px solid transparent;padding:0;cursor:pointer;background:#ECE4D2}
-    #scope .bl-ph img{width:100%;height:100%;object-fit:cover;display:block;transition:scale .6s}
-    #scope .bl-ph:hover img{scale:1.05}
-    #scope .bl-ph[aria-pressed="true"]{border-color:#B4813C}
-    #scope .bl-heart{position:absolute;top:10px;inset-inline-start:10px;width:38px;height:38px;border-radius:50%;background:rgba(20,17,13,0.55);display:grid;place-items:center}
-    #scope .bl-heart svg{width:20px;height:20px;fill:none;stroke:#F5F0E4;stroke-width:1.8}
-    #scope .bl-ph[aria-pressed="true"] .bl-heart{background:#B4813C}
-    #scope .bl-ph[aria-pressed="true"] .bl-heart svg{fill:#1B1712;stroke:#1B1712}
-    #scope .bl-sum{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(1.25rem,3vw,2.5rem);align-items:start}
-    #scope .bl-box{border-radius:20px;background:#F5F0E4;border:1px solid rgba(33,28,22,0.12);padding:clamp(1rem,2vw,1.5rem);display:grid;gap:14px}
-    #scope .bl-lbl{font-size:12.5px;font-weight:600;letter-spacing:.08em;color:#80561E}
-    #scope .bl-thumbs{display:flex;gap:8px;flex-wrap:wrap}
-    #scope .bl-thumbs img{width:56px;height:70px;object-fit:cover;border-radius:10px}
-    #scope .bl-ul{list-style:none;padding:0;margin:0;display:grid;gap:10px}
-    #scope .bl-ul li{display:flex;gap:10px;align-items:baseline;font-size:15.5px;line-height:1.5}
-    #scope .bl-ul li::before{content:"";width:6px;height:6px;border-radius:50%;background:#B4813C;flex:none;transform:translateY(-2px)}
-    #scope .bl-in{width:100%;min-height:52px;border-radius:14px;border:1px solid rgba(33,28,22,0.25);background:#fff;padding:0 16px;font:inherit;font-size:16px;color:#211C16;direction:rtl}
-    #scope textarea.bl-in{padding:12px 16px;min-height:84px;resize:vertical}
-    #scope .bl-in:focus{outline:2px solid #B4813C;outline-offset:1px}
-    #scope .bl-nav{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-top:clamp(1.25rem,3vh,2rem);flex-wrap:wrap}
-    #scope .bl-btn{display:inline-flex;align-items:center;gap:10px;min-height:52px;padding:0 28px;border-radius:100px;border:0;background:#B4813C;color:#1B1712;font:inherit;font-size:16px;font-weight:600;cursor:pointer}
-    #scope .bl-btn:disabled{opacity:.4;cursor:not-allowed}
-    #scope .bl-ghost{background:transparent;border:1px solid rgba(33,28,22,0.35);color:#211C16}
-    #scope .bl-err{color:#9B2C1F;font-size:14px;min-height:20px}
-    @media (max-width:860px){#scope .bl-paths{grid-template-columns:1fr}#scope .bl-path{min-height:250px}#scope .bl-gal{grid-template-columns:repeat(2,minmax(0,1fr))}#scope .bl-sum{grid-template-columns:1fr}}
+    .bl-sec{position:relative;background:#F5F0E4;padding-block:clamp(2.25rem,6vh,4rem);scroll-margin-top:70px}
+    .bl-wrap{width:min(var(--stz-side,92%),var(--stz-max,1180px));margin-inline:auto}
+    .bl-eb{display:inline-flex;align-items:center;gap:10px;color:#80561E;font-size:14.5px;font-weight:600;letter-spacing:.04em;margin-bottom:18px;white-space:nowrap}
+    .bl-eb::before{content:"";display:block;width:24px;height:1px;background:#B4813C}
+    .bl-h2{font-size:clamp(30px,3.9vw,48px);letter-spacing:-0.025em;line-height:1.1;text-wrap:balance}
+    .bl-sub{color:#4B443A;font-size:17px;max-width:52ch;margin-top:10px}
+    .bl-head{display:flex;justify-content:space-between;align-items:flex-end;gap:16px 28px;flex-wrap:wrap;margin-bottom:clamp(1.5rem,4vh,2.4rem)}
+    .bl-count{font-size:14px;font-weight:600;color:#80561E;min-height:20px}
+    .bl-paths{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(12px,1.8vw,22px)}
+    .bl-path{position:relative;display:flex;flex-direction:column;justify-content:flex-end;min-height:min(62vh,500px);border-radius:24px;overflow:hidden;color:#F5F0E4;border:2px solid transparent;padding:0;cursor:pointer;font:inherit;text-align:right;isolation:isolate;background:#1B1712;transition:translate .35s cubic-bezier(.2,.7,.2,1),box-shadow .35s}
+    .bl-path:hover{translate:0 -6px;box-shadow:0 26px 50px rgba(33,28,22,0.28)}
+    .bl-path img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-2}
+    .bl-path::before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(to top,rgba(20,17,13,0.92) 0%,rgba(20,17,13,0.5) 50%,rgba(20,17,13,0) 80%)}
+    .bl-path[aria-pressed="true"]{border-color:#C99752;box-shadow:0 0 0 3px rgba(201,151,82,0.35),0 26px 50px rgba(33,28,22,0.28)}
+    .bl-tick{position:absolute;top:14px;inset-inline-start:14px;width:36px;height:36px;border-radius:50%;border:1.5px solid rgba(245,240,228,0.7);display:grid;place-items:center;font-size:18px;font-weight:700;color:transparent;background:rgba(20,17,13,0.35)}
+    [aria-pressed="true"] > .bl-tick{background:#B4813C;border-color:#B4813C;color:#1B1712}
+    .bl-pb{padding:clamp(18px,2vw,28px);display:flex;flex-direction:column;gap:8px}
+    .bl-pn{color:#C99752;font-size:13px;font-weight:600;letter-spacing:.08em}
+    .bl-pe{font-size:clamp(22px,2.1vw,28px);line-height:1.2;font-weight:500;letter-spacing:-0.02em}
+    .bl-pl{font-size:15.5px;line-height:1.5;color:rgba(245,240,228,0.82)}
+    .bl-chips{display:flex;flex-wrap:wrap;gap:10px}
+    .bl-chip{display:inline-flex;align-items:center;gap:10px;min-height:50px;padding:0 22px;border-radius:100px;border:1px solid rgba(33,28,22,0.25);background:transparent;color:#211C16;font:inherit;font-size:16px;font-weight:500;cursor:pointer;transition:background .2s,border-color .2s}
+    .bl-chip:hover{border-color:#B4813C}
+    .bl-chip[aria-pressed="true"]{background:#211C16;border-color:#211C16;color:#F5F0E4}
+    .bl-chip[aria-pressed="true"]::before{content:"✓";color:#C99752;font-weight:700}
+    .bl-filter .bl-chip{min-height:42px;padding:0 18px;font-size:14.5px}
+    .bl-gal{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:clamp(10px,1.4vw,18px);margin-top:clamp(1.25rem,3vh,2rem)}
+    .bl-ph{position:relative;aspect-ratio:4/5;border-radius:18px;overflow:hidden;border:2px solid transparent;padding:0;cursor:pointer;background:#ECE4D2;box-shadow:0 10px 24px rgba(33,28,22,0.14)}
+    .bl-ph img{width:100%;height:100%;object-fit:cover;display:block;transition:scale .6s}
+    .bl-ph:hover img{scale:1.05}
+    .bl-ph[aria-pressed="true"]{border-color:#B4813C}
+    .bl-ph span.bl-cap{position:absolute;inset-inline:0;bottom:0;padding:40px 12px 12px;background:linear-gradient(180deg,rgba(17,14,11,0) 0%,rgba(17,14,11,0.82) 70%);color:#F5F0E4;font-size:13.5px;text-align:right;line-height:1.35}
+    .bl-heart{position:absolute;top:10px;inset-inline-start:10px;width:40px;height:40px;border-radius:50%;background:rgba(20,17,13,0.55);display:grid;place-items:center}
+    .bl-heart svg{width:21px;height:21px;fill:none;stroke:#F5F0E4;stroke-width:1.8}
+    .bl-ph[aria-pressed="true"] .bl-heart{background:#B4813C}
+    .bl-ph[aria-pressed="true"] .bl-heart svg{fill:#1B1712;stroke:#1B1712}
+    .bl-btn{display:inline-flex;align-items:center;gap:10px;min-height:52px;padding:0 28px;border-radius:100px;border:0;background:#B4813C;color:#1B1712;font:inherit;font-size:16px;font-weight:600;cursor:pointer;text-decoration:none}
+    .bl-btn:disabled{opacity:.5;cursor:not-allowed}
+    .bl-ghost{background:transparent;border:1px solid rgba(33,28,22,0.35);color:#211C16}
+    .bl-more{display:flex;justify-content:center;gap:12px;flex-wrap:wrap;margin-top:clamp(1.25rem,3vh,2rem)}
+    .bl-form{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr);gap:clamp(1.5rem,3.5vw,3rem);align-items:start}
+    .bl-card{background:#FBF7EE;border:1px solid rgba(33,28,22,0.14);border-radius:28px;box-shadow:0 18px 40px rgba(33,28,22,0.12);padding:clamp(1.25rem,3vw,2.25rem);display:grid;gap:22px}
+    .bl-sum{position:sticky;top:96px;background:#1B1712;color:#F5F0E4;border-radius:28px;padding:clamp(1.25rem,3vw,2rem);display:grid;gap:16px}
+    .bl-lbl{font-size:12.5px;font-weight:600;letter-spacing:.08em;color:#80561E}
+    .bl-sum .bl-lbl{color:#C99752}
+    .bl-thumbs{display:flex;gap:8px;flex-wrap:wrap}
+    .bl-thumbs img{width:58px;height:72px;object-fit:cover;border-radius:10px}
+    .bl-save{border-radius:18px;background:rgba(201,151,82,0.14);border:1px solid rgba(201,151,82,0.5);padding:14px 16px;font-size:16px;line-height:1.55}
+    .bl-save b{color:#E8C48C;font-size:1.15em}
+    .bl-ul{list-style:none;padding:0;margin:0;display:grid;gap:9px}
+    .bl-ul li{display:flex;gap:10px;align-items:baseline;font-size:15px;line-height:1.5;color:rgba(245,240,228,0.86)}
+    .bl-ul li::before{content:"";width:6px;height:6px;border-radius:50%;background:#C99752;flex:none;transform:translateY(-2px)}
+    .bl-in{width:100%;min-height:52px;border-radius:14px;border:1px solid rgba(33,28,22,0.25);background:#fff;padding:0 16px;font:inherit;font-size:16px;color:#211C16;direction:rtl}
+    textarea.bl-in{padding:12px 16px;min-height:96px;resize:vertical}
+    .bl-in:focus{outline:2px solid #B4813C;outline-offset:1px}
+    .bl-row{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+    .bl-fld{display:grid;gap:6px}
+    .bl-err{color:#9B2C1F;font-size:14px;min-height:20px}
+    @media (max-width:860px){.bl-paths{grid-template-columns:1fr}.bl-path{min-height:260px}.bl-gal{grid-template-columns:repeat(2,minmax(0,1fr))}.bl-form{grid-template-columns:1fr}.bl-sum{position:static;order:-1}.bl-row{grid-template-columns:1fr}}
+    .bl-fig{position:relative;border-radius:24px;overflow:hidden;box-shadow:0 18px 40px rgba(33,28,22,0.18);direction:ltr;margin-bottom:clamp(1rem,3vh,1.5rem);background:#ECE4D2}
+    .bl-fig img{display:block;width:100%;height:auto}
+    .bl-tag{position:absolute;top:12px;right:12px;font-size:12px;font-weight:600;padding:4px 12px;border-radius:100px;background:rgba(20,17,13,0.6);color:#F5F0E4;direction:rtl}
+    .bl-pin{position:absolute;transform:translate(-50%,-50%);display:inline-flex;align-items:center;gap:8px;min-height:40px;padding:0 14px;border-radius:100px;border:1.5px solid rgba(245,240,228,0.85);background:rgba(20,17,13,0.62);color:#F5F0E4;font:inherit;font-size:14px;font-weight:600;cursor:pointer;direction:rtl;white-space:nowrap;transition:background .2s,opacity .2s,scale .2s;backdrop-filter:blur(4px)}
+    .bl-pin::before{content:"+";font-size:17px;line-height:1;color:#E8C48C}
+    .bl-pin:hover{scale:1.06}
+    .bl-pin[aria-pressed="true"]{background:#B4813C;border-color:#B4813C;color:#1B1712}
+    .bl-pin[aria-pressed="true"]::before{content:"✓";color:#1B1712}
+    .bl-dim{opacity:.4}
+    .bl-note{min-height:44px;font-size:16px;color:#4B443A;margin-bottom:clamp(1rem,3vh,1.5rem)}
+    .bl-note b{color:#211C16}
+    .bl-sum .bl-chip{min-height:38px;padding:0 14px;font-size:13.5px;border-color:rgba(245,240,228,0.3);color:#F5F0E4}
+    .bl-sum .bl-chip[aria-pressed="true"]{background:#C99752;border-color:#C99752;color:#1B1712}
+    .bl-sum .bl-chip[aria-pressed="true"]::before{color:#1B1712}
+    @media (max-width:860px){.bl-pin{min-height:34px;padding:0 10px;font-size:12.5px}}
   </style>
-  <section id="scope" style="scroll-margin-top:70px;position:relative;z-index:6;background:#F5F0E4;padding-block:0 clamp(3.5rem,8vh,5.5rem)">
-    <span id="quick" aria-hidden="true" style="position:absolute;top:0;scroll-margin-top:70px"></span>
-    <div style="width:min(var(--stz-side,92%),var(--stz-max,1180px));margin-inline:auto">
-      <div class="bl-card" id="bld" aria-live="polite">
-        <div class="bl-bar"><span id="bld-n">שלב 1 מתוך 4</span><span>פחות מדקה</span></div>
-        <div class="bl-track"><div class="bl-fill" id="bld-fill" style="width:25%"></div></div>
 
-        <div class="bl-step" data-s="1">
-          <h2 class="bl-h">בונים את המרחב שלכם. איזה מסלול מתאים?</h2>
-          <p class="bl-sub">בוחרים אחד. אפשר לשנות בכל רגע.</p>
-          <div class="bl-paths">
-            <button type="button" class="bl-path" data-path="full" aria-pressed="false"><img src="/img/fast/hero/hero-pergola-kitchen-bar.webp" alt="מעטפת מלאה: מרחב חוץ שלם עם פרגולה ומטבח חוץ" loading="lazy" decoding="async"><span class="bl-tick" aria-hidden="true">✓</span><span class="bl-pb"><span class="bl-pn">01 · מעטפת מלאה</span><span class="bl-pe">הבית מתחיל להרגיש גדול יותר.</span><span class="bl-pl">מרחב חוץ שלם, בשפה עיצובית אחת.</span></span></button>
-            <button type="button" class="bl-path" data-path="add" aria-pressed="false"><img src="/img/fast/projects/light-sunroom-out.webp" alt="הרחבה ותוספות: חדר שמש וסגירת זכוכית" loading="lazy" decoding="async"><span class="bl-tick" aria-hidden="true">✓</span><span class="bl-pb"><span class="bl-pn">02 · הרחבה ותוספות</span><span class="bl-pe">עוד חדר שאתם באמת נכנסים אליו.</span><span class="bl-pl">תוספת שנראית כאילו תמיד הייתה חלק מהבית.</span></span></button>
-            <button type="button" class="bl-path" data-path="focus" aria-pressed="false"><img src="/img/fast/gallery/project-black-louvered-pergola.webp" alt="פתרון ממוקד: פרגולת אלומיניום שחורה עם רפפות" loading="lazy" decoding="async"><span class="bl-tick" aria-hidden="true">✓</span><span class="bl-pb"><span class="bl-pn">03 · פתרון ממוקד</span><span class="bl-pe">פינה אחת שמשנה את הבוקר.</span><span class="bl-pl">פתרון אחד, מדויק לבית ולאופן שבו אתם חיים בו.</span></span></button>
+  <section id="scope" class="bl-sec" style="padding-top:0">
+    <div class="bl-wrap">
+      <div class="bl-head">
+        <div>
+          <div class="bl-eb">קדימה, מתחילים</div>
+          <h2 class="bl-h2">איזה מסלול מתאים לכם?</h2>
+          <p class="bl-sub">בוחרים מסלול, ומשם הדרך ברורה: שירותים, השראה ופנייה אחת.</p>
+        </div>
+      </div>
+      <div class="bl-paths" role="group" aria-label="מסלולי שירות">
+        <button type="button" class="bl-path" data-path="full" aria-pressed="false"><img src="/img/fast/hero/hero-pergola-kitchen-bar.webp" alt="מעטפת מלאה: מרחב חוץ שלם עם פרגולה ומטבח חוץ" loading="lazy" decoding="async"><span class="bl-tick" aria-hidden="true">✓</span><span class="bl-pb"><span class="bl-pn">01 · מעטפת מלאה</span><span class="bl-pe">הבית מתחיל להרגיש גדול יותר.</span><span class="bl-pl">מרחב חוץ שלם, בשפה עיצובית אחת.</span></span></button>
+        <button type="button" class="bl-path" data-path="add" aria-pressed="false"><img src="/img/fast/projects/light-sunroom-out.webp" alt="הרחבה ותוספות: חדר שמש וסגירת זכוכית" loading="lazy" decoding="async"><span class="bl-tick" aria-hidden="true">✓</span><span class="bl-pb"><span class="bl-pn">02 · הרחבה ותוספות</span><span class="bl-pe">עוד חדר שאתם באמת נכנסים אליו.</span><span class="bl-pl">תוספת שנראית כאילו תמיד הייתה חלק מהבית.</span></span></button>
+        <button type="button" class="bl-path" data-path="focus" aria-pressed="false"><img src="/img/fast/gallery/project-black-louvered-pergola.webp" alt="פתרון ממוקד: פרגולת אלומיניום שחורה עם רפפות" loading="lazy" decoding="async"><span class="bl-tick" aria-hidden="true">✓</span><span class="bl-pb"><span class="bl-pn">03 · פתרון ממוקד</span><span class="bl-pe">פינה אחת שמשנה את הבוקר.</span><span class="bl-pl">פתרון אחד, מדויק לבית ולאופן שבו אתם חיים בו.</span></span></button>
+      </div>
+    </div>
+  </section>
+
+  <section id="bld-cats" class="bl-sec" style="padding-top:clamp(1rem,3vh,2rem)">
+    <div class="bl-wrap">
+      <div class="bl-head">
+        <div>
+          <div class="bl-eb">השירותים שלכם</div>
+          <h2 class="bl-h2">אילו שירותים מעניינים אתכם?</h2>
+          <p class="bl-sub" id="bld-s2sub">אפשר לסמן כמה. אם בחרתם מסלול, סימנו מראש הצעה שמתאימה לו.</p>
+        </div>
+        <div class="bl-count" id="bld-cc"></div>
+      </div>
+      <div class="bl-fig" id="bld-fig"><img src="/img/fast/w/envelope-worlds.webp" alt="הדמיה של מרחב חוץ שלם: פרגולה עם מטפסים, דק, מטבח חוץ, גדר ושער וגינה" loading="lazy" decoding="async"><span class="bl-tag">הדמיה</span>
+        <button type="button" class="bl-pin" data-cat="0" aria-pressed="false" style="left:50%;top:21%">קירוי והצללה</button>
+        <button type="button" class="bl-pin" data-cat="3" aria-pressed="false" style="left:84%;top:36%">גינה ומטפסים</button>
+        <button type="button" class="bl-pin" data-cat="4" aria-pressed="false" style="left:47%;top:50%">גידור ושער</button>
+        <button type="button" class="bl-pin" data-cat="5" aria-pressed="false" style="left:20%;top:58%">מטבח חוץ</button>
+        <button type="button" class="bl-pin" data-cat="2" aria-pressed="false" style="left:56%;top:84%">דק וריצוף</button>
+      </div>
+      <p class="bl-note" id="bld-note">לחצו על חלק במרחב כדי להוסיף אותו. כך רואים איך הכול מתחבר.</p>
+      <div class="bl-chips" id="bld-cats"></div>
+      <div class="bl-more"><button type="button" class="bl-btn" data-go="projects">להשראה מפרויקטים <span aria-hidden="true">←</span></button></div>
+    </div>
+  </section>
+
+  <section id="projects" class="bl-sec" style="padding-top:clamp(1rem,3vh,2rem)">
+    <div class="bl-wrap">
+      <div class="bl-head">
+        <div>
+          <div class="bl-eb">פרויקטים שביצענו</div>
+          <h2 class="bl-h2">אמון מקצועי נבנה דרך תוצאות.</h2>
+          <p class="bl-sub">סננו לפי סוג הפתרון וסמנו בלב מה שמדבר אליכם. מה שסימנתם יצורף לפנייה.</p>
+        </div>
+        <div class="bl-count" id="bld-pc"></div>
+      </div>
+      <div class="bl-chips bl-filter" id="bld-flt" role="group" aria-label="סינון לפי סוג פתרון"></div>
+      <div class="bl-gal" id="bld-gal"></div>
+      <div class="bl-more"><button type="button" class="bl-btn bl-ghost" id="bld-showmore" hidden>עוד פרויקטים</button><button type="button" class="bl-btn" data-go="quick">לטופס הפנייה <span aria-hidden="true">←</span></button></div>
+    </div>
+  </section>
+
+  <section id="quick" class="bl-sec" style="background:#ECE4D2;padding-block:clamp(2.5rem,7vh,4.5rem) clamp(3rem,8vh,5rem)">
+    <div class="bl-wrap">
+      <div class="bl-head">
+        <div>
+          <div class="bl-eb">הפנייה שלכם</div>
+          <h2 class="bl-h2">הפנייה מוכנה. נשארו כמה פרטים.</h2>
+          <p class="bl-sub">מה שבחרתם בדרך מצורף אוטומטית. נחזור אליכם לשיחת ייעוץ.</p>
+        </div>
+      </div>
+      <div class="bl-form" id="bld">
+        <div class="bl-card" id="bld-formcard">
+          <div class="bl-fld"><span class="bl-lbl">איזה פרויקט זה?</span><div class="bl-chips" id="bld-aud"></div></div>
+          <div class="bl-row">
+            <label class="bl-fld"><span class="bl-lbl">שם מלא</span><input class="bl-in" id="bld-name" autocomplete="name" placeholder="שם ושם משפחה"></label>
+            <label class="bl-fld"><span class="bl-lbl">טלפון</span><input class="bl-in" id="bld-phone" type="tel" inputmode="tel" autocomplete="tel" placeholder="05X-XXXXXXX" dir="rtl"></label>
           </div>
-        </div>
-
-        <div class="bl-step" data-s="2" hidden>
-          <h2 class="bl-h">אילו שירותים מעניינים אתכם?</h2>
-          <p class="bl-sub" id="bld-s2sub">אפשר לסמן כמה.</p>
-          <div class="bl-chips" id="bld-cats"></div>
-        </div>
-
-        <div class="bl-step" data-s="3" hidden>
-          <h2 class="bl-h">מה מדבר אליכם?</h2>
-          <p class="bl-sub">סמנו בלב מה שאהבתם. זה עוזר לנו להבין את הטעם שלכם, ואין בזה התחייבות.</p>
-          <div class="bl-gal" id="bld-gal"></div>
-        </div>
-
-        <div class="bl-step" data-s="4" hidden>
-          <h2 class="bl-h">כמעט סיימנו</h2>
-          <p class="bl-sub">זה מה שבחרתם. נחזור אליכם לשיחת ייעוץ.</p>
-          <div class="bl-sum">
-            <div class="bl-box">
-              <div><div class="bl-lbl">המסלול</div><div id="bld-sp" style="font-size:18px;font-weight:600;margin-top:4px"></div></div>
-              <div><div class="bl-lbl">השירותים</div><div id="bld-sc" style="font-size:15.5px;margin-top:4px;line-height:1.6"></div></div>
-              <div id="bld-sl-wrap"><div class="bl-lbl">מה אהבתם</div><div class="bl-thumbs" id="bld-sl" style="margin-top:6px"></div></div>
-              <div><div class="bl-lbl">מה מקבלים</div>
-                <ul class="bl-ul" style="margin-top:8px"><li>נקודת קשר אחת מהמדידה ועד ההתקנה</li><li>רצף עבודה מתואם בין השירותים שבחרתם</li><li>הצעה מפורטת בכתב, לפני שמתחילים</li></ul>
-              </div>
-            </div>
-            <div class="bl-box" style="background:transparent;border:0;padding:0">
-              <div><div class="bl-lbl" style="margin-bottom:8px">איזה פרויקט זה?</div><div class="bl-chips" id="bld-aud"></div></div>
-              <label style="display:grid;gap:6px"><span class="bl-lbl">שם</span><input class="bl-in" id="bld-name" autocomplete="name" placeholder="שם מלא"></label>
-              <label style="display:grid;gap:6px"><span class="bl-lbl">טלפון</span><input class="bl-in" id="bld-phone" type="tel" inputmode="tel" autocomplete="tel" placeholder="05X-XXXXXXX" dir="rtl"></label>
-              <label style="display:grid;gap:6px"><span class="bl-lbl">משהו שחשוב שנדע (לא חובה)</span><textarea class="bl-in" id="bld-notes" placeholder="מידות משוערות, מתי תרצו להתחיל, אילוצים"></textarea></label>
-              <div class="bl-err" id="bld-err" role="alert"></div>
-            </div>
+          <div class="bl-row">
+            <label class="bl-fld"><span class="bl-lbl">יישוב</span><input class="bl-in" id="bld-city" autocomplete="address-level2" placeholder="איפה הפרויקט"></label>
+            <label class="bl-fld"><span class="bl-lbl">דוא"ל (לא חובה)</span><input class="bl-in" id="bld-mail" type="email" autocomplete="email" placeholder="name@example.com" dir="ltr" style="text-align:right"></label>
           </div>
-          <p style="margin-top:18px;font-size:13.5px;line-height:1.7;color:#4B443A;max-width:70ch">בפרויקטים הכוללים כמה תחומי עבודה, IL Projects מסייעת בבניית רצף עבודה מתואם ובחיבור בין מרכיבי הפרויקט. עבודות מקצועיות ייעודיות, אישורים, תשתיות וליווי הנדסי, ככל שנדרשים, מתואמים מול בעלי מקצוע מוסמכים, בהתאם להיקף העבודה ולתנאי ההתקשרות שנקבעו מראש ובכתב.</p>
+          <div class="bl-fld"><span class="bl-lbl">מתי מתכננים להתחיל?</span><div class="bl-chips" id="bld-when"></div></div>
+          <label class="bl-fld"><span class="bl-lbl">ספרו לנו עוד (לא חובה)</span><textarea class="bl-in" id="bld-notes" placeholder="מידות משוערות, מה חשוב לכם, אילוצים בשטח"></textarea></label>
+          <div class="bl-err" id="bld-err" role="alert"></div>
+          <button type="button" class="bl-btn" id="bld-send" style="justify-self:start">שליחת הפנייה <span aria-hidden="true">←</span></button>
+          <p style="font-size:13px;line-height:1.7;color:#4B443A;max-width:70ch">בפרויקטים הכוללים כמה תחומי עבודה, IL Projects מסייעת בבניית רצף עבודה מתואם ובחיבור בין מרכיבי הפרויקט. עבודות מקצועיות ייעודיות, אישורים, תשתיות וליווי הנדסי, ככל שנדרשים, מתואמים מול בעלי מקצוע מוסמכים, בהתאם להיקף העבודה ולתנאי ההתקשרות שנקבעו מראש ובכתב.</p>
         </div>
-
-        <div class="bl-step" data-s="5" hidden>
-          <div style="display:flex;flex-direction:column;justify-content:center;min-height:280px;gap:16px">
-            <h2 class="bl-h" style="font-size:clamp(26px,3vw,34px)">הפנייה נשלחה</h2>
-            <p style="color:#4B443A;font-size:17px;max-width:40ch">נחזור אליכם לתיאום שיחת ייעוץ. אם נוח לכם, אפשר גם לכתוב לנו בוואטסאפ.</p>
-            <a class="bl-btn" style="align-self:flex-start;text-decoration:none" href="https://wa.me/972559958231" target="_blank" rel="noopener">כתבו לנו בוואטסאפ <span aria-hidden="true">←</span></a>
+        <aside class="bl-sum" aria-label="סיכום הבחירות שלכם">
+          <div><div class="bl-lbl">המסלול</div><div class="bl-chips" id="bld-sp" style="margin-top:8px"></div></div>
+          <div><div class="bl-lbl">השירותים</div><div class="bl-chips" id="bld-sc" style="margin-top:8px"></div></div>
+          <div class="bl-save" id="bld-save"></div>
+          <div id="bld-sl-wrap"><div class="bl-lbl">מה אהבתם</div><div class="bl-thumbs" id="bld-sl" style="margin-top:8px"></div></div>
+          <div><div class="bl-lbl" style="margin-bottom:8px">מה מקבלים</div>
+            <ul class="bl-ul"><li>נקודת קשר אחת מהמדידה ועד ההתקנה</li><li>רצף עבודה מתואם בין השירותים שבחרתם</li><li>הצעה מפורטת בכתב, לפני שמתחילים</li></ul>
           </div>
-        </div>
-
-        <div class="bl-nav" id="bld-nav">
-          <button type="button" class="bl-btn bl-ghost" id="bld-back" hidden>→ חזרה</button>
-          <button type="button" class="bl-btn" id="bld-next" disabled>המשך <span aria-hidden="true">←</span></button>
-        </div>
+        </aside>
+      </div>
+      <div id="bld-done" hidden style="background:#FBF7EE;border-radius:28px;padding:clamp(1.5rem,4vw,3rem);display:grid;gap:16px;justify-items:start">
+        <h2 class="bl-h2" style="font-size:clamp(26px,3vw,36px)">הפנייה נשלחה</h2>
+        <p style="color:#4B443A;font-size:17px;max-width:40ch">נחזור אליכם לתיאום שיחת ייעוץ. אם נוח לכם, אפשר גם לכתוב לנו בוואטסאפ.</p>
+        <a class="bl-btn" href="https://wa.me/972559958231" target="_blank" rel="noopener">כתבו לנו בוואטסאפ <span aria-hidden="true">←</span></a>
       </div>
     </div>
   </section>
@@ -558,88 +615,94 @@ footer a,footer button{display:inline-flex;align-items:center;min-height:32px}
     var CATS=['קירוי והצללה','סגירות מרפסת ומערכות הזזה','ריצוף, דקים וחיפויים','גינה ופיתוח נוף','גידור ותיחום','מטבחי חוץ ונגרות','בנייה קלה ותוספות חוץ'];
     var SUGGEST={full:[0,1,2,3,5],add:[1,6],focus:[]};
     var AUD=['בית פרטי','דירת גן','מרפסת או פנטהאוז','עסק או בית קפה','פרויקט של אדריכל או מעצב','ועד בית או מוסד'];
+    var WHEN=['בהקדם','תוך 3 חודשים','תוך חצי שנה','רק בודקים אפשרויות'];
     var G='/img/fast/gallery/',P='/img/fast/projects/';
     var PICS=[
       [G+'project-black-louvered-pergola.webp',[0],'פרגולת אלומיניום שחורה עם רפפות'],
-      [G+'pergola-cream-louvers.webp',[0],'פרגולה עם רפפות בגוון בהיר'],
-      [G+'project-wood-pergola-garden.webp',[0,3],'פרגולת עץ בגינה'],
-      [G+'pergola-modern-lighting-1.webp',[0],'פרגולה מודרנית עם תאורה'],
       [G+'balcony-electric-pergola-window.webp',[1,0],'סגירת מרפסת עם פרגולה חשמלית'],
-      [G+'project-black-glass-balcony.webp',[1],'סגירת מרפסת בזכוכית עם מסגרת שחורה'],
-      [P+'glass-sliding-cream.webp',[1],'מערכת זכוכית הזזה בגוון קרם'],
-      [P+'glass-sunroom-interior.webp',[1,6],'חדר שמש מבפנים'],
+      [G+'outdoor-kitchen-black-pergola.webp',[5,0],'מטבח חוץ מתחת לפרגולה שחורה'],
       [G+'project-deck-wood-pergola.webp',[2,0],'דק עץ ופרגולה'],
+      [G+'pergola-cream-louvers.webp',[0],'פרגולה עם רפפות בגוון בהיר'],
+      [P+'glass-sliding-cream.webp',[1],'מערכת זכוכית הזזה בגוון קרם'],
+      [G+'project-wood-pergola-garden.webp',[0,3],'פרגולת עץ בגינה'],
+      [G+'project-black-glass-balcony.webp',[1],'סגירת מרפסת בזכוכית עם מסגרת שחורה'],
+      [G+'fence-grey-aluminum.webp',[4],'גדר אלומיניום אפורה'],
       [G+'project-deck-black-frame.webp',[2],'דק עם מסגרת שחורה'],
-      [G+'cladding-1.webp',[2],'חיפוי קיר'],
       [G+'black-louvered-wood-cladding.webp',[2],'חיפוי רפפות שחור בגימור עץ'],
+      [P+'pergola-kitchen-bar-front.webp',[5,0],'פרגולה עם מטבח ובר'],
+      [P+'glass-sunroom-interior.webp',[1,6],'חדר שמש מבפנים'],
+      [P+'light-sunroom-out.webp',[6,1],'חדר שמש בבנייה קלה'],
       [G+'project-garden-sunroom-out.webp',[3,1],'חדר שמש בגינה'],
       [G+'pergola-tropical-bamboo.webp',[3,0],'פרגולה בסגנון טרופי'],
-      [G+'fence-grey-aluminum.webp',[4],'גדר אלומיניום אפורה'],
       [G+'fence-white-rishon.webp',[4],'גדר אלומיניום לבנה'],
-      [G+'outdoor-kitchen-black-pergola.webp',[5,0],'מטבח חוץ מתחת לפרגולה שחורה'],
       [G+'kitchen-1.webp',[5],'מטבח חוץ'],
-      [P+'pergola-kitchen-bar-front.webp',[5,0],'פרגולה עם מטבח ובר'],
-      [P+'light-sunroom-out.webp',[6,1],'חדר שמש בבנייה קלה'],
+      [G+'cladding-1.webp',[2],'חיפוי קיר'],
+      [G+'pergola-modern-lighting-1.webp',[0],'פרגולה מודרנית עם תאורה'],
       [G+'factory-office-glass.webp',[6],'משרד חוץ עם זכוכית'],
       [G+'project-office-glass-partitions.webp',[6],'מחיצות זכוכית']
     ];
-    var S={step:1,path:null,cats:[],liked:[],aud:[],sending:false};
-    var $=function(s,r){return (r||document).querySelector(s)};
-    var $$=function(s,r){return Array.prototype.slice.call((r||document).querySelectorAll(s))};
-    function root(){return document.getElementById('bld')}
-    function suggestApplied(){return S._sugFor===S.path}
-    function render(){
-      var r=root();if(!r)return;
-      $$('.bl-step',r).forEach(function(e){e.hidden=(+e.getAttribute('data-s'))!==S.step});
-      $('#bld-n',r).textContent='שלב '+Math.min(S.step,4)+' מתוך 4';
-      $('#bld-fill',r).style.width=Math.min(S.step,4)*25+'%';
-      $$('.bl-path',r).forEach(function(b){b.setAttribute('aria-pressed',b.getAttribute('data-path')===S.path?'true':'false')});
-      var cats=$('#bld-cats',r);
-      if(S.step===2){
-        cats.innerHTML=CATS.map(function(c,i){return '<button type="button" class="bl-chip" data-cat="'+i+'" aria-pressed="'+(S.cats.indexOf(i)>-1)+'">'+c+'</button>'}).join('');
-        $('#bld-s2sub',r).textContent=S.path==='focus'?'אפשר לסמן כמה.':'סימנו מראש הצעה שמתאימה למסלול. אפשר להוסיף ולהסיר.';
-      }
-      if(S.step===3){
-        var list=PICS.map(function(p,i){return {i:i,p:p}}).filter(function(o){return !S.cats.length||o.p[1].some(function(c){return S.cats.indexOf(c)>-1})});
-        if(list.length<4)list=PICS.map(function(p,i){return {i:i,p:p}});
-        $('#bld-gal',r).innerHTML=list.map(function(o){return '<button type="button" class="bl-ph" data-pic="'+o.i+'" aria-pressed="'+(S.liked.indexOf(o.i)>-1)+'" aria-label="'+o.p[2]+'"><img src="'+o.p[0]+'" alt="'+o.p[2]+'" loading="lazy" decoding="async"><span class="bl-heart" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 20s-7-4.4-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 10c0 5.6-7 10-7 10z"/></svg></span></button>'}).join('');
-      }
-      if(S.step===4){
-        $('#bld-sp',r).textContent=PATHS[S.path]||'';
-        $('#bld-sc',r).textContent=S.cats.length?S.cats.map(function(i){return CATS[i]}).join(' · '):'נבחר יחד בשיחה';
-        $('#bld-sl',r).innerHTML=S.liked.map(function(i){return '<img src="'+PICS[i][0]+'" alt="'+PICS[i][2]+'">'}).join('');
-        $('#bld-sl-wrap',r).style.display=S.liked.length?'':'none';
-        $('#bld-aud',r).innerHTML=AUD.map(function(a,i){return '<button type="button" class="bl-chip" data-aud="'+i+'" aria-pressed="'+(S.aud.indexOf(i)>-1)+'">'+a+'</button>'}).join('');
-      }
-      var back=$('#bld-back',r),next=$('#bld-next',r);
-      $('#bld-nav',r).style.display=S.step===5?'none':'';
-      back.hidden=S.step===1;
-      next.disabled=(S.step===1&&!S.path)||S.sending;
-      next.innerHTML=S.step===4?(S.sending?'שולחים...':'שליחה <span aria-hidden="true">←</span>'):'המשך <span aria-hidden="true">←</span>';
-      if(S.step===3&&!S.liked.length)next.innerHTML='דלגו, המשך <span aria-hidden="true">←</span>';
+    var DESC=['<b>קירוי והצללה:</b> פרגולות אלומיניום ועץ, סוככים, רשתות ומפרשי צל.','<b>סגירות מרפסת ומערכות הזזה:</b> סגירות זכוכית, חדרי שמש, חלונות הזזה ופנורמיים.','<b>ריצוף, דקים וחיפויים:</b> דקים מעץ טבעי או מרוכב, ריצוף חוץ וחיפויי קיר.','<b>גינה ופיתוח נוף:</b> צמחייה, מטפסים לפרגולות, השקיה ותאורת גינה.','<b>גידור ותיחום:</b> גדרות, שערים ומעקות בהתאמה לבית.','<b>מטבחי חוץ ונגרות:</b> מטבחים בהתאמה אישית, בר ואחסון. הכנות מים, חשמל וגז מתואמות מול בעלי מקצוע מוסמכים.','<b>בנייה קלה ותוספות חוץ:</b> משרד חוץ, חדר אירוח, מחסן. אישורים ככל שנדרש.'];
+    var REL={0:[3,2,5],1:[2,0,3],2:[0,3,5],3:[0,2],4:[3,2],5:[0,2,3],6:[1,2,3]};
+    var S={note:-1,path:null,cats:[],liked:[],aud:[],when:-1,flt:-1,shown:8,sending:false,_sug:null};
+    var $=function(s){return document.querySelector(s)};
+    function esc(t){return String(t).replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]})}
+    function pics(){
+      var list=PICS.map(function(p,i){return {i:i,p:p}});
+      if(S.flt>-1)return list.filter(function(o){return o.p[1].indexOf(S.flt)>-1});
+      if(S.cats.length)list.sort(function(a,b){var x=a.p[1].some(function(c){return S.cats.indexOf(c)>-1})?0:1,y=b.p[1].some(function(c){return S.cats.indexOf(c)>-1})?0:1;return x-y||a.i-b.i});
+      return list;
     }
-    function goto(n){S.step=n;render();var r=root();if(r){var t=r.getBoundingClientRect().top+window.scrollY-90;window.scrollTo({top:t,behavior:'smooth'})}}
+    function render(){
+      document.querySelectorAll('.bl-path').forEach(function(b){b.setAttribute('aria-pressed',b.getAttribute('data-path')===S.path?'true':'false')});
+      var c=$('#bld-cats');if(!c)return;
+      var rel=null;
+      if(S.path!=='full'&&S.cats.length){rel={};S.cats.forEach(function(i){rel[i]=1;(REL[i]||[]).forEach(function(j){rel[j]=1})})}
+      var dim=function(i){return rel&&!rel[i]?' bl-dim':''};
+      c.innerHTML=CATS.map(function(t,i){return '<button type="button" class="bl-chip'+dim(i)+'" data-cat="'+i+'" aria-pressed="'+(S.cats.indexOf(i)>-1)+'">'+t+'</button>'}).join('');
+      document.querySelectorAll('.bl-pin').forEach(function(p){var i=+p.getAttribute('data-cat');p.setAttribute('aria-pressed',S.cats.indexOf(i)>-1?'true':'false');p.classList.toggle('bl-dim',!!(rel&&!rel[i]))});
+      $('#bld-note').innerHTML=S.note>-1?DESC[S.note]:'לחצו על חלק במרחב כדי להוסיף אותו. כך רואים איך הכול מתחבר.';
+      $('#bld-cc').textContent=S.cats.length?'נבחרו '+S.cats.length+' מתוך 7':'';
+      $('#bld-flt').innerHTML='<button type="button" class="bl-chip" data-flt="-1" aria-pressed="'+(S.flt===-1)+'">הכול</button>'+CATS.map(function(t,i){return '<button type="button" class="bl-chip" data-flt="'+i+'" aria-pressed="'+(S.flt===i)+'">'+t+'</button>'}).join('');
+      var list=pics(),vis=list.slice(0,S.shown);
+      $('#bld-gal').innerHTML=vis.map(function(o){return '<button type="button" class="bl-ph" data-pic="'+o.i+'" aria-pressed="'+(S.liked.indexOf(o.i)>-1)+'" aria-label="'+esc(o.p[2])+'"><img src="'+o.p[0]+'" alt="'+esc(o.p[2])+'" loading="lazy" decoding="async"><span class="bl-heart" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 20s-7-4.4-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 10c0 5.6-7 10-7 10z"/></svg></span><span class="bl-cap">'+esc(o.p[2])+'</span></button>'}).join('');
+      $('#bld-showmore').hidden=list.length<=S.shown;
+      $('#bld-pc').textContent=S.liked.length?'סימנתם '+S.liked.length:'';
+      summary();
+      $('#bld-aud').innerHTML=AUD.map(function(a,i){return '<button type="button" class="bl-chip" data-aud="'+i+'" aria-pressed="'+(S.aud.indexOf(i)>-1)+'">'+a+'</button>'}).join('');
+      $('#bld-when').innerHTML=WHEN.map(function(a,i){return '<button type="button" class="bl-chip" data-when="'+i+'" aria-pressed="'+(S.when===i)+'">'+a+'</button>'}).join('');
+    }
+    function summary(){
+      $('#bld-sp').innerHTML=['full','add','focus'].map(function(k){return '<button type="button" class="bl-chip" data-path="'+k+'" aria-pressed="'+(S.path===k)+'">'+PATHS[k]+'</button>'}).join('');
+      $('#bld-sc').innerHTML=CATS.map(function(t,i){return '<button type="button" class="bl-chip" data-cat="'+i+'" aria-pressed="'+(S.cats.indexOf(i)>-1)+'">'+t+'</button>'}).join('');
+      var n=S.cats.length,sv=$('#bld-save');
+      sv.innerHTML=n>=2?'בחרתם <b>'+n+'</b> תחומי עבודה. במקום לחפש ולתאם <b>'+n+'</b> ספקים, תהיה לכם נקודת קשר אחת.':n===1?'תחום אחד, ונקודת קשר אחת מהמדידה ועד ההתקנה.':'סמנו שירותים, ונראה כאן כמה ספקים לא תצטרכו לתאם.';
+      $('#bld-sl').innerHTML=S.liked.map(function(i){return '<img src="'+PICS[i][0]+'" alt="'+esc(PICS[i][2])+'">'}).join('');
+      $('#bld-sl-wrap').style.display=S.liked.length?'':'none';
+    }
+    function scrollTo(id){var e=document.getElementById(id);if(e)window.scrollTo({top:e.getBoundingClientRect().top+window.scrollY-70,behavior:'smooth'})}
     function send(){
-      var r=root(),name=$('#bld-name',r).value.trim(),phone=$('#bld-phone',r).value.trim(),err=$('#bld-err',r);
-      var digits=phone.replace(/\D/g,'');
+      var name=$('#bld-name').value.trim(),phone=$('#bld-phone').value.trim(),err=$('#bld-err'),d=phone.replace(/\D/g,'');
       if(name.length<2){err.textContent='נא למלא שם.';return}
-      if(digits.length<9||digits.length>13){err.textContent='נא למלא מספר טלפון תקין.';return}
-      err.textContent='';S.sending=true;render();
-      var msg='מסלול: '+PATHS[S.path]+' | שירותים: '+(S.cats.length?S.cats.map(function(i){return CATS[i]}).join(', '):'לא נבחרו')+' | סוג פרויקט: '+(S.aud.length?S.aud.map(function(i){return AUD[i]}).join(', '):'לא צוין')+' | אהבו: '+(S.liked.length?S.liked.map(function(i){return PICS[i][2]}).join(', '):'לא סומן')+(($('#bld-notes',r).value||'').trim()?' | הערות: '+$('#bld-notes',r).value.trim():'');
-      var p={name:name,phone:phone,solution:PATHS[S.path],message:msg,source:'builder'};
-      var done=function(){S.sending=false;S.step=5;render();try{window.scrollTo({top:root().getBoundingClientRect().top+window.scrollY-90,behavior:'smooth'})}catch(e){}};
-      var fail=function(){S.sending=false;render();err.textContent='השליחה לא הצליחה. אפשר לנסות שוב או לכתוב לנו בוואטסאפ: 055-995-8231';};
-      if(window.stzSendLead){window.stzSendLead(p).then(done,fail)}else{fail()}
+      if(d.length<9||d.length>13){err.textContent='נא למלא מספר טלפון תקין.';return}
+      err.textContent='';S.sending=true;$('#bld-send').disabled=true;
+      var city=$('#bld-city').value.trim(),mail=$('#bld-mail').value.trim(),notes=$('#bld-notes').value.trim();
+      var msg='מסלול: '+(S.path?PATHS[S.path]:'לא נבחר')+' | שירותים: '+(S.cats.length?S.cats.map(function(i){return CATS[i]}).join(', '):'לא נבחרו')+' | סוג פרויקט: '+(S.aud.length?S.aud.map(function(i){return AUD[i]}).join(', '):'לא צוין')+' | יישוב: '+(city||'לא צוין')+' | מועד: '+(S.when>-1?WHEN[S.when]:'לא צוין')+(mail?' | דוא"ל: '+mail:'')+' | אהבו: '+(S.liked.length?S.liked.map(function(i){return PICS[i][2]}).join(', '):'לא סומן')+(notes?' | הערות: '+notes:'');
+      var p={name:name,phone:phone,solution:S.path?PATHS[S.path]:'',message:msg,source:'builder'};
+      var ok=function(){S.sending=false;$('#bld').hidden=true;$('#bld-done').hidden=false;scrollTo('quick')};
+      var bad=function(){S.sending=false;$('#bld-send').disabled=false;err.textContent='השליחה לא הצליחה. אפשר לנסות שוב או לכתוב לנו בוואטסאפ: 055-995-8231'};
+      if(window.stzSendLead){window.stzSendLead(p).then(ok,bad)}else{bad()}
     }
     document.addEventListener('click',function(e){
-      var t=e.target;if(!t.closest)return;var r=root();if(!r||!r.contains(t))return;
-      var b;
-      if(b=t.closest('.bl-path')){S.path=b.getAttribute('data-path');if(S._sugFor!==S.path){S.cats=SUGGEST[S.path].slice();S._sugFor=S.path}render();return}
-      if(b=t.closest('[data-cat]')){var i=+b.getAttribute('data-cat'),k=S.cats.indexOf(i);k>-1?S.cats.splice(k,1):S.cats.push(i);render();return}
-      if(b=t.closest('[data-pic]')){var j=+b.getAttribute('data-pic'),q=S.liked.indexOf(j);q>-1?S.liked.splice(q,1):S.liked.push(j);b.setAttribute('aria-pressed',q>-1?'false':'true');var nx=$('#bld-next',r);if(nx&&S.step===3)nx.innerHTML=S.liked.length?'המשך <span aria-hidden="true">←</span>':'דלגו, המשך <span aria-hidden="true">←</span>';return}
+      var t=e.target;if(!t.closest)return;var b;
+      if(b=t.closest('[data-path]')){var inSum=!!t.closest('.bl-sum');S.path=b.getAttribute('data-path');if(S._sug!==S.path){S.cats=SUGGEST[S.path].slice();S._sug=S.path}render();if(!inSum)setTimeout(function(){scrollTo('bld-cats')},180);return}
+      if(b=t.closest('[data-cat]')){var i=+b.getAttribute('data-cat'),k=S.cats.indexOf(i);k>-1?S.cats.splice(k,1):S.cats.push(i);S.note=k>-1?-1:i;render();return}
+      if(b=t.closest('[data-flt]')){S.flt=+b.getAttribute('data-flt');S.shown=8;render();return}
+      if(b=t.closest('[data-pic]')){var j=+b.getAttribute('data-pic'),q=S.liked.indexOf(j);q>-1?S.liked.splice(q,1):S.liked.push(j);b.setAttribute('aria-pressed',q>-1?'false':'true');$('#bld-pc').textContent=S.liked.length?'סימנתם '+S.liked.length:'';summary();return}
       if(b=t.closest('[data-aud]')){var a=+b.getAttribute('data-aud'),z=S.aud.indexOf(a);z>-1?S.aud.splice(z,1):S.aud.push(a);b.setAttribute('aria-pressed',z>-1?'false':'true');return}
-      if(t.closest('#bld-back')){goto(S.step-1);return}
-      if(t.closest('#bld-next')){if(S.step===4)send();else goto(S.step+1);return}
+      if(b=t.closest('[data-when]')){S.when=S.when===+b.getAttribute('data-when')?-1:+b.getAttribute('data-when');render();return}
+      if(t.closest('#bld-showmore')){S.shown+=8;render();return}
+      if(b=t.closest('[data-go]')){scrollTo(b.getAttribute('data-go'));return}
+      if(t.closest('#bld-send')){send();return}
     });
     function start(){render()}
     if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',start);else start();
@@ -712,45 +775,6 @@ footer a,footer button{display:inline-flex;align-items:center;min-height:32px}
       </div>
     </div>
   </section>
-
-  <section id="projects" style="padding-block:clamp(1.75rem,4vh,4rem) clamp(3rem,8vh,5rem)">
-    <div style="width:min(var(--stz-side,92%),var(--stz-max,1180px));margin-inline:auto">
-      <div data-reveal="" style="display:flex;justify-content:space-between;align-items:flex-end;gap:16px 28px;flex-wrap:wrap;margin-bottom:clamp(1.5rem,4vh,2.25rem)">
-        <div>
-          <div style="display:inline-flex;align-items:center;gap:10px;color:#80561E;font-size:14.5px;font-weight:600;margin-bottom:18px;white-space:nowrap"><span style="display:block;width:24px;height:1px;background:#B4813C"></span>פרויקטים שביצענו</div>
-          <h2 style="font-size:clamp(30px,3.9vw,48px);letter-spacing:-0.025em;line-height:1.1">אמון מקצועי נבנה דרך תוצאות.</h2><p style="margin-top:10px;color:#4B443A;font-size:16px;max-width:44ch">{{ projSub }}</p>
-        </div>
-      </div>
-      <div style="position:relative">
-        <div ref="{{ projRef }}" onPointerDown="{{ projDown }}" onPointerMove="{{ projMove }}" onPointerUp="{{ projUp }}" onPointerLeave="{{ projUp }}" onClickCapture="{{ projClickCap }}" style="display:flex;gap:{{ projGap }};overflow-x:auto;scroll-snap-type:x mandatory;scroll-behavior:smooth;-webkit-overflow-scrolling:touch;scrollbar-width:none;padding-bottom:4px;cursor:grab;touch-action:pan-x pan-y;user-select:none">
-          <sc-for list="{{ homeProj }}" as="p" hint-placeholder-count="6">
-            <a href="/projects" draggable="false" style="position:relative;flex:0 0 {{ projSlideW }};scroll-snap-align:start;display:block;border-radius:18px;overflow:hidden;aspect-ratio:4/5;background:#ECE4D2;color:#F5F0E4">
-              <img src="{{ p.src }}" alt="{{ p.title }}" draggable="false" loading="lazy" decoding="async" style="position:absolute;inset:0;display:block;width:100%;height:100%;object-fit:cover;pointer-events:none">
-              <sc-if value="{{ p.hasParts }}" hint-placeholder-val="{{ false }}"><span style="position:absolute;top:10px;right:10px;padding:4px 10px;border-radius:100px;background:#B4813C;color:#1B1712;font-size:12px;font-weight:600">{{ p.badge }}</span></sc-if>
-              <span style="position:absolute;inset-inline:0;bottom:0;display:flex;flex-direction:column;gap:3px;padding:44px 14px 14px;background:linear-gradient(180deg,rgba(17,14,11,0) 0%,rgba(17,14,11,0.86) 62%)">
-                <span style="font-size:12px;letter-spacing:0.06em;color:#E8C48C">{{ p.cat }}</span>
-                <span style="font-size:15.5px;font-weight:600;line-height:1.3;color:#F5F0E4">{{ p.title }}</span>
-                <sc-if value="{{ p.hasParts }}" hint-placeholder-val="{{ false }}"><span style="display:flex;flex-wrap:wrap;gap:4px;margin-top:4px"><sc-for list="{{ p.parts }}" as="q" hint-placeholder-count="0"><span style="font-size:11.5px;padding:2px 8px;border-radius:100px;border:1px solid rgba(232,196,140,0.6);color:#F5F0E4">{{ q.l }}</span></sc-for></span></sc-if>
-              </span>
-            </a>
-          </sc-for>
-        </div>
-        <div style="display:flex;align-items:center;justify-content:space-between;gap:12px;margin-top:12px">
-          <span style="font-size:13.5px;color:#6B6257">גררו או החליקו לצפייה בפרויקטים</span>
-          <div style="display:flex;gap:8px">
-            <button type="button" aria-label="הפרויקט הקודם" onClick="{{ projPrev }}" style="width:44px;height:44px;border-radius:100px;border:1px solid rgba(33,28,22,0.3);background:transparent;color:#211C16;font-size:17px;cursor:pointer" style-hover="background:rgba(33,28,22,0.06)">→</button>
-            <button type="button" aria-label="הפרויקט הבא" onClick="{{ projNext }}" style="width:44px;height:44px;border-radius:100px;border:1px solid #211C16;background:#211C16;color:#F5F0E4;font-size:17px;cursor:pointer" style-hover="background:#3A3127">←</button>
-          </div>
-        </div>
-      </div>
-      <a href="/projects" style="margin-top:14px;display:flex;align-items:center;justify-content:center;gap:10px;min-height:52px;border:1px solid #211C16;border-radius:100px;font-size:16px;font-weight:600;color:#211C16" style-hover="background:#211C16;color:#F5F0E4">לכל הפרויקטים <span aria-hidden="true">←</span></a>
-    </div>
-      <div style="width:min(var(--stz-side,92%),var(--stz-max,1180px));margin:clamp(2rem,5vh,3rem) auto 0;display:flex;justify-content:flex-end">
-      <a href="#faq" style="display:inline-flex;white-space:nowrap;align-items:center;gap:10px;font-size:15.5px;font-weight:500;color:#6E4D1E;border-bottom:1px solid rgba(180,129,60,0.5);padding-bottom:3px" style-hover="color:#211C16;border-color:currentColor"><span style="opacity:0.9">05</span> שאלות נפוצות <span aria-hidden="true">←</span></a>
-    </div>
-  </section>
-
-
 
   <section id="services" style="position:relative;overflow-x:clip;padding-block:clamp(2.5rem,6vh,4.5rem) clamp(1.25rem,3vh,2.5rem)">
     <span style="position:absolute;top:{{ wmTop }};inset-inline-start:-20px;font-size:{{ wmSize }};font-weight:600;color:#211C16;opacity:0.04;line-height:1;pointer-events:none;user-select:none">02</span>
