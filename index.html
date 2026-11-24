@@ -554,7 +554,7 @@ footer a,footer button{display:inline-flex;align-items:center;min-height:32px}
     <div style="width:min(var(--stz-side,92%),var(--stz-max,1180px));margin-inline:auto">
       <div data-reveal="" style="display:flex;justify-content:space-between;align-items:flex-end;gap:16px 28px;flex-wrap:wrap;margin-bottom:clamp(1.5rem,4vh,2.25rem)">
         <div>
-          <div style="display:inline-flex;align-items:center;gap:10px;color:#80561E;font-size:14.5px;font-weight:600;margin-bottom:18px;white-space:nowrap"><span style="display:block;width:24px;height:1px;background:#B4813C"></span>פרויקטים שביצענו</div>
+          <div style="display:inline-flex;align-items:center;gap:10px;color:#80561E;font-size:14.5px;font-weight:600;margin-bottom:18px;white-space:nowrap"><span style="display:block;width:24px;height:1px;background:#B4813C"></span>02 · פרויקטים שביצענו</div>
           <h2 style="font-size:clamp(30px,3.9vw,48px);letter-spacing:-0.025em;line-height:1.1">אמון מקצועי נבנה דרך תוצאות.</h2><p style="margin-top:10px;color:#4B443A;font-size:16px;max-width:44ch">{{ projSub }}</p>
         </div>
       </div>
@@ -589,12 +589,64 @@ footer a,footer button{display:inline-flex;align-items:center;min-height:32px}
 
 
 
+  <div style="position:relative;overflow:hidden;background:#1B1712">
+    <div style="position:absolute;inset:0;z-index:0">
+      <img src="/img/fast/gallery/hero-villa.webp" alt="" loading="lazy" decoding="async" style="display:block;width:100%;height:100%;object-fit:cover">
+    </div>
+    <div style="position:absolute;inset:0;z-index:1;pointer-events:none;background:linear-gradient(180deg,rgba(27,23,18,0.78) 0%,rgba(27,23,18,0.86) 40%,rgba(27,23,18,0.95) 100%)"></div>
+  <section id="fit" style="position:relative;z-index:2;padding-bottom:clamp(2rem,6vh,4rem)"><span id="quick" aria-hidden="true" style="position:absolute;top:0;scroll-margin-top:70px"></span>
+    <div style="position:relative;z-index:2;width:min(var(--stz-side,92%),var(--stz-max,1180px));margin-inline:auto;padding-block:clamp(3.25rem,9vh,6rem) clamp(2rem,5vh,3rem)">
+      <div data-b2wrap="" onPointerDown="{{ b2Down }}" onPointerUp="{{ b2Up }}" style="position:relative;align-items:start;display:grid;perspective:2400px;touch-action:pan-y">
+        <div data-b2p0="" aria-hidden="{{ b2P0Hidden }}" style="grid-area:1 / 1;background:#26201A;border:1px solid rgba(245,240,228,0.14);border-radius:20px;box-shadow:0 22px 50px rgba(0,0,0,0.45);padding:clamp(1.25rem,3vw,2.5rem) clamp(1.25rem,3vw,2.5rem) 88px;backface-visibility:hidden;-webkit-backface-visibility:hidden;transform-origin:right center;position:{{ b2Pos0 }};top:0;inset-inline:0;height:{{ b2Pos0H }};box-sizing:border-box;overflow:hidden;z-index:3;transform:rotateY({{ b2Rot0 }});transition:transform {{ bookDur }} cubic-bezier(0.45,0.05,0.2,1)">
+          <div data-b2lbl="" style="display:flex;justify-content:space-between;align-items:center;margin-bottom:14px;color:#C99752;font-size:12.5px;font-weight:600;letter-spacing:0.08em"><span>למי זה מתאים</span><span>01</span></div>
+          <div data-b2txt="">
+      <div>
+        <div style="display:inline-flex;align-items:center;gap:10px;color:#C99752;font-size:14.5px;font-weight:600;margin-bottom:16px"><span style="display:block;width:24px;height:1px;background:#C99752"></span>03 · למי זה מתאים</div>
+        <h2 style="font-size:{{ b2H2 }};letter-spacing:-0.03em;color:#F5F0E4;max-width:18ch">לכל סוג פרויקט,<br><span style="display:block;min-height:1.1em;color:#C99752;font-weight:300">הגישה הנכונה.</span></h2>
+        <p style="margin-top:14px;color:rgba(245,240,228,0.75);font-size:17px;max-width:38ch">בית פרטי, דירת גן, עסק או ועד בית — כל פרויקט מתוכנן לפי המקום והשימוש בו.</p>
+      </div>
+          </div>
+          <div data-b2form="" style="margin-top:18px;padding-top:16px;border-top:1px solid rgba(245,240,228,0.14)">
+            <div style="display:flex;flex-direction:column;gap:3px;margin-bottom:12px"><span style="font-size:12.5px;font-weight:600;letter-spacing:0.08em;color:#C99752">נכיר את הפרויקט</span><h3 style="font-size:21px;font-weight:600;line-height:1.3;color:#F5F0E4">מה סוג הפרויקט?</h3><span style="font-size:13.5px;color:rgba(245,240,228,0.6)">לא חובה — עוזר לנו להתכונן לשיחה</span></div>
+            <div style="display:grid;grid-template-columns:{{ audChipCols }};gap:8px">
+              <sc-for list="{{ audD }}" as="w" hint-placeholder-count="6">
+                <button type="button" aria-pressed="{{ w.pressed }}" onClick="{{ w.onTap }}" style="display:flex;align-items:center;gap:8px;min-height:48px;padding:8px 12px;border-radius:14px;border:1px solid {{ w.bc }};background:{{ w.bg }};color:#F5F0E4;font:inherit;font-size:14.5px;line-height:1.25;text-align:start;cursor:pointer;transition:background 0.2s,border-color 0.2s" style-active="transform:scale(0.97)">
+                  <span aria-hidden="true" style="flex:0 0 auto;display:flex;align-items:center;justify-content:center;width:18px;height:18px;border-radius:6px;border:1px solid {{ w.boxBc }};background:{{ w.boxBg }};color:#1B1712;font-size:12px;font-weight:700">{{ w.mark }}</span>
+                  <span style="min-width:0">{{ w.label }}</span>
+                </button>
+              </sc-for>
+            </div>
+            <div style="display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-top:16px">
+              <button type="button" onClick="{{ audLead }}" style="display:inline-flex;align-items:center;gap:10px;min-height:52px;padding:0 26px;border:0;border-radius:100px;background:#B4813C;color:#1B1712;font:inherit;font-size:16px;font-weight:600;cursor:pointer;white-space:nowrap" style-hover="background:#C99752" style-active="transform:scale(0.97)">תאמו שיחת ייעוץ <span aria-hidden="true">←</span></button>
+            </div>
+          </div>
+          <button type="button" aria-label="לעמוד הבא" onClick="{{ b2Next }}" data-flip-anim="" style="position:absolute;left:0;bottom:0;z-index:5;width:76px;height:76px;transform-origin:left bottom;animation:stzPeel 3.2s ease-in-out infinite;border:0;padding:0;cursor:pointer;border-bottom-left-radius:20px;background:linear-gradient(45deg,#3A3127 0%,#4A3E30 48%,rgba(0,0,0,0.45) 50%,transparent 54%);filter:drop-shadow(2px -2px 4px rgba(0,0,0,0.18))"></button><span aria-hidden="true" data-flip-anim="" style="position:absolute;left:72px;bottom:20px;z-index:4;display:{{ b2Hint }};align-items:center;gap:6px;padding:7px 14px;border-radius:100px;background:#C99752;color:#1B1712;font-size:13.5px;font-weight:600;pointer-events:none;white-space:nowrap;box-shadow:0 6px 18px rgba(0,0,0,0.25);animation:stzNudge 1.4s ease-in-out infinite">דפדפו לעמוד הבא <span>←</span></span>
+        </div>
+        <div data-b2p1="" aria-hidden="{{ b2P1Hidden }}" style="grid-area:1 / 1;background:#26201A;border:1px solid rgba(245,240,228,0.14);border-radius:20px;box-shadow:0 22px 50px rgba(0,0,0,0.45);padding:clamp(1.25rem,3vw,2.5rem);backface-visibility:hidden;-webkit-backface-visibility:hidden;transform-origin:right center;position:{{ b2Pos1 }};top:0;inset-inline:0;height:{{ b2Pos1H }};box-sizing:border-box;overflow:hidden;z-index:1;transform:rotateY({{ b2Rot2 }});transition:transform {{ bookDur }} cubic-bezier(0.45,0.05,0.2,1)">
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:14px;color:#C99752;font-size:12.5px;font-weight:600;letter-spacing:0.08em"><span>מבצעים בשטח</span><span>02</span></div>
+          <div style="display:flex;align-items:center;gap:12px;margin-bottom:14px"><span aria-hidden="true" style="display:block;width:26px;height:1px;background:#C99752;flex:0 0 auto"></span><h3 style="font-size: 24px; font-weight: 500; color: #F5F0E4; line-height: 1.25">מבצעים בשטח, <span style="font-weight: 300; color: rgb(201, 151, 82);">רואים את התמונה המלאה</span></h3></div>
+          <p style="color:rgba(245,240,228,0.8);font-size:16px;line-height:1.75;max-width:78ch">אנחנו מבצעים בשטח ומלווים את הפרויקט כנקודת קשר אחת. בפרויקטים הדורשים זאת, הביצוע מתואם מול אדריכלים, מעצבים ובעלי מקצוע מוסמכים — בהתאם לאופי הפרויקט, למורכבותו ולתנאי ההתקשרות שנקבעו מראש ובכתב.</p>
+
+        </div>
+      </div>
+      <div data-b2ctl="" style="display:flex;align-items:center;justify-content:space-between;gap:12px;margin-top:16px">
+        <div style="display:flex;align-items:center;gap:8px">
+          <button type="button" aria-label="לעמוד הקודם" onClick="{{ b2Prev }}" disabled="{{ b2AtStart }}" style="width:44px;height:44px;border-radius:100px;border:1px solid rgba(245,240,228,0.3);background:transparent;color:#F5F0E4;font-size:17px;cursor:pointer;opacity:{{ b2PrevOp }}">→</button>
+          <span dir="ltr" style="font-size:14px;font-weight:600;color:#F5F0E4;min-width:44px;text-align:center">{{ b2Num }} / 2</span>
+          <button type="button" aria-label="לעמוד הבא" onClick="{{ b2Next }}" disabled="{{ b2AtEnd }}" style="width:44px;height:44px;border-radius:100px;border:1px solid #C99752;background:#C99752;color:#1B1712;font-size:17px;cursor:pointer;opacity:{{ b2NextOp }};animation:{{ b2Ring }}" data-flip-anim="">←</button>
+        </div>
+        <button type="button" aria-pressed="{{ bookSoundPressed }}" aria-label="צליל דפדוף" onClick="{{ bookSoundToggle }}" style="display:{{ soundDisp }};align-items:center;gap:8px;min-height:44px;padding:0 14px;border-radius:100px;border:1px solid rgba(245,240,228,0.25);background:transparent;color:rgba(245,240,228,0.8);font:inherit;font-size:13.5px;cursor:pointer">{{ bookSoundLabel }}</button>
+      </div>
+    </div>
+  </section>
+  </div>
+
   <section id="services" style="position:relative;overflow-x:clip;padding-block:clamp(2.5rem,6vh,4.5rem) clamp(1.25rem,3vh,2.5rem)">
     <span style="position:absolute;top:{{ wmTop }};inset-inline-start:-20px;font-size:{{ wmSize }};font-weight:600;color:#211C16;opacity:0.04;line-height:1;pointer-events:none;user-select:none">02</span>
     <div style="width:min(var(--stz-side,92%),var(--stz-max,1180px));margin-inline:auto;position:relative;z-index:1">
       <div data-reveal="" style="display:flex;justify-content:space-between;align-items:flex-end;gap:clamp(1rem,4vw,2.5rem);flex-wrap:wrap;margin-bottom:clamp(2.5rem,6vh,4rem)">
         <div>
-          <div style="display:inline-flex;align-items:center;gap:10px;color:#80561E;font-size:14.5px;font-weight:600;letter-spacing:0.04em;margin-bottom:24px"><span style="display:block;width:24px;height:1px;background:#B4813C"></span>02 · מרכיבי המעטפת</div>
+          <div style="display:inline-flex;align-items:center;gap:10px;color:#80561E;font-size:14.5px;font-weight:600;letter-spacing:0.04em;margin-bottom:24px"><span style="display:block;width:24px;height:1px;background:#B4813C"></span>04 · מרכיבי המעטפת</div>
           <h2 style="font-size:clamp(34px,4.6vw,60px);letter-spacing:-0.03em;line-height:1.12;max-width:16ch;text-wrap:balance">שבעה תחומים, מעטפת אחת.</h2>
         </div>
         <p style="margin:0;color:#4B443A;font-size:18px;max-width:30ch">לחצו על התחום שמעניין אתכם ונצרף אותו לפנייה.</p>
@@ -650,7 +702,7 @@ footer a,footer button{display:inline-flex;align-items:center;min-height:32px}
     <div style="width:min(var(--stz-side,92%),var(--stz-max,1180px));margin-inline:auto">
       <div style="position:sticky;top:0;z-index:5;display:flex;justify-content:flex-end"><button type="button" aria-label="סגירה" onClick="{{ buildClose }}" style="min-width:44px;height:44px;padding:0 16px;border-radius:100px;border:1px solid rgba(245,240,228,0.4);background:#1B1712;color:#F5F0E4;font-size:14.5px;font-weight:500;line-height:1;cursor:pointer">סגירה</button></div>
       <div style="margin-top:clamp(1.75rem,4vh,2.5rem)">
-        <div style="display:inline-flex;align-items:center;gap:10px;color:#B4813C;font-size:14px;font-weight:600;margin-bottom:4px;white-space:nowrap"><span style="display:block;width:20px;height:1px;background:#B4813C"></span>03 · איך זה מתחבר</div>
+        <div style="display:inline-flex;align-items:center;gap:10px;color:#B4813C;font-size:14px;font-weight:600;margin-bottom:4px;white-space:nowrap"><span style="display:block;width:20px;height:1px;background:#B4813C"></span>05 · איך זה מתחבר</div>
         <div id="build-wiz" style="margin-top:10px;padding:clamp(1rem,2.5vw,1.6rem);border-radius:22px;background:#FBF7EE;color:#211C16;max-width:1080px;scroll-margin-top:90px">
           <div style="display:flex;flex-direction:column;gap:3px;margin-bottom:12px"><span style="font-size:12.5px;font-weight:600;letter-spacing:0.08em;color:#8A5F24">השראה עיצובית</span><h3 style="font-size:clamp(20px,2.2vw,26px);font-weight:600;line-height:1.25;color:#211C16">מעטפת אחת — בכמה סגנונות</h3><span style="font-size:13.5px;color:#6B6257">עברו בין הסגנונות וראו איך הרכיבים מתחברים למרחב אחד</span></div>
           <div style="margin-bottom:12px"><div role="group" aria-label="בחירת סגנון" style="display:flex;gap:8px;flex-wrap:wrap">
@@ -715,57 +767,6 @@ footer a,footer button{display:inline-flex;align-items:center;min-height:32px}
     </div>
   </section>
 
-  <div style="position:relative;overflow:hidden;background:#1B1712">
-    <div style="position:absolute;inset:0;z-index:0">
-      <img src="/img/fast/gallery/hero-villa.webp" alt="" loading="lazy" decoding="async" style="display:block;width:100%;height:100%;object-fit:cover">
-    </div>
-    <div style="position:absolute;inset:0;z-index:1;pointer-events:none;background:linear-gradient(180deg,rgba(27,23,18,0.78) 0%,rgba(27,23,18,0.86) 40%,rgba(27,23,18,0.95) 100%)"></div>
-  <section id="fit" style="position:relative;z-index:2;padding-bottom:clamp(2rem,6vh,4rem)"><span id="quick" aria-hidden="true" style="position:absolute;top:0;scroll-margin-top:70px"></span>
-    <div style="position:relative;z-index:2;width:min(var(--stz-side,92%),var(--stz-max,1180px));margin-inline:auto;padding-block:clamp(3.25rem,9vh,6rem) clamp(2rem,5vh,3rem)">
-      <div data-b2wrap="" onPointerDown="{{ b2Down }}" onPointerUp="{{ b2Up }}" style="position:relative;align-items:start;display:grid;perspective:2400px;touch-action:pan-y">
-        <div data-b2p0="" aria-hidden="{{ b2P0Hidden }}" style="grid-area:1 / 1;background:#26201A;border:1px solid rgba(245,240,228,0.14);border-radius:20px;box-shadow:0 22px 50px rgba(0,0,0,0.45);padding:clamp(1.25rem,3vw,2.5rem) clamp(1.25rem,3vw,2.5rem) 88px;backface-visibility:hidden;-webkit-backface-visibility:hidden;transform-origin:right center;position:{{ b2Pos0 }};top:0;inset-inline:0;height:{{ b2Pos0H }};box-sizing:border-box;overflow:hidden;z-index:3;transform:rotateY({{ b2Rot0 }});transition:transform {{ bookDur }} cubic-bezier(0.45,0.05,0.2,1)">
-          <div data-b2lbl="" style="display:flex;justify-content:space-between;align-items:center;margin-bottom:14px;color:#C99752;font-size:12.5px;font-weight:600;letter-spacing:0.08em"><span>למי זה מתאים</span><span>01</span></div>
-          <div data-b2txt="">
-      <div>
-        <div style="display:inline-flex;align-items:center;gap:10px;color:#C99752;font-size:14.5px;font-weight:600;margin-bottom:16px"><span style="display:block;width:24px;height:1px;background:#C99752"></span>03 · למי זה מתאים</div>
-        <h2 style="font-size:{{ b2H2 }};letter-spacing:-0.03em;color:#F5F0E4;max-width:18ch">לכל סוג פרויקט,<br><span style="display:block;min-height:1.1em;color:#C99752;font-weight:300">הגישה הנכונה.</span></h2>
-        <p style="margin-top:14px;color:rgba(245,240,228,0.75);font-size:17px;max-width:38ch">בית פרטי, דירת גן, עסק או ועד בית — כל פרויקט מתוכנן לפי המקום והשימוש בו.</p>
-      </div>
-          </div>
-          <div data-b2form="" style="margin-top:18px;padding-top:16px;border-top:1px solid rgba(245,240,228,0.14)">
-            <div style="display:flex;flex-direction:column;gap:3px;margin-bottom:12px"><span style="font-size:12.5px;font-weight:600;letter-spacing:0.08em;color:#C99752">נכיר את הפרויקט</span><h3 style="font-size:21px;font-weight:600;line-height:1.3;color:#F5F0E4">מה סוג הפרויקט?</h3><span style="font-size:13.5px;color:rgba(245,240,228,0.6)">לא חובה — עוזר לנו להתכונן לשיחה</span></div>
-            <div style="display:grid;grid-template-columns:{{ audChipCols }};gap:8px">
-              <sc-for list="{{ audD }}" as="w" hint-placeholder-count="6">
-                <button type="button" aria-pressed="{{ w.pressed }}" onClick="{{ w.onTap }}" style="display:flex;align-items:center;gap:8px;min-height:48px;padding:8px 12px;border-radius:14px;border:1px solid {{ w.bc }};background:{{ w.bg }};color:#F5F0E4;font:inherit;font-size:14.5px;line-height:1.25;text-align:start;cursor:pointer;transition:background 0.2s,border-color 0.2s" style-active="transform:scale(0.97)">
-                  <span aria-hidden="true" style="flex:0 0 auto;display:flex;align-items:center;justify-content:center;width:18px;height:18px;border-radius:6px;border:1px solid {{ w.boxBc }};background:{{ w.boxBg }};color:#1B1712;font-size:12px;font-weight:700">{{ w.mark }}</span>
-                  <span style="min-width:0">{{ w.label }}</span>
-                </button>
-              </sc-for>
-            </div>
-            <div style="display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-top:16px">
-              <button type="button" onClick="{{ audLead }}" style="display:inline-flex;align-items:center;gap:10px;min-height:52px;padding:0 26px;border:0;border-radius:100px;background:#B4813C;color:#1B1712;font:inherit;font-size:16px;font-weight:600;cursor:pointer;white-space:nowrap" style-hover="background:#C99752" style-active="transform:scale(0.97)">תאמו שיחת ייעוץ <span aria-hidden="true">←</span></button>
-            </div>
-          </div>
-          <button type="button" aria-label="לעמוד הבא" onClick="{{ b2Next }}" data-flip-anim="" style="position:absolute;left:0;bottom:0;z-index:5;width:76px;height:76px;transform-origin:left bottom;animation:stzPeel 3.2s ease-in-out infinite;border:0;padding:0;cursor:pointer;border-bottom-left-radius:20px;background:linear-gradient(45deg,#3A3127 0%,#4A3E30 48%,rgba(0,0,0,0.45) 50%,transparent 54%);filter:drop-shadow(2px -2px 4px rgba(0,0,0,0.18))"></button><span aria-hidden="true" data-flip-anim="" style="position:absolute;left:72px;bottom:20px;z-index:4;display:{{ b2Hint }};align-items:center;gap:6px;padding:7px 14px;border-radius:100px;background:#C99752;color:#1B1712;font-size:13.5px;font-weight:600;pointer-events:none;white-space:nowrap;box-shadow:0 6px 18px rgba(0,0,0,0.25);animation:stzNudge 1.4s ease-in-out infinite">דפדפו לעמוד הבא <span>←</span></span>
-        </div>
-        <div data-b2p1="" aria-hidden="{{ b2P1Hidden }}" style="grid-area:1 / 1;background:#26201A;border:1px solid rgba(245,240,228,0.14);border-radius:20px;box-shadow:0 22px 50px rgba(0,0,0,0.45);padding:clamp(1.25rem,3vw,2.5rem);backface-visibility:hidden;-webkit-backface-visibility:hidden;transform-origin:right center;position:{{ b2Pos1 }};top:0;inset-inline:0;height:{{ b2Pos1H }};box-sizing:border-box;overflow:hidden;z-index:1;transform:rotateY({{ b2Rot2 }});transition:transform {{ bookDur }} cubic-bezier(0.45,0.05,0.2,1)">
-          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:14px;color:#C99752;font-size:12.5px;font-weight:600;letter-spacing:0.08em"><span>מבצעים בשטח</span><span>02</span></div>
-          <div style="display:flex;align-items:center;gap:12px;margin-bottom:14px"><span aria-hidden="true" style="display:block;width:26px;height:1px;background:#C99752;flex:0 0 auto"></span><h3 style="font-size: 24px; font-weight: 500; color: #F5F0E4; line-height: 1.25">מבצעים בשטח, <span style="font-weight: 300; color: rgb(201, 151, 82);">רואים את התמונה המלאה</span></h3></div>
-          <p style="color:rgba(245,240,228,0.8);font-size:16px;line-height:1.75;max-width:78ch">אנחנו מבצעים בשטח ומלווים את הפרויקט כנקודת קשר אחת. בפרויקטים הדורשים זאת, הביצוע מתואם מול אדריכלים, מעצבים ובעלי מקצוע מוסמכים — בהתאם לאופי הפרויקט, למורכבותו ולתנאי ההתקשרות שנקבעו מראש ובכתב.</p>
-
-        </div>
-      </div>
-      <div data-b2ctl="" style="display:flex;align-items:center;justify-content:space-between;gap:12px;margin-top:16px">
-        <div style="display:flex;align-items:center;gap:8px">
-          <button type="button" aria-label="לעמוד הקודם" onClick="{{ b2Prev }}" disabled="{{ b2AtStart }}" style="width:44px;height:44px;border-radius:100px;border:1px solid rgba(245,240,228,0.3);background:transparent;color:#F5F0E4;font-size:17px;cursor:pointer;opacity:{{ b2PrevOp }}">→</button>
-          <span dir="ltr" style="font-size:14px;font-weight:600;color:#F5F0E4;min-width:44px;text-align:center">{{ b2Num }} / 2</span>
-          <button type="button" aria-label="לעמוד הבא" onClick="{{ b2Next }}" disabled="{{ b2AtEnd }}" style="width:44px;height:44px;border-radius:100px;border:1px solid #C99752;background:#C99752;color:#1B1712;font-size:17px;cursor:pointer;opacity:{{ b2NextOp }};animation:{{ b2Ring }}" data-flip-anim="">←</button>
-        </div>
-        <button type="button" aria-pressed="{{ bookSoundPressed }}" aria-label="צליל דפדוף" onClick="{{ bookSoundToggle }}" style="display:{{ soundDisp }};align-items:center;gap:8px;min-height:44px;padding:0 14px;border-radius:100px;border:1px solid rgba(245,240,228,0.25);background:transparent;color:rgba(245,240,228,0.8);font:inherit;font-size:13.5px;cursor:pointer">{{ bookSoundLabel }}</button>
-      </div>
-    </div>
-  </section>
-  </div>
 
 
 
@@ -786,7 +787,7 @@ footer a,footer button{display:inline-flex;align-items:center;min-height:32px}
     <div style="width:min(var(--stz-side,92%),var(--stz-max,1180px));margin-inline:auto">
       <div style="display:flex;justify-content:space-between;align-items:flex-end;gap:clamp(1rem,4vw,2.5rem);flex-wrap:wrap;margin-bottom:clamp(2rem,5vh,3.2rem)">
         <div>
-          <div style="display:inline-flex;align-items:center;gap:10px;color:#8F6326;font-size:14.5px;font-weight:600;margin-bottom:24px"><span style="display:block;width:24px;height:1px;background:#8F6326"></span>05 · לקוחות מספרים</div>
+          <div style="display:inline-flex;align-items:center;gap:10px;color:#8F6326;font-size:14.5px;font-weight:600;margin-bottom:24px"><span style="display:block;width:24px;height:1px;background:#8F6326"></span>06 · לקוחות מספרים</div>
           <h2 style="font-size:clamp(30px,3.9vw,48px);letter-spacing:-0.025em;color:#211C16;max-width:18ch">מה הלקוחות מספרים עלינו</h2>
         </div>
         <div style="display:flex;flex-direction:column;gap:14px;align-items:flex-start">
@@ -884,7 +885,7 @@ footer a,footer button{display:inline-flex;align-items:center;min-height:32px}
           </div>
         </div>
       <div style="order:{{ faqCardOrder }};position:{{ faqSticky }};top:110px;background:#1B1712;color:#F5F0E4;border-radius:26px;padding:clamp(1.5rem,3vw,2.25rem);display:flex;flex-direction:column;gap:18px">
-        <div style="display:inline-flex;align-items:center;gap:10px;color:#C99752;font-size:14px;font-weight:600;white-space:nowrap"><span style="display:block;width:24px;height:1px;background:#C99752"></span>05 · לפני שבוחרים</div>
+        <div style="display:inline-flex;align-items:center;gap:10px;color:#C99752;font-size:14px;font-weight:600;white-space:nowrap"><span style="display:block;width:24px;height:1px;background:#C99752"></span>07 · לפני שבוחרים</div>
         <h2 style="font-size:clamp(26px,2.8vw,34px);line-height:1.15;color:#F5F0E4">4 שאלות שכדאי לשאול לפני שבוחרים פתרון</h2>
         <p style="color:rgba(245,240,228,0.74);font-size:15.5px;line-height:1.6">ריכזנו את השאלות שעוזרות לבחור בביטחון.</p>
         <a href="#quick" style="align-self:flex-start;margin-top:4px;background:#B4813C;color:#1B1712;padding:13px 26px;font-size:15.5px;font-weight:600;border-radius:100px;white-space:nowrap" style-hover="background:#C99752;color:#1B1712">יש לכם שאלה? דברו איתנו</a>
@@ -1628,10 +1629,10 @@ class Component extends DCLogic {
     return [
       { id: 'hero', n: '', label: 'פתיחה' },
       { id: 'why', n: '01', label: 'מעטפת מקצועית לחלל החוץ' },
-      { id: 'services', n: '02', label: 'מרכיבי המעטפת' },
+      { id: 'projects', n: '02', label: 'פרויקטים שביצענו' },
       { id: 'fit', n: '03', label: 'למי זה מתאים' },
-      { id: 'projects', n: '04', label: 'מהשטח' },
-      { id: 'faq', n: '05', label: 'לפני שבוחרים' }
+      { id: 'services', n: '04', label: 'מרכיבי המעטפת' },
+      { id: 'faq', n: '07', label: 'לפני שבוחרים' }
     ];
   }
 
