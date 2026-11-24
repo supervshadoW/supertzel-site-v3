@@ -76,7 +76,7 @@
         if (!document.getElementById('stz-env-x')) { var x = document.createElement('button'); x.id = 'stz-env-x'; x.type = 'button'; x.setAttribute('aria-label', 'סגירה'); x.innerHTML = 'סגירה'; x.onclick = closeEnv; e.insertBefore(x, e.firstChild); }
         e.scrollTop = 0; root.classList.add('stz-env-open');
       }
-      sec.querySelector('.ab-env').addEventListener('click', openEnv);
+      var envBtn = sec.querySelector('.ab-env'); if (envBtn) envBtn.addEventListener('click', openEnv);
       document.addEventListener('keydown', function (ev) { if (ev.key === 'Escape') closeEnv(); });
     })();
     // the three points light up one after another when the section comes into view
