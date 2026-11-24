@@ -876,8 +876,12 @@ footer a,footer button{display:inline-flex;align-items:center;min-height:32px}
   </section>
   </sc-if>
 
-  <section id="faq" style="padding-block:clamp(3rem,8vh,5rem)">
-    <div style="width:min(var(--stz-side,92%),calc(var(--stz-max,1180px) - 140px));margin-inline:auto;display:grid;grid-template-columns:{{ faqCols2 }};gap:clamp(1.5rem,4vw,3rem);align-items:start">
+  <section id="faq" style="padding-block:clamp(1.25rem,3vh,2rem)">
+    <style id="stz-faq-more">#faq summary{list-style:none;cursor:pointer}#faq summary::-webkit-details-marker{display:none}#faq details[open] .stz-fq-sign{transform:rotate(180deg)}#faq details[open] summary{margin-bottom:clamp(1.5rem,4vh,2.5rem)}</style>
+    <details style="width:min(var(--stz-side,92%),calc(var(--stz-max,1180px) - 140px));margin-inline:auto">
+      <summary style="display:flex;align-items:center;justify-content:space-between;gap:16px;min-height:60px;padding:0 4px;border-top:1px solid rgba(33,28,22,0.14);border-bottom:1px solid rgba(33,28,22,0.14);color:#211C16;font-size:16px;font-weight:600"><span><span style="color:#80561E;margin-inline-end:12px;font-size:13px;letter-spacing:0.08em">05</span>לפני שבוחרים: 4 שאלות שכדאי לשאול</span><span class="stz-fq-sign" aria-hidden="true" style="display:grid;place-items:center;width:30px;height:30px;border-radius:50%;border:1px solid rgba(33,28,22,0.25);color:#8F6326;transition:transform .25s">▾</span></summary>
+
+    <div style="width:100%;display:grid;grid-template-columns:{{ faqCols2 }};gap:clamp(1.5rem,4vw,3rem);align-items:start">
         <div style="order:2;border-bottom:1px solid rgba(33,28,22,0.14);min-width:0">
           <div style="border-top:1px solid rgba(33,28,22,0.14)">
             <button type="button" onClick="{{ fq0Toggle }}" aria-expanded="{{ fq0Exp }}" style="width:100%;display:grid;grid-template-columns:36px minmax(0,1fr) 28px;gap:14px;align-items:center;background:transparent;border:0;padding:18px 0;text-align:right;cursor:pointer;color:#211C16;font:inherit">
@@ -931,6 +935,7 @@ footer a,footer button{display:inline-flex;align-items:center;min-height:32px}
         <a href="#quick" style="align-self:flex-start;margin-top:4px;background:#B4813C;color:#1B1712;padding:13px 26px;font-size:15.5px;font-weight:600;border-radius:100px;white-space:nowrap" style-hover="background:#C99752;color:#1B1712">יש לכם שאלה? דברו איתנו</a>
       </div>
     </div>
+    </details>
   </section>
 
   
@@ -2291,5 +2296,6 @@ b.setAttribute('aria-expanded',open?'true':'false');var sg=b.querySelector('[dat
 window.dispatchEvent(new Event('resize'));
 if(window.stzTrack){try{window.stzTrack('expand_section',{section:b.getAttribute('data-more'),open:open});}catch(_){}}});
 if(/#(tracks|process)$/.test(location.hash)){var t=document.getElementById('tracks');if(t){t.classList.add('stz-open');var s=t.closest('section');if(s)s.classList.add('stz-open-sec');}}
-})();</script></body>
+})();</script><script>/* stz-faq-more: open the questions when linked */(function(){function o(){var d=document.querySelector("#faq details");if(d&&/#(faq)$/.test(location.hash))d.open=true}addEventListener("hashchange",o);document.addEventListener("click",function(e){var a=e.target.closest&&e.target.closest("a[href=\"#faq\"]");if(a){var d=document.querySelector("#faq details");if(d)d.open=true}});o()})();</script>
+</body>
 </html>
