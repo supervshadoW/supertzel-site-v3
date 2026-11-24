@@ -3,7 +3,7 @@
 
 envelope.html is only read. The design system, header, hero with numbered pins, floating bar, project carousel, footer and scripts stay as they are;
 only these differ:
-  * H1 "איש קשר אחד, מהמדידה ועד המסירה." and the approved sub line instead of the hero slide description;
+  * H1 "מרחב חוץ שמרגיש חלק מהבית." and the sub line "תכנון יישומי, ביצוע ומסירה אצל צוות אחד." (chosen 24.11) instead of the hero slide description;
   * sections why / social / scope / services / build / fit (flipping book) / reviews / faq are removed;
   * new "choose" section (two photo cards, optional style chips) and a short contact section (name, phone, which space + WhatsApp + phone);
   * header menu, side chapters and the "design inspiration" bar point only at sections that still exist; no email address anywhere.
@@ -48,16 +48,16 @@ def cut_section(sid, label=None):
 
 
 # --- head --------------------------------------------------------------------------------------------------------------------
-rep('<title>מעטפת חוץ שלמה לבית | IL Projects</title>', '<title>איש קשר אחד, מהמדידה ועד המסירה | IL Projects</title>', 'title')
+rep('<title>מעטפת חוץ שלמה לבית | IL Projects</title>', '<title>מרחב חוץ שמרגיש חלק מהבית | IL Projects</title>', 'title')
 rep('<meta name="description" content="מעטפת חוץ שלמה לבית: פרגולה, סגירת זכוכית, מטבח חוץ ודק — פרויקט אחד, מעטפת אחת.">',
-    '<meta name="description" content="איש קשר אחד, מהמדידה ועד המסירה. חלל חוץ שלם, מעטפת מקצועית אחת.">', 'description')
+    '<meta name="description" content="מרחב חוץ שמרגיש חלק מהבית. תכנון יישומי, ביצוע ומסירה אצל צוות אחד.">', 'description')
 rep('<meta property="og:title" content="IL Projects — פרויקט חוץ שלם, מעטפת אחת">',
-    '<meta property="og:title" content="IL Projects — איש קשר אחד, מהמדידה ועד המסירה">', 'og title')
+    '<meta property="og:title" content="IL Projects — מרחב חוץ שמרגיש חלק מהבית">', 'og title')
 
 # --- hero text ---------------------------------------------------------------------------------------------------------------
 rep('animation:stz-up 1.1s 0.35s both">פרויקט חוץ שלם,<br><span style="display:block;min-height:1.1em;color:#C99752;font-weight:300">מעטפת אחת.</span></h1>',
-    'animation:stz-up 1.1s 0.35s both">איש קשר אחד,<br><span style="display:block;min-height:1.1em;color:#C99752;font-weight:300">מהמדידה ועד המסירה.</span></h1>', 'h1')
-rep('margin-bottom:22px">{{ heroDesc }}</p>', 'margin-bottom:22px">חלל חוץ שלם. מעטפת מקצועית אחת.</p>', 'hero sub line')
+    'animation:stz-up 1.1s 0.35s both">מרחב חוץ<br><span style="display:block;min-height:1.1em;color:#C99752;font-weight:300">שמרגיש חלק מהבית.</span></h1>', 'h1')
+rep('margin-bottom:22px">{{ heroDesc }}</p>', 'margin-bottom:22px">תכנון יישומי, ביצוע ומסירה אצל צוות אחד.</p>', 'hero sub line')
 
 # --- header and menu: only sections that exist -------------------------------------------------------------------------------
 rep('''        <a href="#why" style="font-size:15px;white-space:nowrap">למה מעטפת</a>
