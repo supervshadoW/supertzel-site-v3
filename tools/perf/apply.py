@@ -258,4 +258,19 @@ patch('index.html', "igUrl: this.props.instagramUrl || 'https://www.instagram.co
 patch('pergola.html', '<a href="https://www.facebook.com/" target="_blank" rel="noopener" aria-label="פייסבוק"', f'<a href="{FB_URL}" target="_blank" rel="noopener" aria-label="פייסבוק"', 'landing facebook link')
 patch('pergola.html', '<a href="https://www.instagram.com/" target="_blank" rel="noopener" aria-label="אינסטגרם"', f'<a href="{IG_URL}" target="_blank" rel="noopener" aria-label="אינסטגרם"', 'landing instagram link')
 
+# 10) phones: the hero photo takes the top half of the screen instead of the full height (it was a ~24% strip of a landscape photo,
+# zoomed). Media query only, desktop is unchanged. Index and the pergola landing page; the pages generated from them inherit it.
+HERO_M = """<style id="stz-hero-m">
+/* phones: the hero photo takes the top half instead of the full screen height, so more of the picture shows (it used to be a ~24% strip, zoomed) */
+@media (max-width:760px){
+#hero [data-stage]{width:max(100%,calc(50svh*2.15))!important;top:0!important;transform:translate(-50%,0)!important;-webkit-mask-image:linear-gradient(180deg,#000 62%,transparent 100%);mask-image:linear-gradient(180deg,#000 62%,transparent 100%)}
+#hero.stz-hero img{height:52svh!important;-webkit-mask-image:linear-gradient(180deg,#000 62%,transparent 100%);mask-image:linear-gradient(180deg,#000 62%,transparent 100%)}
+#hero .stz-h-shade{background:linear-gradient(180deg,rgba(27,23,18,.5) 0%,rgba(27,23,18,0) 12%,rgba(27,23,18,.45) 30%,rgba(27,23,18,.88) 50%,#1B1712 74%)!important}
+}
+</style>
+"""
+for name in ('index.html', 'pergola.html'):
+    if 'id="stz-hero-m"' not in read(name):
+        patch(name, '</head>', HERO_M + '</head>', 'phone hero photo height')
+
 print('performance fixes applied')

@@ -96,7 +96,22 @@ main :is(p, li, h1, h2, h3) :is(p, li, h1, h2, h3) { zoom: 1; }
 </style>
 <script src="/edit-index.js" defer></script>
 <link rel="stylesheet" href="/desktop-tight.css?v=3">
-<style id="stz-about-mobile">@media (max-width:760px){[data-stepscream] > div{padding-block:9px !important}[data-stepscream] h4{font-size:16px !important}[data-stepscream] p{display:none !important}}</style><style id="stz-about-fill">@media (min-width:1061px){[data-ab0]{display:flex !important;flex-direction:column;align-self:stretch}[data-ab0] [data-ab0img]{position:relative;flex:1 1 0;aspect-ratio:auto !important;min-height:120px}[data-ab0] [data-ab0img] img{position:absolute;inset:0;width:100%;height:100%}[data-ab0] p{font-size:17px !important;line-height:1.8 !important;margin-bottom:14px !important}[data-ab0] h3{margin-bottom:14px !important}}</style><style id="stz-gold">html body #hero h1 > span{color:#EBBF72 !important;font-weight:500 !important;text-shadow:0 2px 16px rgba(14,11,8,.92),0 0 3px rgba(14,11,8,.75),0 1px 1px rgba(14,11,8,.6) !important}</style><style id="stz-more">html.stz-more #tracks:not(.stz-open){max-height:0 !important;overflow:hidden !important;visibility:hidden !important;margin:0 !important}html.stz-more #tracks:not(.stz-open) ~ [data-bkctl],html.stz-more #why:not(.stz-open-sec) [data-bkctl]{display:none !important}#tracks.stz-open{margin-top:22px !important}[data-more]:hover{background:#211C16 !important;color:#F5F0E4 !important}</style></head>
+<style id="stz-about-mobile">@media (max-width:760px){[data-stepscream] > div{padding-block:9px !important}[data-stepscream] h4{font-size:16px !important}[data-stepscream] p{display:none !important}}</style><style id="stz-about-fill">@media (min-width:1061px){[data-ab0]{display:flex !important;flex-direction:column;align-self:stretch}[data-ab0] [data-ab0img]{position:relative;flex:1 1 0;aspect-ratio:auto !important;min-height:120px}[data-ab0] [data-ab0img] img{position:absolute;inset:0;width:100%;height:100%}[data-ab0] p{font-size:17px !important;line-height:1.8 !important;margin-bottom:14px !important}[data-ab0] h3{margin-bottom:14px !important}}</style><style id="stz-gold">html body #hero h1 > span{color:#EBBF72 !important;font-weight:500 !important;text-shadow:0 2px 16px rgba(14,11,8,.92),0 0 3px rgba(14,11,8,.75),0 1px 1px rgba(14,11,8,.6) !important}</style><style id="stz-more">html.stz-more #tracks:not(.stz-open){max-height:0 !important;overflow:hidden !important;visibility:hidden !important;margin:0 !important}html.stz-more #tracks:not(.stz-open) ~ [data-bkctl],html.stz-more #why:not(.stz-open-sec) [data-bkctl]{display:none !important}#tracks.stz-open{margin-top:22px !important}[data-more]:hover{background:#211C16 !important;color:#F5F0E4 !important}</style><style id="stz-hero-m">
+/* phones: the hero photo takes the top half instead of the full screen height, so more of the picture shows (it used to be a ~24% strip, zoomed) */
+@media (max-width:760px){
+#hero [data-stage]{width:max(100%,calc(50svh*2.15))!important;top:0!important;transform:translate(-50%,0)!important;-webkit-mask-image:linear-gradient(180deg,#000 62%,transparent 100%);mask-image:linear-gradient(180deg,#000 62%,transparent 100%)}
+#hero.stz-hero img{height:52svh!important;-webkit-mask-image:linear-gradient(180deg,#000 62%,transparent 100%);mask-image:linear-gradient(180deg,#000 62%,transparent 100%)}
+#hero .stz-h-shade{background:linear-gradient(180deg,rgba(27,23,18,.5) 0%,rgba(27,23,18,0) 12%,rgba(27,23,18,.45) 30%,rgba(27,23,18,.88) 50%,#1B1712 74%)!important}
+}
+</style>
+<style id="stz-paths-m">
+/* phones: the three path cards are short, so the text sits over the brighter part of the photo; darker gradient + lighter gold keeps it readable */
+@media (max-width:760px){
+.stz-pc > div[aria-hidden="true"]{background:linear-gradient(to top,rgba(20,17,13,0.95) 0%,rgba(20,17,13,0.84) 55%,rgba(20,17,13,0.5) 100%)!important}
+.stz-pc > div:last-child > div:first-child{color:#E8C48C!important;text-shadow:0 1px 8px rgba(0,0,0,0.5)}
+}
+</style>
+</head>
 <body>
 <x-dc>
 <helmet>
@@ -727,7 +742,7 @@ footer a,footer button{display:inline-flex;align-items:center;min-height:32px}
       <a href="/projects" style="margin-top:14px;display:flex;align-items:center;justify-content:center;gap:10px;min-height:52px;border:1px solid #211C16;border-radius:100px;font-size:16px;font-weight:600;color:#211C16" style-hover="background:#211C16;color:#F5F0E4">לכל הפרויקטים <span aria-hidden="true">←</span></a>
     </div>
       <div style="width:min(var(--stz-side,92%),var(--stz-max,1180px));margin:clamp(2rem,5vh,3rem) auto 0;display:flex;justify-content:flex-end">
-      <a href="#faq" style="display:inline-flex;white-space:nowrap;align-items:center;gap:10px;font-size:15.5px;font-weight:500;color:#6E4D1E;border-bottom:1px solid rgba(180,129,60,0.5);padding-bottom:3px" style-hover="color:#211C16;border-color:currentColor"><span style="opacity:0.9">05</span> שאלות נפוצות <span aria-hidden="true">←</span></a>
+      <a href="#fit" style="display:inline-flex;white-space:nowrap;align-items:center;gap:10px;font-size:15.5px;font-weight:500;color:#6E4D1E;border-bottom:1px solid rgba(180,129,60,0.5);padding-bottom:3px" style-hover="color:#211C16;border-color:currentColor"><span style="opacity:0.9">04</span> למי זה מתאים <span aria-hidden="true">←</span></a>
     </div>
   </section>
 
