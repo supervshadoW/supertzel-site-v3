@@ -550,11 +550,27 @@ footer a,footer button{display:inline-flex;align-items:center;min-height:32px}
     </div>
   </section>
 
-  <style id="stz-connect-pins">
-    #services .stz-pin{position:absolute;display:inline-flex;align-items:center;gap:7px;transform:translate(-50%,-50%);padding:4px 11px 4px 5px;border-radius:100px;background:rgba(20,17,13,0.78);color:#F5F0E4;font-size:13px;font-weight:500;white-space:nowrap;backdrop-filter:blur(4px)}
-    #services .stz-pin i{font-style:normal;display:inline-flex;align-items:center;justify-content:center;width:22px;height:22px;border-radius:50%;background:#C99752;color:#1B1712;font-size:12px;font-weight:700}
+  <style id="stz-scenes-css">
+    #services .stz-scn-head{display:flex;justify-content:space-between;align-items:center;gap:12px 20px;flex-wrap:wrap;margin-bottom:14px}
+    #services .stz-eyebrow{font-size:14px;font-weight:600;color:#80561E}
+    #services .stz-tabs{display:flex;gap:8px;flex-wrap:wrap}
+    #services .stz-tabs button{min-height:40px;padding:0 16px;border-radius:100px;border:1px solid rgba(33,28,22,0.22);background:transparent;color:#211C16;font:inherit;font-size:14.5px;font-weight:500;cursor:pointer;transition:background .2s,color .2s}
+    #services .stz-tabs button[aria-selected=true]{background:#211C16;color:#F5F0E4;border-color:#211C16}
+    #services .stz-scene[data-off]{display:none}
+    #services .stz-box{position:relative;border-radius:26px;overflow:hidden;background:#1B1712;box-shadow:0 26px 60px rgba(33,28,22,0.22)}
+    #services .stz-box img{display:block;width:100%;height:auto}
+    #services .stz-tag{position:absolute;top:12px;inset-inline-start:12px;padding:4px 12px;border-radius:100px;background:rgba(20,17,13,0.7);color:#F5F0E4;font-size:12.5px;font-weight:600}
+    #services .stz-pin{position:absolute;transform:translate(-50%,-50%);display:inline-flex;align-items:center;gap:8px;padding:4px 13px 4px 5px;border:1px solid rgba(245,240,228,0.35);border-radius:100px;background:rgba(20,17,13,0.8);color:#F5F0E4;font:inherit;font-size:13.5px;font-weight:500;white-space:nowrap;cursor:pointer;backdrop-filter:blur(4px);transition:background .25s,transform .25s,color .25s}
+    #services .stz-pin:hover{transform:translate(-50%,-50%) scale(1.07)}
+    #services .stz-pin i,#services .stz-chip i{font-style:normal;display:inline-flex;align-items:center;justify-content:center;width:24px;height:24px;border-radius:50%;background:#C99752;color:#1B1712;font-size:12.5px;font-weight:700;flex:none}
     #services .stz-pin b{font-weight:500}
-    @media (max-width:700px){#services figcaption span:last-child{display:none}#services .stz-pin{padding:3px;gap:0}#services .stz-pin b{display:none}#services .stz-pin i{width:24px;height:24px}}
+    #services .stz-pin[aria-pressed=true]{background:#C99752;color:#1B1712;border-color:#C99752}
+    #services .stz-pin[aria-pressed=true] i,#services .stz-chip[aria-pressed=true] i{background:#1B1712;color:#C99752}
+    #services .stz-legend{display:none;flex-wrap:wrap;gap:8px;margin-top:12px}
+    #services .stz-chip{display:inline-flex;align-items:center;gap:8px;min-height:44px;padding:0 14px 0 8px;border-radius:100px;border:1px solid rgba(33,28,22,0.22);background:#FFFFFF;color:#211C16;font:inherit;font-size:14px;font-weight:500;cursor:pointer}
+    #services .stz-chip[aria-pressed=true]{background:#C99752;border-color:#C99752}
+    @media (max-width:700px){#services .stz-pin{padding:3px;gap:0}#services .stz-pin b{display:none}#services .stz-pin i{width:30px;height:30px;font-size:14px}#services .stz-legend{display:flex}#services .stz-box{border-radius:20px}}
+    @media (prefers-reduced-motion:reduce){#services .stz-pin{transition:none}}
   </style>
   <section id="services" style="position:relative;overflow-x:clip;padding-block:clamp(2.5rem,6vh,4.5rem) clamp(1.25rem,3vh,2.5rem)">
     <span style="position:absolute;top:{{ wmTop }};inset-inline-start:-20px;font-size:{{ wmSize }};font-weight:600;color:#211C16;opacity:0.04;line-height:1;pointer-events:none;user-select:none">02</span>
@@ -566,19 +582,55 @@ footer a,footer button{display:inline-flex;align-items:center;min-height:32px}
         </div>
         <p style="margin:0;color:#4B443A;font-size:18px;max-width:30ch">לחצו על התחום שמעניין אתכם ונצרף אותו לפנייה.</p>
       </div>
-      <figure aria-label="איך זה מתחבר" style="margin:0 0 clamp(1.75rem,4vh,2.75rem);position:relative;border-radius:26px;overflow:hidden;background:#1B1712;box-shadow:0 26px 60px rgba(33,28,22,0.22)">
-        <img src="/img/fast/w/envelope-worlds.webp" alt="מרחב חוץ אחד שבו פרגולה, מטבח חוץ, דק, גינה וגידור עובדים יחד" loading="lazy" decoding="async" style="display:block;width:100%;height:auto;aspect-ratio:1904/1040;object-fit:cover">
-        <div aria-hidden="true" style="position:absolute;inset:0;background:linear-gradient(to top,rgba(20,17,13,0.55) 0%,rgba(20,17,13,0) 38%)"></div>
-        <figcaption style="position:absolute;inset-inline:0;bottom:0;padding:clamp(14px,2.4vw,26px);display:flex;align-items:flex-end;justify-content:space-between;gap:16px;flex-wrap:wrap;color:#F5F0E4">
-          <span style="font-size:13px;font-weight:600;letter-spacing:0.08em;color:#E8C48C">איך זה מתחבר</span>
-          <span style="font-size:clamp(15px,1.5vw,18px);line-height:1.45;max-width:36ch">קירוי, דק, מטבח חוץ, גינה וגידור, בשפה עיצובית אחת.</span>
-        </figcaption>
-        <span class="stz-pin" style="left:50%;top:21%"><i>1</i><b>קירוי והצללה</b></span>
-        <span class="stz-pin" style="left:84%;top:36%"><i>2</i><b>גינה ופיתוח נוף</b></span>
-        <span class="stz-pin" style="left:47%;top:50%"><i>3</i><b>גידור ותיחום</b></span>
-        <span class="stz-pin" style="left:20%;top:58%"><i>4</i><b>מטבחי חוץ ונגרות</b></span>
-        <span class="stz-pin" style="left:56%;top:84%"><i>5</i><b>ריצוף, דקים וחיפויים</b></span>
-      </figure>
+      <div class="stz-scn" style="margin:0 0 clamp(1.75rem,4vh,2.75rem)">
+        <div class="stz-scn-head"><span class="stz-eyebrow">איך זה מתחבר. סמנו בתמונה מה מעניין אתכם</span><div role="tablist" aria-label="בחירת מרחב" class="stz-tabs"><button type="button" role="tab" data-tab="0" aria-selected="true">מטבח חוץ וגינה</button><button type="button" role="tab" data-tab="1" aria-selected="false">פינת אוכל מוצלת</button><button type="button" role="tab" data-tab="2" aria-selected="false">כניסה עם דק ועץ</button></div></div>
+        <div class="stz-scene" data-scene="0">
+          <div class="stz-box"><img src="/img/fast/w/envelope-worlds.webp" alt="מרחב חוץ עם פרגולה, מטבח חוץ, דק, גינה וגידור" width="1904" height="1040" loading="eager" decoding="async"><span class="stz-tag">הדמיה</span>
+            <button type="button" class="stz-pin" data-w="קירוי והצללה" data-n="1" aria-pressed="false" aria-label="קירוי והצללה" style="left:50%;top:21%"><i>1</i><b>קירוי והצללה</b></button>
+            <button type="button" class="stz-pin" data-w="גידור ושערים" data-n="2" aria-pressed="false" aria-label="גידור ושערים" style="left:47%;top:48%"><i>2</i><b>גידור ושערים</b></button>
+            <button type="button" class="stz-pin" data-w="מטבחי חוץ ואירוח" data-n="3" aria-pressed="false" aria-label="מטבחי חוץ ואירוח" style="left:20%;top:58%"><i>3</i><b>מטבחי חוץ ואירוח</b></button>
+            <button type="button" class="stz-pin" data-w="פיתוח חוץ וגינה" data-n="4" aria-pressed="false" aria-label="פיתוח חוץ וגינה" style="left:87%;top:70%"><i>4</i><b>פיתוח חוץ וגינה</b></button>
+            <button type="button" class="stz-pin" data-w="דקים, ריצוף וחיפויים" data-n="5" aria-pressed="false" aria-label="דקים, ריצוף וחיפויים" style="left:60%;top:86%"><i>5</i><b>דקים, ריצוף וחיפויים</b></button>
+          </div>
+          <div class="stz-legend">
+            <button type="button" class="stz-chip" data-w="קירוי והצללה" data-n="1" aria-pressed="false"><i>1</i>קירוי והצללה</button>
+            <button type="button" class="stz-chip" data-w="גידור ושערים" data-n="2" aria-pressed="false"><i>2</i>גידור ושערים</button>
+            <button type="button" class="stz-chip" data-w="מטבחי חוץ ואירוח" data-n="3" aria-pressed="false"><i>3</i>מטבחי חוץ ואירוח</button>
+            <button type="button" class="stz-chip" data-w="פיתוח חוץ וגינה" data-n="4" aria-pressed="false"><i>4</i>פיתוח חוץ וגינה</button>
+            <button type="button" class="stz-chip" data-w="דקים, ריצוף וחיפויים" data-n="5" aria-pressed="false"><i>5</i>דקים, ריצוף וחיפויים</button>
+          </div>
+        </div>
+        <div class="stz-scene" data-scene="1" data-off="1">
+          <div class="stz-box"><img src="/img/fast/w/envelope-grey-stone-dining.webp" alt="פרגולת רפפות מעל שולחן אוכל, חיפוי אבן, דלתות זכוכית וגדר" width="1792" height="1008" loading="lazy" decoding="async"><span class="stz-tag">הדמיה</span>
+            <button type="button" class="stz-pin" data-w="קירוי והצללה" data-n="1" aria-pressed="false" aria-label="קירוי והצללה" style="left:58%;top:15%"><i>1</i><b>קירוי והצללה</b></button>
+            <button type="button" class="stz-pin" data-w="סגירות זכוכית" data-n="2" aria-pressed="false" aria-label="סגירות זכוכית" style="left:79%;top:52%"><i>2</i><b>סגירות זכוכית</b></button>
+            <button type="button" class="stz-pin" data-w="מטבחי חוץ ואירוח" data-n="3" aria-pressed="false" aria-label="מטבחי חוץ ואירוח" style="left:57%;top:56%"><i>3</i><b>מטבחי חוץ ואירוח</b></button>
+            <button type="button" class="stz-pin" data-w="גידור ושערים" data-n="4" aria-pressed="false" aria-label="גידור ושערים" style="left:13%;top:56%"><i>4</i><b>גידור ושערים</b></button>
+            <button type="button" class="stz-pin" data-w="פיתוח חוץ וגינה" data-n="5" aria-pressed="false" aria-label="פיתוח חוץ וגינה" style="left:9%;top:24%"><i>5</i><b>פיתוח חוץ וגינה</b></button>
+            <button type="button" class="stz-pin" data-w="דקים, ריצוף וחיפויים" data-n="6" aria-pressed="false" aria-label="דקים, ריצוף וחיפויים" style="left:50%;top:84%"><i>6</i><b>דקים, ריצוף וחיפויים</b></button>
+          </div>
+          <div class="stz-legend">
+            <button type="button" class="stz-chip" data-w="קירוי והצללה" data-n="1" aria-pressed="false"><i>1</i>קירוי והצללה</button>
+            <button type="button" class="stz-chip" data-w="סגירות זכוכית" data-n="2" aria-pressed="false"><i>2</i>סגירות זכוכית</button>
+            <button type="button" class="stz-chip" data-w="מטבחי חוץ ואירוח" data-n="3" aria-pressed="false"><i>3</i>מטבחי חוץ ואירוח</button>
+            <button type="button" class="stz-chip" data-w="גידור ושערים" data-n="4" aria-pressed="false"><i>4</i>גידור ושערים</button>
+            <button type="button" class="stz-chip" data-w="פיתוח חוץ וגינה" data-n="5" aria-pressed="false"><i>5</i>פיתוח חוץ וגינה</button>
+            <button type="button" class="stz-chip" data-w="דקים, ריצוף וחיפויים" data-n="6" aria-pressed="false"><i>6</i>דקים, ריצוף וחיפויים</button>
+          </div>
+        </div>
+        <div class="stz-scene" data-scene="2" data-off="1">
+          <div class="stz-box"><img src="/img/fast/w/envelope-modern-village.webp" alt="כניסה מקורה בפרגולת עץ עם דק, מטפסים וערוגות" width="1792" height="1008" loading="lazy" decoding="async"><span class="stz-tag">הדמיה</span>
+            <button type="button" class="stz-pin" data-w="קירוי והצללה" data-n="1" aria-pressed="false" aria-label="קירוי והצללה" style="left:50%;top:13%"><i>1</i><b>קירוי והצללה</b></button>
+            <button type="button" class="stz-pin" data-w="פיתוח חוץ וגינה" data-n="2" aria-pressed="false" aria-label="פיתוח חוץ וגינה" style="left:88%;top:68%"><i>2</i><b>פיתוח חוץ וגינה</b></button>
+            <button type="button" class="stz-pin" data-w="דקים, ריצוף וחיפויים" data-n="3" aria-pressed="false" aria-label="דקים, ריצוף וחיפויים" style="left:45%;top:88%"><i>3</i><b>דקים, ריצוף וחיפויים</b></button>
+          </div>
+          <div class="stz-legend">
+            <button type="button" class="stz-chip" data-w="קירוי והצללה" data-n="1" aria-pressed="false"><i>1</i>קירוי והצללה</button>
+            <button type="button" class="stz-chip" data-w="פיתוח חוץ וגינה" data-n="2" aria-pressed="false"><i>2</i>פיתוח חוץ וגינה</button>
+            <button type="button" class="stz-chip" data-w="דקים, ריצוף וחיפויים" data-n="3" aria-pressed="false"><i>3</i>דקים, ריצוף וחיפויים</button>
+          </div>
+        </div>
+      </div>
       <div ref="{{ pzRef }}" style="margin-top:clamp(1.5rem,4vh,2.5rem);display:flex;flex-direction:column;gap:{{ pzGap }}">
       <div aria-label="מרכיבי הבסיס" style="display:grid;grid-template-columns:{{ pzCols }};grid-auto-rows:{{ pzRowH }};gap:{{ pzGap }};transition:gap 0.4s">
         <sc-for list="{{ pzCore }}" as="t" hint-placeholder-count="4">
@@ -2270,5 +2322,33 @@ window.dispatchEvent(new Event('resize'));
 if(window.stzTrack){try{window.stzTrack('expand_section',{section:b.getAttribute('data-more'),open:open});}catch(_){}}});
 if(/#(tracks|process)$/.test(location.hash)){var t=document.getElementById('tracks');if(t){t.classList.add('stz-open');var s=t.closest('section');if(s)s.classList.add('stz-open-sec');}}
 })();</script><script>/* stz-faq-more: open the questions when linked */(function(){function o(){var d=document.querySelector("#faq details");if(d&&/#(faq)$/.test(location.hash))d.open=true}addEventListener("hashchange",o);document.addEventListener("click",function(e){var a=e.target.closest&&e.target.closest("a[href=\"#faq\"]");if(a){var d=document.querySelector("#faq details");if(d)d.open=true}});o()})();</script>
+<script id="stz-scenes-js">
+(function(){
+  function S(){return document.getElementById('services');}
+  function tileFor(label){var s=S();if(!s)return null;var t=s.querySelectorAll('button[data-par]');for(var i=0;i<t.length;i++){var a=t[i].getAttribute('aria-label')||'';if(a.slice(-label.length)===label)return t[i];}return null;}
+  function sync(){
+    var s=S();if(!s)return;var all=s.querySelectorAll('[data-w]');
+    for(var i=0;i<all.length;i++){
+      var el=all[i],t=tileFor(el.getAttribute('data-w')),on=!!t&&t.getAttribute('aria-pressed')==='true',v=on?'true':'false';
+      if(el.getAttribute('aria-pressed')!==v)el.setAttribute('aria-pressed',v);
+      var n=el.querySelector('i');if(n){var want=on?'\u2713':el.getAttribute('data-n');if(n.textContent!==want)n.textContent=want;}
+    }
+  }
+  document.addEventListener('click',function(e){
+    var s=S();if(!s||!s.contains(e.target))return;
+    var tab=e.target.closest('.stz-tabs button');
+    if(tab){var k=tab.getAttribute('data-tab');
+      s.querySelectorAll('.stz-tabs button').forEach(function(b){b.setAttribute('aria-selected',b===tab?'true':'false');});
+      s.querySelectorAll('.stz-scene').forEach(function(sc){if(sc.getAttribute('data-scene')===k)sc.removeAttribute('data-off');else sc.setAttribute('data-off','1');});
+      sync();return;}
+    var b=e.target.closest('[data-w]');if(!b)return;
+    var t=tileFor(b.getAttribute('data-w'));if(t)t.click();
+    setTimeout(sync,80);setTimeout(sync,400);
+  });
+  new MutationObserver(function(m){for(var i=0;i<m.length;i++){var t=m[i].target;if(t.hasAttribute&&t.hasAttribute('data-par')){sync();return;}}})
+    .observe(document.body,{subtree:true,attributes:true,attributeFilter:['aria-pressed']});
+  setInterval(sync,1000);setTimeout(sync,300);
+})();
+</script>
 </body>
 </html>
