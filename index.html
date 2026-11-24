@@ -425,13 +425,13 @@ footer a,footer button{display:inline-flex;align-items:center;min-height:32px}
   </section>
 
   <style id="stz-tracks3">
-    #paths .stz-pc{transition:translate .4s cubic-bezier(.2,.7,.2,1),box-shadow .4s}
-    #paths .stz-pc:hover{translate:0 -8px;box-shadow:0 34px 64px rgba(33,28,22,0.28)}
-    #paths .stz-pc:hover img{scale:1.05}
-    #paths .stz-pc img{transition:scale .8s cubic-bezier(.2,.7,.2,1)}
-    @media (max-width:860px){#paths .stz-grid{grid-template-columns:1fr !important}#paths .stz-pc{min-height:300px !important}}
+    #scope .stz-pc{transition:translate .4s cubic-bezier(.2,.7,.2,1),box-shadow .4s}
+    #scope .stz-pc:hover{translate:0 -8px;box-shadow:0 34px 64px rgba(33,28,22,0.28)}
+    #scope .stz-pc:hover img{scale:1.05}
+    #scope .stz-pc img{transition:scale .8s cubic-bezier(.2,.7,.2,1)}
+    @media (max-width:860px){#scope .stz-grid{grid-template-columns:1fr !important}#scope .stz-pc{min-height:300px !important}}
   </style>
-  <section id="paths" style="position:relative;z-index:7;margin-top:-34px;background:#F5F0E4;border-radius:34px 34px 0 0;box-shadow:0 -22px 44px rgba(14,11,8,0.22);padding-block:clamp(2rem,5vh,3.5rem) clamp(3.5rem,8vh,5.5rem)">
+  <section id="scope" style="scroll-margin-top:70px;position:relative;z-index:7;margin-top:-34px;background:#F5F0E4;border-radius:34px 34px 0 0;box-shadow:0 -22px 44px rgba(14,11,8,0.22);padding-block:clamp(2rem,5vh,3.5rem) clamp(3.5rem,8vh,5.5rem)">
     <div style="width:min(var(--stz-side,92%),var(--stz-max,1180px));margin-inline:auto">
       <div data-reveal="" style="display:flex;justify-content:space-between;align-items:flex-end;gap:clamp(1rem,4vw,2.5rem);flex-wrap:wrap;margin-bottom:clamp(2rem,5vh,3.2rem)">
         <div style="flex:1 1 560px;min-width:0">
@@ -548,9 +548,6 @@ footer a,footer button{display:inline-flex;align-items:center;min-height:32px}
         </div>
       </div>
     </div>
-      <div style="width:min(var(--stz-side,92%),var(--stz-max,1180px));margin:clamp(2rem,5vh,3rem) auto 0;display:flex;justify-content:flex-end">
-      <a href="#scope" style="display:inline-flex;white-space:nowrap;align-items:center;gap:10px;font-size:15.5px;font-weight:500;color:#6E4D1E;border-bottom:1px solid rgba(180,129,60,0.5);padding-bottom:3px" style-hover="color:#211C16;border-color:currentColor">איזה מרחב חוץ אתם מתכננים? <span aria-hidden="true">←</span></a>
-    </div>
   </section>
 
   <section id="projects" style="padding-block:clamp(1.75rem,4vh,4rem) clamp(3rem,8vh,5rem)">
@@ -590,48 +587,6 @@ footer a,footer button{display:inline-flex;align-items:center;min-height:32px}
     </div>
   </section>
 
-  <section id="scope" style="position:relative;padding-block:clamp(2.75rem,8vh,5.5rem) clamp(1rem,3vh,2rem);scroll-margin-top:70px">
-    <div style="width:min(var(--stz-side,92%),var(--stz-max,1180px));margin-inline:auto">
-      <div data-reveal="" style="display:flex;justify-content:space-between;align-items:flex-end;gap:12px 28px;flex-wrap:wrap;margin-bottom:clamp(1.25rem,3vh,2rem)">
-        <div>
-          <div style="display:inline-flex;align-items:center;gap:10px;color:#80561E;font-size:14.5px;font-weight:600;letter-spacing:0.04em;margin-bottom:18px;white-space:nowrap"><span style="display:block;width:24px;height:1px;background:#B4813C"></span>מתחילים מכאן</div>
-          <h2 style="font-size:clamp(30px,3.9vw,48px);letter-spacing:-0.025em;line-height:1.1">איזה מרחב חוץ אתם מתכננים?</h2>
-        </div>
-        <div style="display:flex;flex-direction:column;gap:6px;max-width:40ch"><p style="margin:0;color:#211C16;font-size:17px;font-weight:500">בחרו את מה שקרוב למה שאתם מדמיינים ונציג לכם פרויקטים ומידע מתאימים.</p></div>
-      </div>
-      <div role="radiogroup" aria-label="סוג הפרויקט" style="display:grid;grid-template-columns:{{ pthCols }};gap:14px">
-        <sc-for list="{{ pthCards }}" as="c" hint-placeholder-count="3">
-          <button type="button" role="radio" data-par="" aria-checked="{{ c.on }}" onClick="{{ c.onTap }}" style="font:inherit;text-align:start;cursor:pointer;position:relative;display:block;width:100%;aspect-ratio:{{ pthAr }};padding:0;border-radius:20px;overflow:hidden;background:#1B1712;border:2px solid {{ c.bc }};box-shadow:{{ c.sh }};color:#F5F0E4;transition:border-color 0.2s,box-shadow 0.25s,transform 0.18s" style-hover="border-color:#B4813C" style-active="transform:scale(0.98)">
-            <img src="{{ c.src }}" alt="" loading="lazy" decoding="async" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover">
-            <span aria-hidden="true" style="position:absolute;inset:0;background:linear-gradient(0deg,rgba(17,14,11,0.92) 0%,rgba(17,14,11,0.7) 38%,rgba(17,14,11,0.12) 68%,rgba(17,14,11,0) 100%)"></span>
-            <span aria-hidden="true" style="position:absolute;top:14px;right:14px;z-index:1;display:flex;align-items:center;justify-content:center;width:32px;height:32px;border-radius:50%;background:{{ c.dotBg }};border:2px solid #F5F0E4;color:#1B1712;font-size:14px;font-weight:700">{{ c.mark }}</span>
-            <span style="position:absolute;inset-inline:0;bottom:0;z-index:1;display:flex;flex-direction:column;gap:6px;padding:clamp(16px,2vw,22px)">
-              <span style="font-size:13px;font-weight:600;color:#E8C48C;letter-spacing:0.06em">{{ c.num }}</span>
-              <span style="font-size:clamp(21px,2vw,25px);font-weight:600;line-height:1.2;color:#FFFFFF">{{ c.title }}</span>
-              <span style="font-size:15px;line-height:1.45;color:rgba(245,240,228,0.92)">{{ c.line }}</span>
-              <span style="font-size:13.5px;color:rgba(245,240,228,0.78)">{{ c.ex }}</span>
-              <span style="margin-top:8px;display:flex;align-items:center;justify-content:center;gap:8px;min-height:46px;border-radius:100px;border:1px solid {{ c.ctaBc }};background:{{ c.ctaBg }};color:{{ c.ctaFg }};font-size:15px;font-weight:600">{{ c.cta }}</span>
-            </span>
-          </button>
-        </sc-for>
-      </div>
-      <div id="scope-detail" style="margin-top:16px;padding:clamp(1.25rem,3vw,2rem);border-radius:22px;background:#1B1712;color:#F5F0E4;display:grid;grid-template-columns:{{ pthDetCols }};gap:18px clamp(1.5rem,4vw,3rem);align-items:center;scroll-margin-top:90px">
-        <div style="min-width:0">
-          <span style="font-size:13px;color:#C99752;font-weight:600;letter-spacing:0.04em">המסלול שלכם · {{ pthLabel }}</span>
-          <h3 style="margin-top:6px;font-size:clamp(22px,2.6vw,32px);line-height:1.2;color:#F5F0E4;text-wrap:balance">{{ pthTitle }}</h3>
-          <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:18px">
-            <a href="#quick" style="display:inline-flex;align-items:center;gap:10px;min-height:50px;padding:0 26px;border-radius:100px;background:#B4813C;color:#1B1712;font-size:16px;font-weight:600;white-space:nowrap" style-hover="background:#C99752;color:#1B1712">{{ pthCta }} <span aria-hidden="true">←</span></a>
-            <sc-if value="{{ pthHasLp }}" hint-placeholder-val="{{ false }}"><a href="/pergola" style="display:inline-flex;align-items:center;gap:10px;min-height:50px;padding:0 22px;border-radius:100px;border:1px solid rgba(245,240,228,0.4);color:#F5F0E4;font-size:15.5px;white-space:nowrap" style-hover="background:rgba(245,240,228,0.1);color:#F5F0E4">לדף הפרגולות וההצללה <span aria-hidden="true">←</span></a></sc-if>
-          </div>
-        </div>
-        <ul style="list-style:none;padding:0;margin:0;display:flex;flex-direction:column;min-width:0">
-          <sc-for list="{{ pthPoints }}" as="pt" hint-placeholder-count="3">
-            <li style="display:flex;gap:12px;align-items:baseline;padding:12px 0;border-top:1px solid rgba(245,240,228,0.14);font-size:15.5px;line-height:1.5;color:rgba(245,240,228,0.88)"><span style="display:block;width:7px;height:7px;border-radius:50%;background:#B4813C;flex:none;transform:translateY(-2px)"></span><span>{{ pt }}</span></li>
-          </sc-for>
-        </ul>
-      </div>
-    </div>
-  </section>
 
 
   <section id="services" style="position:relative;overflow-x:clip;padding-block:clamp(2.5rem,6vh,4.5rem) clamp(1.25rem,3vh,2.5rem)">
