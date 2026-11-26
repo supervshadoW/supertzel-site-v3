@@ -279,8 +279,6 @@ CALM_M = """<style id="stz-calm-m">
 /* phones: fewer floating layers, a real project photo instead of the phone mock, quiet text links on the path cards */
 @media (max-width:760px){
 nav[aria-label="גלילה מהירה בין פרקים"]{display:none!important}
-#social .stz-stage{min-height:300px!important;perspective:none!important;background:url(/img/fast/w/envelope-pergola-deck.webp) 38% 50%/cover no-repeat}
-#social .stz-stage>*{display:none!important}
 #why [style*="font-size: 104px"],#services [style*="font-size: 104px"],#why [style*="font-size:104px"],#services [style*="font-size:104px"]{display:none!important}
 .stz-pc span[style*="background:#B4813C"],.stz-pc span[style*="background: rgb(180, 129, 60)"]{background:none!important;min-height:0!important;padding:0!important;border-radius:0!important;color:#E8C48C!important;font-size:15px!important;text-decoration:underline;text-underline-offset:5px;text-decoration-color:rgba(232,196,140,.55)}
 }
